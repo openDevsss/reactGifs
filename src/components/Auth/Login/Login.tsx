@@ -9,29 +9,44 @@ import {
   FormLegend,
   ButtonSubmit,
   InstructionText,
-  LogInLink,
   WrapperImage,
   RedirectText,
 } from "../AuthStyled";
 import ghost from "../../../images/stickerGhost.webp";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { UserType } from "../../../Type/UserType";
 
 export function Login() {
+  type LoginUser = Pick<UserType, "email" | "password">;
+
+  const { register, handleSubmit } = useForm<LoginUser>();
+
+  const onSubmit: SubmitHandler<LoginUser> = (data) => {
+    console.log(data);
+  };
+
   return (
     <Section>
       <Wrapper>
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <FormLegend>sign in</FormLegend>
           <InstructionText>Welcome! Please enter your details.</InstructionText>
           <Description>Email</Description>
-          <WhiteBorderTextField size="small" placeholder="Enter your email" />
+          <WhiteBorderTextField
+            {...register("email")}
+            size="small"
+            placeholder="Enter your email"
+          />
           <Description>Password</Description>
           <WhiteBorderTextField
             size="small"
             placeholder="Enter your password"
+            {...register("password")}
+            type="password"
           />
-          <ButtonSubmit>sign in</ButtonSubmit>
+          <ButtonSubmit type="submit">sign in</ButtonSubmit>
           <RedirectText>
             Don't have an account?
             <Link to="/sign-up">

@@ -25,7 +25,7 @@ export const Wrapper = styled(Box)`
   align-items: center;
 `;
 
-export const Form = styled(FormControl)`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -91,15 +91,6 @@ export const Title = styled(Typography)`
   font-size: 60px;
   text-align: center;
   font-family: "Arvo", serif;
-`;
-
-export const LogInLink = styled(Link)`
-  font-family: "Arvo", serif;
-  color: #5f3db5;
-  cursor: pointer;
-  &.MuiLink-root {
-    text-decoration-color: rgba(61, 0, 113, 0.2);
-  }
 `;
 
 export const WrapperImage = styled(Box)`
