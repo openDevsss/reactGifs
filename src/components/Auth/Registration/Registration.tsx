@@ -10,34 +10,55 @@ import {
   ButtonSubmit,
   RedirectText,
   InstructionText,
-  LogInLink,
   WrapperImage,
 } from "../AuthStyled";
 import ghost from "../../../images/stickerGhost.webp";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { UserType } from "../../../Type/UserType";
 
 export function Registration() {
+  type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
+  const { register, handleSubmit } = useForm<RegisterUser>();
+
+  const onSubmit: SubmitHandler<RegisterUser> = (data) => {
+    console.log(data);
+  };
+
   return (
     <Section>
       <Wrapper>
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <FormLegend>sign up</FormLegend>
           <InstructionText>Welcome! Please enter details.</InstructionText>
           <Description>Nickname</Description>
-          <WhiteBorderTextField size="small" placeholder="Create nickname" />
+          <WhiteBorderTextField
+            {...register("nickname")}
+            size="small"
+            placeholder="Create nickname"
+          />
           <Description>Email</Description>
-          <WhiteBorderTextField size="small" placeholder="Enter your email" />
+          <WhiteBorderTextField
+            {...register("email")}
+            size="small"
+            placeholder="Enter your email"
+          />
           <Description>Password</Description>
-          <WhiteBorderTextField size="small" placeholder="Create password" />
-          <ButtonSubmit>sign up</ButtonSubmit>
-          <RedirectText>
-            Do you have an account?
-            <Link to="/sign-in">
-              <Typography component="span">Sign in</Typography>
-            </Link>
-          </RedirectText>
+          <WhiteBorderTextField
+            {...register("password")}
+            size="small"
+            placeholder="Create password"
+            type="password"
+          />
+          <ButtonSubmit type="submit">sign up</ButtonSubmit>
         </Form>
+        <RedirectText>
+          Do you have an account?
+          <Link to="/sign-in">
+            <Typography component="span">Sign in</Typography>
+          </Link>
+        </RedirectText>
       </Wrapper>
       <WrapperImage>
         <Title>React Gifs</Title>
