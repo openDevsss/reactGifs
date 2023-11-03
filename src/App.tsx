@@ -1,8 +1,13 @@
 import React from "react";
-import "./App.css";
+import { Login } from "./components/Auth/Login/Login";
+import { Registration } from "./components/Auth/Registration/Registration";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <Login></Login>
+    </>
+  );
 }
 
-export default App;
+export { App };
