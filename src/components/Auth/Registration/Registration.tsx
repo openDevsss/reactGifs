@@ -8,42 +8,41 @@ import {
   WhiteBorderTextField,
   FormLegend,
   ButtonSubmit,
-  RedirectText,
   InstructionText,
   LogInLink,
   WrapperImage,
+  RedirectText,
 } from "../AuthStyled";
 import ghost from "../../../images/stickerGhost.webp";
 import { Box, Typography } from "@mui/material";
 
-function Login() {
+export function Registration() {
   return (
     <Section>
       <Wrapper>
         <Form>
-          <FormLegend>sign up</FormLegend>
-          <InstructionText>Welcome! Please enter details.</InstructionText>
-          <Description>Nickname</Description>
-          <WhiteBorderTextField size="small" placeholder="Create nickname" />
+          <FormLegend>sign in</FormLegend>
+          <InstructionText>Welcome! Please enter your details.</InstructionText>
           <Description>Email</Description>
           <WhiteBorderTextField size="small" placeholder="Enter your email" />
           <Description>Password</Description>
-          <WhiteBorderTextField size="small" placeholder="Create password" />
-          <ButtonSubmit>sign up</ButtonSubmit>
+          <WhiteBorderTextField
+            size="small"
+            placeholder="Enter your password"
+          />
+          <ButtonSubmit>sign in</ButtonSubmit>
           <RedirectText>
-            Do you have an account?
+            Don't have an account?
             <LogInLink>
-              <Typography component="span">Sign in</Typography>
+              <Typography component="span" > Sign up </Typography>
             </LogInLink>
           </RedirectText>
         </Form>
       </Wrapper>
       <WrapperImage>
         <Title>React Gifs</Title>
-        <Box component={"img"} src={ghost} width={300} height={350} />
+        <Box component="img" src={ghost} width={300} height={350} />
       </WrapperImage>
     </Section>
   );
 }
-
-export { Login };
