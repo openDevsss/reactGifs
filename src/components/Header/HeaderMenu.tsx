@@ -14,11 +14,6 @@ import {
   UserCircle,
 } from "phosphor-react";
 import { StyledMenuItem } from "./styled";
-// Profile
-// Favourite list
-// Settings
-// Night mode
-// Log out
 interface HeaderMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
@@ -41,7 +36,6 @@ export default function HeaderMenu({
         sx: {
           width: "230px",
           padding: "8px",
-          //   backgroundColor: "#f1f1f2",
           overflow: "visible",
           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
           mt: 1.5,
