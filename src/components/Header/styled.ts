@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Avatar, Box, TextField, Typography } from "@mui/material";
+import { Avatar, Box, MenuItem, TextField, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const WrapperHeader = styled.header`
@@ -77,9 +77,11 @@ export const ProfileName = styled(Typography)`
   font-size: 16px;
   padding-left: 25px;
 `;
-export const MyProfileWrapper = styled(Box)`
+export const MyProfileWrapper = styled.button`
   margin: 0;
   width: 140px;
+  border: none;
+  outline: none;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -92,4 +94,9 @@ export const WrapperBellIcon = styled(Box)`
   padding: 10px;
   padding-bottom: 6px;
   border-radius: 8px;
+`;
+export const StyledMenuItem = styled(MenuItem)`
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 5px;
 `;
