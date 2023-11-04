@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 
 export const WrapperHeader = styled.header`
   margin: 0;
-  width: 1920px;
+  width: 100%;
   padding: 19px;
   border-bottom: 1px solid #5f3db5;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  box-sizing: border-box;
 `;
 
 export const InformationHeader = styled(Box)`
