@@ -88,12 +88,14 @@ export const MyProfileWrapper = styled.button`
   background-color: #f1f1f2;
   border-radius: 50px;
   justify-content: center;
+  cursor: pointer;
 `;
 export const WrapperBellIcon = styled(Box)`
   background-color: #f1f1f2;
   padding: 10px;
   padding-bottom: 6px;
   border-radius: 8px;
+  cursor: pointer;
 `;
 export const StyledMenuItem = styled(MenuItem)`
   font-size: 16px;
