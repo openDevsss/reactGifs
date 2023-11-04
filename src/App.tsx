@@ -7,10 +7,12 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route element={<Registration />} path="/sign-up" />
-        <Route element={<Login />} path="/sign-in" />
-      </Routes>
+      <div className="page">
+        <Routes>
+          <Route element={<Registration />} path="/sign-up" />
+          <Route element={<Login />} path="/sign-in" />
+        </Routes>
+      </div>
     </>
   );
 }

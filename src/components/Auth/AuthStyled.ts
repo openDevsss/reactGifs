@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 export const Section = styled.section`
-  width: 1920px;
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
