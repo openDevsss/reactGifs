@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, TextField, Typography } from "@mui/material";
+import { Avatar, Box, TextField, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const WrapperHeader = styled.header`
@@ -65,8 +65,8 @@ export const LinkNavigation = styled(NavLink)`
   font-size: 16px;
   line-height: 1.5;
 `;
-export const ProfileIcon = styled.img`
-  border-radius: 50%;
+export const ProfileIcon = styled(Avatar)`
+  /* border-radius: 50%; */
   border: 1px solid #29e072;
   width: 44px;
   height: 44px;
