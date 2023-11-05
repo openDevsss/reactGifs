@@ -14,8 +14,11 @@ import logo from "../../images/OBJECTS.svg";
 import { MagnifyingGlass } from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
 import { InputAdornment, Tooltip } from "@mui/material";
+import { useAppSelector } from "../../redux-toolkit";
+import { selectCurrentUser } from "../../features/users/users-selectors";
 
 export function Header() {
+  const currentUser = useAppSelector(selectCurrentUser);
   return (
     <WrapperHeader>
       <InformationHeader>
@@ -54,11 +57,7 @@ export function Header() {
         >
           <MyProfileWrapper to="/my-profile">
             <ProfileName>Account</ProfileName>
-            <ProfileIcon
-              src={
-                "https://w.forfun.com/fetch/5c/5c667b51332990f7af3d3b20b4548883.jpeg?w=1470&r=0.5625"
-              }
-            />
+            <ProfileIcon src={currentUser?.avatar} />
           </MyProfileWrapper>
         </Tooltip>
       </NavigationHeader>
