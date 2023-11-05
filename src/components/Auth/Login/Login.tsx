@@ -14,17 +14,24 @@ import {
 } from "../AuthStyled";
 import ghost from "../../../images/stickerGhost.webp";
 import { Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserType } from "../../../types/UserType";
+import { useAppDispatch } from "../../../redux-toolkit";
+import { loginUser } from "../../../features/users/users-slice";
 
 export function Login() {
   type LoginUser = Pick<UserType, "email" | "password">;
-
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm<LoginUser>();
 
   const onSubmit: SubmitHandler<LoginUser> = (data) => {
-    console.log(data);
+    dispatch(loginUser(data))
+      .unwrap()
+      .then(() => {
+        navigate("/");
+      });
   };
 
   return (
