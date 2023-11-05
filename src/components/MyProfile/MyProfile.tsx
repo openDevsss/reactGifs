@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import { useAppSelector } from "../../redux-toolkit";
 import { CustomTab } from "../Custom/CustomTab";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 import { CustomTabs } from "../Custom/CustomTabs";
@@ -10,14 +12,22 @@ import {
   ProfileWrapper,
   ProfileButton,
   ProfileAvatarLetter,
+  ProfileAvatar,
 } from "./styled";
 export default function MyProfile() {
   const [selectTab, setSelectTab] = useState("created");
+  const currentUser = useAppSelector(selectCurrentUser);
   return (
     <ProfileWrapper>
-      <ProfileAvatarLetter>A</ProfileAvatarLetter>
-      <ProfileName>Andrey</ProfileName>
-      <ProfileMail>a@mail.ri</ProfileMail>
+      {currentUser?.avatar ? (
+        <ProfileAvatar src={currentUser.avatar} />
+      ) : (
+        <ProfileAvatarLetter>
+          {currentUser?.nickname.slice(0, 1)}
+        </ProfileAvatarLetter>
+      )}
+      <ProfileName>{currentUser?.nickname}</ProfileName>
+      <ProfileMail>{currentUser?.email}</ProfileMail>
       <ProfileSubscriptions>0 подписок</ProfileSubscriptions>
       <ButtonsContainer>
         <ProfileButton>Поделиться</ProfileButton>
