@@ -7,7 +7,11 @@ import { Footer } from "./components/Footer/Footer";
 import { useAppDispatch, useAppSelector } from "./redux-toolkit";
 import { checkAuth } from "./features/users/users-slice";
 import { selectCurrentUser } from "./features/users/users-selectors";
-function App() {
+import MyProfilePage from "./pages/MyProfilePage";
+export function App() {
+  const location = useLocation();
+  const hideComponents =
+    location.pathname !== "/sign-in" && location.pathname !== "/sign-up";
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectCurrentUser);
   const jwt = localStorage.getItem("jwt");
@@ -15,11 +19,6 @@ function App() {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
   console.log(currentUser);
-import MyProfilePage from "./pages/MyProfilePage";
-function App() {
-  const location = useLocation();
-  const hideComponents =
-    location.pathname !== "/sign-in" && location.pathname !== "/sign-up";
   return (
     <>
       <div className="page">
@@ -36,5 +35,3 @@ function App() {
     </>
   );
 }
-
-export { App };
