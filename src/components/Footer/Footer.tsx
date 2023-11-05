@@ -37,12 +37,7 @@ export function Footer() {
       </ContainerFooter>
       <Line />
       <NavigationFooter>
-        <DescriptionFooter>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-          excepturi officiis earum. Iusto voluptas porro tempora beatae
-          officiis, autem nulla ducimus perspiciatis ab nobis reiciendis
-          incidunt unde debitis iste maxime?
-        </DescriptionFooter>
+        <DescriptionFooter>Find your gifs</DescriptionFooter>
         <LinkFooter>
           <TytleExploreFooter>Explore</TytleExploreFooter>
           <LinkNavigation to="/home">Home</LinkNavigation>
@@ -53,7 +48,7 @@ export function Footer() {
           <TytleExploreFooter>Link</TytleExploreFooter>
           <LinkNavigation to="/blog">Blog</LinkNavigation>
           <LinkNavigation to="/contact">Contact</LinkNavigation>
-          <LinkNavigation to="/faq`s">FAQ`s</LinkNavigation>
+          <LinkNavigation to="/faq">FAQ`s</LinkNavigation>
           <LinkNavigation to="/about-us">About us</LinkNavigation>
         </LinkFooter>
       </NavigationFooter>

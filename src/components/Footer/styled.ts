@@ -35,7 +35,6 @@ export const LogoFooter = styled.img`
 `;
 
 export const TitleFooter = styled(Typography)`
-  font-family: "Inter";
   font-weight: 700;
   font-size: 28px;
   color: #5f3db5;
@@ -58,14 +57,11 @@ export const NavigationFooter = styled(Box)`
 
 export const DescriptionFooter = styled(Typography)`
   color: #ffffff;
-  font-family: "Inter";
-  font-weight: 400;
   font-size: 16px;
   width: 390px;
 `;
 
 export const TytleExploreFooter = styled(Typography)`
-  font-family: "Inter";
   font-weight: 700;
   font-size: 21px;
   color: #5f3db5;
@@ -73,8 +69,6 @@ export const TytleExploreFooter = styled(Typography)`
 
 export const LinkNavigation = styled(Link)`
   text-decoration: none;
-  font-family: "Inter";
-  font-weight: 400;
   font-size: 16px;
   color: #ffffff;
   margin-top: 8px;
