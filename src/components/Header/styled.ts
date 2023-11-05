@@ -38,7 +38,7 @@ export const SearchHeader = styled(TextField)`
   box-sizing: border-box;
 
   input::placeholder {
-    font-family: "Arvo", serif;
+    font-family: "Inter", serif;
   }
   & label.Mui-focused {
     color: #5f3db5;
