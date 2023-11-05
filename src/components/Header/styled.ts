@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Avatar, Box, MenuItem, TextField, Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const WrapperHeader = styled.header`
   margin: 0;
@@ -66,7 +66,6 @@ export const LinkNavigation = styled(NavLink)`
   line-height: 1.5;
 `;
 export const ProfileIcon = styled(Avatar)`
-  /* border-radius: 50%; */
   border: 1px solid #29e072;
   width: 44px;
   height: 44px;
@@ -77,23 +76,24 @@ export const ProfileName = styled(Typography)`
   font-size: 16px;
   padding-left: 25px;
 `;
-export const MyProfileWrapper = styled.button`
+export const MyProfileWrapper = styled(Link)`
   margin: 0;
   width: 140px;
-  border: none;
-  outline: none;
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
   background-color: #f1f1f2;
   border-radius: 50px;
   justify-content: center;
+  cursor: pointer;
 `;
 export const WrapperBellIcon = styled(Box)`
   background-color: #f1f1f2;
   padding: 10px;
   padding-bottom: 6px;
   border-radius: 8px;
+  cursor: pointer;
 `;
 export const StyledMenuItem = styled(MenuItem)`
   font-size: 16px;
