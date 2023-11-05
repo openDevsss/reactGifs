@@ -9,7 +9,8 @@ type AuthInitialState = {
   error: string | null;
   isAuth: boolean;
 };
-type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
+type RegisterUserType = Pick<UserType, "email" | "password" | "nickname">;
+type LoginUserType = Pick<UserType, "email" | "password">;
 const initialState: AuthInitialState = {
   user: null,
   status: "idle",
@@ -19,7 +20,7 @@ const initialState: AuthInitialState = {
 
 export const registerUser = createAsyncThunk<
   { token: string },
-  RegisterUser,
+  RegisterUserType,
   { extra: Extra; rejectWithValue: string }
 >(
   "@@auth/register",
@@ -35,7 +36,7 @@ export const registerUser = createAsyncThunk<
 
 export const loginUser = createAsyncThunk<
   UserType,
-  UserType,
+  LoginUserType,
   { extra: Extra; rejectWithValue: string }
 >(
   "@@auth/login",
@@ -56,23 +57,23 @@ export const loginUser = createAsyncThunk<
   }
 );
 
-// export const checkAuth = createAsyncThunk<
-//   UserType,
-//   string,
-//   { extra: Extra; rejectWithValue: string }
-// >("@@user/isAuth", async (jwt, { extra: { client, api }, rejectWithValue }) => {
-//   try {
-//     const res = await client.get(api.CHECK_JWT, {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${jwt}`,
-//       },
-//     });
-//     return res.data;
-//   } catch (err) {
-//     return rejectWithValue("Ошибка");
-//   }
-// });
+export const checkAuth = createAsyncThunk<
+  UserType,
+  string,
+  { extra: Extra; rejectWithValue: string }
+>("@@user/isAuth", async (jwt, { extra: { client, api }, rejectWithValue }) => {
+  try {
+    const res = await client.get(api.CHECK_JWT, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    return rejectWithValue("Ошибка");
+  }
+});
 
 const UserSlice = createSlice({
   name: "@@user",
@@ -100,11 +101,11 @@ const UserSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.status = "received";
+      })
+      .addCase(checkAuth.fulfilled, (state, action) => {
+        state.isAuth = true;
+        state.user = action.payload;
       });
-    // .addCase(checkAuth.fulfilled, (state, action) => {
-    //   state.isAuth = true;
-    //   state.user = action.payload;
-    // });
   },
 });
 
