@@ -20,7 +20,7 @@ export const Wrapper = styled(Box)`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 300px;
   margin: 0 auto;
 `;
 
@@ -80,7 +80,7 @@ export const Title = styled(Typography)`
 
 export const WrapperImage = styled(Box)`
   background-color: #5f3db5;
-  width: 50%;
+  width: 40%;
   padding: 250px;
   display: flex;
   flex-direction: column;

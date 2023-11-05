@@ -14,16 +14,23 @@ import {
 } from "../AuthStyled";
 import ghost from "../../../images/stickerGhost.webp";
 import { Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { UserType } from "../../../Type/UserType";
+import { UserType } from "../../../types/UserType";
+import { useAppDispatch } from "../../../redux-toolkit";
+import { registerUser } from "../../../features/users/users-slice";
 
 export function Registration() {
   type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
   const { register, handleSubmit } = useForm<RegisterUser>();
-
+  const dispatch = useAppDispatch();
+  const navgiate = useNavigate();
   const onSubmit: SubmitHandler<RegisterUser> = (data) => {
-    console.log(data);
+    dispatch(registerUser(data))
+      .unwrap()
+      .then(() => {
+        navgiate("/sign-in");
+      });
   };
 
   return (
