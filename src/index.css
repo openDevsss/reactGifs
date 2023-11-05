@@ -24,3 +24,6 @@ code {
   max-width: 1560px;
   color: black;
 }
+main {
+  min-height: 100vh;
+}
