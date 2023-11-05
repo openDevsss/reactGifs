@@ -1,14 +1,14 @@
 @font-face {
-  font-family: "Arvo";
+  font-family: "Inter";
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("./Arvo-Regular.ttf") format("woff2");
+  src: url("./Inter-Regular.ttf") format("woff2");
 }
 @font-face {
-  font-family: "Arvo";
+  font-family: "Inter";
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("./Arvo-Bold.ttf") format("woff2");
+  src: url("./Inter-Bold.ttf") format("woff2");
 }
