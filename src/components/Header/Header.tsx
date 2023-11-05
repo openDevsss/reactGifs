@@ -13,7 +13,7 @@ import {
   ProfileName,
 } from "./styled";
 import logo from "../../images/OBJECTS.svg";
-import { Anchor, MagnifyingGlass } from "phosphor-react";
+import { MagnifyingGlass } from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
 import HeaderMenu from "./HeaderMenu";
 import { InputAdornment } from "@mui/material";
