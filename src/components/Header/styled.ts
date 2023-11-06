@@ -70,6 +70,7 @@ export const SearchHeader = styled(TextField)`
 
 export const NavigationHeader = styled(Box)`
   display: flex;
+  position: relative;
   align-items: center;
   gap: 22px;
 `;

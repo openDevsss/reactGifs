@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   WrapperHeader,
   InformationHeader,
@@ -21,10 +22,22 @@ import {
 } from "@mui/material";
 import { useAppSelector } from "../../redux-toolkit";
 import { selectCurrentUser } from "../../features/users/users-selectors";
+import HeaderMenu from "./HeaderMenu";
 export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    setIsOpen(true);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+    setIsOpen(false);
+  };
   const currentUser = useAppSelector(selectCurrentUser);
   const isMatches1024 = useMediaQuery("(max-width : 1024px)");
   const isMatches480 = useMediaQuery("(max-width : 480px)");
+
   return (
     <WrapperHeader>
       <InformationHeader>
@@ -71,7 +84,19 @@ export function Header() {
           </Tooltip>
         </NavigationHeader>
       ) : (
-        <List size={32} color="#5f3db5" weight="regular" />
+        <>
+          <NavigationHeader>
+            <HeaderBellIcon />
+            <IconButton onClick={handleClick}>
+              <List size={32} color="#5f3db5" weight="regular" />
+            </IconButton>
+          </NavigationHeader>
+          <HeaderMenu
+            anchorEl={anchorEl}
+            handleClose={handleClose}
+            isOpen={isOpen}
+          />
+        </>
       )}
     </WrapperHeader>
   );
