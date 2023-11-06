@@ -26,6 +26,7 @@ export const InformationHeader = styled(Box)`
 export const LogoHeader = styled.img`
   width: 60px;
   height: 60px;
+  margin-right: -30px;
   @media (max-width: 768px) {
     width: 40px;
     height: 40px;

@@ -5,7 +5,6 @@ import {
   LogoHeader,
   TitleHeader,
   SearchHeader,
-  LinkNavigation,
   NavigationHeader,
   MyProfileWrapper,
   ProfileIcon,
@@ -59,9 +58,6 @@ export function Header() {
       </InformationHeader>
       {!isMatches1024 ? (
         <NavigationHeader>
-          <LinkNavigation to="/home">Home</LinkNavigation>
-          <LinkNavigation to="/create">Create</LinkNavigation>
-          <LinkNavigation to="/my-gifs">MyGIF's</LinkNavigation>
           <HeaderBellIcon />
           <Tooltip
             title="Your profile"
