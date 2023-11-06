@@ -11,6 +11,9 @@ export const WrapperHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  /* @media (max-width: 1024px) {
+    justify-content: space-around;
+  } */
 `;
 
 export const InformationHeader = styled(Box)`
@@ -23,17 +26,23 @@ export const InformationHeader = styled(Box)`
 export const LogoHeader = styled.img`
   width: 60px;
   height: 60px;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const TitleHeader = styled.h1`
   margin: 0;
   font-size: 20px;
   color: #6f4ff2;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
-// FIXME: мерджин топ выравнивает, но это костыль, нужно исправить
 export const SearchHeader = styled(TextField)`
   padding: 0;
-  margin-top: 5px;
+
   width: 290px;
   box-sizing: border-box;
 
@@ -50,10 +59,18 @@ export const SearchHeader = styled(TextField)`
     border-radius: 8px;
     background-color: #f1f1f2;
   }
+  @media (max-width: 1024px) {
+    width: 400px;
+  }
+  @media (max-width: 768px) {
+    width: 70%;
+    margin-right: 10px;
+  }
 `;
 
 export const NavigationHeader = styled(Box)`
   display: flex;
+  position: relative;
   align-items: center;
   gap: 22px;
 `;
