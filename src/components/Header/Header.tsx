@@ -12,7 +12,7 @@ import {
   ProfileName,
 } from "./styled";
 import logo from "../../images/kub.svg";
-import { MagnifyingGlass } from "phosphor-react";
+import { List, MagnifyingGlass } from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
 import {
   InputAdornment,
