@@ -1,7 +1,7 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import styled from "@emotion/styled";
 export const ProfileWrapper = styled(Box)`
-  width: 900px;
+  width: 30%;
   display: flex;
   margin: 40px auto;
   flex-direction: column;

@@ -28,10 +28,10 @@ export default function MyProfile() {
       )}
       <ProfileName>{currentUser?.nickname}</ProfileName>
       <ProfileMail>{currentUser?.email}</ProfileMail>
-      <ProfileSubscriptions>0 подписок</ProfileSubscriptions>
+      <ProfileSubscriptions>0 follows</ProfileSubscriptions>
       <ButtonsContainer>
-        <ProfileButton>Поделиться</ProfileButton>
-        <ProfileButton>Изменить профиль</ProfileButton>
+        <ProfileButton>Share</ProfileButton>
+        <ProfileButton>Edit profile</ProfileButton>
       </ButtonsContainer>
       <CustomTabs
         value={selectTab}
@@ -39,8 +39,8 @@ export default function MyProfile() {
           setSelectTab(tab);
         }}
       >
-        <CustomTab key="saved" value="saved" label="Сохраненные" />
-        <CustomTab key="created" value="created" label="Созданные" />
+        <CustomTab key="saved" value="saved" label="Saved" />
+        <CustomTab key="created" value="created" label="Created" />
       </CustomTabs>
       <CustomTabPanel value={selectTab} index="saved">
         1235
