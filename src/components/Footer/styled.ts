@@ -7,13 +7,14 @@ export const WrapperFooter = styled.footer`
   display: flex;
   flex-direction: column;
   background-color: #202020;
-  padding: 84px 140px;
+  padding: 19px;
   box-sizing: border-box;
 `;
 
 export const ContainerFooter = styled(Box)`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 export const PresentationFooter = styled(Box)`
   display: flex;
@@ -36,51 +37,17 @@ export const LogoFooter = styled.img`
 
 export const TitleFooter = styled(Typography)`
   font-weight: 700;
-  font-size: 28px;
-  color: #5f3db5;
+  font-size: 20px;
+  color: #6f4ff2;
+  cursor: pointer;
 `;
 
 export const IconFooter = styled.img`
-  width: 42px;
-  height: 42px;
+  width: 35px;
+  height: 35px;
   margin-right: 24px;
   cursor: pointer;
   :last-child {
     margin-right: 0px;
   }
-`;
-
-export const NavigationFooter = styled(Box)`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const DescriptionFooter = styled(Typography)`
-  color: #ffffff;
-  font-size: 16px;
-  width: 390px;
-`;
-
-export const TytleExploreFooter = styled(Typography)`
-  font-weight: 700;
-  font-size: 21px;
-  color: #5f3db5;
-`;
-
-export const LinkNavigation = styled(Link)`
-  text-decoration: none;
-  font-size: 16px;
-  color: #ffffff;
-  margin-top: 8px;
-`;
-
-export const LinkFooter = styled(Box)`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Line = styled(Divider)`
-  margin: 30px 0;
-  background-color: #d3d4d6;
-  height: 1.5px;
 `;
