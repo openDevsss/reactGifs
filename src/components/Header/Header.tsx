@@ -11,8 +11,8 @@ import {
   ProfileIcon,
   ProfileName,
 } from "./styled";
-import logo from "../../images/OBJECTS.svg";
-import { List, MagnifyingGlass } from "phosphor-react";
+import logo from "../../images/kub.svg";
+import { MagnifyingGlass } from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
 import {
   InputAdornment,
