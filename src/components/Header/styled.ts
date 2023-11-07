@@ -11,9 +11,6 @@ export const WrapperHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  /* @media (max-width: 1024px) {
-    justify-content: space-around;
-  } */
 `;
 
 export const InformationHeader = styled(Box)`
@@ -112,6 +109,9 @@ export const WrapperBellIcon = styled(Box)`
   padding-bottom: 6px;
   border-radius: 8px;
   cursor: pointer;
+  :hover {
+    filter: brightness(90%);
+  }
 `;
 export const StyledMenuItem = styled(MenuItem)`
   font-size: 16px;
