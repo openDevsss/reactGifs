@@ -1,6 +1,5 @@
+import styled from "@emotion/styled";
 import { Box, Button, Typography } from "@mui/material";
-import { EnvelopeOpen } from "phosphor-react";
-import styled from "styled-components";
 
 export const style = {
   position: "absolute" as "absolute",
