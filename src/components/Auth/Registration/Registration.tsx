@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Title,
   Section,
@@ -19,6 +18,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { UserType } from "../../../types/UserType";
 import { useAppDispatch } from "../../../redux-toolkit";
 import { registerUser } from "../../../features/users/users-slice";
+import { ConfirmationPopup } from "../../ConfirmationPopup/ConfirmationPopup";
 
 export function Registration() {
   type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
@@ -71,6 +71,7 @@ export function Registration() {
         <Title>React Gifs</Title>
         <Box component={"img"} src={ghost} width={300} height={350} />
       </WrapperImage>
+      <ConfirmationPopup />
     </Section>
   );
 }
