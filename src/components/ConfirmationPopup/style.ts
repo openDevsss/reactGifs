@@ -2,22 +2,25 @@ import { Box, Button, Typography } from "@mui/material";
 import { EnvelopeOpen } from "phosphor-react";
 import styled from "styled-components";
 
-export const PopupWrapper = styled(Box)`
+export const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "0 solid #000",
+  borderRadius: 12,
+  boxShadow: 24,
+  pt: 2,
+  px: 4,
+  pb: 3,
+};
+export const VerifyPopupWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* position: "absolute";
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  background-color: #ffffff;
-  border: none;
-  border-radius: 12;
-  box-shadow: 24;
-  padding: 16px 32px 24px; */
 `;
-export const PopupLogo = styled(EnvelopeOpen)``;
 export const PopupTitle = styled(Typography)`
   font-size: 22px;
   font-weight: 700;
