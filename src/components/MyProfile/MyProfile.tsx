@@ -13,9 +13,12 @@ import {
   ProfileButton,
   ProfileAvatarLetter,
   ProfileAvatar,
+  AddedWrapper,
+  AddedTitle,
+  AddedButton,
 } from "./styled";
 export default function MyProfile() {
-  const [selectTab, setSelectTab] = useState("created");
+  const [selectTab, setSelectTab] = useState("added");
   const currentUser = useAppSelector(selectCurrentUser);
   return (
     <ProfileWrapper>
@@ -39,14 +42,17 @@ export default function MyProfile() {
           setSelectTab(tab);
         }}
       >
-        <CustomTab key="saved" value="saved" label="Saved" />
-        <CustomTab key="created" value="created" label="Created" />
+        <CustomTab key="saved" value="saved" label="saved" />
+        <CustomTab key="added" value="added" label="added" />
       </CustomTabs>
-      <CustomTabPanel value={selectTab} index="saved">
-        1235
-      </CustomTabPanel>
-      <CustomTabPanel value={selectTab} index="created">
-        99090
+      <CustomTabPanel value={selectTab} index="saved"></CustomTabPanel>
+      <CustomTabPanel value={selectTab} index="added">
+        <AddedWrapper>
+          <AddedTitle>
+            It's empty now. Here will be pictures that you will add
+          </AddedTitle>
+          <AddedButton>Add GIF</AddedButton>
+        </AddedWrapper>
       </CustomTabPanel>
     </ProfileWrapper>
   );

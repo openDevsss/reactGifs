@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs } from "@mui/material";
+import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 export const ProfileWrapper = styled(Box)`
   width: 30%;
@@ -72,4 +72,23 @@ export const ProfileTab = styled(Tab)`
   border-radius: 10px;
   color: #000 !important;
   background-color: transparent;
+`;
+export const AddedWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+`;
+export const AddedTitle = styled(Typography)`
+  font-size: 16px;
+`;
+export const AddedButton = styled(Button)`
+  margin-top: 15px;
+  padding: 8px 20px;
+  background-color: #5f3db5;
+  color: #ffffff;
+  border-radius: 20px;
+  &:hover {
+    background-color: #3e267c;
+  }
 `;
