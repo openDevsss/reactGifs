@@ -6,7 +6,6 @@ export const WrapperHeader = styled.header`
   margin: 0;
   width: 100%;
   padding: 19px;
-  border-bottom: 1px solid #5f3db5;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,6 +37,16 @@ export const TitleHeader = styled.h1`
     font-size: 16px;
   }
 `;
+
+export const HomeHeader = styled(Link)`
+  color: #6f4ff2;
+  font-size: 17px;
+  text-decoration: none;
+  :hover {
+    color: #5f3db5;
+  }
+`;
+
 export const SearchHeader = styled(TextField)`
   padding: 0;
 

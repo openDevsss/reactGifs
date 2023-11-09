@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Registration } from "./components/Auth/Registration/Registration";
 import { Login } from "./components/Auth/Login/Login";
 import { Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./redux-toolkit";
 import { checkAuth } from "./features/users/users-slice";
 import { selectCurrentUser } from "./features/users/users-selectors";
-import MyProfilePage from "./pages/MyProfilePage";
+import { MyProfilePage } from "./pages/MyProfilePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { PageLayout } from "./components/PageLayout/PageLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
-import HomePage from "./pages/HomePage";
+import { HomePage } from "./pages/HomePage";
+import { RecommendationsPage } from "./pages/RecommendationsPage";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ export function App() {
         <Routes>
           <Route element={<PageLayout />}>
             <Route element={<HomePage />} path="/" />
+            <Route element={<RecommendationsPage />} path="/recommendations" />
             <Route
               element={
                 <ProtectedRoute>

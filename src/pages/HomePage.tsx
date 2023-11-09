@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import { GifsList } from "../components/GifsList/GifsList";
+import { HomeLayout } from "../layout/HomeLayout";
 
-export default function HomePage() {
+export function HomePage() {
   return (
-    <div>HomePage</div>
-  )
+    <HomeLayout>
+      <GifsList />
+    </HomeLayout>
+  );
 }
