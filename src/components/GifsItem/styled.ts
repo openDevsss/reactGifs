@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, MenuItem, TextField, Typography } from "@mui/material";
 
-export const WrapperHome = styled(Box)`
+export const WrapperGifs = styled(Box)`
   height: fit-content;
   margin: 20px auto;
   border-radius: 20px;
@@ -11,20 +11,17 @@ export const WrapperHome = styled(Box)`
   width: 1000px;
   padding: 20px;
 `;
-export const GifAnimationsHome = styled.img`
+export const GifAnimationsGifs = styled.img`
   border-radius: 32px;
   width: 500px;
   height: 400px;
 `;
 
-export const ContainerHome = styled(Box)`
+export const ContainerGifs = styled(Box)`
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  :nth-child(2) {
-    justify-content: flex-start;
-  }
 `;
 
 export const WrapperForButtonsAndProfile = styled(Box)`
@@ -33,12 +30,12 @@ export const WrapperForButtonsAndProfile = styled(Box)`
   align-items: center;
 `;
 
-export const InfoUserHome = styled(Box)`
+export const InfoUserGifs = styled(Box)`
   display: flex;
   align-items: center;
 `;
 
-export const AvatarUserHome = styled.img`
+export const AvatarUserGifs = styled.img`
   width: 35px;
   height: 35px;
   border-radius: 35px;
@@ -46,13 +43,13 @@ export const AvatarUserHome = styled.img`
   margin-right: 10px;
 `;
 
-export const NicknameUserHome = styled(Typography)`
+export const NicknameUserGifs = styled(Typography)`
   font-weight: 500;
   font-size: 20px;
   cursor: pointer;
 `;
 
-export const ButtonsHome = styled(Box)`
+export const ButtonsGifs = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,7 +61,7 @@ export const CommentsContainer = styled(Box)`
   align-items: flex-start;
 `;
 
-export const DescriptionUserHome = styled(Typography)`
+export const DescriptionUserGifs = styled(Typography)`
   font-size: 13px;
   margin-top: 10px;
 `;
@@ -74,7 +71,7 @@ export const CommentsTitle = styled(Typography)`
   font-weight: 700;
 `;
 
-export const AddCommentInputHome = styled(TextField)`
+export const AddCommentInputGifs = styled(TextField)`
   padding: 0;
   margin-top: 20px;
   width: 100%;
@@ -100,4 +97,10 @@ export const AddCommentInputHome = styled(TextField)`
     width: 70%;
     margin-right: 10px;
   }
+`;
+
+export const StyledMenuItem = styled(MenuItem)`
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 5px;
 `;

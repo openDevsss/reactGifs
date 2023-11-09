@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  AddCommentInputHome,
-  AvatarUserHome,
-  ButtonsHome,
+  AddCommentInputGifs,
+  AvatarUserGifs,
+  ButtonsGifs,
   CommentsContainer,
   CommentsTitle,
-  ContainerHome,
-  DescriptionUserHome,
-  GifAnimationsHome,
-  InfoUserHome,
-  NicknameUserHome,
+  ContainerGifs,
+  DescriptionUserGifs,
+  GifAnimationsGifs,
+  InfoUserGifs,
+  NicknameUserGifs,
   WrapperForButtonsAndProfile,
-  WrapperHome,
+  WrapperGifs,
 } from "./styled";
 import { IconButton } from "@mui/material";
 import { LinkSimple, ShareNetwork } from "phosphor-react";
-import { KebabMenu } from "../GifsList/KebabMenu";
+import { DotsMenu } from "../GifsList/GifMenu";
 import { Gif } from "../../types/GifType";
 
 interface GifsItemsProps extends Gif {}
@@ -23,22 +23,22 @@ interface GifsItemsProps extends Gif {}
 export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) {
   return (
     <>
-      <WrapperHome>
-        <GifAnimationsHome src="https://www.galvanizeaction.org/wp-content/uploads/2022/06/Wow-gif.gif" />
-        <ContainerHome>
+      <WrapperGifs>
+        <GifAnimationsGifs src="https://www.galvanizeaction.org/wp-content/uploads/2022/06/Wow-gif.gif" />
+        <ContainerGifs>
           <div>
             <WrapperForButtonsAndProfile>
-              <InfoUserHome>
-                <AvatarUserHome src="https://www.imgonline.com.ua/examples/bee-on-daisy.jpg" />
-                <NicknameUserHome>Alex</NicknameUserHome>
-              </InfoUserHome>
-              <ButtonsHome>
+              <InfoUserGifs>
+                <AvatarUserGifs src="https://www.imgonline.com.ua/examples/bee-on-daisy.jpg" />
+                <NicknameUserGifs>Alex</NicknameUserGifs>
+              </InfoUserGifs>
+              <ButtonsGifs>
                 <IconButton>
                   <ShareNetwork
                     size={17}
                     weight="fill"
                     color="#6F4FF2"
-                    cursor={"pointer"}
+                    cursor="pointer"
                   />
                 </IconButton>
                 <IconButton>
@@ -46,38 +46,36 @@ export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) 
                     size={17}
                     weight="bold"
                     color="#6F4FF2"
-                    cursor={
-                      "pointer"
-                    } /* не получилось написать их в styled.ts (не реагировали) */
+                    cursor="pointer"
                   />
                 </IconButton>
-                <KebabMenu />
-              </ButtonsHome>
+                <DotsMenu />
+              </ButtonsGifs>
             </WrapperForButtonsAndProfile>
-            <DescriptionUserHome>
+            <DescriptionUserGifs>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. At
               voluptate dolore dolores. Omnis animi facilis quia nemo odit odio
               fugit quidem esse aperiam, obcaecati quos temporibus fugiat
               libero. Ipsum, enim.
-            </DescriptionUserHome>
+            </DescriptionUserGifs>
           </div>
           <CommentsContainer>
             <CommentsTitle>Comments</CommentsTitle>
-            <DescriptionUserHome>No comments:(</DescriptionUserHome>
-            <AddCommentInputHome placeholder="Add a comment" size="small" />
+            <DescriptionUserGifs>No comments:😞</DescriptionUserGifs>
+            <AddCommentInputGifs placeholder="Add a comment" size="small" />
           </CommentsContainer>
-        </ContainerHome>
-      </WrapperHome>
-      <WrapperHome>
-        <GifAnimationsHome src="https://gifsec.com/wp-content/uploads/2022/09/congrats-gif-1.gif" />
-        <ContainerHome>
+        </ContainerGifs>
+      </WrapperGifs>
+      <WrapperGifs>
+        <GifAnimationsGifs src="https://gifsec.com/wp-content/uploads/2022/09/congrats-gif-1.gif" />
+        <ContainerGifs>
           <div>
             <WrapperForButtonsAndProfile>
-              <InfoUserHome>
-                <AvatarUserHome src="https://www.imgonline.com.ua/examples/bee-on-daisy.jpg" />
-                <NicknameUserHome>Alex</NicknameUserHome>
-              </InfoUserHome>
-              <ButtonsHome>
+              <InfoUserGifs>
+                <AvatarUserGifs src="https://www.imgonline.com.ua/examples/bee-on-daisy.jpg" />
+                <NicknameUserGifs>Alex</NicknameUserGifs>
+              </InfoUserGifs>
+              <ButtonsGifs>
                 <IconButton>
                   <ShareNetwork
                     size={17}
@@ -91,26 +89,24 @@ export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) 
                     size={17}
                     weight="bold"
                     color="#6F4FF2"
-                    cursor={
-                      "pointer"
-                    } /* не получилось написать их в styled.ts (не реагировали) */
+                    cursor={"pointer"}
                   />
                 </IconButton>
-                <KebabMenu />
-              </ButtonsHome>
+                <DotsMenu />
+              </ButtonsGifs>
             </WrapperForButtonsAndProfile>
-            <DescriptionUserHome>
+            <DescriptionUserGifs>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. At
               voluptate dolore dolores. Omnis animi
-            </DescriptionUserHome>
+            </DescriptionUserGifs>
           </div>
           <CommentsContainer>
             <CommentsTitle>Comments</CommentsTitle>
-            <DescriptionUserHome>No comments:(</DescriptionUserHome>
-            <AddCommentInputHome placeholder="Add a comment" size="small" />
+            <DescriptionUserGifs>No comments:😞</DescriptionUserGifs>
+            <AddCommentInputGifs placeholder="Add a comment" size="small" />
           </CommentsContainer>
-        </ContainerHome>
-      </WrapperHome>
+        </ContainerGifs>
+      </WrapperGifs>
     </>
   );
 }

@@ -118,7 +118,7 @@ export const WrapperBellIcon = styled(Box)`
   padding-bottom: 6px;
   border-radius: 8px;
   cursor: pointer;
-  :hover {
+  &hover {
     filter: brightness(90%);
   }
 `;
