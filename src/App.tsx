@@ -15,7 +15,7 @@ import { AddGif } from "./components/AddGif/AddGif";
 export function App() {
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectCurrentUser);
-  const jwt = localStorage.getItem("jwt");
+  const jwt = localStorage.getItem('jwt');
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);

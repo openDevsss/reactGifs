@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   WrapperHeader,
   InformationHeader,
@@ -9,19 +9,14 @@ import {
   MyProfileWrapper,
   ProfileIcon,
   ProfileName,
-} from "./styled";
-import logo from "../../images/kub.svg";
-import { List, MagnifyingGlass } from "phosphor-react";
-import HeaderBellIcon from "./HeaderBellIcon";
-import {
-  InputAdornment,
-  useMediaQuery,
-  Tooltip,
-  IconButton,
-} from "@mui/material";
-import { useAppSelector } from "../../redux-toolkit";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import HeaderMenu from "./HeaderMenu";
+} from './styled';
+import logo from '../../images/kub.svg';
+import { List, MagnifyingGlass } from 'phosphor-react';
+import HeaderBellIcon from './HeaderBellIcon';
+import { InputAdornment, useMediaQuery, Tooltip, IconButton } from '@mui/material';
+import { useAppSelector } from '../../redux-toolkit';
+import { selectCurrentUser } from '../../features/users/users-selectors';
+import HeaderMenu from './HeaderMenu';
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -34,8 +29,8 @@ export function Header() {
     setIsOpen(false);
   };
   const currentUser = useAppSelector(selectCurrentUser);
-  const isMatches1024 = useMediaQuery("(max-width : 1024px)");
-  const isMatches480 = useMediaQuery("(max-width : 480px)");
+  const isMatches1024 = useMediaQuery('(max-width : 1024px)');
+  const isMatches480 = useMediaQuery('(max-width : 480px)');
 
   return (
     <WrapperHeader>
@@ -64,11 +59,11 @@ export function Header() {
             componentsProps={{
               tooltip: {
                 sx: {
-                  bgcolor: "black",
-                  color: "white",
+                  bgcolor: 'black',
+                  color: 'white',
                   fontWeight: 700,
-                  padding: "15px",
-                  borderRadius: "10px",
+                  padding: '15px',
+                  borderRadius: '10px',
                 },
               },
             }}
@@ -87,11 +82,7 @@ export function Header() {
               <List size={32} color="#5f3db5" weight="regular" />
             </IconButton>
           </NavigationHeader>
-          <HeaderMenu
-            anchorEl={anchorEl}
-            handleClose={handleClose}
-            isOpen={isOpen}
-          />
+          <HeaderMenu anchorEl={anchorEl} handleClose={handleClose} isOpen={isOpen} />
         </>
       )}
     </WrapperHeader>

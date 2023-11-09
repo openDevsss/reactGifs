@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
-import { CustomTab } from "../Custom/CustomTab";
-import { CustomTabPanel } from "../Custom/CustomTabPanel";
-import { CustomTabs } from "../Custom/CustomTabs";
+import { useState } from 'react';
+import { selectCurrentUser } from '../../features/users/users-selectors';
+import { useAppSelector } from '../../redux-toolkit';
+import { CustomTab } from '../Custom/CustomTab';
+import { CustomTabPanel } from '../Custom/CustomTabPanel';
+import { CustomTabs } from '../Custom/CustomTabs';
 import {
   ButtonsContainer,
   ProfileMail,
@@ -25,9 +25,7 @@ export default function MyProfile() {
       {currentUser?.avatar ? (
         <ProfileAvatar src={currentUser.avatar} />
       ) : (
-        <ProfileAvatarLetter>
-          {currentUser?.nickname.slice(0, 1)}
-        </ProfileAvatarLetter>
+        <ProfileAvatarLetter>{currentUser?.nickname.slice(0, 1)}</ProfileAvatarLetter>
       )}
       <ProfileName>{currentUser?.nickname}</ProfileName>
       <ProfileMail>{currentUser?.email}</ProfileMail>

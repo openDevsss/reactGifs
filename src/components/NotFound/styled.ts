@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import styled from '@emotion/styled';
+import { Box, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const WrapperNotFound = styled(Box)`
   display: flex;
