@@ -1,5 +1,5 @@
-import { Box, Tab, Tabs } from "@mui/material";
-import styled from "@emotion/styled";
+import { Box, Tab, Tabs } from '@mui/material';
+import styled from '@emotion/styled';
 export const ProfileWrapper = styled(Box)`
   width: 30%;
   display: flex;
@@ -54,18 +54,18 @@ export const ProfileButton = styled.button`
   cursor: pointer;
 `;
 export const TabsContainer = styled(Tabs)({
-  display: "flex",
-  marginTop: "40px",
-  "& .MuiTabs-indicator": {
-    backgroundColor: "#000",
+  display: 'flex',
+  marginTop: '40px',
+  '& .MuiTabs-indicator': {
+    backgroundColor: '#000',
   },
-  "& .MuiTabs-flexContainer": {
-    gap: "40px",
+  '& .MuiTabs-flexContainer': {
+    gap: '40px',
   },
-  "& .MuiButtonBase-root": {
+  '& .MuiButtonBase-root': {
     padding: 0,
-    justifyContent: "end",
-    paddingBottom: "5px",
+    justifyContent: 'end',
+    paddingBottom: '5px',
   },
 });
 export const ProfileTab = styled(Tab)`

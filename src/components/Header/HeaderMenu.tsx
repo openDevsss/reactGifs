@@ -1,29 +1,19 @@
-import React from "react";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import {
-  GearSix,
-  HeartStraight,
-  Moon,
-  SignOut,
-  UserCircle,
-} from "phosphor-react";
-import { StyledMenuItem } from "./styled";
+import React from 'react';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import { GearSix, HeartStraight, Moon, SignOut, UserCircle } from 'phosphor-react';
+import { StyledMenuItem } from './styled';
 interface HeaderMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
   isOpen: boolean;
 }
-export default function HeaderMenu({
-  anchorEl,
-  handleClose,
-  isOpen,
-}: HeaderMenuProps) {
+export default function HeaderMenu({ anchorEl, handleClose, isOpen }: HeaderMenuProps) {
   return (
     <Menu
       anchorEl={anchorEl}
@@ -34,27 +24,27 @@ export default function HeaderMenu({
       PaperProps={{
         elevation: 0,
         sx: {
-          width: "230px",
-          padding: "8px",
-          overflow: "visible",
-          filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+          width: '230px',
+          padding: '8px',
+          overflow: 'visible',
+          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
           mt: 1.5,
-          "&:before": {
-            backgroundColor: "#fff",
+          '&:before': {
+            backgroundColor: '#fff',
             content: '""',
-            display: "block",
-            position: "absolute",
+            display: 'block',
+            position: 'absolute',
             top: 0,
             right: 14,
             width: 10,
             height: 10,
-            transform: "translateY(-50%) rotate(45deg)",
+            transform: 'translateY(-50%) rotate(45deg)',
             zIndex: 0,
           },
         },
       }}
-      transformOrigin={{ horizontal: "right", vertical: "top" }}
-      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
       <StyledMenuItem onClick={handleClose}>
         <ListItemIcon>

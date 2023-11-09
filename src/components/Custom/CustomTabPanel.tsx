@@ -1,12 +1,6 @@
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
 
-export function CustomTabPanel({
-  children,
-  value,
-  index,
-  childrenProps = {},
-  ...other
-}: any) {
+export function CustomTabPanel({ children, value, index, childrenProps = {}, ...other }: any) {
   return (
     <>
       {value === index && (
