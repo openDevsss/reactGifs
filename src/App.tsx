@@ -10,8 +10,10 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { PageLayout } from "./components/PageLayout/PageLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HomePage from "./pages/HomePage";
+import { Box, CircularProgress } from "@mui/material";
 
 export function App() {
+  const [loading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectCurrentUser);
   const jwt = localStorage.getItem("jwt");
@@ -39,6 +41,17 @@ export function App() {
           <Route element={<Login />} path="/sign-in" />
           <Route element={<NotFoundPage />} path="*" />
         </Routes>
+        {loading && (
+          <Box
+            sx={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+            }}
+          >
+            <CircularProgress color="success" />
+          </Box>
+        )}
       </div>
     </>
   );

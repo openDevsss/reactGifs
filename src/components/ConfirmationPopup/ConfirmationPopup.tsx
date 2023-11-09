@@ -15,7 +15,7 @@ import { EnvelopeOpen } from "phosphor-react";
 export function ConfirmationPopup() {
   const currentUser = useAppSelector(selectCurrentUser);
   return (
-    <Modal open={true}>
+    <Modal open={false}>
       <VerifyPopupWrapper sx={{ ...style }}>
         <EnvelopeOpen size={100} color="#5f3db5" weight="thin" />
         <PopupTitle>Verify your email</PopupTitle>
