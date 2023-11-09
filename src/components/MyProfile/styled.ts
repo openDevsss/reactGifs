@@ -84,7 +84,7 @@ export const AddedTitle = styled(Typography)`
 `;
 export const AddedButton = styled(Button)`
   margin-top: 15px;
-  padding: 8px 20px;
+  /* padding: ; */
   background-color: #5f3db5;
   color: #ffffff;
   border-radius: 20px;
