@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   ContainerFooter,
   ContainerIcons,
@@ -7,12 +7,12 @@ import {
   PresentationFooter,
   TitleFooter,
   WrapperFooter,
-} from "./styled";
-import logo from "../../images/kub.svg";
-import iconTwitter from "../../images/Twit.svg";
-import iconLinkedIn from "../../images/Linked.svg";
-import iconYoutebe from "../../images/Youtube.svg";
-import iconInstagram from "../../images/Insta.svg";
+} from './styled';
+import logo from '../../images/kub.svg';
+import iconTwitter from '../../images/Twit.svg';
+import iconLinkedIn from '../../images/Linked.svg';
+import iconYoutebe from '../../images/Youtube.svg';
+import iconInstagram from '../../images/Insta.svg';
 
 export function Footer() {
   return (

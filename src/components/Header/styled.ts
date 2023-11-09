@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { Avatar, Box, MenuItem, TextField, Typography } from "@mui/material";
-import { Link, NavLink } from "react-router-dom";
+import styled from '@emotion/styled';
+import { Avatar, Box, MenuItem, TextField, Typography } from '@mui/material';
+import { Link, NavLink } from 'react-router-dom';
 
 export const WrapperHeader = styled.header`
   margin: 0;
@@ -54,7 +54,7 @@ export const SearchHeader = styled(TextField)`
   box-sizing: border-box;
 
   input::placeholder {
-    font-family: "Inter", serif;
+    font-family: 'Inter', serif;
   }
   & label.Mui-focused {
     color: #5f3db5;

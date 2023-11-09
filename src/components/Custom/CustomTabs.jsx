@@ -1,4 +1,4 @@
-import { TabsContainer } from "../MyProfile/styled";
+import { TabsContainer } from '../MyProfile/styled';
 
 export function CustomTabs(props) {
   const { children, value, onChange } = props;

@@ -15,7 +15,7 @@ import { RecommendationsPage } from "./pages/RecommendationsPage";
 export function App() {
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectCurrentUser);
-  const jwt = localStorage.getItem("jwt");
+  const jwt = localStorage.getItem('jwt');
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);

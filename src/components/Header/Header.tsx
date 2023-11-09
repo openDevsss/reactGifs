@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import {
   WrapperHeader,
@@ -36,8 +37,8 @@ export function Header() {
     setIsOpen(false);
   };
   const currentUser = useAppSelector(selectCurrentUser);
-  const isMatches1024 = useMediaQuery("(max-width : 1024px)");
-  const isMatches480 = useMediaQuery("(max-width : 480px)");
+  const isMatches1024 = useMediaQuery('(max-width : 1024px)');
+  const isMatches480 = useMediaQuery('(max-width : 480px)');
 
   const dispatch = useAppDispatch();
   const jwt = localStorage.getItem("jwt");
@@ -74,11 +75,11 @@ export function Header() {
             componentsProps={{
               tooltip: {
                 sx: {
-                  bgcolor: "black",
-                  color: "white",
+                  bgcolor: 'black',
+                  color: 'white',
                   fontWeight: 700,
-                  padding: "15px",
-                  borderRadius: "10px",
+                  padding: '15px',
+                  borderRadius: '10px',
                 },
               },
             }}
@@ -97,11 +98,7 @@ export function Header() {
               <List size={32} color="#5f3db5" weight="regular" />
             </IconButton>
           </NavigationHeader>
-          <HeaderMenu
-            anchorEl={anchorEl}
-            handleClose={handleClose}
-            isOpen={isOpen}
-          />
+          <HeaderMenu anchorEl={anchorEl} handleClose={handleClose} isOpen={isOpen} />
         </>
       )}
     </WrapperHeader>

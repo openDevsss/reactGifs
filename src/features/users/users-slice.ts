@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { UserType } from "../../types/UserType";
-import { StatusType } from "../../types/StatusType";
-import { Extra } from "../../types/ExtraType";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { UserType } from '../../types/UserType';
+import { StatusType } from '../../types/StatusType';
+import { Extra } from '../../types/ExtraType';
 
 type AuthInitialState = {
   user: UserType | null;
@@ -9,11 +9,11 @@ type AuthInitialState = {
   error: string | null;
   isAuth: boolean;
 };
-type RegisterUserType = Pick<UserType, "email" | "password" | "nickname">;
-type LoginUserType = Pick<UserType, "email" | "password">;
+type RegisterUserType = Pick<UserType, 'email' | 'password' | 'nickname'>;
+type LoginUserType = Pick<UserType, 'email' | 'password'>;
 const initialState: AuthInitialState = {
   user: null,
-  status: "idle",
+  status: 'idle',
   error: null,
   isAuth: false,
 };
@@ -22,85 +22,79 @@ export const registerUser = createAsyncThunk<
   { token: string },
   RegisterUserType,
   { extra: Extra; rejectWithValue: string }
->(
-  "@@auth/register",
-  async (data, { extra: { client, api }, rejectWithValue }) => {
-    try {
-      const res = await client.post(api.REGISTER_USER, data);
-      return res.data;
-    } catch (error) {
-      return rejectWithValue("У вас случилась ошибка");
-    }
+>('@@auth/register', async (data, { extra: { client, api }, rejectWithValue }) => {
+  try {
+    const res = await client.post(api.REGISTER_USER, data);
+    return res.data;
+  } catch (error) {
+    return rejectWithValue('У вас случилась ошибка');
   }
-);
+});
 
 export const loginUser = createAsyncThunk<
   UserType,
   LoginUserType,
   { extra: Extra; rejectWithValue: string }
->(
-  "@@auth/login",
-  async (dataUser, { extra: { client, api }, rejectWithValue }) => {
-    try {
-      const { data } = await client.post(api.LOGIN_USER, dataUser, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const { token } = data;
-      localStorage.setItem("jwt", token);
-      return data;
-    } catch (err) {
-      return rejectWithValue("Ошибка");
-    }
+>('@@auth/login', async (dataUser, { extra: { client, api }, rejectWithValue }) => {
+  try {
+    const { data } = await client.post(api.LOGIN_USER, dataUser, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const { token } = data;
+    localStorage.setItem('jwt', token);
+    return data;
+  } catch (err) {
+    return rejectWithValue('Ошибка');
   }
-);
+});
 
 export const checkAuth = createAsyncThunk<
   UserType,
   string,
   { extra: Extra; rejectWithValue: string }
->("@@user/isAuth", async (jwt, { extra: { client, api }, rejectWithValue }) => {
+>('@@user/isAuth', async (jwt, { extra: { client, api }, rejectWithValue }) => {
   try {
     const res = await client.get(api.CHECK_JWT, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`,
       },
     });
     return res.data;
   } catch (err) {
-    return rejectWithValue("Ошибка");
+    return rejectWithValue('Ошибка');
   }
 });
 
 const UserSlice = createSlice({
-  name: "@@user",
+  name: '@@user',
   initialState,
   reducers: {
     logOut: (state) => {
       state.isAuth = false;
       state.user = null;
-      localStorage.removeItem("jwt");
+      localStorage.removeItem('jwt');
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
-        state.status = "loading";
+        state.status = 'loading';
         state.error = null;
       })
       .addCase(registerUser.rejected, (state) => {
-        state.status = "rejected";
-        state.error = "cannot load data";
+        state.status = 'rejected';
+        state.error = 'cannot load data';
       })
       .addCase(registerUser.fulfilled, (state) => {
-        state.status = "received";
+        state.status = 'received';
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.status = "received";
+        state.status = 'received';
       })
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isAuth = true;
