@@ -15,4 +15,6 @@ export const ColorizedHashtag = styled(Typography)`
   padding: 3px 7px;
   border-radius: 7px;
 `;
-export const HashtagTitle = styled(Typography)``;
+export const HashtagTitle = styled(Typography)`
+  text-transform: uppercase;
+`;

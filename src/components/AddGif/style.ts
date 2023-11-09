@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, TextField, Typography } from "@mui/material";
-export const sx = {
+export const buttonStyle = {
   width: "300px",
   height: "400px",
   backgroundColor: "#f1f1f2",
@@ -21,7 +21,6 @@ export const WrapperAddGif = styled(Box)`
 export const DragAndDropWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 `;
 export const SubmitAddGifButton = styled(Button)`
   margin-top: 40px;

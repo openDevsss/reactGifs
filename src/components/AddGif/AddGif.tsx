@@ -4,7 +4,7 @@ import {
   WrapperAddGif,
   FormAdded,
   CreatedWrapper,
-  sx,
+  buttonStyle,
   FormInput,
   DragAndDropWrapper,
   SubmitAddGifButton,
@@ -19,7 +19,7 @@ export function AddGif() {
       <TitleAddGif>Add GIF</TitleAddGif>
       <CreatedWrapper>
         <DragAndDropWrapper>
-          <Button sx={sx} component="label">
+          <Button sx={buttonStyle} component="label">
             Upload Gif
             <input type="file" hidden />
           </Button>
@@ -27,7 +27,7 @@ export function AddGif() {
           <FormInput label="Add with URL" size="small" />
         </DragAndDropWrapper>
         <FormAdded>
-          <FormInput InputLabelProps={{}} label="Title" size="small" />
+          <FormInput label="Title" size="small" />
           <FormInput label="Description" multiline />
           <TagList></TagList>
           <GifsTag>
