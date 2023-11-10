@@ -11,5 +11,6 @@ export default function ProtectedRoute({ children }: ProtectRouteProps) {
   if (!jwt) {
     return <Navigate to="/sign-in" />;
   }
-  return { children };
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  return <>{ children }</>;
 }

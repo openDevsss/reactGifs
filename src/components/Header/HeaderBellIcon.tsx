@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { WrapperBellIcon } from './styled';
 
 export default function HeaderBellIcon() {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import logoNotFound from '../../images/grim-reaper.svg';
 import {
   BoxDescriptionNotFound,
