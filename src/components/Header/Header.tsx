@@ -97,7 +97,7 @@ export function Header() {
                 size={20}
                 weight="fill"
                 color="#6f4ff2"
-                cursor={"pointer"}
+                cursor="pointer"
               />
             </WrapperIcon>
           )}
