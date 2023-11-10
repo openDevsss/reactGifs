@@ -1,24 +1,24 @@
-import React from 'react';
-import {
-  Title,
-  Section,
-  Description,
-  Wrapper,
-  Form,
-  WhiteBorderTextField,
-  FormLegend,
-  ButtonSubmit,
-  InstructionText,
-  WrapperImage,
-  RedirectText,
-} from '../AuthStyled';
-import ghost from '../../../images/stickerGhost.webp';
 import { Box, Typography } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { UserType } from '../../../types/UserType';
-import { useAppDispatch } from '../../../redux-toolkit';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { loginUser } from '../../../features/users/users-slice';
+import ghost from '../../../images/stickerGhost.webp';
+import { useAppDispatch } from '../../../redux-toolkit';
+import { UserType } from '../../../types/UserType';
+import {
+  ButtonSubmit,
+  Description,
+  Form,
+  FormLegend,
+  InstructionText,
+  RedirectText,
+  Section,
+  Title,
+  WhiteBorderTextField,
+  Wrapper,
+  WrapperImage,
+} from '../AuthStyled';
 
 export function Login() {
   type LoginUser = Pick<UserType, 'email' | 'password'>;

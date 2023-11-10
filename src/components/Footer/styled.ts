@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Divider, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Typography } from '@mui/material';
 
 export const WrapperFooter = styled.footer`
   width: 100%;

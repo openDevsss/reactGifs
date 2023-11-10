@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-filename-extension */
 import { createTheme, ThemeProvider } from '@mui/material';
+
 import { ProfileTab } from '../MyProfile/styled';
 
 const theme = createTheme({

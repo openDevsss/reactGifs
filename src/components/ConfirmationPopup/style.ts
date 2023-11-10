@@ -1,14 +1,14 @@
-import styled from "@emotion/styled";
-import { Box, Button, Typography } from "@mui/material";
+import styled from '@emotion/styled';
+import { Box, Button, Typography } from '@mui/material';
 
 export const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute' as const,
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: "background.paper",
-  border: "0 solid #000",
+  bgcolor: 'background.paper',
+  border: '0 solid #000',
   borderRadius: 12,
   boxShadow: 24,
   pt: 2,

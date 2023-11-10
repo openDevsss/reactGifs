@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { UserType } from '../../types/UserType';
-import { StatusType } from '../../types/StatusType';
+
 import { Extra } from '../../types/ExtraType';
+import { StatusType } from '../../types/StatusType';
+import { UserType } from '../../types/UserType';
 
 type AuthInitialState = {
   user: UserType | null;
@@ -22,34 +23,40 @@ export const registerUser = createAsyncThunk<
   { token: string },
   RegisterUserType,
   { extra: Extra; rejectWithValue: string }
->('@@auth/register', async (data, { extra: { client, api }, rejectWithValue }) => {
-  try {
-    const res = await client.post(api.REGISTER_USER, data);
-    return res.data;
-  } catch (error) {
-    return rejectWithValue('У вас случилась ошибка');
-  }
-});
+>(
+  '@@auth/register',
+  async (data, { extra: { client, api }, rejectWithValue }) => {
+    try {
+      const res = await client.post(api.REGISTER_USER, data);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue('У вас случилась ошибка');
+    }
+  },
+);
 
 export const loginUser = createAsyncThunk<
   UserType,
   LoginUserType,
   { extra: Extra; rejectWithValue: string }
->('@@auth/login', async (dataUser, { extra: { client, api }, rejectWithValue }) => {
-  try {
-    const { data } = await client.post(api.LOGIN_USER, dataUser, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const { token } = data;
-    localStorage.setItem('jwt', token);
-    return data;
-  } catch (err) {
-    return rejectWithValue('Ошибка');
-  }
-});
+>(
+  '@@auth/login',
+  async (dataUser, { extra: { client, api }, rejectWithValue }) => {
+    try {
+      const { data } = await client.post(api.LOGIN_USER, dataUser, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const { token } = data;
+      localStorage.setItem('jwt', token);
+      return data;
+    } catch (err) {
+      return rejectWithValue('Ошибка');
+    }
+  },
+);
 
 export const checkAuth = createAsyncThunk<
   UserType,
