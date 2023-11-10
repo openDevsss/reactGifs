@@ -1,24 +1,25 @@
+import { Box, Typography } from '@mui/material';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { registerUser } from '../../../features/users/users-slice';
+import ghost from '../../../images/stickerGhost.webp';
+import { useAppDispatch } from '../../../redux-toolkit';
+import { UserType } from '../../../types/UserType';
+import { ConfirmationPopup } from '../../ConfirmationPopup/ConfirmationPopup';
 import {
-  Title,
-  Section,
-  Description,
-  Wrapper,
-  Form,
-  WhiteBorderTextField,
-  FormLegend,
   ButtonSubmit,
-  RedirectText,
+  Description,
+  Form,
+  FormLegend,
   InstructionText,
+  RedirectText,
+  Section,
+  Title,
+  WhiteBorderTextField,
+  Wrapper,
   WrapperImage,
 } from '../AuthStyled';
-import ghost from '../../../images/stickerGhost.webp';
-import { Box, Typography } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { UserType } from '../../../types/UserType';
-import { useAppDispatch } from '../../../redux-toolkit';
-import { registerUser } from '../../../features/users/users-slice';
-import { ConfirmationPopup } from '../../ConfirmationPopup/ConfirmationPopup';
 
 export function Registration() {
   type RegisterUser = Pick<UserType, 'email' | 'password' | 'nickname'>;
@@ -69,7 +70,7 @@ export function Registration() {
       </Wrapper>
       <WrapperImage>
         <Title>React Gifs</Title>
-        <Box component={'img'} src={ghost} width={300} height={350} />
+        <Box component="img" src={ghost} width={300} height={350} />
       </WrapperImage>
       <ConfirmationPopup />
     </Section>

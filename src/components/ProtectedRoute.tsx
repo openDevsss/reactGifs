@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 interface ProtectRouteProps {
@@ -10,7 +10,6 @@ export default function ProtectedRoute({ children }: ProtectRouteProps) {
 
   if (!jwt) {
     return <Navigate to="/sign-in" />;
-  } else {
-    return <>{children}</>;
   }
+  return { children };
 }

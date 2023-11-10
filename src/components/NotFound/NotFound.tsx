@@ -1,14 +1,15 @@
 import React from 'react';
+
+import logoNotFound from '../../images/grim-reaper.svg';
 import {
-  TitleNotFound,
   BoxDescriptionNotFound,
-  WrapperNotFound,
-  SubtitleNotFound,
   DescriptionNotFound,
   LinkNavigation,
   LogoNotFound,
+  SubtitleNotFound,
+  TitleNotFound,
+  WrapperNotFound,
 } from './styled';
-import logoNotFound from '../../images/grim-reaper.svg';
 
 export function NotFound() {
   return (
@@ -23,8 +24,14 @@ export function NotFound() {
         </DescriptionNotFound>
         <SubtitleNotFound>What to do?</SubtitleNotFound>
         <DescriptionNotFound>
-          Go to our <LinkNavigation to="/">home page</LinkNavigation>, which definitely exists, or{' '}
-          <LinkNavigation to="/">write to us</LinkNavigation> - we wil fix everything.
+          Go to our
+          {' '}
+          <LinkNavigation to="/">home page</LinkNavigation>
+          , which definitely exists, or
+          {' '}
+          <LinkNavigation to="/">write to us</LinkNavigation>
+          {' '}
+          - we wil fix everything.
         </DescriptionNotFound>
       </BoxDescriptionNotFound>
     </WrapperNotFound>

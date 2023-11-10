@@ -1,5 +1,6 @@
-import { Box, Tab, Tabs } from '@mui/material';
 import styled from '@emotion/styled';
+import { Box, Tab, Tabs } from '@mui/material';
+
 export const ProfileWrapper = styled(Box)`
   width: 30%;
   display: flex;

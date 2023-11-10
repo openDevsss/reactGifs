@@ -1,22 +1,27 @@
-import { useState } from 'react';
 import {
-  WrapperHeader,
+  IconButton,
+  InputAdornment, Tooltip, useMediaQuery,
+} from '@mui/material';
+import { List, MagnifyingGlass } from 'phosphor-react';
+import { useState } from 'react';
+
+import { selectCurrentUser } from '../../features/users/users-selectors';
+import logo from '../../images/kub.svg';
+import { useAppSelector } from '../../redux-toolkit';
+import HeaderBellIcon from './HeaderBellIcon';
+import HeaderMenu from './HeaderMenu';
+import {
   InformationHeader,
   LogoHeader,
-  TitleHeader,
-  SearchHeader,
-  NavigationHeader,
   MyProfileWrapper,
+  NavigationHeader,
   ProfileIcon,
   ProfileName,
+  SearchHeader,
+  TitleHeader,
+  WrapperHeader,
 } from './styled';
-import logo from '../../images/kub.svg';
-import { List, MagnifyingGlass } from 'phosphor-react';
-import HeaderBellIcon from './HeaderBellIcon';
-import { InputAdornment, useMediaQuery, Tooltip, IconButton } from '@mui/material';
-import { useAppSelector } from '../../redux-toolkit';
-import { selectCurrentUser } from '../../features/users/users-selectors';
-import HeaderMenu from './HeaderMenu';
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

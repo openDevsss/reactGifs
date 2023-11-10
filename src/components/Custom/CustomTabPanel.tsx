@@ -1,8 +1,10 @@
 import { Box } from '@mui/material';
 
-export function CustomTabPanel({ children, value, index, childrenProps = {}, ...other }: any) {
+export function CustomTabPanel({
+  children, value, index, ...other
+}: any) {
   return (
-    <>
+    <div>
       {value === index && (
         <Box
           role="tabpanel"
@@ -14,6 +16,6 @@ export function CustomTabPanel({ children, value, index, childrenProps = {}, ...
           {children}
         </Box>
       )}
-    </>
+    </div>
   );
 }
