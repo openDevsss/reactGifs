@@ -14,13 +14,25 @@ import {
   WrapperGifs,
 } from './styled';
 import { IconButton } from '@mui/material';
-import { LinkSimple, ShareNetwork } from 'phosphor-react';
-import { GifMenuAction } from './GifMenuAction';
-import { Gif } from '../../types/GifType';
+import { LinkSimple, ShareNetwork, DotsThreeOutlineVertical } from 'phosphor-react';
+import GifMenuAction from './GifMenuAction';
 
 /* interface GifsItemsProps extends Gif {} */
 
 export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    setIsOpen(true);
+  };
+
+  console.log(anchorEl);
+  const handleClose = () => {
+    setAnchorEl(null);
+    setIsOpen(false);
+  };
+
   return (
     <>
       <WrapperGifs>
@@ -39,7 +51,15 @@ export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) 
                 <IconButton>
                   <LinkSimple size={17} weight="bold" color="#6F4FF2" cursor="pointer" />
                 </IconButton>
-                <GifMenuAction />
+                <IconButton onClick={handleClick}>
+                  <DotsThreeOutlineVertical
+                    size={17}
+                    weight="fill"
+                    color="#6F4FF2"
+                    cursor="pointer"
+                  />
+                </IconButton>
+                <GifMenuAction anchorEl={anchorEl} handleClose={handleClose} isOpen={isOpen} />
               </ButtonsGifs>
             </WrapperForButtonsAndProfile>
             <DescriptionUserGifs>
@@ -71,7 +91,15 @@ export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) 
                 <IconButton>
                   <LinkSimple size={17} weight="bold" color="#6F4FF2" cursor="pointer" />
                 </IconButton>
-                <GifMenuAction />
+                <IconButton onClick={handleClick}>
+                  <DotsThreeOutlineVertical
+                    size={17}
+                    weight="fill"
+                    color="#6F4FF2"
+                    cursor="pointer"
+                  />
+                </IconButton>
+                <GifMenuAction anchorEl={anchorEl} handleClose={handleClose} isOpen={isOpen} />
               </ButtonsGifs>
             </WrapperForButtonsAndProfile>
             <DescriptionUserGifs>

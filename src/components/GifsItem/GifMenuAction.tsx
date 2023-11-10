@@ -1,60 +1,48 @@
-import * as React from "react";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { DotsThreeOutlineVertical } from "phosphor-react";
-
-const options = ["Download ", "Hide ", "Report "];
-
-const ITEM_HEIGHT = 48;
-
-export function GifMenuAction() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
+import React from 'react';
+import Menu from '@mui/material/Menu';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import { StyledMenuItem } from './styled';
+interface GifMenuProps {
+  anchorEl: null | HTMLElement;
+  handleClose: () => void;
+  isOpen: boolean;
+}
+export default function GifMenuAction({ anchorEl, handleClose, isOpen }: GifMenuProps) {
   return (
-    <div>
-      <IconButton
-        aria-label="more"
-        id="long-button"
-        aria-controls={open ? "long-menu" : undefined}
-        aria-expanded={open ? "true" : undefined}
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        <DotsThreeOutlineVertical size={17} color="#6F4FF2" weight="fill" />
-      </IconButton>
-      <Menu
-        id="long-menu"
-        MenuListProps={{
-          "aria-labelledby": "long-button",
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: "12ch",
+    <Menu
+      anchorEl={anchorEl}
+      id="menu"
+      open={isOpen}
+      onClose={handleClose}
+      onClick={handleClose}
+      PaperProps={{
+        elevation: 0,
+        sx: {
+          width: '130px',
+          padding: '8px',
+          overflow: 'visible',
+          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+          mt: 1.5,
+          '&:before': {
+            backgroundColor: '#fff',
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            right: 14,
+            width: 10,
+            height: 10,
+            transform: 'translateY(-50%) rotate(45deg)',
+            zIndex: 0,
           },
-        }}
-      >
-        {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Pyxis"}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
-        ))}
-      </Menu>
-    </div>
+        },
+      }}
+      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+    >
+      <StyledMenuItem onClick={handleClose}>Download</StyledMenuItem>
+      <StyledMenuItem onClick={handleClose}>Hide</StyledMenuItem>
+      <StyledMenuItem onClick={handleClose}>Report</StyledMenuItem>
+    </Menu>
   );
 }

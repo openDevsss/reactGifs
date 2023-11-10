@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Box, MenuItem, TextField, Typography } from "@mui/material";
+import styled from '@emotion/styled';
+import { Box, MenuItem, TextField, Typography } from '@mui/material';
 
 export const WrapperGifs = styled(Box)`
   height: fit-content;
@@ -78,7 +78,7 @@ export const AddCommentInputGifs = styled(TextField)`
   box-sizing: border-box;
 
   input::placeholder {
-    font-family: "Inter", serif;
+    font-family: 'Inter', serif;
   }
   & label.Mui-focused {
     color: #5f3db5;
