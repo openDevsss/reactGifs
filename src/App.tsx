@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Registration } from "./components/Auth/Registration/Registration";
 import { Login } from "./components/Auth/Login/Login";
 import { Route, Routes } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "./redux-toolkit";
+import { useAppDispatch } from "./redux-toolkit";
 import { checkAuth } from "./features/users/users-slice";
-import { selectCurrentUser } from "./features/users/users-selectors";
 import { MyProfilePage } from "./pages/MyProfilePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { PageLayout } from "./components/PageLayout/PageLayout";
@@ -14,7 +13,7 @@ import { RecommendationsPage } from "./pages/RecommendationsPage";
 
 export function App() {
   const dispatch = useAppDispatch();
-  const jwt = localStorage.getItem('jwt');
+  const jwt = localStorage.getItem("jwt");
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);

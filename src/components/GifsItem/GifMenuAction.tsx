@@ -1,13 +1,15 @@
-import React from 'react';
-import Menu from '@mui/material/Menu';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import { StyledMenuItem } from './styled';
+import Menu from "@mui/material/Menu";
+import { StyledMenuItem } from "./styled";
 interface GifMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
   isOpen: boolean;
 }
-export default function GifMenuAction({ anchorEl, handleClose, isOpen }: GifMenuProps) {
+export default function GifMenuAction({
+  anchorEl,
+  handleClose,
+  isOpen,
+}: GifMenuProps) {
   return (
     <Menu
       anchorEl={anchorEl}
@@ -18,27 +20,27 @@ export default function GifMenuAction({ anchorEl, handleClose, isOpen }: GifMenu
       PaperProps={{
         elevation: 0,
         sx: {
-          width: '130px',
-          padding: '8px',
-          overflow: 'visible',
-          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+          width: "130px",
+          padding: "8px",
+          overflow: "visible",
+          filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
           mt: 1.5,
-          '&:before': {
-            backgroundColor: '#fff',
+          "&:before": {
+            backgroundColor: "#fff",
             content: '""',
-            display: 'block',
-            position: 'absolute',
+            display: "block",
+            position: "absolute",
             top: 0,
             right: 14,
             width: 10,
             height: 10,
-            transform: 'translateY(-50%) rotate(45deg)',
+            transform: "translateY(-50%) rotate(45deg)",
             zIndex: 0,
           },
         },
       }}
-      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+      transformOrigin={{ horizontal: "right", vertical: "top" }}
+      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
       <StyledMenuItem onClick={handleClose}>Download</StyledMenuItem>
       <StyledMenuItem onClick={handleClose}>Hide</StyledMenuItem>

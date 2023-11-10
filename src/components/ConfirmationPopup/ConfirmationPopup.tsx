@@ -1,24 +1,16 @@
-import './index.css';
-
-import { Modal } from '@mui/material';
-import { EnvelopeOpen } from 'phosphor-react';
-import VerificationInput from 'react-verification-input';
-
-import { selectCurrentUser } from '../../features/users/users-selectors';
-import { useAppSelector } from '../../redux-toolkit';
+import { Modal } from "@mui/material";
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import { useAppSelector } from "../../redux-toolkit";
 import {
   PopupButton,
   PopupDescription,
   PopupEmail,
   PopupTitle,
+  VerifyPopupWrapper,
   style,
-} from './style';
-import VerificationInput from 'react-verification-input';
-import './index.css';
-import { useAppSelector } from '../../redux-toolkit';
-import { selectCurrentUser } from '../../features/users/users-selectors';
-import { Modal } from '@mui/material';
-import { EnvelopeOpen } from 'phosphor-react';
+} from "./style";
+import { EnvelopeOpen } from "phosphor-react";
+import VerificationInput from "react-verification-input";
 export function ConfirmationPopup() {
   const currentUser = useAppSelector(selectCurrentUser);
   return (
@@ -30,13 +22,13 @@ export function ConfirmationPopup() {
         <PopupEmail>{currentUser?.email}</PopupEmail>
         <VerificationInput
           classNames={{
-            container: 'container',
-            character: 'character',
-            characterInactive: 'character--inactive',
-            characterSelected: 'character--selected',
+            container: "container",
+            character: "character",
+            characterInactive: "character--inactive",
+            characterSelected: "character--selected",
           }}
           validChars="0-9"
-          inputProps={{ inputMode: 'numeric' }}
+          inputProps={{ inputMode: "numeric" }}
           placeholder=""
         />
         <PopupButton>Confirm</PopupButton>

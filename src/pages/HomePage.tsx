@@ -1,4 +1,3 @@
-import React from "react";
 import { GifsList } from "../components/GifsList/GifsList";
 import { HomeLayout } from "../layout/HomeLayout";
 
