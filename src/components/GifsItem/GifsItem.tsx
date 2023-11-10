@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   AddCommentInputGifs,
   AvatarUserGifs,
@@ -12,13 +12,13 @@ import {
   NicknameUserGifs,
   WrapperForButtonsAndProfile,
   WrapperGifs,
-} from "./styled";
-import { IconButton } from "@mui/material";
-import { LinkSimple, ShareNetwork } from "phosphor-react";
-import { DotsMenu } from "../GifsList/GifMenu";
-import { Gif } from "../../types/GifType";
+} from './styled';
+import { IconButton } from '@mui/material';
+import { LinkSimple, ShareNetwork } from 'phosphor-react';
+import { GifMenuAction } from './GifMenuAction';
+import { Gif } from '../../types/GifType';
 
-interface GifsItemsProps extends Gif {}
+/* interface GifsItemsProps extends Gif {} */
 
 export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) {
   return (
@@ -34,29 +34,18 @@ export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) 
               </InfoUserGifs>
               <ButtonsGifs>
                 <IconButton>
-                  <ShareNetwork
-                    size={17}
-                    weight="fill"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
+                  <ShareNetwork size={17} weight="fill" color="#6F4FF2" cursor="pointer" />
                 </IconButton>
                 <IconButton>
-                  <LinkSimple
-                    size={17}
-                    weight="bold"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
+                  <LinkSimple size={17} weight="bold" color="#6F4FF2" cursor="pointer" />
                 </IconButton>
-                <DotsMenu />
+                <GifMenuAction />
               </ButtonsGifs>
             </WrapperForButtonsAndProfile>
             <DescriptionUserGifs>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-              voluptate dolore dolores. Omnis animi facilis quia nemo odit odio
-              fugit quidem esse aperiam, obcaecati quos temporibus fugiat
-              libero. Ipsum, enim.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptate dolore dolores.
+              Omnis animi facilis quia nemo odit odio fugit quidem esse aperiam, obcaecati quos
+              temporibus fugiat libero. Ipsum, enim.
             </DescriptionUserGifs>
           </div>
           <CommentsContainer>
@@ -77,27 +66,17 @@ export function GifsItem(/* { id, title, description, url }: GifsItemsProps */) 
               </InfoUserGifs>
               <ButtonsGifs>
                 <IconButton>
-                  <ShareNetwork
-                    size={17}
-                    weight="fill"
-                    color="#6F4FF2"
-                    cursor={"pointer"}
-                  />
+                  <ShareNetwork size={17} weight="fill" color="#6F4FF2" cursor="pointer" />
                 </IconButton>
                 <IconButton>
-                  <LinkSimple
-                    size={17}
-                    weight="bold"
-                    color="#6F4FF2"
-                    cursor={"pointer"}
-                  />
+                  <LinkSimple size={17} weight="bold" color="#6F4FF2" cursor="pointer" />
                 </IconButton>
-                <DotsMenu />
+                <GifMenuAction />
               </ButtonsGifs>
             </WrapperForButtonsAndProfile>
             <DescriptionUserGifs>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-              voluptate dolore dolores. Omnis animi
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. At voluptate dolore dolores.
+              Omnis animi
             </DescriptionUserGifs>
           </div>
           <CommentsContainer>

@@ -1,5 +1,5 @@
 import React from "react";
 
-export function Recommendations() {
+export function RecommendationsList() {
   return <div>Recommendations</div>;
 }

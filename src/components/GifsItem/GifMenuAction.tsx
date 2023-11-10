@@ -8,7 +8,7 @@ const options = ["Download ", "Hide ", "Report "];
 
 const ITEM_HEIGHT = 48;
 
-export function DotsMenu() {
+export function GifMenuAction() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
