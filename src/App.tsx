@@ -10,6 +10,7 @@ import { PageLayout } from "./components/PageLayout/PageLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { HomePage } from "./pages/HomePage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
+import { AddGif } from "./components/AddGif/AddGif";
 
 export function App() {
   const dispatch = useAppDispatch();
