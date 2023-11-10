@@ -33,6 +33,7 @@ export function App() {
               }
               path="/my-profile"
             />
+            <Route element={<AddGif />} path="gif-add" />
           </Route>
           <Route element={<Registration />} path="/sign-up" />
           <Route element={<Login />} path="/sign-in" />

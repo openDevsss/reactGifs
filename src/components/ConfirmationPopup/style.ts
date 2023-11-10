@@ -14,6 +14,7 @@ export const style = {
   pt: 2,
   px: 4,
   pb: 3,
+  outline: "none",
 };
 export const VerifyPopupWrapper = styled(Box)`
   display: flex;
