@@ -39,6 +39,7 @@
     "simple-import-sort/exports": [
       "error"
     ],
+    "linebreak-style": 0,
     "import/first": "error",
     "react/prop-types": "off", // If you're using TypeScript, prop-types are not needed
     "@typescript-eslint/explicit-module-boundary-types": "off", // Allows you to skip explicit return types in TypeScript
