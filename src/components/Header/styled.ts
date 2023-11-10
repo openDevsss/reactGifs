@@ -114,7 +114,7 @@ export const MyProfileWrapper = styled(Link)`
   justify-content: center;
   cursor: pointer;
 `;
-export const WrapperIcons = styled(Box)`
+export const WrapperIcon = styled(Box)`
   background-color: #f1f1f2;
   padding: 10px;
   padding-bottom: 6px;

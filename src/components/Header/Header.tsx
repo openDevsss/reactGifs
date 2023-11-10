@@ -8,7 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import HeaderMenu from "./HeaderMenu";
-import { checkAuth } from "../../features/users/users-slice";
+import { checkAuth, logOut } from "../../features/users/users-slice";
 import {
   InformationHeader,
   LogoHeader,
@@ -17,7 +17,7 @@ import {
   ProfileIcon,
   ProfileName,
   HomeHeader,
-  WrapperIcons,
+  WrapperIcon,
 } from "./styled";
 import logo from "../../images/kub.svg";
 import { List, MagnifyingGlass, SignOut } from "phosphor-react";
@@ -28,6 +28,11 @@ import { SearchHeader, TitleHeader, WrapperHeader } from "./styled";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const dispatch = useAppDispatch();
+  const currentUser = useAppSelector(selectCurrentUser);
+  const isMatches1024 = useMediaQuery("(max-width : 1024px)");
+  const isMatches480 = useMediaQuery("(max-width : 480px)");
+  const jwt = localStorage.getItem("jwt");
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
@@ -36,16 +41,13 @@ export function Header() {
     setAnchorEl(null);
     setIsOpen(false);
   };
-  const currentUser = useAppSelector(selectCurrentUser);
-  const isMatches1024 = useMediaQuery("(max-width : 1024px)");
-  const isMatches480 = useMediaQuery("(max-width : 480px)");
-
-  const dispatch = useAppDispatch();
-  const jwt = localStorage.getItem("jwt");
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
-
+  // TODO: нужна логика для редиректа
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
   return (
     <WrapperHeader>
       <InformationHeader>
@@ -89,14 +91,16 @@ export function Header() {
               <ProfileIcon src={currentUser?.avatar} />
             </MyProfileWrapper>
           </Tooltip>
-          <WrapperIcons>
-            <SignOut
-              size={20}
-              weight="fill"
-              color="#6f4ff2"
-              cursor={"pointer"}
-            />
-          </WrapperIcons>
+          {Boolean(currentUser) && (
+            <WrapperIcon onClick={handleLogout}>
+              <SignOut
+                size={20}
+                weight="fill"
+                color="#6f4ff2"
+                cursor={"pointer"}
+              />
+            </WrapperIcon>
+          )}
         </NavigationHeader>
       ) : (
         <>
