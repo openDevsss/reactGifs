@@ -17,9 +17,10 @@ import {
   ProfileIcon,
   ProfileName,
   HomeHeader,
+  WrapperIcons,
 } from "./styled";
 import logo from "../../images/kub.svg";
-import { List, MagnifyingGlass } from "phosphor-react";
+import { List, MagnifyingGlass, SignOut } from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
 
 import { SearchHeader, TitleHeader, WrapperHeader } from "./styled";
@@ -88,13 +89,21 @@ export function Header() {
               <ProfileIcon src={currentUser?.avatar} />
             </MyProfileWrapper>
           </Tooltip>
+          <WrapperIcons>
+            <SignOut
+              size={20}
+              weight="fill"
+              color="#6f4ff2"
+              cursor={"pointer"}
+            />
+          </WrapperIcons>
         </NavigationHeader>
       ) : (
         <>
           <NavigationHeader>
             <HeaderBellIcon />
             <IconButton onClick={handleClick}>
-              <List size={32} color="#5f3db5" weight="regular" />
+              <List size={20} color="#5f3db5" weight="regular" />
             </IconButton>
           </NavigationHeader>
           <HeaderMenu
