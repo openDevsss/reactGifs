@@ -11,7 +11,6 @@ import {
   TagList,
   GifsTag,
 } from "./style";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { Hashtag } from "../Hashtag/Hashtag";
 export function AddGif() {
   return (

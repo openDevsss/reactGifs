@@ -1,5 +1,3 @@
-import { Box } from "@mui/system";
-import React from "react";
 import { ColorizedHashtag, HashtagTitle, HashtagWrapper } from "./style";
 
 export function Hashtag() {
