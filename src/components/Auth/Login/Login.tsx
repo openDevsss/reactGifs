@@ -1,11 +1,11 @@
-import { Box, Typography } from '@mui/material';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Box, Typography } from "@mui/material";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
-import { loginUser } from '../../../features/users/users-slice';
-import ghost from '../../../images/stickerGhost.webp';
-import { useAppDispatch } from '../../../redux-toolkit';
-import { UserType } from '../../../types/UserType';
+import { loginUser } from "../../../features/users/users-slice";
+import ghost from "../../../images/stickerGhost.webp";
+import { useAppDispatch } from "../../../redux-toolkit";
+import { UserType } from "../../../types/UserType";
 import {
   ButtonSubmit,
   Description,
@@ -18,10 +18,10 @@ import {
   WhiteBorderTextField,
   Wrapper,
   WrapperImage,
-} from '../AuthStyled';
+} from "../AuthStyle";
 
 export function Login() {
-  type LoginUser = Pick<UserType, 'email' | 'password'>;
+  type LoginUser = Pick<UserType, "email" | "password">;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<LoginUser>();
@@ -30,7 +30,7 @@ export function Login() {
     dispatch(loginUser(data))
       .unwrap()
       .then(() => {
-        navigate('/');
+        navigate("/");
       });
   };
 
@@ -42,7 +42,7 @@ export function Login() {
           <InstructionText>Welcome! Please enter your details.</InstructionText>
           <Description>Email</Description>
           <WhiteBorderTextField
-            {...register('email')}
+            {...register("email")}
             size="small"
             placeholder="Enter your email"
           />
@@ -50,7 +50,7 @@ export function Login() {
           <WhiteBorderTextField
             size="small"
             placeholder="Enter your password"
-            {...register('password')}
+            {...register("password")}
             type="password"
           />
           <ButtonSubmit type="submit">sign in</ButtonSubmit>

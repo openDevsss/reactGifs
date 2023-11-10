@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { Box, Tab, Tabs } from '@mui/material';
+import styled from "@emotion/styled";
+import { Box, Tab, Tabs } from "@mui/material";
 
 export const ProfileWrapper = styled(Box)`
   width: 30%;
@@ -32,9 +32,15 @@ export const ProfileName = styled.p`
 `;
 export const ProfileMail = styled.p`
   margin: 0;
-  margin-top: 10px;
   font-size: 14px;
   color: #5f5f5f;
+  line-height: 1.5;
+`;
+export const ProfileMailWrapper = styled(Box)`
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 export const ProfileSubscriptions = styled.p`
   margin: 0;
@@ -55,18 +61,18 @@ export const ProfileButton = styled.button`
   cursor: pointer;
 `;
 export const TabsContainer = styled(Tabs)({
-  display: 'flex',
-  marginTop: '40px',
-  '& .MuiTabs-indicator': {
-    backgroundColor: '#000',
+  display: "flex",
+  marginTop: "40px",
+  "& .MuiTabs-indicator": {
+    backgroundColor: "#000",
   },
-  '& .MuiTabs-flexContainer': {
-    gap: '40px',
+  "& .MuiTabs-flexContainer": {
+    gap: "40px",
   },
-  '& .MuiButtonBase-root': {
+  "& .MuiButtonBase-root": {
     padding: 0,
-    justifyContent: 'end',
-    paddingBottom: '5px',
+    justifyContent: "end",
+    paddingBottom: "5px",
   },
 });
 export const ProfileTab = styled(Tab)`

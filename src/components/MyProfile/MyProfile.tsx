@@ -1,33 +1,46 @@
-import { useState } from 'react';
+import { Gear } from "phosphor-react";
+import { useState } from "react";
 
-import { selectCurrentUser } from '../../features/users/users-selectors';
-import { useAppSelector } from '../../redux-toolkit';
-import { CustomTab } from '../Custom/CustomTab';
-import { CustomTabPanel } from '../Custom/CustomTabPanel';
-import { CustomTabs } from '../Custom/CustomTabs';
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import { useAppSelector } from "../../redux-toolkit";
+import { CustomTab } from "../Custom/CustomTab";
+import { CustomTabPanel } from "../Custom/CustomTabPanel";
+import { CustomTabs } from "../Custom/CustomTabs";
 import {
   ButtonsContainer,
   ProfileAvatar,
   ProfileAvatarLetter,
   ProfileButton,
   ProfileMail,
+  ProfileMailWrapper,
   ProfileName,
   ProfileSubscriptions,
   ProfileWrapper,
-} from './styled';
+} from "./style";
 
 export default function MyProfile() {
-  const [selectTab, setSelectTab] = useState('created');
+  const [selectTab, setSelectTab] = useState("created");
   const currentUser = useAppSelector(selectCurrentUser);
   return (
     <ProfileWrapper>
       {currentUser?.avatar ? (
         <ProfileAvatar src={currentUser.avatar} />
       ) : (
-        <ProfileAvatarLetter>{currentUser?.nickname.slice(0, 1)}</ProfileAvatarLetter>
+        <ProfileAvatarLetter>
+          {currentUser?.nickname.slice(0, 1)}
+        </ProfileAvatarLetter>
       )}
       <ProfileName>{currentUser?.nickname}</ProfileName>
-      <ProfileMail>{currentUser?.email}</ProfileMail>
+      <ProfileMailWrapper>
+        <ProfileMail>{/*{currentUser?.email}*/ "andrey@mail.com"}</ProfileMail>
+        <Gear
+          style={{ cursor: "pointer" }}
+          size={20}
+          color="#000"
+          weight="light"
+        />
+      </ProfileMailWrapper>
+
       <ProfileSubscriptions>0 follows</ProfileSubscriptions>
       <ButtonsContainer>
         <ProfileButton>Share</ProfileButton>
