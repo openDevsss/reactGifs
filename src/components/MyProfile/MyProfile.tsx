@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { selectCurrentUser } from '../../features/users/users-selectors';
 import { useAppSelector } from '../../redux-toolkit';
 import { CustomTab } from '../Custom/CustomTab';
@@ -6,14 +7,15 @@ import { CustomTabPanel } from '../Custom/CustomTabPanel';
 import { CustomTabs } from '../Custom/CustomTabs';
 import {
   ButtonsContainer,
+  ProfileAvatar,
+  ProfileAvatarLetter,
+  ProfileButton,
   ProfileMail,
   ProfileName,
   ProfileSubscriptions,
   ProfileWrapper,
-  ProfileButton,
-  ProfileAvatarLetter,
-  ProfileAvatar,
 } from './styled';
+
 export default function MyProfile() {
   const [selectTab, setSelectTab] = useState('created');
   const currentUser = useAppSelector(selectCurrentUser);

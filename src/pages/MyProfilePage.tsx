@@ -1,4 +1,4 @@
 import MyProfile from '../components/MyProfile/MyProfile';
-export function MyProfilePage() {
+export default function MyProfilePage() {
   return <MyProfile />;
 }

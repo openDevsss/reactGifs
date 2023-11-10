@@ -1,9 +1,16 @@
+import './index.css';
+
+import { Modal } from '@mui/material';
+import { EnvelopeOpen } from 'phosphor-react';
+import VerificationInput from 'react-verification-input';
+
+import { selectCurrentUser } from '../../features/users/users-selectors';
+import { useAppSelector } from '../../redux-toolkit';
 import {
   PopupButton,
   PopupDescription,
   PopupEmail,
   PopupTitle,
-  VerifyPopupWrapper,
   style,
 } from './style';
 import VerificationInput from 'react-verification-input';
@@ -15,7 +22,7 @@ import { EnvelopeOpen } from 'phosphor-react';
 export function ConfirmationPopup() {
   const currentUser = useAppSelector(selectCurrentUser);
   return (
-    <Modal open={true}>
+    <Modal open>
       <VerifyPopupWrapper sx={{ ...style }}>
         <EnvelopeOpen size={100} color="#5f3db5" weight="thin" />
         <PopupTitle>Verify your email</PopupTitle>

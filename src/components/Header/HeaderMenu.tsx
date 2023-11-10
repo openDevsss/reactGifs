@@ -3,6 +3,7 @@ import Menu from '@mui/material/Menu';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { GearSix, HeartStraight, Moon, SignOut, UserCircle } from 'phosphor-react';
 import { StyledMenuItem } from './styled';
+
 interface HeaderMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
