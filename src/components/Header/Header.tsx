@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   IconButton,
   InputAdornment, Tooltip, useMediaQuery,
@@ -10,6 +11,7 @@ import logo from '../../images/kub.svg';
 import { useAppSelector } from '../../redux-toolkit';
 import HeaderBellIcon from './HeaderBellIcon';
 import HeaderMenu from './HeaderMenu';
+
 import {
   InformationHeader,
   LogoHeader,
@@ -17,6 +19,21 @@ import {
   NavigationHeader,
   ProfileIcon,
   ProfileName,
+  HomeHeader,
+} from "./styled";
+import logo from "../../images/kub.svg";
+import { List, MagnifyingGlass } from "phosphor-react";
+import HeaderBellIcon from "./HeaderBellIcon";
+import {
+  InputAdornment,
+  useMediaQuery,
+  Tooltip,
+  IconButton,
+} from "@mui/material";
+import { useAppDispatch, useAppSelector,  } from "../../redux-toolkit";
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import HeaderMenu from "./HeaderMenu";
+import { checkAuth } from "../../features/users/users-slice";
   SearchHeader,
   TitleHeader,
   WrapperHeader,
@@ -37,11 +54,19 @@ export function Header() {
   const isMatches1024 = useMediaQuery('(max-width : 1024px)');
   const isMatches480 = useMediaQuery('(max-width : 480px)');
 
+  const dispatch = useAppDispatch();
+  const jwt = localStorage.getItem("jwt");
+  useEffect(() => {
+    if (jwt) dispatch(checkAuth(jwt));
+  }, [jwt, dispatch]);
+
   return (
     <WrapperHeader>
       <InformationHeader>
         <LogoHeader src={logo} />
         <TitleHeader>GIFS</TitleHeader>
+        <HomeHeader to="/"> Home </HomeHeader>
+        <HomeHeader to="/recommendations"> Recommendations </HomeHeader>
         {!isMatches480 && (
           <SearchHeader
             placeholder="search"

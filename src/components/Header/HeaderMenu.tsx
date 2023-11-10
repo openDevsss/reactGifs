@@ -1,9 +1,7 @@
-import ListItemIcon from '@mui/material/ListItemIcon';
+import React from 'react';
 import Menu from '@mui/material/Menu';
-import {
-  GearSix, HeartStraight, Moon, SignOut, UserCircle,
-} from 'phosphor-react';
-
+import ListItemIcon from '@mui/material/ListItemIcon';
+import { GearSix, HeartStraight, Moon, SignOut, UserCircle } from 'phosphor-react';
 import { StyledMenuItem } from './styled';
 
 interface HeaderMenuProps {

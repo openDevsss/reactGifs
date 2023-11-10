@@ -12,9 +12,13 @@ import {
   PopupEmail,
   PopupTitle,
   style,
-  VerifyPopupWrapper,
 } from './style';
-
+import VerificationInput from 'react-verification-input';
+import './index.css';
+import { useAppSelector } from '../../redux-toolkit';
+import { selectCurrentUser } from '../../features/users/users-selectors';
+import { Modal } from '@mui/material';
+import { EnvelopeOpen } from 'phosphor-react';
 export function ConfirmationPopup() {
   const currentUser = useAppSelector(selectCurrentUser);
   return (
