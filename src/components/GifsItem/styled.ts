@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { Box, MenuItem, TextField, Typography } from '@mui/material';
+import styled from "@emotion/styled";
+import { Box, MenuItem, TextField, Typography } from "@mui/material";
 
-export const WrapperGifs = styled(Box)`
+export const GifWrapper = styled(Box)`
   height: fit-content;
   margin: 20px auto;
   border-radius: 20px;
@@ -11,31 +11,34 @@ export const WrapperGifs = styled(Box)`
   width: 1000px;
   padding: 20px;
 `;
-export const GifAnimationsGifs = styled.img`
+export const GifAnimation = styled.img`
   border-radius: 32px;
-  width: 500px;
+  width: 50%;
+  min-width: 500px;
   height: 400px;
+  object-fit: cover;
 `;
 
-export const ContainerGifs = styled(Box)`
+export const ContainerGif = styled(Box)`
+  width: 50%;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
-export const WrapperForButtonsAndProfile = styled(Box)`
+export const GifHeadInformation = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const InfoUserGifs = styled(Box)`
+export const GifUserInformation = styled(Box)`
   display: flex;
   align-items: center;
 `;
 
-export const AvatarUserGifs = styled.img`
+export const GifUserAvatar = styled.img`
   width: 35px;
   height: 35px;
   border-radius: 35px;
@@ -43,13 +46,13 @@ export const AvatarUserGifs = styled.img`
   margin-right: 10px;
 `;
 
-export const NicknameUserGifs = styled(Typography)`
+export const GifUserNickname = styled(Typography)`
   font-weight: 500;
   font-size: 20px;
   cursor: pointer;
 `;
 
-export const ButtonsGifs = styled(Box)`
+export const GifMenuItem = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,9 +64,13 @@ export const CommentsContainer = styled(Box)`
   align-items: flex-start;
 `;
 
-export const DescriptionUserGifs = styled(Typography)`
-  font-size: 13px;
+export const GifDescription = styled(Typography)`
+  font-size: 16px;
   margin-top: 10px;
+`;
+
+export const GifComment = styled(Typography)`
+  font-size: 16px;
 `;
 
 export const CommentsTitle = styled(Typography)`
@@ -71,14 +78,14 @@ export const CommentsTitle = styled(Typography)`
   font-weight: 700;
 `;
 
-export const AddCommentInputGifs = styled(TextField)`
+export const GifInput = styled(TextField)`
   padding: 0;
   margin-top: 20px;
   width: 100%;
   box-sizing: border-box;
 
   input::placeholder {
-    font-family: 'Inter', serif;
+    font-family: "Inter", serif;
   }
   & label.Mui-focused {
     color: #5f3db5;

@@ -1,13 +1,14 @@
-import { GifsItem } from "../GifsItem/GifsItem";
+import { GifItem } from "../GifsItem/GifsItem";
+import { useGetGifs } from "./hooks/hooks";
 
-export function GifsList({}) {
-  /* const { data: gifs } = useGetGifs(); */
+export function GifsList() {
+  const { data: gifs } = useGetGifs();
 
   return (
     <>
-      {/* {gifs?.map((gif) => { */}
-      <GifsItem /* key={gif.id} {...gif} */ />
-      {/*   })} */}
+      {gifs?.map((gif) => (
+        <GifItem key={gif.id} {...gif} />
+      ))}
     </>
   );
 }
