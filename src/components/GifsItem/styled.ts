@@ -33,7 +33,7 @@ export const GifHeadInformation = styled(Box)`
   align-items: center;
 `;
 
-export const GifUserInportmation = styled(Box)`
+export const GifUserInformation = styled(Box)`
   display: flex;
   align-items: center;
 `;

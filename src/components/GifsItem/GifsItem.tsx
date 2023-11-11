@@ -5,7 +5,7 @@ import {
   ContainerGif,
   GifAnimation,
   GifHeadInformation,
-  GifUserInportmation,
+  GifUserInformation,
   GifUserAvatar,
   GifUserNickname,
   GifMenuItem,
@@ -45,10 +45,10 @@ export function GifItem({ title, description, url, user }: GifItemsProps) {
       <ContainerGif>
         <div>
           <GifHeadInformation>
-            <GifUserInportmation>
+            <GifUserInformation>
               <GifUserAvatar src={user.avatar} />
               <GifUserNickname>{user.nickname}</GifUserNickname>
-            </GifUserInportmation>
+            </GifUserInformation>
             <GifMenuItem>
               <IconButton>
                 <ShareNetwork
