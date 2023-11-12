@@ -14,9 +14,9 @@ export const buttonStyle = {
   },
 };
 export const FormWrapperStyle = styled(Box)`
- display: flex,
-  flex-direction: column,
-  width: 100%,
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const WrapperAddGif = styled(Box)`
