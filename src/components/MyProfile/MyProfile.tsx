@@ -16,9 +16,9 @@ import {
   ProfileSubscriptions,
   ProfileWrapper,
   AddedWrapper,
-  AddedTitle,
   AddedButton,
 } from "./styled";
+import { AddedGifs } from "./AddedGifs/AddedGifs";
 export default function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
   const currentUser = useAppSelector(selectCurrentUser);

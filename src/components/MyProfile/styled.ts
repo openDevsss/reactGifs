@@ -54,18 +54,18 @@ export const ProfileButton = styled.button`
   cursor: pointer;
 `;
 export const TabsContainer = styled(Tabs)({
-  display: 'flex',
-  marginTop: '40px',
-  '& .MuiTabs-indicator': {
-    backgroundColor: '#000',
+  display: "flex",
+  marginTop: "40px",
+  "& .MuiTabs-indicator": {
+    backgroundColor: "#000",
   },
-  '& .MuiTabs-flexContainer': {
-    gap: '40px',
+  "& .MuiTabs-flexContainer": {
+    gap: "40px",
   },
-  '& .MuiButtonBase-root': {
+  "& .MuiButtonBase-root": {
     padding: 0,
-    justifyContent: 'end',
-    paddingBottom: '5px',
+    justifyContent: "end",
+    paddingBottom: "5px",
   },
 });
 export const ProfileTab = styled(Tab)`
@@ -89,5 +89,21 @@ export const AddedButton = styled(Button)`
   border-radius: 20px;
   &:hover {
     background-color: #3e267c;
+  }
+`;
+
+// TODO: ПЕРЕНЕСТИ В LAYOUT
+export const WrapperInformation = styled(Box)`
+  width: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  // TODO: ИСПРАВИТЬ АДАПТИВ
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 300px);
   }
 `;
