@@ -8,4 +8,5 @@ export type Gif = {
   user: UserType;
   createdAt: string;
   updatedAt: string;
+  tags: string[];
 };

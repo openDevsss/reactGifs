@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
@@ -49,8 +50,12 @@ export default function MyProfile() {
       <CustomTabPanel value={selectTab} index="saved"></CustomTabPanel>
       <CustomTabPanel value={selectTab} index="added">
         <AddedWrapper>
-          <AddedGifs />
-          <AddedButton>Add GIF</AddedButton>
+          <AddedTitle>
+            It's empty now. Here will be pictures that you will add
+          </AddedTitle>
+          <Link to="/gif-add">
+            <AddedButton>Add GIF</AddedButton>
+          </Link>
         </AddedWrapper>
       </CustomTabPanel>
     </ProfileWrapper>
