@@ -1,6 +1,6 @@
 import { ColorizedHashtag, HashtagItem, HashtagWrapper } from "./style";
 interface TagsProps {
-  onClick: any;
+  onClick: () => void;
   tag: string;
 }
 export function Hashtag({ onClick, tag }: TagsProps) {

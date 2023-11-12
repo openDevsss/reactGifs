@@ -19,28 +19,7 @@ export function AddGif() {
   const [tags, setTags] = useState<string[]>([]);
   const { register, handleSubmit } = useForm<Gif>();
 
-  const tagsArray = [
-    "hahaha",
-    "ajajja",
-    "otoot",
-    "po2pp",
-    "fun",
-    "hahaha",
-    "ajajja",
-    "oto3ot",
-    "popp",
-    "fu98n",
-    "hah985aha",
-    "aj589ajja",
-    "oto5ot",
-    "po6pp",
-    "fu89n",
-    "ha4haha",
-    "aja7jja",
-    "oto8ot",
-    "po790pp",
-    "f6un",
-  ];
+  const tagsArray: string[] = [];
   const handleAddTag = (item: string) => {
     setTags((prevTags) => [...prevTags, item]);
   };
@@ -98,7 +77,7 @@ export function AddGif() {
             )}
             <GifsTag>
               {tagsArray
-                .filter((tag) => !tags.includes(tag))
+                ?.filter((data) => !tags.includes(data))
                 .map((tag, index) => {
                   return (
                     <Hashtag
