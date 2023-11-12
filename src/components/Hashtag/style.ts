@@ -1,20 +1,32 @@
 import styled from "@emotion/styled";
-import { Box, Typography } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 export const HashtagWrapper = styled(Box)`
-  margin: 0 10px 0 0;
+  margin-right: 10px;
   display: flex;
   align-items: center;
   cursor: pointer;
 `;
+//TODO: Если не писать !important стили берутся у Chip'a
 export const ColorizedHashtag = styled(Typography)`
-  background-color: #5f3db5;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 600;
-  margin-right: 3px;
-  padding: 3px 7px;
-  border-radius: 7px;
+  background-color: #5f3db5 !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  margin-right: 3px !important;
+  padding: 3px 7px !important;
+  border-radius: 7px !important;
 `;
-export const HashtagTitle = styled(Typography)`
-  text-transform: uppercase;
+export const HashtagItem = styled(Chip)`
+  background-color: transparent;
+  color: #000;
+  & .MuiChip-label {
+    padding: 0;
+    text-transform: uppercase;
+  }
+  & .MuiChip-icon {
+    padding: 0;
+    margin: 0;
+  }
+  & .MuiBox-root {
+  }
 `;

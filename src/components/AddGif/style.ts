@@ -35,7 +35,9 @@ export const SubmitAddGifButton = styled(Button)`
   }
 `;
 export const TitleAddGif = styled(Typography)`
+  margin: 0 auto;
   font-size: 20px;
+  width: 80%;
 `;
 export const CreatedWrapper = styled(Box)`
   width: 80%;
@@ -43,15 +45,19 @@ export const CreatedWrapper = styled(Box)`
   display: flex;
   flex-direction: row;
   margin-top: 20px;
-  justify-content: space-between;
+  gap: 40px;
 `;
 
 export const FormAdded = styled.form`
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 30px;
 `;
 export const FormInput = styled(TextField)`
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: #5f3db5;
   & .MuiOutlinedInput-root {
     &.Mui-focused fieldset {
       border-color: #5f3db5;
@@ -63,18 +69,18 @@ export const FormInput = styled(TextField)`
   & .MuiFormLabel-root {
     color: #000;
   }
-  margin-top: 5px;
-  margin-bottom: 20px;
-  color: #5f3db5;
+
   &:last-child {
     margin-bottom: 0;
   }
 `;
 export const TagList = styled(Box)`
   background-color: #f1f1f2;
-  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 14px;
   padding: 8px 14px;
-  height: 25px;
+  min-height: 25px;
 `;
 export const GifsTag = styled(Box)`
   display: flex;

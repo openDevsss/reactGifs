@@ -6,4 +6,5 @@ export type Gif = {
   userId: string;
   createdAt: string;
   updatedAt: string;
+  tags: string[];
 };

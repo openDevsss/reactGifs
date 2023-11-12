@@ -1,112 +1,19 @@
-import { ColorizedHashtag, HashtagTitle, HashtagWrapper } from "./style";
-
-export function Hashtag() {
+import { ColorizedHashtag, HashtagItem, HashtagWrapper } from "./style";
+interface TagsProps {
+  onClick: any;
+  tag: string;
+}
+export function Hashtag({ onClick, tag }: TagsProps) {
   return (
-    <>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>IUHTNTN</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>TKFKF</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>FuKFMKFMKn</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>urim</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>as</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>HAPPY</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>BEAUTIFUL</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>FUN</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>ASAKLSALS</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>:SPSMDJKF</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>PORUFN</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>FFNJJER</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-      <HashtagWrapper>
-        <ColorizedHashtag>#</ColorizedHashtag>
-        <HashtagTitle>Fun</HashtagTitle>
-      </HashtagWrapper>
-    </>
+    <HashtagWrapper onClick={onClick}>
+      <HashtagItem
+        label={tag}
+        color="secondary"
+        disabled={false}
+        size="medium"
+        variant="filled"
+        icon={<ColorizedHashtag>#</ColorizedHashtag>}
+      />
+    </HashtagWrapper>
   );
 }
