@@ -33,7 +33,6 @@ export function GifItem({ title, description, url, user }: GifItemsProps) {
     setIsOpen(true);
   };
 
-  console.log(anchorEl);
   const handleClose = () => {
     setAnchorEl(null);
     setIsOpen(false);
@@ -75,6 +74,7 @@ export function GifItem({ title, description, url, user }: GifItemsProps) {
                 />
               </IconButton>
               <GifMenuAction
+                authorId={user.id}
                 anchorEl={anchorEl}
                 handleClose={handleClose}
                 isOpen={isOpen}

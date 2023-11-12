@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { Box, Typography } from '@mui/material';
+import styled from "@emotion/styled";
+import { Box, Typography } from "@mui/material";
 
 export const WrapperFooter = styled.footer`
   width: 100%;
@@ -46,7 +46,7 @@ export const IconFooter = styled.img`
   height: 35px;
   margin-right: 24px;
   cursor: pointer;
-  :last-child {
+  &:last-child {
     margin-right: 0px;
   }
 `;
