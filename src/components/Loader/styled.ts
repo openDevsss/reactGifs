@@ -6,6 +6,6 @@ export const LoaderBox = styled(Box)`
   justify-content: center;
 `;
 
-export const LoaderRadius = styled(CircularProgress)`
+export const LoaderCircular = styled(CircularProgress)`
   color: #6f4ff2;
 `;
