@@ -83,7 +83,6 @@ export const ButtonSubmit = styled(Button)`
   @media (max-width: 768px) {
     margin-top: 30px;
   }
- 
 `;
 
 export const WhiteBorderTextField = styled(TextField)`
