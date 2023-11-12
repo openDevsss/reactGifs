@@ -24,7 +24,7 @@ export function App() {
       <div className="page">
         <Routes>
           <Route element={<PageLayout />}>
-            <Route element={<HomePage />} path="/" />
+            <Route element={<HomePage /> } path="/" />
             <Route element={<RecommendationsPage />} path="/recommendations" />
             <Route
               element={
