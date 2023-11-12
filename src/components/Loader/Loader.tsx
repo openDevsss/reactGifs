@@ -1,9 +1,9 @@
-import { LoaderBox, LoaderCircular } from "./styled";
+import { LoaderContainer, LoaderCircular } from "./styled";
 
 export function Loader() {
   return (
-    <LoaderBox>
+    <LoaderContainer>
       <LoaderCircular />
-    </LoaderBox>
+    </LoaderContainer>
   );
 }

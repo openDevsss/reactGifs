@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, CircularProgress } from "@mui/material";
 
-export const LoaderBox = styled(Box)`
+export const LoaderContainer = styled(Box)`
   display: flex;
   justify-content: center;
 `;
