@@ -1,36 +1,40 @@
-import { Box, Typography } from '@mui/material';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Box} from "@mui/material";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-import { registerUser } from '../../../features/users/users-slice';
-import ghost from '../../../images/stickerGhost.webp';
-import { useAppDispatch } from '../../../redux-toolkit';
-import { UserType } from '../../../types/UserType';
-import { ConfirmationPopup } from '../../ConfirmationPopup/ConfirmationPopup';
+import { registerUser } from "../../../features/users/users-slice";
+import ghost from "../../../images/stickerGhost.webp";
+import { useAppDispatch } from "../../../redux-toolkit";
+import { UserType } from "../../../types/UserType";
+import { ConfirmationPopup } from "../../ConfirmationPopup/ConfirmationPopup";
 import {
   ButtonSubmit,
   Description,
   Form,
   FormLegend,
   InstructionText,
+  LinkSign,
   RedirectText,
   Section,
+  TextSign,
   Title,
   WhiteBorderTextField,
   Wrapper,
   WrapperImage,
-} from '../AuthStyled';
+} from "../AuthStyled";
 
 export function Registration() {
-  type RegisterUser = Pick<UserType, 'email' | 'password' | 'nickname'>;
+  type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
+  
   const { register, handleSubmit } = useForm<RegisterUser>();
   const dispatch = useAppDispatch();
   const navgiate = useNavigate();
+
   const onSubmit: SubmitHandler<RegisterUser> = (data) => {
     dispatch(registerUser(data))
       .unwrap()
       .then(() => {
-        navgiate('/sign-in');
+        navgiate("/sign-in");
       });
   };
 
@@ -42,19 +46,19 @@ export function Registration() {
           <InstructionText>Welcome! Please enter details.</InstructionText>
           <Description>Nickname</Description>
           <WhiteBorderTextField
-            {...register('nickname')}
+            {...register("nickname")}
             size="small"
             placeholder="Create nickname"
           />
           <Description>Email</Description>
           <WhiteBorderTextField
-            {...register('email')}
+            {...register("email")}
             size="small"
             placeholder="Enter your email"
           />
           <Description>Password</Description>
           <WhiteBorderTextField
-            {...register('password')}
+            {...register("password")}
             size="small"
             placeholder="Create password"
             type="password"
@@ -63,9 +67,9 @@ export function Registration() {
         </Form>
         <RedirectText>
           Do you have an account?
-          <Link to="/sign-in">
-            <Typography component="span">Sign in</Typography>
-          </Link>
+          <LinkSign to="/sign-in">
+            <TextSign > Sign in</TextSign>
+          </LinkSign>
         </RedirectText>
       </Wrapper>
       <WrapperImage>
