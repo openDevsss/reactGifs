@@ -1,8 +1,5 @@
-import styled from '@emotion/styled';
-import {
-  Box, Button, FormLabel,
-  TextField, Typography,
-} from '@mui/material';
+import styled from "@emotion/styled";
+import { Box, Button, FormLabel, TextField, Typography } from "@mui/material";
 
 export const Section = styled.section`
   width: 100%;
@@ -83,9 +80,9 @@ export const Title = styled(Typography)`
 
 export const WrapperImage = styled(Box)`
   background-color: #5f3db5;
-  width: 40%;
-  padding: 250px;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;

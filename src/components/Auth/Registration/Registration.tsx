@@ -70,7 +70,7 @@ export function Registration() {
       </Wrapper>
       <WrapperImage>
         <Title>React Gifs</Title>
-        <Box component="img" src={ghost} width={300} height={350} />
+        <Box component="img" src={ghost} width={200} height={250} />
       </WrapperImage>
       <ConfirmationPopup />
     </Section>
