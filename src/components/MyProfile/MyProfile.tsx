@@ -15,9 +15,9 @@ import {
   ProfileSubscriptions,
   ProfileWrapper,
   AddedWrapper,
-  AddedTitle,
   AddedButton,
 } from "./styled";
+import { AddedGifs } from "./AddedGifs/AddedGifs";
 export default function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
   const currentUser = useAppSelector(selectCurrentUser);
@@ -49,9 +49,7 @@ export default function MyProfile() {
       <CustomTabPanel value={selectTab} index="saved"></CustomTabPanel>
       <CustomTabPanel value={selectTab} index="added">
         <AddedWrapper>
-          <AddedTitle>
-            It's empty now. Here will be pictures that you will add
-          </AddedTitle>
+          <AddedGifs />
           <AddedButton>Add GIF</AddedButton>
         </AddedWrapper>
       </CustomTabPanel>
