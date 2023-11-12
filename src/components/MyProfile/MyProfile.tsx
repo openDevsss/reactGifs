@@ -50,9 +50,7 @@ export default function MyProfile() {
       <CustomTabPanel value={selectTab} index="saved"></CustomTabPanel>
       <CustomTabPanel value={selectTab} index="added">
         <AddedWrapper>
-          <AddedTitle>
-            It's empty now. Here will be pictures that you will add
-          </AddedTitle>
+          <AddedGifs />
           <Link to="/gif-add">
             <AddedButton>Add GIF</AddedButton>
           </Link>
