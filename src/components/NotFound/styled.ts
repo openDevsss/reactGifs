@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { Box, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import styled from "@emotion/styled";
+import { Box, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const WrapperNotFound = styled(Box)`
   display: flex;
@@ -73,7 +73,7 @@ export const SubtitleNotFound = styled(Typography)`
 export const DescriptionNotFound = styled(Typography)`
   font-size: 20px;
   margin-bottom: 40px;
-  :last-child {
+  &:last-child {
     margin-bottom: 0px;
   }
   @media (max-width: 1024px) {

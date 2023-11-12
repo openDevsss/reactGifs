@@ -110,4 +110,14 @@ export const StyledMenuItem = styled(MenuItem)`
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 5px;
+  gap: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
+// export const StyledMenuIcon = styled(ListItemIcon)`
+//   padding: 0 !important;
+//   & .MuiListItemIcon-root {
+//     min-width: 1px;
+//   }
+// `;
