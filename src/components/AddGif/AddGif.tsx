@@ -11,6 +11,7 @@ import {
   SubmitAddGifButton,
   TagList,
   GifsTag,
+  FormWrapperStyle,
 } from "./style";
 import { Hashtag } from "../Hashtag/Hashtag";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -47,9 +48,7 @@ export function AddGif() {
               size="small"
             />
           </DragAndDropWrapper>
-          <div
-            style={{ display: "flex", flexDirection: "column", width: "100%" }}
-          >
+          <FormWrapperStyle>
             <FormInput
               autoComplete="none"
               {...register("title")}
@@ -88,7 +87,7 @@ export function AddGif() {
                   );
                 })}
             </GifsTag>
-          </div>
+          </FormWrapperStyle>
         </CreatedWrapper>
         <SubmitAddGifButton type="submit">Add</SubmitAddGifButton>
       </FormAdded>

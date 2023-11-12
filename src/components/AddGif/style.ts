@@ -13,6 +13,12 @@ export const buttonStyle = {
     backgroundColor: "#dadada",
   },
 };
+export const FormWrapperStyle = styled(Box)`
+ display: flex,
+  flex-direction: column,
+  width: 100%,
+`;
+
 export const WrapperAddGif = styled(Box)`
   padding: 20px;
   display: flex;
