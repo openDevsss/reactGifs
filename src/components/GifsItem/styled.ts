@@ -115,9 +115,3 @@ export const StyledMenuItem = styled(MenuItem)`
     margin-bottom: 0;
   }
 `;
-// export const StyledMenuIcon = styled(ListItemIcon)`
-//   padding: 0 !important;
-//   & .MuiListItemIcon-root {
-//     min-width: 1px;
-//   }
-// `;
