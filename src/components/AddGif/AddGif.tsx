@@ -20,7 +20,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Gif } from "../../types/GifType";
 export function AddGif() {
   const [tags, setTags] = useState<string[]>([]);
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState("");
   const { register, handleSubmit } = useForm<Gif>();
   const tagsArray: string[] = [];
   const handleAddTag = (item: string) => {
@@ -42,7 +42,7 @@ export function AddGif() {
       <TitleAddGif>Add GIF</TitleAddGif>
       <FormAdded onSubmit={handleSubmit(onSubmit)}>
         <CreatedWrapper>
-          {image ? (
+          {Boolean(image) ? (
             <AddGifItemWrapper>
               <AddGifItem src={image} />
             </AddGifItemWrapper>
