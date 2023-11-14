@@ -1,5 +1,6 @@
-import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 import styled from "@emotion/styled";
+import { Box, Tab, Tabs, Button, Typography } from "@mui/material";
+
 export const ProfileWrapper = styled(Box)`
   width: 30%;
   display: flex;
@@ -31,9 +32,15 @@ export const ProfileName = styled.p`
 `;
 export const ProfileMail = styled.p`
   margin: 0;
-  margin-top: 10px;
   font-size: 14px;
   color: #5f5f5f;
+  line-height: 1.5;
+`;
+export const ProfileMailWrapper = styled(Box)`
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 export const ProfileSubscriptions = styled.p`
   margin: 0;

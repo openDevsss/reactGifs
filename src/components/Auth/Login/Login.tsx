@@ -20,11 +20,11 @@ import {
   WhiteBorderTextField,
   Wrapper,
   WrapperImage,
-} from "../AuthStyled";
+} from "../style";
 
 export function Login() {
   type LoginUser = Pick<UserType, "email" | "password">;
-  
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<LoginUser>();

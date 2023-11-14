@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Gear } from "phosphor-react";
+
 import { Link } from "react-router-dom";
 
 import { selectCurrentUser } from "../../features/users/users-selectors";
@@ -12,12 +14,14 @@ import {
   ProfileAvatarLetter,
   ProfileButton,
   ProfileMail,
+  ProfileMailWrapper,
   ProfileName,
   ProfileSubscriptions,
   ProfileWrapper,
   AddedWrapper,
   AddedButton,
-} from "./styled";
+} from "./style";
+
 import { AddedGifs } from "./AddedGifs/AddedGifs";
 export default function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
@@ -32,7 +36,18 @@ export default function MyProfile() {
         </ProfileAvatarLetter>
       )}
       <ProfileName>{currentUser?.nickname}</ProfileName>
-      <ProfileMail>{currentUser?.email}</ProfileMail>
+      <ProfileMailWrapper>
+        <ProfileMail>{currentUser?.email}</ProfileMail>
+        <Link to="/settings">
+          <Gear
+            style={{ cursor: "pointer" }}
+            size={20}
+            color="#000"
+            weight="light"
+          />
+        </Link>
+      </ProfileMailWrapper>
+
       <ProfileSubscriptions>0 follows</ProfileSubscriptions>
       <ButtonsContainer>
         <ProfileButton>Share</ProfileButton>
