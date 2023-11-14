@@ -19,18 +19,12 @@ export const InformationHeader = styled(Box)`
   box-sizing: border-box;
 `;
 
-export const LogoHeader = styled(Box)`
+export const LogoHeader = styled.img`
   background-color: #d4cbe6;
   width: 50px;
   height: 50px;
   border-radius: 10px;
-  @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-  }
 `;
-
-
 
 export const HomeHeader = styled(Link)`
   color: #6f4ff2;
@@ -58,10 +52,12 @@ export const SearchHeader = styled(TextField)`
     border-radius: 8px;
     background-color: #f1f1f2;
   }
-  @media (max-width: 1024px) {
-   display: none;
+  @media (max-width: 768px) {
+    width: 190px;
   }
-
+  @media (max-width: 497px) {
+    width: 150px;
+  }
 `;
 
 export const NavigationHeader = styled(Box)`

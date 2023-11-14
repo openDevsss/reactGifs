@@ -29,7 +29,7 @@ export default function HeaderMenu({
       PaperProps={{
         elevation: 0,
         sx: {
-          width: "130px",
+          width: "200px",
           padding: "8px",
           overflow: "visible",
           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",

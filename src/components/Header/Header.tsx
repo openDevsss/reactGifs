@@ -21,14 +21,8 @@ import {
   WrapperHeader,
   LogoHeader,
 } from "./styled";
-import {
-  Gif,
-  House,
-  List,
-  MagnifyingGlass,
-  SignOut,
-  ThumbsUp,
-} from "phosphor-react";
+import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
+import logo from "../../images/kub.svg";
 import HeaderBellIcon from "./HeaderBellIcon";
 
 export function Header() {
@@ -58,15 +52,8 @@ export function Header() {
     <WrapperHeader>
       <InformationHeader>
         <HomeHeader to="/">
-          <LogoHeader>
-            <Gif size={50} color="#6f4ff2" weight="duotone" />
-          </LogoHeader>
+          <LogoHeader src={logo} />
         </HomeHeader>
-        <WrapperIcon>
-          <HomeHeader to="/">
-            <House size={20} />
-          </HomeHeader>
-        </WrapperIcon>
         <WrapperIcon>
           <HomeHeader to="/recommendations">
             <ThumbsUp size={20} />
