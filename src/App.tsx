@@ -1,13 +1,17 @@
 import { useEffect } from "react";
-import { Registration } from "./components/Auth/Registration/Registration";
-import { Login } from "./components/Auth/Login/Login";
 import { Route, Routes } from "react-router-dom";
-import { useAppDispatch } from "./redux-toolkit";
-import { checkAuth } from "./features/users/users-slice";
-import { MyProfilePage } from "./pages/MyProfilePage";
-import { NotFoundPage } from "./pages/NotFoundPage";
+
+import { Login } from "./components/Auth/Login/Login";
+import { Registration } from "./components/Auth/Registration/Registration";
 import { PageLayout } from "./components/PageLayout/PageLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { SettingsGif } from "./components/SettingsGif/SettingsGif";
+import { checkAuth } from "./features/users/users-slice";
+import { NotFoundPage } from "./pages/NotFoundPage";
+
+import { useAppDispatch } from "./redux-toolkit";
+import { MyProfilePage } from "./pages/MyProfilePage";
+
 import { HomePage } from "./pages/HomePage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
 import { AddGif } from "./components/AddGif/AddGif";
@@ -24,7 +28,7 @@ export function App() {
       <div className="page">
         <Routes>
           <Route element={<PageLayout />}>
-            <Route element={<HomePage /> } path="/" />
+            <Route element={<HomePage />} path="/" />
             <Route element={<RecommendationsPage />} path="/recommendations" />
             <Route
               element={
@@ -33,6 +37,14 @@ export function App() {
                 </ProtectedRoute>
               }
               path="/my-profile"
+            />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <SettingsGif />
+                </ProtectedRoute>
+              }
+              path="/settings"
             />
             <Route element={<AddGif />} path="gif-add" />
           </Route>

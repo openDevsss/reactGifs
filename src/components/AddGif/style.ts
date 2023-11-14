@@ -47,6 +47,7 @@ export const TitleAddGif = styled(Typography)`
 `;
 export const CreatedWrapper = styled(Box)`
   width: 80%;
+  height: 60vh;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -103,4 +104,12 @@ export const AddGifTag = styled.p`
   :hover {
     background-color: black;
   }
+`;
+export const AddGifItemWrapper = styled(Box)`
+  width: 300px;
+  height: 300px;
+`;
+export const AddGifItem = styled.img`
+  width: 300px;
+  border-radius: 20px;
 `;

@@ -7,7 +7,8 @@ import {
   SignOut,
   UserCircle,
 } from "phosphor-react";
-import { StyledMenuItem } from "./styled";
+
+import { StyledMenuItem } from "./style";
 
 interface HeaderMenuProps {
   anchorEl: null | HTMLElement;

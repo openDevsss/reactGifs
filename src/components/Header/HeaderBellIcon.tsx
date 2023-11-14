@@ -1,4 +1,4 @@
-import { WrapperIcon } from "./styled";
+import { WrapperIcon } from "./style";
 
 export default function HeaderBellIcon() {
   return (

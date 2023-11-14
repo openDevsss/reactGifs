@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import {
   InputAdornment,
   useMediaQuery,
   Tooltip,
   IconButton,
 } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import HeaderMenu from "./HeaderMenu";
+
 import { checkAuth, logOut } from "../../features/users/users-slice";
 import {
   InformationHeader,
@@ -17,10 +18,10 @@ import {
   ProfileName,
   HomeHeader,
   WrapperIcon,
-  SearchHeader,
-  WrapperHeader,
   LogoHeader,
-} from "./styled";
+  WrapperHeader,
+  SearchHeader,
+} from "./style";
 import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
 import logo from "../../images/kub.svg";
 import HeaderBellIcon from "./HeaderBellIcon";
@@ -41,6 +42,7 @@ export function Header() {
     setAnchorEl(null);
     setIsOpen(false);
   };
+
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);

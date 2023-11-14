@@ -12,14 +12,16 @@ import {
   TagList,
   GifsTag,
   FormWrapperStyle,
+  AddGifItem,
+  AddGifItemWrapper,
 } from "./style";
 import { Hashtag } from "../Hashtag/Hashtag";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Gif } from "../../types/GifType";
 export function AddGif() {
   const [tags, setTags] = useState<string[]>([]);
+  const [image, setImage] = useState("");
   const { register, handleSubmit } = useForm<Gif>();
-
   const tagsArray: string[] = [];
   const handleAddTag = (item: string) => {
     setTags((prevTags) => [...prevTags, item]);
@@ -30,24 +32,35 @@ export function AddGif() {
   const onSubmit: SubmitHandler<Gif> = (data) => {
     data.tags = tags;
   };
+  const displayGif = (e: any) => {
+    if (e.target.files && e.target.files[0]) {
+      setImage(URL.createObjectURL(e.target.files[0]));
+    }
+  };
   return (
     <WrapperAddGif>
       <TitleAddGif>Add GIF</TitleAddGif>
       <FormAdded onSubmit={handleSubmit(onSubmit)}>
         <CreatedWrapper>
-          <DragAndDropWrapper>
-            <Button sx={buttonStyle} component="label">
-              Upload Gif
-              <input type="file" hidden />
-            </Button>
-            <Divider>Or</Divider>
-            <FormInput
-              autoComplete="none"
-              {...register("url")}
-              label="Add with URL"
-              size="small"
-            />
-          </DragAndDropWrapper>
+          {Boolean(image) ? (
+            <AddGifItemWrapper>
+              <AddGifItem src={image} />
+            </AddGifItemWrapper>
+          ) : (
+            <DragAndDropWrapper>
+              <Button sx={buttonStyle} component="label">
+                Upload Gif
+                <input onChange={displayGif} type="file" hidden />
+              </Button>
+              <Divider>Or</Divider>
+              <FormInput
+                autoComplete="none"
+                {...register("url")}
+                label="Add with URL"
+                size="small"
+              />
+            </DragAndDropWrapper>
+          )}
           <FormWrapperStyle>
             <FormInput
               autoComplete="none"

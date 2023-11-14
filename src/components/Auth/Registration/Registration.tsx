@@ -1,4 +1,4 @@
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,6 @@ import { registerUser } from "../../../features/users/users-slice";
 import ghost from "../../../images/stickerGhost.webp";
 import { useAppDispatch } from "../../../redux-toolkit";
 import { UserType } from "../../../types/UserType";
-import { ConfirmationPopup } from "../../ConfirmationPopup/ConfirmationPopup";
 import {
   ButtonSubmit,
   Description,
@@ -21,11 +20,11 @@ import {
   WhiteBorderTextField,
   Wrapper,
   WrapperImage,
-} from "../AuthStyled";
+} from "../style";
 
 export function Registration() {
   type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
-  
+
   const { register, handleSubmit } = useForm<RegisterUser>();
   const dispatch = useAppDispatch();
   const navgiate = useNavigate();
@@ -68,7 +67,7 @@ export function Registration() {
         <RedirectText>
           Do you have an account?
           <LinkSign to="/sign-in">
-            <TextSign > Sign in</TextSign>
+            <TextSign> Sign in</TextSign>
           </LinkSign>
         </RedirectText>
       </Wrapper>
@@ -76,7 +75,6 @@ export function Registration() {
         <Title>React Gifs</Title>
         <Box component="img" src={ghost} width={200} height={250} />
       </WrapperImage>
-      <ConfirmationPopup />
     </Section>
   );
 }
