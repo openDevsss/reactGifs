@@ -20,7 +20,7 @@ import {
   WhiteBorderTextField,
   Wrapper,
   WrapperImage,
-} from "../AuthStyle";
+} from "../style";
 
 export function Login() {
   type LoginUser = Pick<UserType, "email" | "password">;

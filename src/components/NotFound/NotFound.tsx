@@ -23,7 +23,7 @@ export function NotFound() {
         <SubtitleNotFound>What to do?</SubtitleNotFound>
         <DescriptionNotFound>
           Go to our <LinkNavigation to="/">home page</LinkNavigation>, which
-          definitely exists, or{" "}
+          definitely exists, or
           <LinkNavigation to="/">write to us</LinkNavigation> - we wil fix
           everything.
         </DescriptionNotFound>

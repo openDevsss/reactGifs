@@ -37,7 +37,7 @@ export default function MyProfile() {
       )}
       <ProfileName>{currentUser?.nickname}</ProfileName>
       <ProfileMailWrapper>
-        <ProfileMail>{/*{currentUser?.email}*/ "andrey@mail.com"}</ProfileMail>
+        <ProfileMail>{currentUser?.email}</ProfileMail>
         <Link to="/settings">
           <Gear
             style={{ cursor: "pointer" }}

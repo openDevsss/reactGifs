@@ -20,7 +20,7 @@ import {
   WhiteBorderTextField,
   Wrapper,
   WrapperImage,
-} from "../AuthStyle";
+} from "../style";
 
 export function Registration() {
   type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
