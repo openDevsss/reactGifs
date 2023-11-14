@@ -11,19 +11,25 @@ import HeaderMenu from "./HeaderMenu";
 import { checkAuth, logOut } from "../../features/users/users-slice";
 import {
   InformationHeader,
-  LogoHeader,
   MyProfileWrapper,
   NavigationHeader,
   ProfileIcon,
   ProfileName,
   HomeHeader,
   WrapperIcon,
+  SearchHeader,
+  WrapperHeader,
+  LogoHeader,
 } from "./styled";
-import logo from "../../images/kub.svg";
-import { List, MagnifyingGlass, SignOut } from "phosphor-react";
+import {
+  Gif,
+  House,
+  List,
+  MagnifyingGlass,
+  SignOut,
+  ThumbsUp,
+} from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
-
-import { SearchHeader, TitleHeader, WrapperHeader } from "./styled";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,10 +57,21 @@ export function Header() {
   return (
     <WrapperHeader>
       <InformationHeader>
-        <LogoHeader src={logo} />
-        <TitleHeader>GIFS</TitleHeader>
-        <HomeHeader to="/"> Home </HomeHeader>
-        <HomeHeader to="/recommendations"> Recommendations </HomeHeader>
+        <HomeHeader to="/">
+          <LogoHeader>
+            <Gif size={50} color="#6f4ff2" weight="duotone" />
+          </LogoHeader>
+        </HomeHeader>
+        <WrapperIcon>
+          <HomeHeader to="/">
+            <House size={20} />
+          </HomeHeader>
+        </WrapperIcon>
+        <WrapperIcon>
+          <HomeHeader to="/recommendations">
+            <ThumbsUp size={20} />
+          </HomeHeader>
+        </WrapperIcon>
         {!isMatches480 && (
           <SearchHeader
             placeholder="search"
