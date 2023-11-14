@@ -1,6 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { registerUser } from "../../../features/users/users-slice";
 import ghost from "../../../images/stickerGhost.webp";
@@ -12,8 +12,10 @@ import {
   Form,
   FormLegend,
   InstructionText,
+  LinkSign,
   RedirectText,
   Section,
+  TextSign,
   Title,
   WhiteBorderTextField,
   Wrapper,
@@ -22,9 +24,11 @@ import {
 
 export function Registration() {
   type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
+
   const { register, handleSubmit } = useForm<RegisterUser>();
   const dispatch = useAppDispatch();
   const navgiate = useNavigate();
+
   const onSubmit: SubmitHandler<RegisterUser> = (data) => {
     dispatch(registerUser(data))
       .unwrap()
@@ -62,14 +66,14 @@ export function Registration() {
         </Form>
         <RedirectText>
           Do you have an account?
-          <Link to="/sign-in">
-            <Typography component="span">Sign in</Typography>
-          </Link>
+          <LinkSign to="/sign-in">
+            <TextSign> Sign in</TextSign>
+          </LinkSign>
         </RedirectText>
       </Wrapper>
       <WrapperImage>
         <Title>React Gifs</Title>
-        <Box component="img" src={ghost} width={300} height={350} />
+        <Box component="img" src={ghost} width={200} height={250} />
       </WrapperImage>
     </Section>
   );

@@ -1,14 +1,11 @@
-import styled from '@emotion/styled';
-import {
-  Avatar, Box, MenuItem, TextField, Typography,
-} from '@mui/material';
-import { Link, NavLink } from 'react-router-dom';
+import styled from "@emotion/styled";
+import { Avatar, Box, MenuItem, TextField, Typography } from "@mui/material";
+import { Link, NavLink } from "react-router-dom";
 
 export const WrapperHeader = styled.header`
   margin: 0;
   width: 100%;
   padding: 19px;
-  border-bottom: 1px solid #5f3db5;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,18 +33,30 @@ export const TitleHeader = styled.h1`
   margin: 0;
   font-size: 20px;
   color: #6f4ff2;
+  cursor: pointer;
+  &:hover {
+    color: #5f3db5;
+  }
   @media (max-width: 768px) {
     font-size: 16px;
   }
 `;
+
+export const HomeHeader = styled(Link)`
+  color: #6f4ff2;
+  font-size: 17px;
+  text-decoration: none;
+  &:hover {
+    color: #5f3db5;
+  }
+`;
+
 export const SearchHeader = styled(TextField)`
   padding: 0;
-
   width: 290px;
   box-sizing: border-box;
-
   input::placeholder {
-    font-family: 'Inter', serif;
+    font-family: "Inter", serif;
   }
   & label.Mui-focused {
     color: #5f3db5;
@@ -105,13 +114,13 @@ export const MyProfileWrapper = styled(Link)`
   justify-content: center;
   cursor: pointer;
 `;
-export const WrapperBellIcon = styled(Box)`
+export const WrapperIcon = styled(Box)`
   background-color: #f1f1f2;
   padding: 10px;
   padding-bottom: 6px;
   border-radius: 8px;
   cursor: pointer;
-  :hover {
+  &hover {
     filter: brightness(90%);
   }
 `;

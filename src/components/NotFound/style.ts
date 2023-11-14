@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 export const WrapperNotFound = styled(Box)`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 1000px;
-  margin: 250px auto;
-  padding: 0 10px;
+  margin: 170px auto;
   align-items: center;
   @media (max-width: 1024px) {
     max-width: 700px;
@@ -74,7 +73,7 @@ export const SubtitleNotFound = styled(Typography)`
 export const DescriptionNotFound = styled(Typography)`
   font-size: 20px;
   margin-bottom: 40px;
-  :last-child {
+  &:last-child {
     margin-bottom: 0px;
   }
   @media (max-width: 1024px) {

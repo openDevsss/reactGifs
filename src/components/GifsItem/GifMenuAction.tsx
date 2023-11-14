@@ -1,36 +1,34 @@
 import Menu from "@mui/material/Menu";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import {
-  GearSix,
-  HeartStraight,
-  Moon,
-  SignOut,
-  UserCircle,
-} from "phosphor-react";
-
-import { StyledMenuItem } from "./style";
-
-interface HeaderMenuProps {
+import { ArrowFatLineDown, Megaphone, Trash } from "phosphor-react";
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import { useAppSelector } from "../../redux-toolkit";
+import { UserType } from "../../types/UserType";
+import { StyledMenuItem } from "./styled";
+interface GifMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
   isOpen: boolean;
+  authorId: UserType["id"];
 }
-export default function HeaderMenu({
+export default function GifMenuAction({
   anchorEl,
   handleClose,
   isOpen,
-}: HeaderMenuProps) {
+  authorId,
+}: GifMenuProps) {
+  const currentUser = useAppSelector(selectCurrentUser);
+  const isMyGif = currentUser?.id === authorId;
   return (
     <Menu
       anchorEl={anchorEl}
-      id="account-menu"
+      id="menu"
       open={isOpen}
       onClose={handleClose}
       onClick={handleClose}
       PaperProps={{
         elevation: 0,
         sx: {
-          width: "230px",
+          width: "150px",
           padding: "8px",
           overflow: "visible",
           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
@@ -53,36 +51,19 @@ export default function HeaderMenu({
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
       <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <UserCircle size={24} color="#5f3db5" />
-        </ListItemIcon>
-        My profile
+        <ArrowFatLineDown size={20} />
+        Download
       </StyledMenuItem>
       <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <HeartStraight size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Favourite
+        <Megaphone size={20} />
+        Report
       </StyledMenuItem>
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <GearSix size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Settings
-      </StyledMenuItem>
-
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <Moon size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Night mode
-      </StyledMenuItem>
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <SignOut size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Logout
-      </StyledMenuItem>
+      {isMyGif && (
+        <StyledMenuItem style={{ color: "#ff0000" }} onClick={handleClose}>
+          <Trash size={20} color="#ff0000" />
+          Delete
+        </StyledMenuItem>
+      )}
     </Menu>
   );
 }

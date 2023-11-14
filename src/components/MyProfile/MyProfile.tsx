@@ -1,5 +1,7 @@
-import { Gear } from "phosphor-react";
 import { useState } from "react";
+import { Gear } from "phosphor-react";
+
+import { Link } from "react-router-dom";
 
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
@@ -16,10 +18,13 @@ import {
   ProfileName,
   ProfileSubscriptions,
   ProfileWrapper,
+  AddedWrapper,
+  AddedButton,
 } from "./style";
 
+import { AddedGifs } from "./AddedGifs/AddedGifs";
 export default function MyProfile() {
-  const [selectTab, setSelectTab] = useState("created");
+  const [selectTab, setSelectTab] = useState("added");
   const currentUser = useAppSelector(selectCurrentUser);
   return (
     <ProfileWrapper>
@@ -33,12 +38,14 @@ export default function MyProfile() {
       <ProfileName>{currentUser?.nickname}</ProfileName>
       <ProfileMailWrapper>
         <ProfileMail>{/*{currentUser?.email}*/ "andrey@mail.com"}</ProfileMail>
-        <Gear
-          style={{ cursor: "pointer" }}
-          size={20}
-          color="#000"
-          weight="light"
-        />
+        <Link to="/settings">
+          <Gear
+            style={{ cursor: "pointer" }}
+            size={20}
+            color="#000"
+            weight="light"
+          />
+        </Link>
       </ProfileMailWrapper>
 
       <ProfileSubscriptions>0 follows</ProfileSubscriptions>
@@ -52,14 +59,17 @@ export default function MyProfile() {
           setSelectTab(tab);
         }}
       >
-        <CustomTab key="saved" value="saved" label="Saved" />
-        <CustomTab key="created" value="created" label="Created" />
+        <CustomTab key="saved" value="saved" label="saved" />
+        <CustomTab key="added" value="added" label="added" />
       </CustomTabs>
-      <CustomTabPanel value={selectTab} index="saved">
-        1235
-      </CustomTabPanel>
-      <CustomTabPanel value={selectTab} index="created">
-        99090
+      <CustomTabPanel value={selectTab} index="saved"></CustomTabPanel>
+      <CustomTabPanel value={selectTab} index="added">
+        <AddedWrapper>
+          <AddedGifs />
+          <Link to="/gif-add">
+            <AddedButton>Add GIF</AddedButton>
+          </Link>
+        </AddedWrapper>
       </CustomTabPanel>
     </ProfileWrapper>
   );
