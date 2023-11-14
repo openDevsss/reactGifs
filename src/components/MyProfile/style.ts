@@ -1,8 +1,5 @@
 import styled from "@emotion/styled";
-<<<<<<< HEAD:src/components/MyProfile/styled.ts
-=======
 import { Box, Tab, Tabs, Button, Typography } from "@mui/material";
->>>>>>> main:src/components/MyProfile/style.ts
 
 export const ProfileWrapper = styled(Box)`
   width: 30%;
@@ -48,11 +45,9 @@ export const ProfileMail = styled.p`
   margin: 0;
   font-size: 14px;
   color: #5f5f5f;
-<<<<<<< HEAD:src/components/MyProfile/styled.ts
   @media (max-width: 768px) {
     font-size: 12px;
   }
-=======
   line-height: 1.5;
 `;
 export const ProfileMailWrapper = styled(Box)`
@@ -60,7 +55,6 @@ export const ProfileMailWrapper = styled(Box)`
   display: flex;
   align-items: center;
   gap: 5px;
->>>>>>> main:src/components/MyProfile/style.ts
 `;
 
 export const ProfileSubscriptions = styled.p`
@@ -148,7 +142,6 @@ export const WrapperInformation = styled(Box)`
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 200px);
   }
-  // TODO: покажу потом почему, поставил такой.
   @media (max-width: 420px) {
     grid-template-columns: repeat(1, 200px);
   }

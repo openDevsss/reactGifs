@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import {
   InputAdornment,
   useMediaQuery,
   Tooltip,
   IconButton,
 } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import HeaderMenu from "./HeaderMenu";
-
 import { checkAuth, logOut } from "../../features/users/users-slice";
 import {
   InformationHeader,
@@ -18,12 +17,18 @@ import {
   ProfileName,
   HomeHeader,
   WrapperIcon,
-  LogoHeader,
-  WrapperHeader,
   SearchHeader,
+  WrapperHeader,
+  LogoHeader,
 } from "./style";
-import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
-import logo from "../../images/kub.svg";
+import {
+  Gif,
+  House,
+  List,
+  MagnifyingGlass,
+  SignOut,
+  ThumbsUp,
+} from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
 
 export function Header() {
@@ -42,7 +47,6 @@ export function Header() {
     setAnchorEl(null);
     setIsOpen(false);
   };
-
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
@@ -54,8 +58,15 @@ export function Header() {
     <WrapperHeader>
       <InformationHeader>
         <HomeHeader to="/">
-          <LogoHeader src={logo} />
+          <LogoHeader>
+            <Gif size={50} color="#6f4ff2" weight="duotone" />
+          </LogoHeader>
         </HomeHeader>
+        <WrapperIcon>
+          <HomeHeader to="/">
+            <House size={20} />
+          </HomeHeader>
+        </WrapperIcon>
         <WrapperIcon>
           <HomeHeader to="/recommendations">
             <ThumbsUp size={20} />
