@@ -20,26 +20,10 @@ export const InformationHeader = styled(Box)`
 `;
 
 export const LogoHeader = styled.img`
-  width: 60px;
-  height: 60px;
-  margin-right: -30px;
-  @media (max-width: 768px) {
-    width: 40px;
-    height: 40px;
-  }
-`;
-
-export const TitleHeader = styled.h1`
-  margin: 0;
-  font-size: 20px;
-  color: #6f4ff2;
-  cursor: pointer;
-  &:hover {
-    color: #5f3db5;
-  }
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
+  background-color: #d4cbe6;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
 `;
 
 export const HomeHeader = styled(Link)`
@@ -68,12 +52,11 @@ export const SearchHeader = styled(TextField)`
     border-radius: 8px;
     background-color: #f1f1f2;
   }
-  @media (max-width: 1024px) {
-    width: 400px;
-  }
   @media (max-width: 768px) {
-    width: 70%;
-    margin-right: 10px;
+    width: 190px;
+  }
+  @media (max-width: 497px) {
+    width: 150px;
   }
 `;
 
@@ -91,17 +74,20 @@ export const LinkNavigation = styled(NavLink)`
   font-size: 16px;
   line-height: 1.5;
 `;
+
 export const ProfileIcon = styled(Avatar)`
   border: 1px solid #29e072;
   width: 44px;
   height: 44px;
   object-fit: cover;
 `;
+
 export const ProfileName = styled(Typography)`
   color: #6f4ff2;
   font-size: 16px;
   padding-left: 25px;
 `;
+
 export const MyProfileWrapper = styled(Link)`
   margin: 0;
   width: 140px;
@@ -114,6 +100,7 @@ export const MyProfileWrapper = styled(Link)`
   justify-content: center;
   cursor: pointer;
 `;
+
 export const WrapperIcon = styled(Box)`
   background-color: #f1f1f2;
   padding: 10px;
@@ -124,6 +111,7 @@ export const WrapperIcon = styled(Box)`
     filter: brightness(90%);
   }
 `;
+
 export const StyledMenuItem = styled(MenuItem)`
   font-size: 16px;
   line-height: 1.5;

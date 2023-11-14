@@ -6,26 +6,25 @@ import {
   Tooltip,
   IconButton,
 } from "@mui/material";
-import { List, MagnifyingGlass, SignOut } from "phosphor-react";
 import { selectCurrentUser } from "../../features/users/users-selectors";
-import logo from "../../images/kub.svg";
-import HeaderBellIcon from "./HeaderBellIcon";
 import HeaderMenu from "./HeaderMenu";
 
 import { checkAuth, logOut } from "../../features/users/users-slice";
 import {
   InformationHeader,
-  LogoHeader,
   MyProfileWrapper,
   NavigationHeader,
   ProfileIcon,
   ProfileName,
-  SearchHeader,
-  TitleHeader,
-  WrapperHeader,
   HomeHeader,
   WrapperIcon,
+  LogoHeader,
+  WrapperHeader,
+  SearchHeader,
 } from "./style";
+import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
+import logo from "../../images/kub.svg";
+import HeaderBellIcon from "./HeaderBellIcon";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,10 +53,14 @@ export function Header() {
   return (
     <WrapperHeader>
       <InformationHeader>
-        <LogoHeader src={logo} />
-        <TitleHeader>GIFS</TitleHeader>
-        <HomeHeader to="/"> Home </HomeHeader>
-        <HomeHeader to="/recommendations"> Recommendations </HomeHeader>
+        <HomeHeader to="/">
+          <LogoHeader src={logo} />
+        </HomeHeader>
+        <WrapperIcon>
+          <HomeHeader to="/recommendations">
+            <ThumbsUp size={20} />
+          </HomeHeader>
+        </WrapperIcon>
         {!isMatches480 && (
           <SearchHeader
             placeholder="search"
