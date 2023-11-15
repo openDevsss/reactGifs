@@ -29,6 +29,7 @@ import {
   ThumbsUp,
 } from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,7 @@ export function Header() {
   const handleLogout = () => {
     dispatch(logOut());
   };
+
   return (
     <WrapperHeader>
       <InformationHeader>
@@ -105,16 +107,18 @@ export function Header() {
               <ProfileIcon src={currentUser?.avatar} />
             </MyProfileWrapper>
           </Tooltip>
-          {Boolean(currentUser) && (
-            <WrapperIcon onClick={handleLogout}>
-              <SignOut
-                size={20}
-                weight="fill"
-                color="#6f4ff2"
-                cursor="pointer"
-              />
-            </WrapperIcon>
-          )}
+          <Link to="/sign-in">
+            {Boolean(currentUser) && (
+              <WrapperIcon onClick={handleLogout}>
+                <SignOut
+                  size={20}
+                  weight="fill"
+                  color="#6f4ff2"
+                  cursor="pointer"
+                />
+              </WrapperIcon>
+            )}
+          </Link>
         </NavigationHeader>
       ) : (
         <>
