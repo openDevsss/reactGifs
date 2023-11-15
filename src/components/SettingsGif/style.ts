@@ -77,3 +77,6 @@ export const ProfileEditInput = styled(TextField)`
     margin-bottom: 0;
   }
 `;
+export const EmailConfirmWrapper = styled.div`
+  margin-left: 20px;
+`;
