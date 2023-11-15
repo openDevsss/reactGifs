@@ -107,8 +107,8 @@ export function Header() {
               <ProfileIcon src={currentUser?.avatar} />
             </MyProfileWrapper>
           </Tooltip>
-          <Link to="/sign-in">
-            {Boolean(currentUser) && (
+          {Boolean(currentUser) && (
+            <Link to="/sign-in">
               <WrapperIcon onClick={handleLogout}>
                 <SignOut
                   size={20}
@@ -117,8 +117,8 @@ export function Header() {
                   cursor="pointer"
                 />
               </WrapperIcon>
-            )}
-          </Link>
+            </Link>
+          )}
         </NavigationHeader>
       ) : (
         <>
