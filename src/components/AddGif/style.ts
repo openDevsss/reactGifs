@@ -63,7 +63,6 @@ export const FormAdded = styled.form`
 `;
 export const FormInput = styled(TextField)`
   margin-top: 5px;
-  margin-bottom: 20px;
   color: #5f3db5;
   & .MuiOutlinedInput-root {
     &.Mui-focused fieldset {
@@ -112,4 +111,9 @@ export const AddGifItemWrapper = styled(Box)`
 export const AddGifItem = styled.img`
   width: 300px;
   border-radius: 20px;
+`;
+export const ErrorMessageAddGif = styled.p`
+  margin: 0;
+  font-size: 12px;
+  color: #ff0000;
 `;

@@ -14,6 +14,7 @@ import {
   FormWrapperStyle,
   AddGifItem,
   AddGifItemWrapper,
+  ErrorMessageAddGif,
 } from "./style";
 import { Hashtag } from "../Hashtag/Hashtag";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -21,7 +22,12 @@ import { Gif } from "../../types/GifType";
 export function AddGif() {
   const [tags, setTags] = useState<string[]>([]);
   const [image, setImage] = useState("");
-  const { register, handleSubmit } = useForm<Gif>();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<Gif>();
   const tagsArray: string[] = [];
   const handleAddTag = (item: string) => {
     setTags((prevTags) => [...prevTags, item]);
@@ -55,10 +61,18 @@ export function AddGif() {
               <Divider>Or</Divider>
               <FormInput
                 autoComplete="none"
-                {...register("url")}
+                {...register("url", {
+                  pattern: {
+                    value: /(http)?s?:?(\/\/[^"']*\.(?:gif|apng|webp|bpg))/,
+                    message: "This is incorrect link",
+                  },
+                })}
                 label="Add with URL"
                 size="small"
               />
+              {errors.url && (
+                <ErrorMessageAddGif>{errors.url.message}</ErrorMessageAddGif>
+              )}
             </DragAndDropWrapper>
           )}
           <FormWrapperStyle>
@@ -102,7 +116,16 @@ export function AddGif() {
             </GifsTag>
           </FormWrapperStyle>
         </CreatedWrapper>
-        <SubmitAddGifButton type="submit">Add</SubmitAddGifButton>
+        <SubmitAddGifButton
+          type="submit"
+          onClick={() => {
+            setError("url", { type: "manual" });
+            // setError("email", { type: "manual" });
+            // setError("password", { type: "manual" });
+          }}
+        >
+          Add
+        </SubmitAddGifButton>
       </FormAdded>
     </WrapperAddGif>
   );
