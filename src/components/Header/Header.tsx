@@ -13,6 +13,7 @@ import {
   ThumbsUp,
 } from "phosphor-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { checkAuth, logOut } from "../../features/users/users-slice";
 import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
@@ -29,16 +30,6 @@ import {
   WrapperHeader,
   WrapperIcon,
 } from "./style";
-import {
-  Gif,
-  House,
-  List,
-  MagnifyingGlass,
-  SignOut,
-  ThumbsUp,
-} from "phosphor-react";
-import HeaderBellIcon from "./HeaderBellIcon";
-import { Link } from "react-router-dom";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
