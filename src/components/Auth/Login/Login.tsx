@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../features/users/users-slice";
 import ghost from "../../../images/stickerGhost.webp";
 import { useAppDispatch } from "../../../redux-toolkit";
-import { UserType } from "../../../types/UserType";
+import type { User } from "../../../types/UserType";
 import {
   ButtonSubmit,
   Description,
@@ -23,7 +23,7 @@ import {
 } from "../style";
 
 export function Login() {
-  type LoginUser = Pick<UserType, "email" | "password">;
+  type LoginUser = Pick<User, "email" | "password">;
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

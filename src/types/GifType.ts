@@ -1,11 +1,11 @@
-import { UserType } from "./UserType";
+import { User } from "./UserType";
 
 export type Gif = {
   id: string;
   title: string;
   description: string;
   url: string;
-  user: UserType;
+  user: User;
   createdAt: string;
   updatedAt: string;
   tags: string[];

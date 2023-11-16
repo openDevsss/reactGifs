@@ -1,6 +1,3 @@
-// import { Box } from "@mui/material";
-// import { Gif } from "../../../types/GifType";
-
 interface GifProfileProps {
   url: string;
   title: string;

@@ -1,6 +1,6 @@
 import { WrapperIcon } from "./style";
 
-export default function HeaderBellIcon() {
+export function HeaderBellIcon() {
   return (
     <WrapperIcon>
       <svg
