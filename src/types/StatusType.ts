@@ -1,1 +1,1 @@
-export type StatusType = 'idle' | 'rejected' | 'loading' | 'received';
+export type Status = "idle" | "rejected" | "loading" | "received";

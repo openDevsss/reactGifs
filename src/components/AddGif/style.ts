@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, TextField, Typography } from "@mui/material";
+
 export const buttonStyle = {
   width: "300px",
   height: "400px",
@@ -13,6 +14,7 @@ export const buttonStyle = {
     backgroundColor: "#dadada",
   },
 };
+
 export const FormWrapperStyle = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -24,10 +26,12 @@ export const WrapperAddGif = styled(Box)`
   display: flex;
   flex-direction: column;
 `;
+
 export const DragAndDropWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
 `;
+
 export const SubmitAddGifButton = styled(Button)`
   margin-top: 40px;
   padding: 8px 20px;
@@ -40,11 +44,13 @@ export const SubmitAddGifButton = styled(Button)`
     background-color: #3e267c;
   }
 `;
+
 export const TitleAddGif = styled(Typography)`
   margin: 0 auto;
   font-size: 20px;
   width: 80%;
 `;
+
 export const CreatedWrapper = styled(Box)`
   width: 80%;
   height: 60vh;
@@ -61,6 +67,7 @@ export const FormAdded = styled.form`
   flex-direction: column;
   gap: 30px;
 `;
+
 export const FormInput = styled(TextField)`
   margin-top: 5px;
   margin-bottom: 20px;
@@ -81,6 +88,7 @@ export const FormInput = styled(TextField)`
     margin-bottom: 0;
   }
 `;
+
 export const TagList = styled(Box)`
   background-color: #f1f1f2;
   display: flex;
@@ -89,12 +97,14 @@ export const TagList = styled(Box)`
   padding: 8px 14px;
   min-height: 25px;
 `;
+
 export const GifsTag = styled(Box)`
   display: flex;
   margin-top: 10px;
   gap: 8px;
   flex-wrap: wrap;
 `;
+
 export const AddGifTag = styled.p`
   padding: 8px 14px;
   border-radius: 6px;
@@ -105,10 +115,12 @@ export const AddGifTag = styled.p`
     background-color: black;
   }
 `;
+
 export const AddGifItemWrapper = styled(Box)`
   width: 300px;
   height: 300px;
 `;
+
 export const AddGifItem = styled.img`
   width: 300px;
   border-radius: 20px;

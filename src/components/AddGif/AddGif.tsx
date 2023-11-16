@@ -1,23 +1,23 @@
-import { useState } from "react";
 import { Button, Divider } from "@mui/material";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import type { Gif } from "../../types/GifType";
+import { Hashtag } from "../Hashtag/Hashtag";
 import {
-  TitleAddGif,
-  WrapperAddGif,
-  FormAdded,
-  CreatedWrapper,
-  buttonStyle,
-  FormInput,
-  DragAndDropWrapper,
-  SubmitAddGifButton,
-  TagList,
-  GifsTag,
-  FormWrapperStyle,
   AddGifItem,
   AddGifItemWrapper,
+  CreatedWrapper,
+  DragAndDropWrapper,
+  FormAdded,
+  FormInput,
+  FormWrapperStyle,
+  GifsTag,
+  SubmitAddGifButton,
+  TagList,
+  TitleAddGif,
+  WrapperAddGif,
+  buttonStyle,
 } from "./style";
-import { Hashtag } from "../Hashtag/Hashtag";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Gif } from "../../types/GifType";
 export function AddGif() {
   const [tags, setTags] = useState<string[]>([]);
   const [image, setImage] = useState("");
