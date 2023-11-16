@@ -2,15 +2,15 @@ import Menu from "@mui/material/Menu";
 import { ArrowFatLineDown, Megaphone, Trash } from "phosphor-react";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
-import { UserType } from "../../types/UserType";
+import type { User } from "../../types/UserType";
 import { StyledMenuItem } from "./styled";
 interface GifMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
   isOpen: boolean;
-  authorId: UserType["id"];
+  authorId: User["id"];
 }
-export default function GifMenuAction({
+export function GifMenuAction({
   anchorEl,
   handleClose,
   isOpen,

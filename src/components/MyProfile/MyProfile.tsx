@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Gear } from "phosphor-react";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -9,6 +9,8 @@ import { CustomTab } from "../Custom/CustomTab";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 import { CustomTabs } from "../Custom/CustomTabs";
 import {
+  AddedButton,
+  AddedWrapper,
   ButtonsContainer,
   ProfileAvatar,
   ProfileAvatarLetter,
@@ -18,12 +20,10 @@ import {
   ProfileName,
   ProfileSubscriptions,
   ProfileWrapper,
-  AddedWrapper,
-  AddedButton,
 } from "./style";
 
 import { AddedGifs } from "./AddedGifs/AddedGifs";
-export default function MyProfile() {
+export function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
   const currentUser = useAppSelector(selectCurrentUser);
   return (

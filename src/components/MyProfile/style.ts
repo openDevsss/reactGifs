@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Tab, Tabs, Button, Typography } from "@mui/material";
+import { Box, Button, Tab, Tabs, Typography } from "@mui/material";
 
 export const ProfileWrapper = styled(Box)`
   width: 30%;

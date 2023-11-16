@@ -1,4 +1,6 @@
 import { Modal } from "@mui/material";
+import { EnvelopeOpen } from "phosphor-react";
+import VerificationInput from "react-verification-input";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
 import {
@@ -9,8 +11,6 @@ import {
   VerifyPopupWrapper,
   style,
 } from "./style";
-import { EnvelopeOpen } from "phosphor-react";
-import VerificationInput from "react-verification-input";
 export function ConfirmationPopup() {
   const currentUser = useAppSelector(selectCurrentUser);
   return (

@@ -1,25 +1,9 @@
-import { useEffect, useState } from "react";
 import {
-  InputAdornment,
-  useMediaQuery,
-  Tooltip,
   IconButton,
+  InputAdornment,
+  Tooltip,
+  useMediaQuery,
 } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import HeaderMenu from "./HeaderMenu";
-import { checkAuth, logOut } from "../../features/users/users-slice";
-import {
-  InformationHeader,
-  MyProfileWrapper,
-  NavigationHeader,
-  ProfileIcon,
-  ProfileName,
-  HomeHeader,
-  WrapperIcon,
-  SearchHeader,
-  WrapperHeader,
-} from "./style";
 import {
   Gif,
   House,
@@ -28,7 +12,23 @@ import {
   SignOut,
   ThumbsUp,
 } from "phosphor-react";
-import HeaderBellIcon from "./HeaderBellIcon";
+import { useEffect, useState } from "react";
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import { checkAuth, logOut } from "../../features/users/users-slice";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
+import { HeaderBellIcon } from "./HeaderBellIcon";
+import { HeaderMenu } from "./HeaderMenu";
+import {
+  HomeHeader,
+  InformationHeader,
+  MyProfileWrapper,
+  NavigationHeader,
+  ProfileIcon,
+  ProfileName,
+  SearchHeader,
+  WrapperHeader,
+  WrapperIcon,
+} from "./style";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
