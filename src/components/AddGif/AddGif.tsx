@@ -28,7 +28,7 @@ export function AddGif() {
     setError,
     formState: { errors },
   } = useForm<Gif>();
-  const tagsArray: string[] = [];
+  const selectedTags: string[] = [];
   const handleAddTag = (item: string) => {
     setTags((prevTags) => [...prevTags, item]);
   };
@@ -136,7 +136,7 @@ export function AddGif() {
               </TagList>
             )}
             <GifsTag>
-              {tagsArray
+              {selectedTags
                 ?.filter((data) => !tags.includes(data))
                 .map((tag, index) => {
                   return (
@@ -154,8 +154,6 @@ export function AddGif() {
           type="submit"
           onClick={() => {
             setError("url", { type: "manual" });
-            // setError("email", { type: "manual" });
-            // setError("password", { type: "manual" });
           }}
         >
           Add

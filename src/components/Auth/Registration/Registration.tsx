@@ -42,7 +42,6 @@ export function Registration() {
         navgiate("/sign-in");
       });
   };
-  console.log(errors);
   return (
     <Section>
       <Wrapper>

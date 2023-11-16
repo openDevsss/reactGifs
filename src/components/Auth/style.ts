@@ -127,7 +127,6 @@ export const WrapperImage = styled(Box)`
 `;
 export const ErrorMessageRegistration = styled.p`
   margin: 0;
-  /* margin-top: 5px; */
   font-size: 12px;
   color: #ff0000;
 `;
