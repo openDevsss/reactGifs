@@ -19,10 +19,10 @@ import {
   WrapperIcon,
   SearchHeader,
   WrapperHeader,
-  // LogoHeader,
+  LogoHeader,
 } from "./style";
 import {
-  // Gif,
+  Gif,
   House,
   List,
   MagnifyingGlass,
@@ -58,9 +58,9 @@ export function Header() {
     <WrapperHeader>
       <InformationHeader>
         <HomeHeader to="/">
-          {/* <LogoHeader>
+          <LogoHeader>
             <Gif size={50} color="#6f4ff2" weight="duotone" />
-          </LogoHeader> */}
+          </LogoHeader>
         </HomeHeader>
         <WrapperIcon>
           <HomeHeader to="/">
