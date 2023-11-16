@@ -29,9 +29,10 @@ export function Registration() {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
-  } = useForm<RegisterUser>();
+  } = useForm<RegisterUser>({
+    mode: "onSubmit",
+  });
   const dispatch = useAppDispatch();
   const navgiate = useNavigate();
 
@@ -122,16 +123,7 @@ export function Registration() {
               {errors.password.message}
             </ErrorMessageRegistration>
           )}
-          <ButtonSubmit
-            type="submit"
-            onClick={() => {
-              setError("nickname", { type: "manual" });
-              setError("email", { type: "manual" });
-              setError("password", { type: "manual" });
-            }}
-          >
-            sign up
-          </ButtonSubmit>
+          <ButtonSubmit type="submit">sign up</ButtonSubmit>
         </Form>
         <RedirectText>
           Do you have an account?

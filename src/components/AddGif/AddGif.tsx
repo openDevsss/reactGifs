@@ -25,9 +25,10 @@ export function AddGif() {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
-  } = useForm<Gif>();
+  } = useForm<Gif>({
+    mode: "onSubmit",
+  });
   const selectedTags: string[] = [];
   const handleAddTag = (item: string) => {
     setTags((prevTags) => [...prevTags, item]);
@@ -150,14 +151,7 @@ export function AddGif() {
             </GifsTag>
           </FormWrapperStyle>
         </CreatedWrapper>
-        <SubmitAddGifButton
-          type="submit"
-          onClick={() => {
-            setError("url", { type: "manual" });
-          }}
-        >
-          Add
-        </SubmitAddGifButton>
+        <SubmitAddGifButton type="submit">Add</SubmitAddGifButton>
       </FormAdded>
     </WrapperAddGif>
   );
