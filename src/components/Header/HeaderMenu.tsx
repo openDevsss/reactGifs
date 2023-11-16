@@ -1,5 +1,5 @@
-import Menu from "@mui/material/Menu";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import Menu from "@mui/material/Menu";
 import {
   GearSix,
   HeartStraight,
@@ -15,7 +15,7 @@ interface HeaderMenuProps {
   handleClose: () => void;
   isOpen: boolean;
 }
-export default function HeaderMenu({
+export function HeaderMenu({
   anchorEl,
   handleClose,
   isOpen,

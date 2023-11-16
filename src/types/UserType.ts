@@ -1,4 +1,4 @@
-export type UserType = {
+export type User = {
   avatar: string;
   isSuccess: boolean;
   id: string;

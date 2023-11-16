@@ -1,28 +1,39 @@
-import { useState } from "react";
 import { Button, Divider } from "@mui/material";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import type { Gif } from "../../types/GifType";
+import { Hashtag } from "../Hashtag/Hashtag";
 import {
-  TitleAddGif,
-  WrapperAddGif,
-  FormAdded,
+  AddGifItem,
+  AddGifItemWrapper,
   CreatedWrapper,
-  buttonStyle,
-  FormInput,
   DragAndDropWrapper,
+  FormAdded,
+  FormInput,
+  FormWrapperStyle,
+  GifsTag,
   SubmitAddGifButton,
   TagList,
   GifsTag,
   FormWrapperStyle,
   AddGifItem,
   AddGifItemWrapper,
+  ErrorMessageAddGif,
+  TitleAddGif,
+  WrapperAddGif,
+  buttonStyle,
 } from "./style";
-import { Hashtag } from "../Hashtag/Hashtag";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Gif } from "../../types/GifType";
 export function AddGif() {
   const [tags, setTags] = useState<string[]>([]);
   const [image, setImage] = useState("");
-  const { register, handleSubmit } = useForm<Gif>();
-  const tagsArray: string[] = [];
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Gif>({
+    mode: "onSubmit",
+  });
+  const selectedTags: string[] = [];
   const handleAddTag = (item: string) => {
     setTags((prevTags) => [...prevTags, item]);
   };
@@ -55,25 +66,67 @@ export function AddGif() {
               <Divider>Or</Divider>
               <FormInput
                 autoComplete="none"
-                {...register("url")}
+                {...register("url", {
+                  required: {
+                    value: true,
+                    message: "This field cannot be empty",
+                  },
+                  pattern: {
+                    value: /(http)?s?:?(\/\/[^"']*\.(?:gif|apng|webp|bpg))/,
+                    message: "This is incorrect link",
+                  },
+                })}
                 label="Add with URL"
                 size="small"
               />
+              {errors.url && (
+                <ErrorMessageAddGif>{errors.url.message}</ErrorMessageAddGif>
+              )}
             </DragAndDropWrapper>
           )}
           <FormWrapperStyle>
             <FormInput
               autoComplete="none"
-              {...register("title")}
+              {...register("title", {
+                required: {
+                  value: true,
+                  message: "This field cannot be empty",
+                },
+                minLength: {
+                  value: 3,
+                  message: "Min length 3 symbols",
+                },
+                maxLength: {
+                  value: 25,
+                  message: "Max length 25 symbols",
+                },
+              })}
               label="Title"
               size="small"
             />
+            {errors.title && (
+              <ErrorMessageAddGif>{errors.title.message}</ErrorMessageAddGif>
+            )}
             <FormInput
               autoComplete="none"
-              {...register("description")}
+              {...register("description", {
+                required: {
+                  value: true,
+                  message: "This field cannot be empty",
+                },
+                minLength: {
+                  value: 5,
+                  message: "Min length 5 symbols",
+                },
+              })}
               label="Description"
               multiline
             />
+            {errors.description && (
+              <ErrorMessageAddGif>
+                {errors.description.message}
+              </ErrorMessageAddGif>
+            )}
             {Boolean(tags.length) && (
               <TagList>
                 {tags.map((tag, index) => {
@@ -88,7 +141,7 @@ export function AddGif() {
               </TagList>
             )}
             <GifsTag>
-              {tagsArray
+              {selectedTags
                 ?.filter((data) => !tags.includes(data))
                 .map((tag, index) => {
                   return (

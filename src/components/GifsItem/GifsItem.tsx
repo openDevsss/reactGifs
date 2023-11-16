@@ -1,27 +1,27 @@
+import { IconButton } from "@mui/material";
+import {
+  DotsThreeOutlineVertical,
+  LinkSimple,
+  ShareNetwork,
+} from "phosphor-react";
 import React, { useState } from "react";
+import type { Gif } from "../../types/GifType";
+import { GifMenuAction } from "./GifMenuAction";
 import {
   CommentsContainer,
   CommentsTitle,
   ContainerGif,
   GifAnimation,
-  GifHeadInformation,
-  GifUserInformation,
-  GifUserAvatar,
-  GifUserNickname,
-  GifMenuItem,
-  GifDescription,
   GifComment,
+  GifDescription,
+  GifHeadInformation,
   GifInput,
+  GifMenuItem,
+  GifUserAvatar,
+  GifUserInformation,
+  GifUserNickname,
   GifWrapper,
 } from "./styled";
-import { IconButton } from "@mui/material";
-import {
-  LinkSimple,
-  ShareNetwork,
-  DotsThreeOutlineVertical,
-} from "phosphor-react";
-import GifMenuAction from "./GifMenuAction";
-import { Gif } from "../../types/GifType";
 
 interface GifItemsProps extends Gif {}
 

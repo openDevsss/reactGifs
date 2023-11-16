@@ -19,12 +19,15 @@ export const SettingsTab = styled(Tab)`
   background-color: transparent;
   align-self: start;
 `;
+
 export const ConfirmEmailPanel = styled(CustomTabPanel)`
   display: flex;
   flex-direction: column;
 `;
+
 export const ConfirmEmailPanelDescription = styled(Typography)`
   font-size: 20px;
 `;
+
 export const ConfirmEmailPanelButton = styled(Button)``;
 export const SettingsTabPanel = styled(Box)``;
