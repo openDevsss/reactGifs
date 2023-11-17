@@ -54,7 +54,7 @@ export const ProfileEditAvatar = styled.img`
   object-fit: cover;
 `;
 
-export const ProfileEditAvatarButton = styled(Button)`
+export const ProfileEditSubmitButton = styled(Button)`
   margin-top: 20px;
   color: #000;
   background-color: #f1f1f2;

@@ -9,9 +9,9 @@ import {
   EditProfileWrapper,
   ErrorMessage,
   ProfileEditAvatar,
-  ProfileEditAvatarButton,
   ProfileEditForm,
   ProfileEditInput,
+  ProfileEditSubmitButton,
 } from "./style";
 
 export default function ProfileEdit() {
@@ -33,15 +33,7 @@ export default function ProfileEdit() {
   return (
     <EditProfileWrapper>
       <ProfileEditAvatar src={currentUser?.avatar} />
-      <ProfileEditForm
-        onSubmit={handleSubmit((data) =>
-          onSubmit({
-            avatar: data.avatar,
-            email: data.email,
-            nickname: data.nickname,
-          })
-        )}
-      >
+      <ProfileEditForm onSubmit={handleSubmit(onSubmit)}>
         <ProfileEditInput
           // FIXME: исправить required и в никнейме и в емайле !
           {...register("avatar", {
@@ -107,7 +99,7 @@ export default function ProfileEdit() {
           size="small"
         />
         {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
-        <ProfileEditAvatarButton type="submit">Change</ProfileEditAvatarButton>
+        <ProfileEditSubmitButton type="submit">Change</ProfileEditSubmitButton>
       </ProfileEditForm>
     </EditProfileWrapper>
   );
