@@ -3,7 +3,7 @@ import { selectCurrentUser } from "../../features/users/users-selectors";
 import { updateCurrentUser } from "../../features/users/users-slice";
 
 import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
-import { UserType } from "../../types/UserType";
+import type { User } from "../../types/UserType";
 
 import {
   EditProfileWrapper,
@@ -16,7 +16,7 @@ import {
 
 export default function ProfileEdit() {
   const dispatch = useAppDispatch();
-  type ChangedUserData = Pick<UserType, "email" | "avatar" | "nickname">;
+  type ChangedUserData = Pick<User, "email" | "avatar" | "nickname">;
   const {
     register,
     handleSubmit,

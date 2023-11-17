@@ -6,25 +6,29 @@ import {
   Tooltip,
   useMediaQuery,
 } from "@mui/material";
-import { List, MagnifyingGlass, SignOut } from "phosphor-react";
 
+import {
+  Gif,
+  House,
+  List,
+  MagnifyingGlass,
+  SignOut,
+  ThumbsUp,
+} from "phosphor-react";
+import { Link } from "react-router-dom";
 import { selectCurrentUser } from "../../features/users/users-selectors";
-import logo from "../../images/kub.svg";
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
-import HeaderBellIcon from "./HeaderBellIcon";
-import HeaderMenu from "./HeaderMenu";
-
 import { checkAuth, logOut } from "../../features/users/users-slice";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
+import { HeaderBellIcon } from "./HeaderBellIcon";
+import { HeaderMenu } from "./HeaderMenu";
 import {
   HomeHeader,
   InformationHeader,
-  LogoHeader,
   MyProfileWrapper,
   NavigationHeader,
   ProfileIcon,
   ProfileName,
   SearchHeader,
-  TitleHeader,
   WrapperHeader,
   WrapperIcon,
 } from "./style";
@@ -45,7 +49,6 @@ export function Header() {
     setAnchorEl(null);
     setIsOpen(false);
   };
-
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
@@ -54,13 +57,23 @@ export function Header() {
   const handleLogout = () => {
     dispatch(logOut());
   };
+
   return (
     <WrapperHeader>
       <InformationHeader>
-        <LogoHeader src={logo} />
-        <TitleHeader>GIFS</TitleHeader>
-        <HomeHeader to="/"> Home </HomeHeader>
-        <HomeHeader to="/recommendations"> Recommendations </HomeHeader>
+        <HomeHeader to="/">
+          <Gif size={50} color="#6f4ff2" weight="duotone" />
+        </HomeHeader>
+        <WrapperIcon>
+          <HomeHeader to="/">
+            <House size={20} />
+          </HomeHeader>
+        </WrapperIcon>
+        <WrapperIcon>
+          <HomeHeader to="/recommendations">
+            <ThumbsUp size={20} />
+          </HomeHeader>
+        </WrapperIcon>
         {!isMatches480 && (
           <SearchHeader
             placeholder="search"
@@ -98,14 +111,16 @@ export function Header() {
             </MyProfileWrapper>
           </Tooltip>
           {Boolean(currentUser) && (
-            <WrapperIcon onClick={handleLogout}>
-              <SignOut
-                size={20}
-                weight="fill"
-                color="#6f4ff2"
-                cursor="pointer"
-              />
-            </WrapperIcon>
+            <Link to="/sign-in">
+              <WrapperIcon onClick={handleLogout}>
+                <SignOut
+                  size={20}
+                  weight="fill"
+                  color="#6f4ff2"
+                  cursor="pointer"
+                />
+              </WrapperIcon>
+            </Link>
           )}
         </NavigationHeader>
       ) : (

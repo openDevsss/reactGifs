@@ -106,3 +106,12 @@ export const ErrorMessage = styled.p`
   color: #ff0000;
   align-self: start;
 `;
+
+export const ConfirmEmailPanel = styled(CustomTabPanel)`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ConfirmEmailPanelDescription = styled(Typography)`
+  font-size: 20px;
+`;

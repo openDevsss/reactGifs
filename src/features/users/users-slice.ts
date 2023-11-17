@@ -1,17 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { Extra } from "../../types/ExtraType";
-import { StatusType } from "../../types/StatusType";
-import { UserType } from "../../types/UserType";
-
+import type { Extra } from "../../types/ExtraType";
+import type { Status } from "../../types/StatusType";
+import type { User } from "../../types/UserType";
 type AuthInitialState = {
-  user: UserType | null;
-  status: StatusType;
+  user: User | null;
+  status: Status;
   error: string | null;
   isAuth: boolean;
 };
-type RegisterUserType = Pick<UserType, "email" | "password" | "nickname">;
-type LoginUserType = Pick<UserType, "email" | "password">;
+type RegisterUserType = Pick<User, "email" | "password" | "nickname">;
+type LoginUserType = Pick<User, "email" | "password">;
 const initialState: AuthInitialState = {
   user: null,
   status: "idle",
@@ -36,7 +35,7 @@ export const registerUser = createAsyncThunk<
 );
 
 export const loginUser = createAsyncThunk<
-  UserType,
+  User,
   LoginUserType,
   { extra: Extra; rejectWithValue: string }
 >(
@@ -81,7 +80,7 @@ export const updateCurrentUser = createAsyncThunk<
 );
 
 export const checkAuth = createAsyncThunk<
-  UserType,
+  User,
   string,
   { extra: Extra; rejectWithValue: string }
 >("@@user/isAuth", async (jwt, { extra: { client, api }, rejectWithValue }) => {

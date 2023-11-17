@@ -15,6 +15,7 @@ export const ContainerFooter = styled(Box)`
   justify-content: space-between;
   align-items: center;
 `;
+
 export const PresentationFooter = styled(Box)`
   display: flex;
   justify-content: flex-start;
