@@ -1,6 +1,6 @@
 import { AddedTitle, WrapperInformation } from "../style";
 import { GifProfile } from "./GifProfile";
-import { useGetMyGifs } from "./hooks";
+import { useGetMyGifs } from "./hooks/useGetMyGifs";
 
 export const AddedGifs = () => {
   const { data: myGifs } = useGetMyGifs();

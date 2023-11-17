@@ -1,13 +1,29 @@
-import { SettingsLayout } from "../PageLayout/SettingsLayout";
-import { ConfirmEmailPanelButton, ConfirmEmailPanelDescription } from "./style";
+import { useState } from "react";
+
+import { ConfirmationPopup } from "../ConfirmationPopup/ConfirmationPopup";
+import {
+  ConfirmEmailDescription,
+  ConfirmEmailPanelButton,
+  EmailConfirmWrapper,
+} from "./style";
 
 export function EmailConfirmation() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleCloseEmailConfirmationPopup = () => {
+    setIsOpen(!isOpen);
+  };
   return (
-    <SettingsLayout>
-      <ConfirmEmailPanelDescription>
+    <EmailConfirmWrapper>
+      <ConfirmEmailDescription>
         If you want to upload and save GIF's, you need to confirm your Email
-      </ConfirmEmailPanelDescription>
-      <ConfirmEmailPanelButton>Confirm</ConfirmEmailPanelButton>
-    </SettingsLayout>
+      </ConfirmEmailDescription>
+      <ConfirmEmailPanelButton onClick={() => setIsOpen(true)}>
+        Submit
+      </ConfirmEmailPanelButton>
+      <ConfirmationPopup
+        onClose={handleCloseEmailConfirmationPopup}
+        isOpen={isOpen}
+      />
+    </EmailConfirmWrapper>
   );
 }

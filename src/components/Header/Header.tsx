@@ -1,9 +1,12 @@
+import { useEffect, useState } from "react";
+
 import {
   IconButton,
   InputAdornment,
   Tooltip,
   useMediaQuery,
 } from "@mui/material";
+
 import {
   Gif,
   House,
@@ -12,7 +15,6 @@ import {
   SignOut,
   ThumbsUp,
 } from "phosphor-react";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { checkAuth, logOut } from "../../features/users/users-slice";
@@ -50,6 +52,7 @@ export function Header() {
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
+
   // TODO: нужна логика для редиректа
   const handleLogout = () => {
     dispatch(logOut());

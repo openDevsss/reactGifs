@@ -1,5 +1,5 @@
 import { Modal } from "@mui/material";
-import { EnvelopeOpen } from "phosphor-react";
+import { EnvelopeOpen, X as CloseIcon } from "phosphor-react";
 import VerificationInput from "react-verification-input";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
@@ -8,14 +8,20 @@ import {
   PopupDescription,
   PopupEmail,
   PopupTitle,
-  VerifyPopupWrapper,
   style,
+  VerifyPopupWrapper,
 } from "./style";
-export function ConfirmationPopup() {
+
+import "./index.css";
+interface ConfirmationProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+export function ConfirmationPopup({ isOpen, onClose }: ConfirmationProps) {
   const currentUser = useAppSelector(selectCurrentUser);
   return (
-    <Modal open={false}>
-      <VerifyPopupWrapper sx={{ ...style }}>
+    <Modal open={isOpen}>
+      <VerifyPopupWrapper sx={style}>
         <EnvelopeOpen size={100} color="#5f3db5" weight="thin" />
         <PopupTitle>Verify your email</PopupTitle>
         <PopupDescription>Please enter 6 digit code sent to</PopupDescription>
@@ -31,7 +37,17 @@ export function ConfirmationPopup() {
           inputProps={{ inputMode: "numeric" }}
           placeholder=""
         />
-        <PopupButton>Confirm</PopupButton>
+        <CloseIcon
+          onClick={onClose}
+          size={32}
+          style={{
+            position: "absolute",
+            right: -25,
+            top: -25,
+            cursor: "pointer",
+          }}
+        />
+        <PopupButton onClick={onClose}>Confirm</PopupButton>
       </VerifyPopupWrapper>
     </Modal>
   );

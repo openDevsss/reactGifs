@@ -3,7 +3,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { Extra } from "../../types/ExtraType";
 import type { Status } from "../../types/StatusType";
 import type { User } from "../../types/UserType";
-
 type AuthInitialState = {
   user: User | null;
   status: Status;
@@ -58,6 +57,28 @@ export const loginUser = createAsyncThunk<
   }
 );
 
+export const updateCurrentUser = createAsyncThunk<
+  any,
+  any,
+  { extra: Extra; rejectWithValue: string }
+>(
+  "@@user/update",
+  async (data, { extra: { client, api }, rejectWithValue }) => {
+    try {
+      const jwt = localStorage.getItem("jwt");
+      const res = await client.patch(api.UPDATE_CURRENT_USER, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      return res.data;
+    } catch (err) {
+      return rejectWithValue("Ошибка");
+    }
+  }
+);
+
 export const checkAuth = createAsyncThunk<
   User,
   string,
@@ -106,6 +127,11 @@ const UserSlice = createSlice({
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isAuth = true;
         state.user = action.payload;
+      })
+      .addCase(updateCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload[0];
+        state.error = null;
+        state.status = "received";
       });
   },
 });

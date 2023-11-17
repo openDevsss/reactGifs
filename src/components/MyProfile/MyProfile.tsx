@@ -13,7 +13,6 @@ import {
   AddedWrapper,
   ButtonsContainer,
   ProfileAvatar,
-  ProfileAvatarLetter,
   ProfileButton,
   ProfileMail,
   ProfileMailWrapper,
@@ -28,13 +27,7 @@ export function MyProfile() {
   const currentUser = useAppSelector(selectCurrentUser);
   return (
     <ProfileWrapper>
-      {currentUser?.avatar ? (
-        <ProfileAvatar src={currentUser.avatar} />
-      ) : (
-        <ProfileAvatarLetter>
-          {currentUser?.nickname.slice(0, 1)}
-        </ProfileAvatarLetter>
-      )}
+      <ProfileAvatar src={currentUser?.avatar} />
       <ProfileName>{currentUser?.nickname}</ProfileName>
       <ProfileMailWrapper>
         <ProfileMail>{currentUser?.email}</ProfileMail>
