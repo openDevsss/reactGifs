@@ -1,39 +1,113 @@
-import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { selectCurrentUser } from "../../features/users/users-selectors";
+import { updateCurrentUser } from "../../features/users/users-slice";
 
-import { useAppSelector } from "../../redux-toolkit";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
+import { UserType } from "../../types/UserType";
+
 import {
   EditProfileWrapper,
+  ErrorMessage,
   ProfileEditAvatar,
   ProfileEditAvatarButton,
-  ProfileEditInput,
   ProfileEditForm,
+  ProfileEditInput,
 } from "./style";
 
 export default function ProfileEdit() {
+  const dispatch = useAppDispatch();
+  type ChangedUserData = Pick<UserType, "email" | "avatar" | "nickname">;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ChangedUserData>();
+  const onSubmit: SubmitHandler<ChangedUserData> = (data) => {
+    dispatch(updateCurrentUser(data))
+      .unwrap()
+      .then(() => reset());
+  };
   const currentUser = useAppSelector(selectCurrentUser);
-  const [nickname, setNickname] = useState(currentUser?.nickname);
-  const [email, setEmail] = useState(currentUser?.email);
+
   return (
     <EditProfileWrapper>
       <ProfileEditAvatar src={currentUser?.avatar} />
-      <ProfileEditForm>
-        <ProfileEditInput label="url" autoComplete="none" size="small" />
+      <ProfileEditForm
+        onSubmit={handleSubmit((data) =>
+          onSubmit({
+            avatar: data.avatar,
+            email: data.email,
+            nickname: data.nickname,
+          })
+        )}
+      >
         <ProfileEditInput
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
+          // FIXME: исправить required и в никнейме и в емайле !
+          {...register("avatar", {
+            required: {
+              value: true,
+              message: "This field cannot be empty",
+            },
+            pattern: {
+              value:
+                /(http)?s?:?(\/\/[^"']*\.(?:jpeg|png|webp|gif|raw|tiff|psd|svg|jpg))/,
+              message: "This is incorrect link",
+            },
+          })}
+          label="url"
+          autoComplete="none"
+          size="small"
+        />
+        {errors.avatar && <ErrorMessage>{errors.avatar.message}</ErrorMessage>}
+        <ProfileEditInput
+          {...register("nickname", {
+            required: {
+              value: true,
+              message: "This field cannot be empty",
+            },
+            minLength: {
+              value: 3,
+              message: "Min length 3 symbols",
+            },
+            maxLength: {
+              value: 20,
+              message: "Max length 20 symbols",
+            },
+          })}
           label="nickname"
           autoComplete="none"
           size="small"
         />
+        {errors.nickname && (
+          <ErrorMessage>{errors.nickname.message}</ErrorMessage>
+        )}
         <ProfileEditInput
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          {...register("email", {
+            required: {
+              value: true,
+              message: "This field cannot be empty",
+            },
+            pattern: {
+              value:
+                /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+              message: "Please enter correct email",
+            },
+            minLength: {
+              value: 6,
+              message: "Min length 3 symbols",
+            },
+            maxLength: {
+              value: 25,
+              message: "Max length 20 symbols",
+            },
+          })}
           label="email"
           autoComplete="none"
           size="small"
         />
-        <ProfileEditAvatarButton>Change</ProfileEditAvatarButton>
+        {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+        <ProfileEditAvatarButton type="submit">Change</ProfileEditAvatarButton>
       </ProfileEditForm>
     </EditProfileWrapper>
   );

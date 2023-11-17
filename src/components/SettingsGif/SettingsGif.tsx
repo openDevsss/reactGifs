@@ -4,7 +4,12 @@ import { CustomTabPanel } from "../Custom/CustomTabPanel";
 
 import { EmailConfirmation } from "./EmailConfirmation";
 import ProfileEdit from "./ProfileEdit";
-import { SettingsTab, SettingsTabContainer, WrapperSettingsGif } from "./style";
+import {
+  EditProfileTabPanel,
+  SettingsTab,
+  SettingsTabContainer,
+  WrapperSettingsGif,
+} from "./style";
 
 export function SettingsGif() {
   const [selectTab, setSelectTab] = useState("editProfile");
@@ -32,9 +37,9 @@ export function SettingsGif() {
         <CustomTabPanel value={selectTab} index="confirmEmail">
           <EmailConfirmation />
         </CustomTabPanel>
-        <CustomTabPanel value={selectTab} index="editProfile">
+        <EditProfileTabPanel value={selectTab} index="editProfile">
           <ProfileEdit />
-        </CustomTabPanel>
+        </EditProfileTabPanel>
       </WrapperSettingsGif>
     </SettingsLayout>
   );

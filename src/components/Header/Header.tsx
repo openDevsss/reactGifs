@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
+
 import {
-  InputAdornment,
-  useMediaQuery,
-  Tooltip,
   IconButton,
+  InputAdornment,
+  Tooltip,
+  useMediaQuery,
 } from "@mui/material";
 import { List, MagnifyingGlass, SignOut } from "phosphor-react";
+
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import logo from "../../images/kub.svg";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import HeaderBellIcon from "./HeaderBellIcon";
 import HeaderMenu from "./HeaderMenu";
 
 import { checkAuth, logOut } from "../../features/users/users-slice";
 import {
+  HomeHeader,
   InformationHeader,
   LogoHeader,
   MyProfileWrapper,
@@ -23,7 +26,6 @@ import {
   SearchHeader,
   TitleHeader,
   WrapperHeader,
-  HomeHeader,
   WrapperIcon,
 } from "./style";
 
@@ -47,6 +49,7 @@ export function Header() {
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
+
   // TODO: нужна логика для редиректа
   const handleLogout = () => {
     dispatch(logOut());

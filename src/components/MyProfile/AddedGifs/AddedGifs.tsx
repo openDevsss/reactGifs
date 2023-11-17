@@ -1,5 +1,5 @@
 import { GifProfile } from "./GifProfile";
-import { useGetMyGifs } from "./hooks";
+import { useGetMyGifs } from "./hooks/useGetMyGifs";
 import { WrapperInformation, AddedTitle } from "../style";
 
 export const AddedGifs = () => {

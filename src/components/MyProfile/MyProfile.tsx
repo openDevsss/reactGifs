@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Gear } from "phosphor-react";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -9,17 +9,13 @@ import { CustomTab } from "../Custom/CustomTab";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 import { CustomTabs } from "../Custom/CustomTabs";
 import {
-  ButtonsContainer,
-  ProfileAvatar,
-  ProfileAvatarLetter,
-  ProfileButton,
+  AddedButton, AddedWrapper, ButtonsContainer,
+  ProfileAvatar, ProfileButton,
   ProfileMail,
   ProfileMailWrapper,
   ProfileName,
   ProfileSubscriptions,
-  ProfileWrapper,
-  AddedWrapper,
-  AddedButton,
+  ProfileWrapper
 } from "./style";
 
 import { AddedGifs } from "./AddedGifs/AddedGifs";
@@ -28,13 +24,7 @@ export default function MyProfile() {
   const currentUser = useAppSelector(selectCurrentUser);
   return (
     <ProfileWrapper>
-      {currentUser?.avatar ? (
-        <ProfileAvatar src={currentUser.avatar} />
-      ) : (
-        <ProfileAvatarLetter>
-          {currentUser?.nickname.slice(0, 1)}
-        </ProfileAvatarLetter>
-      )}
+        <ProfileAvatar src={currentUser?.avatar} />   
       <ProfileName>{currentUser?.nickname}</ProfileName>
       <ProfileMailWrapper>
         <ProfileMail>{currentUser?.email}</ProfileMail>
