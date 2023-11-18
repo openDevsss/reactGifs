@@ -129,7 +129,7 @@ const UserSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(updateCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload[0];
+        state.user = action.payload;
         state.error = null;
         state.status = "received";
       });
