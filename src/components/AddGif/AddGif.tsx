@@ -130,10 +130,10 @@ export function AddGif() {
             )}
             {Boolean(selectedTags?.length) && (
               <TagList>
-                {selectedTags.map((tag, index) => {
+                {selectedTags.map((tag) => {
                   return (
                     <Hashtag
-                      key={index}
+                      key={tag.id}
                       tag={tag.name}
                       onClick={() => handleRemoveTag(tag.id)}
                     />
