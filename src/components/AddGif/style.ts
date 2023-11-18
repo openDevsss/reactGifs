@@ -69,7 +69,7 @@ export const FormAdded = styled.form`
 `;
 
 export const FormInput = styled(TextField)`
-  margin-top: 5px;
+  margin-top: 10px;
   color: #5f3db5;
   & .MuiOutlinedInput-root {
     &.Mui-focused fieldset {
@@ -83,8 +83,8 @@ export const FormInput = styled(TextField)`
     color: #000;
   }
 
-  &:last-child {
-    margin-bottom: 0;
+  &:first-child {
+    margin-top: 0;
   }
 `;
 
@@ -92,9 +92,9 @@ export const TagList = styled(Box)`
   background-color: #f1f1f2;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 10px;
   border-radius: 14px;
   padding: 8px 14px;
-  min-height: 25px;
 `;
 
 export const GifsTag = styled(Box)`
