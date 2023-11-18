@@ -1,7 +1,7 @@
 import axios from "axios";
 import { baseUrl } from "../../../constant";
-import { Gif } from "../../../types/GifType";
-import { Tag } from "../../../types/TagType";
+import type { Gif } from "../../../types/GifType";
+import type { Tag } from "../../../types/TagType";
 
 const jwt = localStorage.getItem("jwt");
 export const getTags = () =>
@@ -11,7 +11,7 @@ export const getTags = () =>
     },
   });
 console.log(jwt);
-export const postGif = (data: Gif) =>
+export const createGif = (data: Gif) =>
   axios.post<Gif>(`${baseUrl}/gifs`, JSON.stringify(data), {
     headers: {
       "Content-Type": "application/json",

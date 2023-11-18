@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import type { Gif } from "../../types/GifType";
 import type { Tag } from "../../types/TagType";
 import { Hashtag } from "../Hashtag/Hashtag";
-import { postGif } from "./hooks/service";
+import { createGif } from "./hooks/service";
 import { useGetTags } from "./hooks/useGetTags";
 import {
   AddGifItem,
@@ -41,7 +41,7 @@ export function AddGif() {
   };
   const onSubmit: SubmitHandler<Gif> = (data) => {
     data.tags = selectedTags!;
-    postGif(data);
+    createGif(data);
   };
   const displayGif = (e: any) => {
     if (e.target.files && e.target.files[0]) {
@@ -130,7 +130,7 @@ export function AddGif() {
             )}
             {Boolean(selectedTags?.length) && (
               <TagList>
-                {selectedTags?.map((tag, index) => {
+                {selectedTags.map((tag, index) => {
                   return (
                     <Hashtag
                       key={index}
