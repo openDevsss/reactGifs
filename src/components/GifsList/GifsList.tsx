@@ -1,6 +1,6 @@
 import { GifItem } from "../GifsItem/GifsItem";
 import { Loader } from "../Loader/Loader";
-import { useGetGifs } from "./hooks/hooks";
+import { useGetGifs } from "./hooks/useGetGifs";
 
 export function GifsList() {
   const { data: gifs, isLoading } = useGetGifs();

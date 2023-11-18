@@ -1,3 +1,4 @@
+import { Tag } from "./TagType";
 import { User } from "./UserType";
 
 export type Gif = {
@@ -8,5 +9,5 @@ export type Gif = {
   user: User;
   createdAt: string;
   updatedAt: string;
-  tags: string[];
+  tags: Tag[];
 };

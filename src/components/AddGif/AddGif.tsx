@@ -2,10 +2,14 @@ import { Button, Divider } from "@mui/material";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import type { Gif } from "../../types/GifType";
+import type { Tag } from "../../types/TagType";
 import { Hashtag } from "../Hashtag/Hashtag";
+import { createGif } from "./hooks/service";
+import { useGetTags } from "./hooks/useGetTags";
 import {
   AddGifItem,
   AddGifItemWrapper,
+  buttonStyle,
   CreatedWrapper,
   DragAndDropWrapper,
   ErrorMessageAddGif,
@@ -17,11 +21,10 @@ import {
   TagList,
   TitleAddGif,
   WrapperAddGif,
-  buttonStyle,
 } from "./style";
 export function AddGif() {
-  const [tags, setTags] = useState<string[]>([]);
   const [image, setImage] = useState("");
+  const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
   const {
     register,
     handleSubmit,
@@ -29,21 +32,23 @@ export function AddGif() {
   } = useForm<Gif>({
     mode: "onSubmit",
   });
-  const selectedTags: string[] = [];
-  const handleAddTag = (item: string) => {
-    setTags((prevTags) => [...prevTags, item]);
-  };
-  const handleRemoveTag = (tag: string) => {
-    setTags(tags.filter((item) => item !== tag));
+
+  const { data: tags } = useGetTags();
+  const handleRemoveTag = (tagId: Tag["id"]) =>
+    setSeletedTags(selectedTags?.filter((tag) => tag.id !== tagId));
+  const handleAddTagToSelected = (tag: Tag) => {
+    setSeletedTags((prev) => [...prev, tag]);
   };
   const onSubmit: SubmitHandler<Gif> = (data) => {
-    data.tags = tags;
+    data.tags = selectedTags!;
+    createGif(data);
   };
   const displayGif = (e: any) => {
     if (e.target.files && e.target.files[0]) {
       setImage(URL.createObjectURL(e.target.files[0]));
     }
   };
+
   return (
     <WrapperAddGif>
       <TitleAddGif>Add GIF</TitleAddGif>
@@ -123,32 +128,32 @@ export function AddGif() {
                 {errors.description.message}
               </ErrorMessageAddGif>
             )}
-            {Boolean(tags.length) && (
+            {Boolean(selectedTags?.length) && (
               <TagList>
-                {tags.map((tag, index) => {
+                {selectedTags.map((tag) => {
                   return (
                     <Hashtag
-                      key={index}
-                      tag={tag}
-                      onClick={() => handleRemoveTag(tag)}
+                      key={tag.id}
+                      tag={tag.name}
+                      onClick={() => handleRemoveTag(tag.id)}
                     />
                   );
                 })}
               </TagList>
             )}
-            <GifsTag>
-              {selectedTags
-                ?.filter((data) => !tags.includes(data))
-                .map((tag, index) => {
-                  return (
+            {Boolean(tags?.length) && (
+              <GifsTag>
+                {tags
+                  ?.filter((x) => !selectedTags?.includes(x))
+                  ?.map((tag) => (
                     <Hashtag
-                      key={index}
-                      tag={tag}
-                      onClick={() => handleAddTag(tag)}
+                      key={tag.id}
+                      tag={tag.name}
+                      onClick={() => handleAddTagToSelected(tag)}
                     />
-                  );
-                })}
-            </GifsTag>
+                  ))}
+              </GifsTag>
+            )}
           </FormWrapperStyle>
         </CreatedWrapper>
         <SubmitAddGifButton type="submit">Add</SubmitAddGifButton>
