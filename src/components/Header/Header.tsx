@@ -19,37 +19,37 @@ import {
   WrapperIcon,
   SearchHeader,
   WrapperHeader,
+  LogoHeader,
 } from "./style";
-import {
-  Gif,
-  House,
-  List,
-  MagnifyingGlass,
-  SignOut,
-  ThumbsUp,
-} from "phosphor-react";
+import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
 import HeaderBellIcon from "./HeaderBellIcon";
+import logo from "../../images/logo.svg";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectCurrentUser);
+
   const isMatches1024 = useMediaQuery("(max-width : 1024px)");
   const isMatches480 = useMediaQuery("(max-width : 480px)");
+
   const jwt = localStorage.getItem("jwt");
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
     setIsOpen(false);
   };
+
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
-  // TODO: нужна логика для редиректа
+
   const handleLogout = () => {
     dispatch(logOut());
   };
@@ -57,13 +57,8 @@ export function Header() {
     <WrapperHeader>
       <InformationHeader>
         <HomeHeader to="/">
-          <Gif size={50} color="#6f4ff2" weight="duotone" />
+          <LogoHeader src={logo} />
         </HomeHeader>
-        <WrapperIcon>
-          <HomeHeader to="/">
-            <House size={20} />
-          </HomeHeader>
-        </WrapperIcon>
         <WrapperIcon>
           <HomeHeader to="/recommendations">
             <ThumbsUp size={20} />
