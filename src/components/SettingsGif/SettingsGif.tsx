@@ -1,43 +1,46 @@
 import { useState } from "react";
-
+import { SettingsLayout } from "../../layout/SettingsLayout";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
+
 import { EmailConfirmation } from "./EmailConfirmation";
+import ProfileEdit from "./ProfileEdit";
 import {
-  ConfirmEmailPanel,
+  EditProfileTabPanel,
   SettingsTab,
   SettingsTabContainer,
-  SettingsTabPanel,
   WrapperSettingsGif,
 } from "./style";
 
 export function SettingsGif() {
-  const [selectTab, setSelectTab] = useState("confirmEmail");
+  const [selectTab, setSelectTab] = useState("editProfile");
   return (
-    <WrapperSettingsGif>
-      <SettingsTabContainer
-        value={selectTab}
-        onChange={(_: any, tab: any) => {
-          setSelectTab(tab);
-        }}
-        orientation="vertical"
-      >
-        <SettingsTab
-          key="confirmEmail"
-          value="confirmEmail"
-          label="confirm email"
-        />
-        <SettingsTab
-          key="changePassword"
-          value="changePassword"
-          label="change password"
-        />
-      </SettingsTabContainer>
-      <ConfirmEmailPanel value={selectTab} index="confirmEmail">
-        <EmailConfirmation />
-      </ConfirmEmailPanel>
-      <CustomTabPanel value={selectTab} index="changePassword">
-        <SettingsTabPanel>432234</SettingsTabPanel>
-      </CustomTabPanel>
-    </WrapperSettingsGif>
+    <SettingsLayout>
+      <WrapperSettingsGif>
+        <SettingsTabContainer
+          value={selectTab}
+          onChange={(_: any, tab: any) => {
+            setSelectTab(tab);
+          }}
+          orientation="vertical"
+        >
+          <SettingsTab
+            key="editProfile"
+            value="editProfile"
+            label="edit profile"
+          />
+          <SettingsTab
+            key="confirmEmail"
+            value="confirmEmail"
+            label="confirm email"
+          />
+        </SettingsTabContainer>
+        <CustomTabPanel value={selectTab} index="confirmEmail">
+          <EmailConfirmation />
+        </CustomTabPanel>
+        <EditProfileTabPanel value={selectTab} index="editProfile">
+          <ProfileEdit />
+        </EditProfileTabPanel>
+      </WrapperSettingsGif>
+    </SettingsLayout>
   );
 }

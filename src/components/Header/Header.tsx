@@ -1,22 +1,33 @@
 import { useEffect, useState } from "react";
+
 import {
-  InputAdornment,
-  useMediaQuery,
-  Tooltip,
   IconButton,
+  InputAdornment,
+  Tooltip,
+  useMediaQuery,
 } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import HeaderMenu from "./HeaderMenu";
-import { checkAuth, logOut } from "../../features/users/users-slice";
+
 import {
+  Gif,
+  House,
+  List,
+  MagnifyingGlass,
+  SignOut,
+  ThumbsUp,
+} from "phosphor-react";
+import { Link } from "react-router-dom";
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import { checkAuth, logOut } from "../../features/users/users-slice";
+import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
+import { HeaderBellIcon } from "./HeaderBellIcon";
+import { HeaderMenu } from "./HeaderMenu";
+import {
+  HomeHeader,
   InformationHeader,
   MyProfileWrapper,
   NavigationHeader,
   ProfileIcon,
   ProfileName,
-  HomeHeader,
-  WrapperIcon,
   SearchHeader,
   WrapperHeader,
   LogoHeader,
@@ -53,6 +64,7 @@ export function Header() {
   const handleLogout = () => {
     dispatch(logOut());
   };
+
   return (
     <WrapperHeader>
       <InformationHeader>
@@ -101,14 +113,16 @@ export function Header() {
             </MyProfileWrapper>
           </Tooltip>
           {Boolean(currentUser) && (
-            <WrapperIcon onClick={handleLogout}>
-              <SignOut
-                size={20}
-                weight="fill"
-                color="#6f4ff2"
-                cursor="pointer"
-              />
-            </WrapperIcon>
+            <Link to="/sign-in">
+              <WrapperIcon onClick={handleLogout}>
+                <SignOut
+                  size={20}
+                  weight="fill"
+                  color="#6f4ff2"
+                  cursor="pointer"
+                />
+              </WrapperIcon>
+            </Link>
           )}
         </NavigationHeader>
       ) : (

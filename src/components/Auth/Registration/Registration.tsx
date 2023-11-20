@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../features/users/users-slice";
 import ghost from "../../../images/stickerGhost.webp";
 import { useAppDispatch } from "../../../redux-toolkit";
-import { UserType } from "../../../types/UserType";
+import type { User } from "../../../types/UserType";
 import {
   ButtonSubmit,
   Description,
+  ErrorMessageRegistration,
   Form,
   FormLegend,
   InstructionText,
@@ -23,9 +24,15 @@ import {
 } from "../style";
 
 export function Registration() {
-  type RegisterUser = Pick<UserType, "email" | "password" | "nickname">;
+  type RegisterUser = Pick<User, "email" | "password" | "nickname">;
 
-  const { register, handleSubmit } = useForm<RegisterUser>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterUser>({
+    mode: "onSubmit",
+  });
   const dispatch = useAppDispatch();
   const navgiate = useNavigate();
 
@@ -36,7 +43,6 @@ export function Registration() {
         navgiate("/sign-in");
       });
   };
-
   return (
     <Section>
       <Wrapper>
@@ -45,23 +51,78 @@ export function Registration() {
           <InstructionText>Welcome! Please enter details.</InstructionText>
           <Description>Nickname</Description>
           <WhiteBorderTextField
-            {...register("nickname")}
+            {...register("nickname", {
+              required: {
+                value: true,
+                message: "This field cannot be empty",
+              },
+              maxLength: {
+                value: 20,
+                message: "Max length 20 symbols",
+              },
+              minLength: {
+                value: 3,
+                message: "Min length 3 symbols",
+              },
+            })}
             size="small"
             placeholder="Create nickname"
           />
+          {errors.nickname && (
+            <ErrorMessageRegistration>
+              {errors.nickname.message}
+            </ErrorMessageRegistration>
+          )}
           <Description>Email</Description>
           <WhiteBorderTextField
-            {...register("email")}
+            {...register("email", {
+              required: {
+                value: true,
+                message: "This field cannot be empty",
+              },
+              maxLength: {
+                value: 25,
+                message: "Max length 25 symbols",
+              },
+              minLength: {
+                value: 6,
+                message: "Min length 6 symbols",
+              },
+              pattern: {
+                value:
+                  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                message: "Please enter correct email",
+              },
+            })}
             size="small"
             placeholder="Enter your email"
           />
+          {errors.email && (
+            <ErrorMessageRegistration>
+              {errors.email.message}
+            </ErrorMessageRegistration>
+          )}
           <Description>Password</Description>
           <WhiteBorderTextField
-            {...register("password")}
+            {...register("password", {
+              required: {
+                value: true,
+                message: "This field cannot be empty",
+              },
+              minLength: {
+                value: 8,
+                message: "Min length 8 symbols",
+              },
+            })}
             size="small"
             placeholder="Create password"
             type="password"
           />
+          {errors.password && (
+            <ErrorMessageRegistration>
+              {errors.password.message}
+            </ErrorMessageRegistration>
+          )}
           <ButtonSubmit type="submit">sign up</ButtonSubmit>
         </Form>
         <RedirectText>

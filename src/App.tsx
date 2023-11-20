@@ -4,17 +4,17 @@ import { Route, Routes } from "react-router-dom";
 import { Login } from "./components/Auth/Login/Login";
 import { Registration } from "./components/Auth/Registration/Registration";
 import { PageLayout } from "./components/PageLayout/PageLayout";
-import ProtectedRoute from "./components/ProtectedRoute";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import { SettingsGif } from "./components/SettingsGif/SettingsGif";
 import { checkAuth } from "./features/users/users-slice";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
-import { useAppDispatch } from "./redux-toolkit";
 import { MyProfilePage } from "./pages/MyProfilePage";
+import { useAppDispatch } from "./redux-toolkit";
 
+import { AddGif } from "./components/AddGif/AddGif";
 import { HomePage } from "./pages/HomePage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
-import { AddGif } from "./components/AddGif/AddGif";
 
 export function App() {
   const dispatch = useAppDispatch();

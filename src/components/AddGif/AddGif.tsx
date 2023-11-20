@@ -1,42 +1,54 @@
-import { useState } from "react";
 import { Button, Divider } from "@mui/material";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import type { Gif } from "../../types/GifType";
+import type { Tag } from "../../types/TagType";
+import { Hashtag } from "../Hashtag/Hashtag";
+import { createGif } from "./hooks/service";
+import { useGetTags } from "./hooks/useGetTags";
 import {
-  TitleAddGif,
-  WrapperAddGif,
-  FormAdded,
-  CreatedWrapper,
-  buttonStyle,
-  FormInput,
-  DragAndDropWrapper,
-  SubmitAddGifButton,
-  TagList,
-  GifsTag,
-  FormWrapperStyle,
   AddGifItem,
   AddGifItemWrapper,
+  buttonStyle,
+  CreatedWrapper,
+  DragAndDropWrapper,
+  ErrorMessageAddGif,
+  FormAdded,
+  FormInput,
+  FormWrapperStyle,
+  GifsTag,
+  SubmitAddGifButton,
+  TagList,
+  TitleAddGif,
+  WrapperAddGif,
 } from "./style";
-import { Hashtag } from "../Hashtag/Hashtag";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Gif } from "../../types/GifType";
 export function AddGif() {
-  const [tags, setTags] = useState<string[]>([]);
   const [image, setImage] = useState("");
-  const { register, handleSubmit } = useForm<Gif>();
-  const tagsArray: string[] = [];
-  const handleAddTag = (item: string) => {
-    setTags((prevTags) => [...prevTags, item]);
-  };
-  const handleRemoveTag = (tag: string) => {
-    setTags(tags.filter((item) => item !== tag));
+  const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Gif>({
+    mode: "onSubmit",
+  });
+
+  const { data: tags } = useGetTags();
+  const handleRemoveTag = (tagId: Tag["id"]) =>
+    setSeletedTags(selectedTags?.filter((tag) => tag.id !== tagId));
+  const handleAddTagToSelected = (tag: Tag) => {
+    setSeletedTags((prev) => [...prev, tag]);
   };
   const onSubmit: SubmitHandler<Gif> = (data) => {
-    data.tags = tags;
+    data.tags = selectedTags!;
+    createGif(data);
   };
   const displayGif = (e: any) => {
     if (e.target.files && e.target.files[0]) {
       setImage(URL.createObjectURL(e.target.files[0]));
     }
   };
+
   return (
     <WrapperAddGif>
       <TitleAddGif>Add GIF</TitleAddGif>
@@ -55,51 +67,93 @@ export function AddGif() {
               <Divider>Or</Divider>
               <FormInput
                 autoComplete="none"
-                {...register("url")}
+                {...register("url", {
+                  required: {
+                    value: true,
+                    message: "This field cannot be empty",
+                  },
+                  pattern: {
+                    value: /(http)?s?:?(\/\/[^"']*\.(?:gif|apng|webp|bpg))/,
+                    message: "This is incorrect link",
+                  },
+                })}
                 label="Add with URL"
                 size="small"
               />
+              {errors.url && (
+                <ErrorMessageAddGif>{errors.url.message}</ErrorMessageAddGif>
+              )}
             </DragAndDropWrapper>
           )}
           <FormWrapperStyle>
             <FormInput
               autoComplete="none"
-              {...register("title")}
+              {...register("title", {
+                required: {
+                  value: true,
+                  message: "This field cannot be empty",
+                },
+                minLength: {
+                  value: 3,
+                  message: "Min length 3 symbols",
+                },
+                maxLength: {
+                  value: 25,
+                  message: "Max length 25 symbols",
+                },
+              })}
               label="Title"
               size="small"
             />
+            {errors.title && (
+              <ErrorMessageAddGif>{errors.title.message}</ErrorMessageAddGif>
+            )}
             <FormInput
               autoComplete="none"
-              {...register("description")}
+              {...register("description", {
+                required: {
+                  value: true,
+                  message: "This field cannot be empty",
+                },
+                minLength: {
+                  value: 5,
+                  message: "Min length 5 symbols",
+                },
+              })}
               label="Description"
               multiline
             />
-            {Boolean(tags.length) && (
+            {errors.description && (
+              <ErrorMessageAddGif>
+                {errors.description.message}
+              </ErrorMessageAddGif>
+            )}
+            {Boolean(selectedTags?.length) && (
               <TagList>
-                {tags.map((tag, index) => {
+                {selectedTags.map((tag) => {
                   return (
                     <Hashtag
-                      key={index}
-                      tag={tag}
-                      onClick={() => handleRemoveTag(tag)}
+                      key={tag.id}
+                      tag={tag.name}
+                      onClick={() => handleRemoveTag(tag.id)}
                     />
                   );
                 })}
               </TagList>
             )}
-            <GifsTag>
-              {tagsArray
-                ?.filter((data) => !tags.includes(data))
-                .map((tag, index) => {
-                  return (
+            {Boolean(tags?.length) && (
+              <GifsTag>
+                {tags
+                  ?.filter((x) => !selectedTags?.includes(x))
+                  ?.map((tag) => (
                     <Hashtag
-                      key={index}
-                      tag={tag}
-                      onClick={() => handleAddTag(tag)}
+                      key={tag.id}
+                      tag={tag.name}
+                      onClick={() => handleAddTagToSelected(tag)}
                     />
-                  );
-                })}
-            </GifsTag>
+                  ))}
+              </GifsTag>
+            )}
           </FormWrapperStyle>
         </CreatedWrapper>
         <SubmitAddGifButton type="submit">Add</SubmitAddGifButton>
