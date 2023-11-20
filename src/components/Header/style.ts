@@ -30,9 +30,6 @@ export const HomeHeader = styled(Link)`
   color: #6f4ff2;
   font-size: 17px;
   text-decoration: none;
-  &:hover {
-    color: #5f3db5;
-  }
 `;
 
 export const SearchHeader = styled(TextField)`
