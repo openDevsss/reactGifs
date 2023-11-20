@@ -134,7 +134,7 @@ export const WrapperInformation = styled(Box)`
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(50%, 100%));
+  grid-template-columns: repeat(3, minmax(400px, 1fr));
   gap: 10px;
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 300px);
