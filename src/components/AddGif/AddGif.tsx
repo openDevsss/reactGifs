@@ -46,7 +46,7 @@ export function AddGif() {
       setImage(URL.createObjectURL(e.target.files[0]));
     }
   };
-
+  // test
   return (
     <WrapperAddGif>
       <TitleAddGif>Add GIF</TitleAddGif>
