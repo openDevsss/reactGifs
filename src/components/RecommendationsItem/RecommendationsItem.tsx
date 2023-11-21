@@ -1,7 +1,7 @@
 import { GifRecommendations, WrapperRecommendations } from "./styled";
 import Masonry from "@mui/lab/Masonry";
 
-export function Recommendations() {
+export function RecommendationsItem() {
   return (
     <WrapperRecommendations>
       <Masonry columns={4} spacing={1}>

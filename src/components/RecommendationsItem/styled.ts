@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
 
-export const WrapperRecommendations = styled(Box)`
+export const WrapperRecommendations = styled.div`
   width: 1450px;
-  margin: auto;
+  margin: 0 auto;
 `;
 
 export const GifRecommendations = styled.img`
