@@ -1,10 +1,9 @@
 import { Button, Divider } from "@mui/material";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import type { Gif } from "../../types/GifType";
 import type { Tag } from "../../types/TagType";
 import { Hashtag } from "../Hashtag/Hashtag";
-import { createGif } from "./hooks/service";
+import { createGif, DataForCreateGif } from "./hooks/service";
 import { useGetTags } from "./hooks/useGetTags";
 import {
   AddGifItem,
@@ -25,22 +24,21 @@ import {
 export function AddGif() {
   const [image, setImage] = useState("");
   const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
+  const { data: tags } = useGetTags();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Gif>({
+  } = useForm<DataForCreateGif>({
     mode: "onSubmit",
   });
-
-  const { data: tags } = useGetTags();
   const handleRemoveTag = (tagId: Tag["id"]) =>
     setSeletedTags(selectedTags?.filter((tag) => tag.id !== tagId));
   const handleAddTagToSelected = (tag: Tag) => {
     setSeletedTags((prev) => [...prev, tag]);
   };
-  const onSubmit: SubmitHandler<Gif> = (data) => {
-    data.tags = selectedTags!;
+  const onSubmit: SubmitHandler<DataForCreateGif> = (data) => {
+    [data.tags] = selectedTags.map(({ id }) => id);
     createGif(data);
   };
   const displayGif = (e: any) => {

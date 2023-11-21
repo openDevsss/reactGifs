@@ -1,17 +1,11 @@
-import { GifItem } from "../GifsItem/GifsItem";
-import { Loader } from "../Loader/Loader";
+import { GifItem } from "../GifsItem/GifItem";
 import { useGetGifs } from "./hooks/useGetGifs";
 
 export function GifsList() {
-  const { data: gifs, isLoading } = useGetGifs();
-
+  const { data } = useGetGifs();
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        gifs?.map((gif) => <GifItem key={gif.id} {...gif} />)
-      )}
+      {Boolean(data) && data?.map((gif) => <GifItem key={gif.id} {...gif} />)}
     </>
   );
 }

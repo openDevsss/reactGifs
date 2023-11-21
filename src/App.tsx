@@ -22,7 +22,6 @@ export function App() {
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
-
   return (
     <>
       <div className="page">
