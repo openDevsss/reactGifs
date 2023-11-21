@@ -85,13 +85,13 @@ export const checkAuth = createAsyncThunk<
   { extra: Extra; rejectWithValue: string }
 >("@@user/isAuth", async (jwt, { extra: { client, api }, rejectWithValue }) => {
   try {
-    const res = await client.get(api.CHECK_JWT, {
+    const { data } = await client.get(api.CHECK_JWT, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
     });
-    return res.data;
+    return data.data;
   } catch (err) {
     return rejectWithValue("Ошибка");
   }

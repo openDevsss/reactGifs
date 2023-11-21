@@ -1,17 +1,9 @@
-import { AxiosError } from "axios";
 import { useQuery } from "react-query";
 import { getGifs } from "./service";
+export const useGetGifs = () => {
+  const { data, ...rest } = useQuery(["gifs"], async () => getGifs(), {
+    retry: false,
+  });
 
-export function useGetGifs() {
-  const { data, isLoading } = useQuery(
-    ["gifs"],
-    async () => (await getGifs()).data,
-    {
-      retry: false,
-      onError: (err: AxiosError<{ message?: string }>) => {
-        console.log(err);
-      },
-    }
-  );
-  return { data, isLoading };
-}
+  return { data: data?.data, ...rest };
+};

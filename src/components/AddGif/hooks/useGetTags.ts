@@ -1,13 +1,10 @@
-import { AxiosError } from "axios";
 import { useQuery } from "react-query";
 import { getTags } from "./service";
 
 export function useGetTags() {
-  const { data } = useQuery(["tags"], async () => (await getTags()).data, {
+  const { data, ...rest } = useQuery(["tags"], async () => getTags(), {
     retry: false,
-    onError: (err: AxiosError<{ message?: string }>) => {
-      console.log(err);
-    },
   });
-  return { data };
+
+  return { data: data?.data, ...rest };
 }
