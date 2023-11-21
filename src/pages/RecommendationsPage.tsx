@@ -1,4 +1,4 @@
-import { RecommendationsList } from "../components/Recommendations/Recommendations";
+import { RecommendationsList } from "../components/RecommendationsList/RecommendationsList";
 
 export function RecommendationsPage() {
   return <RecommendationsList />;
