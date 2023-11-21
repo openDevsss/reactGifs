@@ -97,7 +97,7 @@ export const checkAuth = createAsyncThunk<
         Authorization: `Bearer ${jwt}`,
       },
     });
-    return data.data;
+    return data;
   } catch (err) {
     return rejectWithValue("Ошибка");
   }

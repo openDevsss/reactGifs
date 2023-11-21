@@ -7,41 +7,33 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-import {
-  Gif,
-  House,
-  List,
-  MagnifyingGlass,
-  SignOut,
-  ThumbsUp,
-} from "phosphor-react";
+import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { checkAuth, logOut } from "../../features/users/users-slice";
+import logo from "../../images/logo.svg";
 import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import { HeaderBellIcon } from "./HeaderBellIcon";
 import { HeaderMenu } from "./HeaderMenu";
 import {
   HomeHeader,
   InformationHeader,
+  LogoHeader,
   MyProfileWrapper,
   NavigationHeader,
   ProfileIcon,
   ProfileName,
   SearchHeader,
   WrapperHeader,
-  LogoHeader,
+  WrapperIcon,
 } from "./style";
-import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
-import HeaderBellIcon from "./HeaderBellIcon";
-import logo from "../../images/logo.svg";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectCurrentUser);
-
+  console.log(currentUser);
   const isMatches1024 = useMediaQuery("(max-width : 1024px)");
   const isMatches480 = useMediaQuery("(max-width : 480px)");
 
@@ -105,8 +97,7 @@ export function Header() {
                   borderRadius: "10px",
                 },
               },
-            }}
-          >
+            }}>
             <MyProfileWrapper to="/my-profile">
               <ProfileName>Account</ProfileName>
               <ProfileIcon src={currentUser?.avatar} />
