@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../../features/users/users-slice";
 import ghost from "../../../images/stickerGhost.webp";
 import { useAppDispatch } from "../../../redux-toolkit";
-import type { User } from "../../../types/UserType";
 import {
   ButtonSubmit,
   Description,
@@ -24,7 +23,11 @@ import {
 } from "../style";
 
 export function Registration() {
-  type RegisterUser = Pick<User, "email" | "password" | "nickname">;
+  type RegisterUser = {
+    email: string;
+    password: string;
+    nickname: string;
+  };
 
   const {
     register,

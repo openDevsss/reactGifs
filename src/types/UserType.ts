@@ -4,6 +4,6 @@ export type User = {
   id: string;
   nickname: string;
   email: string;
-  password: string;
+  token: string;
   createdAt: string;
 };

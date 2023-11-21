@@ -9,8 +9,14 @@ type AuthInitialState = {
   error: string | null;
   isAuth: boolean;
 };
-type RegisterUserType = Pick<User, "email" | "password" | "nickname">;
-type LoginUserType = Pick<User, "email" | "password">;
+type RegisterUserType = {
+  email: string;
+  password: string;
+};
+type LoginUserType = {
+  email: string;
+  password: string;
+};
 const initialState: AuthInitialState = {
   user: null,
   status: "idle",
