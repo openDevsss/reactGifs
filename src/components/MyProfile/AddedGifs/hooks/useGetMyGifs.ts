@@ -9,6 +9,5 @@ export function useGetMyGifs() {
       console.log(err);
     },
   });
-  console.log(data);
   return { data: data?.data };
 }

@@ -32,7 +32,6 @@ export function AddGif() {
   } = useForm<DataForCreateGif>({
     mode: "onSubmit",
   });
-  console.log(selectedTags);
   const handleRemoveTag = (tagId: Tag["id"]) =>
     setSeletedTags(selectedTags?.filter((tag) => tag.id !== tagId));
   const handleAddTagToSelected = (tag: Tag) => {
