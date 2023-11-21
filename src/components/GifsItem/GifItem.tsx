@@ -1,4 +1,4 @@
-import { IconButton } from "@mui/material";
+import { IconButton, List } from "@mui/material";
 import {
   DotsThreeOutlineVertical,
   LinkSimple,
@@ -6,13 +6,13 @@ import {
 } from "phosphor-react";
 import React, { useState } from "react";
 import type { Gif } from "../../types/GifType";
+import GifComment from "./GifComment";
 import { GifMenuAction } from "./GifMenuAction";
 import {
   CommentsContainer,
   CommentsTitle,
   ContainerGif,
   GifAnimation,
-  GifComment,
   GifDescription,
   GifHeadInformation,
   GifInput,
@@ -25,7 +25,13 @@ import {
 
 interface GifItemsProps extends Gif {}
 
-export function GifItem({ title, description, url, user }: GifItemsProps) {
+export function GifItem({
+  title,
+  description,
+  url,
+  user,
+  comment,
+}: GifItemsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -85,8 +91,27 @@ export function GifItem({ title, description, url, user }: GifItemsProps) {
         </div>
         <CommentsContainer>
           <CommentsTitle>Comments</CommentsTitle>
-          <GifComment>No comments:😞</GifComment>
-          <GifInput placeholder="Add a comment" size="small" />
+          <List
+            sx={{
+              width: "100%",
+              maxWidth: "95%",
+              bgcolor: "background.paper",
+              position: "relative",
+              overflow: "auto",
+              maxHeight: 300,
+            }}
+          >
+            {comment.map((message) => {
+              return (
+                <GifComment
+                  key={message.id}
+                  comment_text={message.comment_text}
+                  user={message.user}
+                />
+              );
+            })}
+            <GifInput placeholder="Add a comment" size="small" />
+          </List>
         </CommentsContainer>
       </ContainerGif>
     </GifWrapper>

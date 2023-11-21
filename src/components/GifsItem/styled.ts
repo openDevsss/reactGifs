@@ -69,7 +69,7 @@ export const GifDescription = styled(Typography)`
   margin-top: 10px;
 `;
 
-export const GifComment = styled(Typography)`
+export const GifCommentsList = styled(Typography)`
   font-size: 16px;
 `;
 

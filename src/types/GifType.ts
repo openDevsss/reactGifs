@@ -1,3 +1,4 @@
+import { Comment } from "./CommentType";
 import { Tag } from "./TagType";
 import { User } from "./UserType";
 
@@ -10,4 +11,5 @@ export type Gif = {
   createdAt: string;
   updatedAt: string;
   tags: Tag[];
+  comment: Comment[];
 };
