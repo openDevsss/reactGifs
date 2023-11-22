@@ -20,7 +20,7 @@ export const GifAnimation = styled.img`
   cursor: pointer;
 `;
 
-export const ContainerGif = styled(Box)`
+export const ContainerGif = styled.div`
   width: 50%;
   padding-left: 20px;
   display: flex;
