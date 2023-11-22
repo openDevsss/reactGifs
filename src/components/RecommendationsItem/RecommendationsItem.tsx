@@ -1,4 +1,4 @@
-import { GifRecommendations } from "./styled";
+import { GifRecommendations } from "./style";
 
 export function RecommendationsItem() {
   return (

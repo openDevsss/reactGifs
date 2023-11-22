@@ -1,27 +1,32 @@
-import { IconButton, List } from "@mui/material";
+import { Divider, IconButton, InputAdornment, List } from "@mui/material";
+import { PaperPlaneRight } from "@phosphor-icons/react";
 import {
   DotsThreeOutlineVertical,
   LinkSimple,
   ShareNetwork,
 } from "phosphor-react";
 import React, { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import type { Gif } from "../../types/GifType";
+import { ErrorMessage } from "../SettingsGif/style";
 import GifComment from "./GifComment";
 import { GifMenuAction } from "./GifMenuAction";
+import { createComment, CreateCommentT } from "./service";
 import {
   CommentsContainer,
   CommentsTitle,
   ContainerGif,
   GifAnimation,
+  GifCommentsList,
   GifDescription,
+  GifForm,
   GifHeadInformation,
   GifInput,
   GifMenuItem,
   GifUserAvatar,
   GifUserInformation,
   GifUserNickname,
-  GifWrapper,
-} from "./styled";
+} from "./style";
 
 interface GifItemsProps extends Gif {}
 
@@ -31,6 +36,7 @@ export function GifItem({
   url,
   user,
   comment,
+  id: gifId,
 }: GifItemsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -38,14 +44,23 @@ export function GifItem({
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
     setIsOpen(false);
   };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<CreateCommentT>();
+  const onSubmit: SubmitHandler<CreateCommentT> = (data) => {
+    data.gifId = gifId;
+    createComment(data).then(() => reset());
+  };
 
   return (
-    <GifWrapper>
+    <GifForm onSubmit={handleSubmit(onSubmit)}>
       <GifAnimation src={url} alt={title} />
       <ContainerGif>
         <div>
@@ -94,26 +109,61 @@ export function GifItem({
           <List
             sx={{
               width: "100%",
-              maxWidth: "95%",
+              marginTop: "10px",
               bgcolor: "background.paper",
               position: "relative",
               overflow: "auto",
-              maxHeight: 300,
+              maxHeight: 280,
             }}
           >
-            {comment.map((message) => {
-              return (
-                <GifComment
-                  key={message.id}
-                  comment_text={message.comment_text}
-                  user={message.user}
-                />
-              );
-            })}
-            <GifInput placeholder="Add a comment" size="small" />
+            {comment.length > 0 ? (
+              comment.map((message, index) => {
+                return (
+                  <>
+                    <GifComment
+                      key={message.id}
+                      comment_text={message.comment_text}
+                      user={message.user}
+                    />
+                    {index !== comment.length - 1 && (
+                      <Divider variant="middle" />
+                    )}
+                  </>
+                );
+              })
+            ) : (
+              <GifCommentsList>There is no comments</GifCommentsList>
+            )}
           </List>
+          <GifInput
+            {...register("comment_text", {
+              maxLength: {
+                value: 100,
+                message: "Max length 100 symbols",
+              },
+            })}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  sx={{
+                    cursor: "pointer",
+                  }}
+                  position="end"
+                >
+                  <IconButton type="submit">
+                    <PaperPlaneRight size={25} />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            placeholder="Add a comment"
+            size="small"
+          />
+          {errors.comment_text && (
+            <ErrorMessage>{errors.comment_text.message}</ErrorMessage>
+          )}
         </CommentsContainer>
       </ContainerGif>
-    </GifWrapper>
+    </GifForm>
   );
 }

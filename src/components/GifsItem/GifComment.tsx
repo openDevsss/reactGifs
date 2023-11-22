@@ -6,23 +6,25 @@ type CommentGif = {
   user: User;
 };
 export default function GifComment({ comment_text, user }: CommentGif) {
-  //   const currentUser = useAppSelector(selectCurrentUser);
   return (
-    <ListItem
-      sx={{
-        overflowX: "hidden",
-      }}
-    >
-      <ListItemAvatar>
-        <Avatar alt="avatar" src={user?.avatar} />
-      </ListItemAvatar>
-      <ListItemText
+    <>
+      <ListItem
         sx={{
-          wordBreak: "normal",
+          overflowX: "hidden",
+          fontSize: "14px",
         }}
       >
-        {comment_text}
-      </ListItemText>
-    </ListItem>
+        <ListItemAvatar>
+          <Avatar alt="avatar" src={user?.avatar} />
+        </ListItemAvatar>
+        <ListItemText
+          sx={{
+            wordBreak: "break-word",
+          }}
+        >
+          {comment_text}
+        </ListItemText>
+      </ListItem>
+    </>
   );
 }
