@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import type { Gif } from "../../types/GifType";
 import { ErrorMessage } from "../SettingsGif/style";
-import GifComment from "./GifComment";
+import { GifComment } from "./GifComment";
 import { GifMenuAction } from "./GifMenuAction";
 import { createComment, CreateCommentT } from "./service";
 import {
@@ -26,6 +26,7 @@ import {
   GifUserAvatar,
   GifUserInformation,
   GifUserNickname,
+  ListStyle,
 } from "./style";
 
 interface GifItemsProps extends Gif {}
@@ -106,16 +107,7 @@ export function GifItem({
         </div>
         <CommentsContainer>
           <CommentsTitle>Comments</CommentsTitle>
-          <List
-            sx={{
-              width: "100%",
-              marginTop: "10px",
-              bgcolor: "background.paper",
-              position: "relative",
-              overflow: "auto",
-              maxHeight: 280,
-            }}
-          >
+          <List sx={ListStyle}>
             {comment.length > 0 ? (
               comment.map((message, index) => {
                 return (

@@ -1,6 +1,15 @@
 import styled from "@emotion/styled";
 import { Box, MenuItem, TextField, Typography } from "@mui/material";
 
+export const ListStyle = {
+  width: "100%",
+  marginTop: "10px",
+  bgcolor: "background.paper",
+  position: "relative",
+  overflow: "auto",
+  maxHeight: 280,
+};
+
 export const GifForm = styled.form`
   height: fit-content;
   margin: 20px auto;

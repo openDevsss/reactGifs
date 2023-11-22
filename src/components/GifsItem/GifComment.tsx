@@ -5,26 +5,24 @@ type CommentGif = {
   comment_text: string;
   user: User;
 };
-export default function GifComment({ comment_text, user }: CommentGif) {
+export function GifComment({ comment_text, user }: CommentGif) {
   return (
-    <>
-      <ListItem
+    <ListItem
+      sx={{
+        overflowX: "hidden",
+        fontSize: "14px",
+      }}
+    >
+      <ListItemAvatar>
+        <Avatar alt="avatar" src={user?.avatar} />
+      </ListItemAvatar>
+      <ListItemText
         sx={{
-          overflowX: "hidden",
-          fontSize: "14px",
+          wordBreak: "break-word",
         }}
       >
-        <ListItemAvatar>
-          <Avatar alt="avatar" src={user?.avatar} />
-        </ListItemAvatar>
-        <ListItemText
-          sx={{
-            wordBreak: "break-word",
-          }}
-        >
-          {comment_text}
-        </ListItemText>
-      </ListItem>
-    </>
+        {comment_text}
+      </ListItemText>
+    </ListItem>
   );
 }
