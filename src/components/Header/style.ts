@@ -28,13 +28,30 @@ export const LogoHeader = styled.img`
 
 export const HomeHeader = styled(Link)`
   color: #6f4ff2;
-  font-size: 17px;
+  font-size: 16px;
   text-decoration: none;
+`;
+
+export const RecommendationsTitle = styled(Typography)`
+  color: #6f4ff2;
+  font-size: 16px;
+  @media (max-width: 400px) {
+    margin-right: 20px;
+  }
+`;
+
+export const WrapperSearch = styled.div`
+  max-width: 950px;
+  width: 100%;
+  margin: 0 20px;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const SearchHeader = styled(TextField)`
   padding: 0;
-  width: 290px;
+  width: 100%;
   box-sizing: border-box;
   input::placeholder {
     font-family: "Inter", serif;
@@ -48,12 +65,6 @@ export const SearchHeader = styled(TextField)`
     }
     border-radius: 8px;
     background-color: #f1f1f2;
-  }
-  @media (max-width: 768px) {
-    width: 190px;
-  }
-  @media (max-width: 497px) {
-    width: 150px;
   }
 `;
 
