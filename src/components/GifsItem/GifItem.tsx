@@ -22,10 +22,11 @@ import {
   GifUserNickname,
   GifWrapper,
 } from "./styled";
+import { Link } from "react-router-dom";
 
 interface GifItemsProps extends Gif {}
 
-export function GifItem({ title, description, url, user }: GifItemsProps) {
+export function GifItem({ title, description, url, user, id }: GifItemsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -40,7 +41,9 @@ export function GifItem({ title, description, url, user }: GifItemsProps) {
 
   return (
     <GifWrapper>
-      <GifAnimation src={url} alt={title} />
+      <Link to={`/gif/${id}`}>
+        <GifAnimation src={url} alt={title} />
+      </Link>
       <ContainerGif>
         <div>
           <GifHeadInformation>
@@ -74,7 +77,7 @@ export function GifItem({ title, description, url, user }: GifItemsProps) {
                 />
               </IconButton>
               <GifMenuAction
-                authorId={user.id}
+                authorId={user?.id}
                 anchorEl={anchorEl}
                 handleClose={handleClose}
                 isOpen={isOpen}

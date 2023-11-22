@@ -17,6 +17,7 @@ export const GifAnimation = styled.img`
   min-width: 500px;
   height: 400px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const ContainerGif = styled(Box)`
