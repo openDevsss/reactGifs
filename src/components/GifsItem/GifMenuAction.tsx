@@ -3,7 +3,7 @@ import { ArrowFatLineDown, Megaphone, Trash } from "phosphor-react";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
 import type { User } from "../../types/UserType";
-import { StyledMenuItem } from "./styled";
+import { StyledMenuItem } from "./style";
 interface GifMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
