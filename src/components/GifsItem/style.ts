@@ -1,21 +1,30 @@
 import styled from "@emotion/styled";
 import { Box, MenuItem, TextField, Typography } from "@mui/material";
 
-export const GifWrapper = styled(Box)`
+export const ListStyle = {
+  width: "100%",
+  marginTop: "10px",
+  bgcolor: "background.paper",
+  position: "relative",
+  overflow: "auto",
+  maxHeight: 280,
+};
+
+export const GifForm = styled.form`
   height: fit-content;
   margin: 20px auto;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   border-radius: 32px;
   display: flex;
-  width: 1000px;
+  width: 1100px;
   padding: 20px;
 `;
 export const GifAnimation = styled.img`
   border-radius: 32px;
-  width: 50%;
-  min-width: 500px;
-  height: 400px;
+  width: 60%;
+  min-width: 600px;
+  height: 500px;
   object-fit: cover;
 `;
 
@@ -69,7 +78,7 @@ export const GifDescription = styled(Typography)`
   margin-top: 10px;
 `;
 
-export const GifComment = styled(Typography)`
+export const GifCommentsList = styled(Typography)`
   font-size: 16px;
 `;
 
@@ -83,7 +92,6 @@ export const GifInput = styled(TextField)`
   margin-top: 20px;
   width: 100%;
   box-sizing: border-box;
-
   input::placeholder {
     font-family: "Inter", serif;
   }

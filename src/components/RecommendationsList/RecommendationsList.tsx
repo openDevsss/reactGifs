@@ -1,5 +1,5 @@
 import { Masonry } from "@mui/lab";
-import { WrapperRecommendations } from "../RecommendationsItem/styled";
+import { WrapperRecommendations } from "../RecommendationsItem/style";
 
 export function RecommendationsList() {
   return (
