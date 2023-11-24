@@ -1,28 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-import { App } from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { Provider } from "react-redux";
-import { store } from "./store";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { App } from "./App";
+import { AlertProvider } from "./contexts/alertContext";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { store } from "./store";
 
 const client = new QueryClient();
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
       <BrowserRouter>
         <Provider store={store}>
-          <App />
+          <AlertProvider>
+            <App />
+          </AlertProvider>
         </Provider>
       </BrowserRouter>
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 reportWebVitals();

@@ -5,7 +5,7 @@ import {
   ShareNetwork,
 } from "phosphor-react";
 import React, { useState } from "react";
-import type { Gif } from "../../types/GifType";
+import type { Gif } from "../../types/Gif";
 import { GifMenuAction } from "./GifMenuAction";
 import {
   CommentsContainer,

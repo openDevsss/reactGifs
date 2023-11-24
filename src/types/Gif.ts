@@ -1,5 +1,5 @@
-import { Tag } from "./TagType";
-import { User } from "./UserType";
+import { Tag } from "./Tag";
+import { User } from "./User";
 
 export type Gif = {
   id: string;

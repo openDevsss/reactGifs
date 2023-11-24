@@ -11,6 +11,7 @@ import { List, MagnifyingGlass, SignOut, ThumbsUp } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { checkAuth, logOut } from "../../features/users/users-slice";
+import useAlert from "../../hooks/useAlert";
 import logo from "../../images/logo.svg";
 import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
 import { HeaderBellIcon } from "./HeaderBellIcon";
@@ -33,11 +34,8 @@ export function Header() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector(selectCurrentUser);
-  console.log(currentUser);
   const isMatches1024 = useMediaQuery("(max-width : 1024px)");
   const isMatches480 = useMediaQuery("(max-width : 480px)");
-
-  const jwt = localStorage.getItem("jwt");
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -50,18 +48,21 @@ export function Header() {
   };
 
   useEffect(() => {
-    if (jwt) dispatch(checkAuth(jwt));
-  }, [jwt, dispatch]);
+    if (currentUser) dispatch(checkAuth(currentUser.token));
+  }, [currentUser, dispatch]);
 
   const handleLogout = () => {
     dispatch(logOut());
   };
-
+  const { setAlert } = useAlert();
   return (
     <WrapperHeader>
       <InformationHeader>
         <HomeHeader to="/">
-          <LogoHeader src={logo} />
+          <LogoHeader
+            src={logo}
+            onClick={() => setAlert("У вас произошла ошибка", "warning")}
+          />
         </HomeHeader>
         <WrapperIcon>
           <HomeHeader to="/recommendations">
