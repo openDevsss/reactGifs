@@ -1,5 +1,5 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
-import { User } from "../../types/UserType";
+import { User } from "../../types/User";
 
 type CommentGif = {
   comment_text: string;
@@ -11,16 +11,14 @@ export function GifComment({ comment_text, user }: CommentGif) {
       sx={{
         overflowX: "hidden",
         fontSize: "14px",
-      }}
-    >
+      }}>
       <ListItemAvatar>
         <Avatar alt="avatar" src={user?.avatar} />
       </ListItemAvatar>
       <ListItemText
         sx={{
           wordBreak: "break-word",
-        }}
-      >
+        }}>
         {comment_text}
       </ListItemText>
     </ListItem>

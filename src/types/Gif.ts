@@ -1,4 +1,4 @@
-import { Comment } from "./CommentType";
+import { Comment } from "./Comment";
 import { Tag } from "./Tag";
 import { User } from "./User";
 
