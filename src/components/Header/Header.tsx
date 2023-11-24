@@ -70,8 +70,8 @@ export function Header() {
   };
   const jwt = localStorage.getItem("jwt");
   useEffect(() => {
-    if (currentUser) dispatch(checkAuth(currentUser.token));
-  }, [currentUser, dispatch]);
+    if (jwt) dispatch(checkAuth(jwt));
+  }, [jwt, dispatch]);
 
   const handleLogout = () => {
     dispatch(logOut());
