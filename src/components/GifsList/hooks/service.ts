@@ -1,6 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../../../constant";
-import type { Gif } from "../../../types/GifType";
+import type { Gif } from "../../../types/Gif";
 
 type GetGifData = {
   data: Gif[];

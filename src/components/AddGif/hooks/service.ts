@@ -1,7 +1,7 @@
 import axios from "axios";
 import { baseUrl } from "../../../constant";
-import type { Gif } from "../../../types/GifType";
-import type { Tag } from "../../../types/TagType";
+import type { Gif } from "../../../types/Gif";
+import type { Tag } from "../../../types/Tag";
 
 const jwt = localStorage.getItem("jwt");
 

@@ -59,8 +59,6 @@ export function Header() {
   const isMatches1024 = useMediaQuery("(max-width : 1024px)");
   const isMatches480 = useMediaQuery("(max-width : 480px)");
 
-  const jwt = localStorage.getItem("jwt");
-
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
@@ -72,13 +70,12 @@ export function Header() {
   };
 
   useEffect(() => {
-    if (jwt) dispatch(checkAuth(jwt));
-  }, [jwt, dispatch]);
+    if (currentUser) dispatch(checkAuth(currentUser.token));
+  }, [currentUser, dispatch]);
 
   const handleLogout = () => {
     dispatch(logOut());
   };
-
   return (
     <>
       <HideOnScroll>
@@ -123,8 +120,7 @@ export function Header() {
                           borderRadius: "10px",
                         },
                       },
-                    }}
-                  >
+                    }}>
                     <MyProfileWrapper to="/my-profile">
                       <ProfileName>Account</ProfileName>
                       <ProfileIcon src={currentUser?.avatar} />

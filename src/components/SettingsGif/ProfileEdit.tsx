@@ -3,8 +3,9 @@ import { selectCurrentUser } from "../../features/users/users-selectors";
 import { updateCurrentUser } from "../../features/users/users-slice";
 
 import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
-import type { User } from "../../types/UserType";
+import type { User } from "../../types/User";
 
+import useAlert from "../../hooks/useAlert";
 import {
   EditProfileWrapper,
   ErrorMessage,
@@ -16,6 +17,7 @@ import {
 
 export default function ProfileEdit() {
   const dispatch = useAppDispatch();
+  const { setAlert } = useAlert();
   type ChangedUserData = Pick<User, "email" | "avatar" | "nickname">;
   const {
     register,
@@ -26,7 +28,13 @@ export default function ProfileEdit() {
   const onSubmit: SubmitHandler<ChangedUserData> = (data) => {
     dispatch(updateCurrentUser(data))
       .unwrap()
-      .then(() => reset());
+      .then(() => {
+        setAlert("Вы успешно изменили данные", "success");
+        reset();
+      })
+      .catch(() => {
+        setAlert("Вы успешно изменили данные", "error");
+      });
   };
   const currentUser = useAppSelector(selectCurrentUser);
 
