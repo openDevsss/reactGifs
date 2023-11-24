@@ -7,11 +7,11 @@ import {
 } from "phosphor-react";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import type { Gif } from "../../types/Gif";
+import type { Gif } from "../../types/GifType";
 import { ErrorMessage } from "../SettingsGif/style";
 import { GifComment } from "./GifComment";
 import { GifMenuAction } from "./GifMenuAction";
-import { CreateCommentT, createComment } from "./service";
+import { createComment, CreateCommentT } from "./service";
 import {
   CommentsContainer,
   CommentsTitle,
@@ -140,7 +140,8 @@ export function GifItem({
                   sx={{
                     cursor: "pointer",
                   }}
-                  position="end">
+                  position="end"
+                >
                   <IconButton type="submit">
                     <PaperPlaneRight size={25} />
                   </IconButton>

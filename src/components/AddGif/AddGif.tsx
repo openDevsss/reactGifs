@@ -1,14 +1,14 @@
 import { Button, Divider } from "@mui/material";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import useAlert from "../../hooks/useAlert";
-import type { Tag } from "../../types/Tag";
+import type { Tag } from "../../types/TagType";
 import { Hashtag } from "../Hashtag/Hashtag";
-import { DataForCreateGif, createGif } from "./hooks/service";
+import { createGif, DataForCreateGif } from "./hooks/service";
 import { useGetTags } from "./hooks/useGetTags";
 import {
   AddGifItem,
   AddGifItemWrapper,
+  buttonStyle,
   CreatedWrapper,
   DragAndDropWrapper,
   ErrorMessageAddGif,
@@ -20,18 +20,15 @@ import {
   TagList,
   TitleAddGif,
   WrapperAddGif,
-  buttonStyle,
 } from "./style";
 export function AddGif() {
   const [image, setImage] = useState("");
   const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
-  const { setAlert } = useAlert();
   const { data: tags } = useGetTags();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<DataForCreateGif>({
     mode: "onSubmit",
   });
@@ -42,14 +39,7 @@ export function AddGif() {
   };
   const onSubmit: SubmitHandler<DataForCreateGif> = (data) => {
     [data.tags] = selectedTags.map(({ id }) => id);
-    createGif(data)
-      .then(() => {
-        setAlert("Вы успешно добавили гифку", "success");
-        reset();
-      })
-      .catch((err) => {
-        setAlert(err, "error");
-      });
+    createGif(data);
   };
   const displayGif = (e: any) => {
     if (e.target.files && e.target.files[0]) {

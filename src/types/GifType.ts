@@ -1,6 +1,6 @@
 import { Comment } from "./CommentType";
-import { Tag } from "./Tag";
-import { User } from "./User";
+import { Tag } from "./TagType";
+import { User } from "./UserType";
 
 export type Gif = {
   id: string;

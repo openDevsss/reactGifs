@@ -13,7 +13,6 @@ import { MyProfilePage } from "./pages/MyProfilePage";
 import { useAppDispatch } from "./redux-toolkit";
 
 import { AddGif } from "./components/AddGif/AddGif";
-import AlertPopup from "./components/AlertPopup/AlertPopup";
 import { HomePage } from "./pages/HomePage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
 
@@ -52,7 +51,6 @@ export function App() {
           <Route element={<Login />} path="/sign-in" />
           <Route element={<NotFoundPage />} path="*" />
         </Routes>
-        <AlertPopup />
       </div>
     </>
   );

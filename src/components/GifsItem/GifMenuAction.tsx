@@ -2,7 +2,7 @@ import Menu from "@mui/material/Menu";
 import { ArrowFatLineDown, Megaphone, Trash } from "phosphor-react";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
-import type { User } from "../../types/User";
+import type { User } from "../../types/UserType";
 import { StyledMenuItem } from "./style";
 interface GifMenuProps {
   anchorEl: null | HTMLElement;
@@ -48,7 +48,8 @@ export function GifMenuAction({
         },
       }}
       transformOrigin={{ horizontal: "right", vertical: "top" }}
-      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+    >
       <StyledMenuItem onClick={handleClose}>
         <ArrowFatLineDown size={20} />
         Download

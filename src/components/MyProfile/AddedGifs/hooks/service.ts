@@ -1,6 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../../../../constant";
-import type { Gif } from "../../../../types/Gif";
+import type { Gif } from "../../../../types/GifType";
 
 const jwt = localStorage.getItem("jwt");
 type GetMyGifsData = {
