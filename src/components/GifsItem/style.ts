@@ -26,9 +26,10 @@ export const GifAnimation = styled.img`
   min-width: 600px;
   height: 500px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
-export const ContainerGif = styled(Box)`
+export const ContainerGif = styled.div`
   width: 50%;
   padding-left: 20px;
   display: flex;

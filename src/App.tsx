@@ -16,6 +16,7 @@ import { AddGif } from "./components/AddGif/AddGif";
 import AlertPopup from "./components/AlertPopup/AlertPopup";
 import { HomePage } from "./pages/HomePage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
+import { DetailsGifPage } from "./pages/DetailsGifPage";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ export function App() {
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
+
   return (
     <>
       <div className="page">
@@ -30,6 +32,7 @@ export function App() {
           <Route element={<PageLayout />}>
             <Route element={<HomePage />} path="/" />
             <Route element={<RecommendationsPage />} path="/recommendations" />
+            <Route element={<DetailsGifPage />} path="/gif/:id" />
             <Route
               element={
                 <ProtectedRoute>

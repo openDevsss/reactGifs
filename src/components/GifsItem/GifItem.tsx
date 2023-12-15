@@ -96,7 +96,7 @@ export function GifItem({
                 />
               </IconButton>
               <GifMenuAction
-                authorId={user.id}
+                authorId={user?.id}
                 anchorEl={anchorEl}
                 handleClose={handleClose}
                 isOpen={isOpen}
@@ -140,7 +140,8 @@ export function GifItem({
                   sx={{
                     cursor: "pointer",
                   }}
-                  position="end">
+                  position="end"
+                >
                   <IconButton type="submit">
                     <PaperPlaneRight size={25} />
                   </IconButton>
