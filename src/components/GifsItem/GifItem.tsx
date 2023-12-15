@@ -1,49 +1,68 @@
-import { IconButton } from "@mui/material";
+import { Divider, IconButton, InputAdornment, List } from "@mui/material";
+import { PaperPlaneRight } from "@phosphor-icons/react";
 import {
   DotsThreeOutlineVertical,
   LinkSimple,
   ShareNetwork,
 } from "phosphor-react";
 import React, { useState } from "react";
-import type { Gif } from "../../types/GifType";
+import { SubmitHandler, useForm } from "react-hook-form";
+import type { Gif } from "../../types/Gif";
+import { ErrorMessage } from "../SettingsGif/style";
+import { GifComment } from "./GifComment";
 import { GifMenuAction } from "./GifMenuAction";
+import { CreateCommentT, createComment } from "./service";
 import {
   CommentsContainer,
   CommentsTitle,
   ContainerGif,
   GifAnimation,
-  GifComment,
+  GifCommentsList,
   GifDescription,
+  GifForm,
   GifHeadInformation,
   GifInput,
   GifMenuItem,
   GifUserAvatar,
   GifUserInformation,
   GifUserNickname,
-  GifWrapper,
-} from "./styled";
-import { Link } from "react-router-dom";
+  ListStyle,
+} from "./style";
 
 interface GifItemsProps extends Gif {}
 
-export function GifItem({ title, description, url, user, id }: GifItemsProps) {
+export function GifItem({
+  title,
+  description,
+  url,
+  user,
+  comment,
+  id: gifId,
+}: GifItemsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
     setIsOpen(false);
   };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<CreateCommentT>();
+  const onSubmit: SubmitHandler<CreateCommentT> = (data) => {
+    data.gifId = gifId;
+    createComment(data).then(() => reset());
+  };
 
   return (
-    <GifWrapper>
-      <Link to={`/gif/${id}`}>
-        <GifAnimation src={url} alt={title} />
-      </Link>
+    <GifForm onSubmit={handleSubmit(onSubmit)}>
+      <GifAnimation src={url} alt={title} />
       <ContainerGif>
         <div>
           <GifHeadInformation>
@@ -88,10 +107,55 @@ export function GifItem({ title, description, url, user, id }: GifItemsProps) {
         </div>
         <CommentsContainer>
           <CommentsTitle>Comments</CommentsTitle>
-          <GifComment>No comments:😞</GifComment>
-          <GifInput placeholder="Add a comment" size="small" />
+          <List sx={ListStyle}>
+            {comment.length > 0 ? (
+              comment.map((message, index) => {
+                return (
+                  <>
+                    <GifComment
+                      key={message.id}
+                      comment_text={message.comment_text}
+                      user={message.user}
+                    />
+                    {index !== comment.length - 1 && (
+                      <Divider variant="middle" />
+                    )}
+                  </>
+                );
+              })
+            ) : (
+              <GifCommentsList>There is no comments</GifCommentsList>
+            )}
+          </List>
+          <GifInput
+            {...register("comment_text", {
+              maxLength: {
+                value: 100,
+                message: "Max length 100 symbols",
+              },
+            })}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  sx={{
+                    cursor: "pointer",
+                  }}
+                  position="end"
+                >
+                  <IconButton type="submit">
+                    <PaperPlaneRight size={25} />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            placeholder="Add a comment"
+            size="small"
+          />
+          {errors.comment_text && (
+            <ErrorMessage>{errors.comment_text.message}</ErrorMessage>
+          )}
         </CommentsContainer>
       </ContainerGif>
-    </GifWrapper>
+    </GifForm>
   );
 }

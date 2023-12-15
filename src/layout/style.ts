@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { Container } from "@mui/material";
 
 export const LayoutHomePage = styled(Container)`
-  max-width: 980px;
+  max-width: 1100px;
   margin: 0 auto;
-  width: 980px;
+  width: 1100px;
 `;
 
 export const SettingsLayoutWrapper = styled(Container)`

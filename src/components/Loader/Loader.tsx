@@ -1,4 +1,4 @@
-import { LoaderCircular, LoaderContainer } from "./styled";
+import { LoaderCircular, LoaderContainer } from "./style";
 
 export function Loader() {
   return (
