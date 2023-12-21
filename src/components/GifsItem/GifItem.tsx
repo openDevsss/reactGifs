@@ -178,6 +178,7 @@ export function GifItem({
                 />
               </IconButton>
               <GifMenuAction
+                gifId={gifId}
                 authorId={user?.id}
                 anchorEl={anchorEl}
                 handleClose={handleClose}
