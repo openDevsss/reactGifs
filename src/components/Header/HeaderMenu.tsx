@@ -1,24 +1,20 @@
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
-import {
-  GearSix,
-  HeartStraight,
-  Moon,
-  SignOut,
-  UserCircle,
-} from "phosphor-react";
+import { GearSix, Moon, SignOut, UserCircle } from "phosphor-react";
 
-import { StyledMenuItem } from "./style";
+import { MenuItemLink, StyledMenuItem } from "./style";
 
 interface HeaderMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
   isOpen: boolean;
+  handleLogout: () => void;
 }
 export function HeaderMenu({
   anchorEl,
   handleClose,
   isOpen,
+  handleLogout,
 }: HeaderMenuProps) {
   return (
     <Menu
@@ -52,37 +48,38 @@ export function HeaderMenu({
       transformOrigin={{ horizontal: "right", vertical: "top" }}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <UserCircle size={24} color="#5f3db5" />
-        </ListItemIcon>
-        My profile
-      </StyledMenuItem>
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <HeartStraight size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Favourite
-      </StyledMenuItem>
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <GearSix size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Settings
-      </StyledMenuItem>
-
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <Moon size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Night mode
-      </StyledMenuItem>
-      <StyledMenuItem onClick={handleClose}>
-        <ListItemIcon>
-          <SignOut size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Logout
-      </StyledMenuItem>
+      <MenuItemLink to="my-profile">
+        <StyledMenuItem>
+          <ListItemIcon>
+            <UserCircle size={24} color="#5f3db5" />
+          </ListItemIcon>
+          My profile
+        </StyledMenuItem>
+      </MenuItemLink>
+      <MenuItemLink to="settings">
+        <StyledMenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <GearSix size={24} color="#5f3db5" />
+          </ListItemIcon>
+          Settings
+        </StyledMenuItem>
+      </MenuItemLink>
+      <MenuItemLink to="">
+        <StyledMenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Moon size={24} color="#5f3db5" />
+          </ListItemIcon>
+          Night mode
+        </StyledMenuItem>
+      </MenuItemLink>
+      <MenuItemLink to="">
+        <StyledMenuItem onClick={handleLogout}>
+          <ListItemIcon>
+            <SignOut size={24} color="#5f3db5" />
+          </ListItemIcon>
+          Logout
+        </StyledMenuItem>
+      </MenuItemLink>
     </Menu>
   );
 }
