@@ -129,7 +129,7 @@ export function GifItem({
                   onClick={() => handleToggleLike(gifId)}
                 />
               )}
-              <Typography>{likes.length}</Typography>
+              <Typography>{likes?.length}</Typography>
             </StyledWrapperIconGif>
             <StyledWrapperIconGif>
               <ShareFat size="24" weight="thin" cursor="pointer" />
