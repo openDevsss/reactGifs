@@ -57,7 +57,7 @@ export function GifItem({
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const currentUser = useAppSelector(selectCurrentUser);
-  const gifIsLiked = likes.some((like) => like.user.id === currentUser?.id);
+  const gifIsLiked = likes?.some((like) => like.user.id === currentUser?.id);
   const queryClient = useQueryClient();
   const mutation = useMutation(
     (newComment: CreateCommentT) => createComment(newComment),
