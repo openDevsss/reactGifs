@@ -1,18 +1,24 @@
+import React from "react";
 import { AddedTitle, WrapperInformation } from "../style";
 import { GifProfile } from "./GifProfile";
 import { useGetMyGifs } from "./hooks/useGetMyGifs";
 
-export const AddedGifs = () => {
+const AddedGifs = () => {
   const { data: myGifs } = useGetMyGifs();
+
   return (
-    <WrapperInformation>
+    <React.Fragment>
       {Boolean(myGifs?.length) ? (
-        myGifs?.map((gif) => {
-          return <GifProfile key={gif.id} url={gif.url} title={gif.title} />;
-        })
+        <WrapperInformation>
+          {myGifs?.map((gif) => (
+            <GifProfile key={gif.id} url={gif.url} title={gif.title} />
+          ))}
+        </WrapperInformation>
       ) : (
         <AddedTitle>Your list with gifs is empty</AddedTitle>
       )}
-    </WrapperInformation>
+    </React.Fragment>
   );
 };
+
+export default AddedGifs;

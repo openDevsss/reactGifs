@@ -20,8 +20,8 @@ import {
   ProfileSubscriptions,
   ProfileWrapper,
 } from "./style";
+import AddedGifs from "./AddedGifs/AddedGifs";
 
-import { AddedGifs } from "./AddedGifs/AddedGifs";
 export function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
   const currentUser = useAppSelector(selectCurrentUser);
