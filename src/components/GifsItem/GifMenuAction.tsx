@@ -1,21 +1,32 @@
 import Menu from "@mui/material/Menu";
 import { ArrowFatLineDown, Megaphone, Trash } from "phosphor-react";
+import { useMutation, useQueryClient } from "react-query";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
 import type { User } from "../../types/User";
+import { deleteGif } from "./service";
 import { StyledMenuItem } from "./style";
 interface GifMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
   isOpen: boolean;
   authorId: User["id"];
+  gifId: string;
 }
 export function GifMenuAction({
+  gifId,
   anchorEl,
   handleClose,
   isOpen,
   authorId,
 }: GifMenuProps) {
+  const queryClient = useQueryClient();
+  const { mutate: handleDelete } = useMutation(
+    (gifid: string) => deleteGif(gifid),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+    }
+  );
   const currentUser = useAppSelector(selectCurrentUser);
   const isMyGif = currentUser?.id === authorId;
   return (
@@ -48,7 +59,8 @@ export function GifMenuAction({
         },
       }}
       transformOrigin={{ horizontal: "right", vertical: "top" }}
-      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+    >
       <StyledMenuItem onClick={handleClose}>
         <ArrowFatLineDown size={20} />
         Download
@@ -58,7 +70,10 @@ export function GifMenuAction({
         Report
       </StyledMenuItem>
       {isMyGif && (
-        <StyledMenuItem style={{ color: "#ff0000" }} onClick={handleClose}>
+        <StyledMenuItem
+          style={{ color: "#ff0000" }}
+          onClick={() => handleDelete(gifId)}
+        >
           <Trash size={20} color="#ff0000" />
           Delete
         </StyledMenuItem>
