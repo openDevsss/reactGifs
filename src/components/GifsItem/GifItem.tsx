@@ -140,7 +140,7 @@ export function GifItem({
           </Box>
           <Box display="flex" alignItems="cetner" gap="10px">
             <Eye size={20} weight="thin" />
-            <Typography>{likes.length}</Typography>
+            <Typography>{likes?.length}</Typography>
           </Box>
         </Box>
       </Box>
