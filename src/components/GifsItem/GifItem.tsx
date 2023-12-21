@@ -17,6 +17,7 @@ import {
 } from "phosphor-react";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "react-query";
 import type { Gif } from "../../types/Gif";
 import { ErrorMessage } from "../SettingsGif/style";
 import { GifComment } from "./GifComment";
@@ -41,7 +42,6 @@ import {
 } from "./style";
 import { useAppSelector } from "../../redux-toolkit";
 import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useMutation, useQueryClient } from "react-query";
 
 interface GifItemsProps extends Gif {}
 
@@ -58,6 +58,13 @@ export function GifItem({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const currentUser = useAppSelector(selectCurrentUser);
   const GifIsLiked = likes.some((like) => like.user.id === currentUser?.id);
+  const queryClient = useQueryClient();
+  const mutation = useMutation(
+    (newComment: CreateCommentT) => createComment(newComment),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+    }
+  );
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
@@ -71,16 +78,14 @@ export function GifItem({
   const {
     register,
     handleSubmit,
-    reset,
+
     formState: { errors },
   } = useForm<CreateCommentT>();
-
-  const onSubmit: SubmitHandler<CreateCommentT> = (data) => {
+  const onSubmit: SubmitHandler<CreateCommentT> = (data, event) => {
     data.gifId = gifId;
-    createComment(data).then(() => reset());
+    mutation.mutate(data);
+    event?.target.reset();
   };
-
-  const queryClient = useQueryClient();
 
   // TODO: TYPE
   // @ts-ignore
@@ -173,7 +178,7 @@ export function GifItem({
                 />
               </IconButton>
               <GifMenuAction
-                authorId={user.id}
+                authorId={user?.id}
                 anchorEl={anchorEl}
                 handleClose={handleClose}
                 isOpen={isOpen}
@@ -209,6 +214,10 @@ export function GifItem({
               maxLength: {
                 value: 100,
                 message: "Max length 100 symbols",
+              },
+              required: {
+                value: true,
+                message: "You can't levae empty comment",
               },
             })}
             InputProps={{
