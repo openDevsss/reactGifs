@@ -6,14 +6,14 @@ import { MenuItemLink, StyledMenuItem } from "./style";
 
 interface HeaderMenuProps {
   anchorEl: null | HTMLElement;
-  handleClose: () => void;
   isOpen: boolean;
+  handleClose: () => void;
   handleLogout: () => void;
 }
 export function HeaderMenu({
   anchorEl,
-  handleClose,
   isOpen,
+  handleClose,
   handleLogout,
 }: HeaderMenuProps) {
   return (
@@ -64,14 +64,12 @@ export function HeaderMenu({
           Settings
         </StyledMenuItem>
       </MenuItemLink>
-
       <StyledMenuItem onClick={handleClose}>
         <ListItemIcon>
           <Moon size={24} color="#5f3db5" />
         </ListItemIcon>
         Night mode
       </StyledMenuItem>
-
       <StyledMenuItem onClick={handleLogout}>
         <ListItemIcon>
           <SignOut size={24} color="#5f3db5" />
