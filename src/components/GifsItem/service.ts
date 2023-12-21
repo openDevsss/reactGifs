@@ -6,6 +6,11 @@ export type CreateCommentT = {
   comment_text: string;
   gifId: string;
 };
+
+type ToggleLikeStateT = {
+  gifId: string;
+};
+
 export const createComment = ({ comment_text, gifId }: CreateCommentT) =>
   axios.post(`${baseUrl}/comments`, JSON.stringify({ comment_text, gifId }), {
     headers: {
@@ -13,3 +18,12 @@ export const createComment = ({ comment_text, gifId }: CreateCommentT) =>
       Authorization: "Bearer " + jwt,
     },
   });
+
+export const toogleLikeState = ({ gifId }: ToggleLikeStateT) => {
+  return axios.put(`${baseUrl}/likes`, JSON.stringify({ gifId }), {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + jwt,
+    },
+  });
+};

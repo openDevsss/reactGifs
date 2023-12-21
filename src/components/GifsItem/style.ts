@@ -123,3 +123,12 @@ export const StyledMenuItem = styled(MenuItem)`
     margin-bottom: 0;
   }
 `;
+
+export const StyledWrapperIconGif = styled.div`
+  display: flex;
+  align-items: center;
+  background: #f1f1f2;
+  padding: 4px 12px;
+  border-radius: 32px;
+  gap: 10px;
+`;

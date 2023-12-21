@@ -1,7 +1,17 @@
-import { Divider, IconButton, InputAdornment, List } from "@mui/material";
-import { PaperPlaneRight } from "@phosphor-icons/react";
 import {
+  Box,
+  Divider,
+  IconButton,
+  InputAdornment,
+  List,
+  Typography,
+} from "@mui/material";
+import { PaperPlaneRight, ShareFat } from "@phosphor-icons/react";
+import {
+  Chat,
   DotsThreeOutlineVertical,
+  Eye,
+  HeartStraight,
   LinkSimple,
   ShareNetwork,
 } from "phosphor-react";
@@ -11,7 +21,7 @@ import type { Gif } from "../../types/Gif";
 import { ErrorMessage } from "../SettingsGif/style";
 import { GifComment } from "./GifComment";
 import { GifMenuAction } from "./GifMenuAction";
-import { CreateCommentT, createComment } from "./service";
+import { CreateCommentT, createComment, toogleLikeState } from "./service";
 import {
   CommentsContainer,
   CommentsTitle,
@@ -27,7 +37,11 @@ import {
   GifUserInformation,
   GifUserNickname,
   ListStyle,
+  StyledWrapperIconGif,
 } from "./style";
+import { useAppSelector } from "../../redux-toolkit";
+import { selectCurrentUser } from "../../features/users/users-selectors";
+import { useMutation, useQueryClient } from "react-query";
 
 interface GifItemsProps extends Gif {}
 
@@ -38,31 +52,94 @@ export function GifItem({
   user,
   comment,
   id: gifId,
+  likes,
 }: GifItemsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const currentUser = useAppSelector(selectCurrentUser);
+  const GifIsLiked = likes.some((like) => like.user.id === currentUser?.id);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
     setIsOpen(false);
   };
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<CreateCommentT>();
+
   const onSubmit: SubmitHandler<CreateCommentT> = (data) => {
     data.gifId = gifId;
     createComment(data).then(() => reset());
   };
 
+  const queryClient = useQueryClient();
+
+  // TODO: TYPE
+  // @ts-ignore
+  const { mutate: handleToggleLike } = useMutation(
+    // @ts-ignore
+    (gifId: string) => toogleLikeState({ gifId }),
+    {
+      onSuccess: () => {
+        // TODO: ДОБАВИТЬ ОБНОВЛЕНИЕ ТОЛЬКО ОДНОЙ ГИФКИ
+        queryClient.invalidateQueries(["gifs"]);
+      },
+      refetchOnWindowFocus: false,
+    }
+  );
+
   return (
     <GifForm onSubmit={handleSubmit(onSubmit)}>
-      <GifAnimation src={url} alt={title} />
+      <Box width="60%">
+        <GifAnimation src={url} alt={title} />
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          padding="10px"
+        >
+          <Box display="flex" alignItems="center" gap="25px">
+            <StyledWrapperIconGif>
+              {GifIsLiked ? (
+                <HeartStraight
+                  size="24"
+                  color="#e05151"
+                  weight="fill"
+                  cursor="pointer"
+                  onClick={() => handleToggleLike(gifId)}
+                />
+              ) : (
+                <HeartStraight
+                  size="24"
+                  weight="thin"
+                  cursor="pointer"
+                  onClick={() => handleToggleLike(gifId)}
+                />
+              )}
+              <Typography>{likes.length}</Typography>
+            </StyledWrapperIconGif>
+            <StyledWrapperIconGif>
+              <ShareFat size="24" weight="thin" cursor="pointer" />
+            </StyledWrapperIconGif>
+            <StyledWrapperIconGif>
+              <Chat size="24" weight="thin" cursor="pointer" />
+            </StyledWrapperIconGif>
+          </Box>
+          <Box display="flex" alignItems="cetner" gap="10px">
+            <Eye size={20} weight="thin" />
+            <Typography>{likes.length}</Typography>
+          </Box>
+        </Box>
+      </Box>
+
       <ContainerGif>
         <div>
           <GifHeadInformation>
@@ -140,7 +217,8 @@ export function GifItem({
                   sx={{
                     cursor: "pointer",
                   }}
-                  position="end">
+                  position="end"
+                >
                   <IconButton type="submit">
                     <PaperPlaneRight size={25} />
                   </IconButton>
