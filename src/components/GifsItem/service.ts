@@ -13,3 +13,9 @@ export const createComment = ({ comment_text, gifId }: CreateCommentT) =>
       Authorization: "Bearer " + jwt,
     },
   });
+export const deleteGif = (id: string) =>
+  axios.delete(`${baseUrl}/gifs/${id}`, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
