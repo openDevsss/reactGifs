@@ -27,3 +27,11 @@ export const toogleLikeState = ({ gifId }: ToggleLikeStateT) => {
     },
   });
 };
+
+export const deleteGif = (id: string) =>
+  axios.delete(`${baseUrl}/gifs/${id}`, {
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+  });
+
