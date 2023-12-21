@@ -120,7 +120,8 @@ export function Header() {
                           borderRadius: "10px",
                         },
                       },
-                    }}>
+                    }}
+                  >
                     <MyProfileWrapper to="/my-profile">
                       <ProfileName>Account</ProfileName>
                       <ProfileIcon src={currentUser?.avatar} />
@@ -151,6 +152,7 @@ export function Header() {
                     anchorEl={anchorEl}
                     handleClose={handleClose}
                     isOpen={isOpen}
+                    handleLogout={handleLogout}
                   />
                 </>
               )}

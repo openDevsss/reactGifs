@@ -125,3 +125,7 @@ export const StyledMenuItem = styled(MenuItem)`
   line-height: 1.5;
   margin-bottom: 5px;
 `;
+export const MenuItemLink = styled(Link)`
+  text-decoration: none;
+  color: #5f3db5;
+`;
