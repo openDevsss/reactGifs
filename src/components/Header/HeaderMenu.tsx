@@ -64,22 +64,20 @@ export function HeaderMenu({
           Settings
         </StyledMenuItem>
       </MenuItemLink>
-      <MenuItemLink to="">
-        <StyledMenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Moon size={24} color="#5f3db5" />
-          </ListItemIcon>
-          Night mode
-        </StyledMenuItem>
-      </MenuItemLink>
-      <MenuItemLink to="">
-        <StyledMenuItem onClick={handleLogout}>
-          <ListItemIcon>
-            <SignOut size={24} color="#5f3db5" />
-          </ListItemIcon>
-          Logout
-        </StyledMenuItem>
-      </MenuItemLink>
+
+      <StyledMenuItem onClick={handleClose}>
+        <ListItemIcon>
+          <Moon size={24} color="#5f3db5" />
+        </ListItemIcon>
+        Night mode
+      </StyledMenuItem>
+
+      <StyledMenuItem onClick={handleLogout}>
+        <ListItemIcon>
+          <SignOut size={24} color="#5f3db5" />
+        </ListItemIcon>
+        Logout
+      </StyledMenuItem>
     </Menu>
   );
 }
