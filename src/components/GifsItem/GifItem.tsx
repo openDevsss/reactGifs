@@ -138,7 +138,7 @@ export function GifItem({
               <Chat size="24" weight="thin" cursor="pointer" />
             </StyledWrapperIconGif>
           </Box>
-          <Box display="flex" alignItems="cetner" gap="10px">
+          <Box display="flex" alignItems="center" gap="10px">
             <Eye size={20} weight="thin" />
             <Typography>{likes?.length}</Typography>
           </Box>
