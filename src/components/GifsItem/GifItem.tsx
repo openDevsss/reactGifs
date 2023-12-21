@@ -7,6 +7,7 @@ import {
 } from "phosphor-react";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "react-query";
 import type { Gif } from "../../types/Gif";
 import { ErrorMessage } from "../SettingsGif/style";
 import { GifComment } from "./GifComment";
@@ -41,6 +42,13 @@ export function GifItem({
 }: GifItemsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const queryClient = useQueryClient();
+  const mutation = useMutation(
+    (newComment: CreateCommentT) => createComment(newComment),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+    }
+  );
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
@@ -52,14 +60,14 @@ export function GifItem({
   const {
     register,
     handleSubmit,
-    reset,
+
     formState: { errors },
   } = useForm<CreateCommentT>();
-  const onSubmit: SubmitHandler<CreateCommentT> = (data) => {
+  const onSubmit: SubmitHandler<CreateCommentT> = (data, event) => {
     data.gifId = gifId;
-    createComment(data).then(() => reset());
+    mutation.mutate(data);
+    event?.target.reset();
   };
-
   return (
     <GifForm onSubmit={handleSubmit(onSubmit)}>
       <GifAnimation src={url} alt={title} />
@@ -132,6 +140,10 @@ export function GifItem({
               maxLength: {
                 value: 100,
                 message: "Max length 100 symbols",
+              },
+              required: {
+                value: true,
+                message: "You can't levae empty comment",
               },
             })}
             InputProps={{
