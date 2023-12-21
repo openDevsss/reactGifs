@@ -57,7 +57,7 @@ export function GifItem({
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const currentUser = useAppSelector(selectCurrentUser);
-  const GifIsLiked = likes.some((like) => like.user.id === currentUser?.id);
+  const gifIsLiked = likes.some((like) => like.user.id === currentUser?.id);
   const queryClient = useQueryClient();
   const mutation = useMutation(
     (newComment: CreateCommentT) => createComment(newComment),
@@ -113,7 +113,7 @@ export function GifItem({
         >
           <Box display="flex" alignItems="center" gap="25px">
             <StyledWrapperIconGif>
-              {GifIsLiked ? (
+              {gifIsLiked ? (
                 <HeartStraight
                   size="24"
                   color="#e05151"
