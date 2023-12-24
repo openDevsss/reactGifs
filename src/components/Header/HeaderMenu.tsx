@@ -64,18 +64,20 @@ export function HeaderMenu({
           Settings
         </StyledMenuItem>
       </MenuItemLink>
-      <StyledMenuItem onClick={handleClose}>
+      <StyledMenuItem onClick={handleClose} style={{ color: "#5f3db5" }}>
         <ListItemIcon>
           <Moon size={24} color="#5f3db5" />
         </ListItemIcon>
         Night mode
       </StyledMenuItem>
-      <StyledMenuItem onClick={handleLogout}>
-        <ListItemIcon>
-          <SignOut size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Logout
-      </StyledMenuItem>
+      <MenuItemLink to="/sign-in">
+        <StyledMenuItem onClick={handleLogout}>
+          <ListItemIcon>
+            <SignOut size={24} color="#5f3db5" />
+          </ListItemIcon>
+          Logout
+        </StyledMenuItem>
+      </MenuItemLink>
     </Menu>
   );
 }

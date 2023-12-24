@@ -12,6 +12,7 @@ export type Gif = {
   updatedAt: string;
   tags: Tag[];
   comment: Comment[];
+  viewers: number;
   likes: Array<{
     id: number;
     user: User;

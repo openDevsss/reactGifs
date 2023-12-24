@@ -45,12 +45,12 @@ export const GifUserAvatar = styled.img`
   height: 35px;
   border-radius: 35px;
   cursor: pointer;
-  margin-right: 10px;
 `;
 
 export const GifUserNickname = styled(Typography)`
   font-weight: 500;
   font-size: 20px;
+  margin-left: 10px;
   cursor: pointer;
 `;
 
