@@ -54,6 +54,7 @@ export function GifItem({
   comment,
   id: gifId,
   likes,
+  viewers,
 }: GifItemsProps) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -146,7 +147,7 @@ export function GifItem({
           </Box>
           <Box display="flex" alignItems="center" gap="10px">
             <Eye size={20} weight="thin" />
-            <Typography>{likes?.length}</Typography>
+            <Typography>{viewers}</Typography>
           </Box>
         </Box>
       </Box>
