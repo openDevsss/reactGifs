@@ -4,6 +4,7 @@ import {
   IconButton,
   InputAdornment,
   List,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { PaperPlaneRight, ShareFat } from "@phosphor-icons/react";
@@ -118,25 +119,50 @@ export function GifItem({
           padding="10px"
         >
           <Box display="flex" alignItems="center" gap="25px">
-            <StyledWrapperIconGif>
-              {gifIsLiked ? (
-                <HeartStraight
-                  size="24"
-                  color="#e05151"
-                  weight="fill"
-                  cursor="pointer"
-                  onClick={() => handleToggleLike(gifId)}
-                />
-              ) : (
-                <HeartStraight
-                  size="24"
-                  weight="thin"
-                  cursor="pointer"
-                  onClick={() => handleToggleLike(gifId)}
-                />
-              )}
-              <Typography>{likes?.length}</Typography>
-            </StyledWrapperIconGif>
+            <Tooltip
+              placement="top"
+              title={
+                <Box display="flex" gap="10px" maxWidth="250px">
+                  {Boolean(likes.length)
+                    ? likes.map(({ user }) => (
+                        <GifUserAvatar src={user.avatar} alt={user.nickname} />
+                      ))
+                    : "Лайки пользователей"}
+                </Box>
+              }
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    color: "white",
+                    bgcolor: "rgba(0, 0, 0, 0.8)",
+                    padding: "10px",
+                    borderRadius: "10px",
+                    opacity: 0.3,
+                    display: "flex",
+                  },
+                },
+              }}
+            >
+              <StyledWrapperIconGif>
+                {gifIsLiked ? (
+                  <HeartStraight
+                    size="24"
+                    color="#e05151"
+                    weight="fill"
+                    cursor="pointer"
+                    onClick={() => handleToggleLike(gifId)}
+                  />
+                ) : (
+                  <HeartStraight
+                    size="24"
+                    weight="thin"
+                    cursor="pointer"
+                    onClick={() => handleToggleLike(gifId)}
+                  />
+                )}
+                <Typography>{likes?.length}</Typography>
+              </StyledWrapperIconGif>
+            </Tooltip>
             <StyledWrapperIconGif>
               <ShareFat size="24" weight="thin" cursor="pointer" />
             </StyledWrapperIconGif>
