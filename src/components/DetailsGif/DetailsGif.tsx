@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export function DetailsGif() {
   const { id } = useParams();
   const { data: gif } = useGetGifById(id as string);
+
   const navigate = useNavigate();
 
   return (

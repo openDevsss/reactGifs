@@ -3,7 +3,7 @@ import { getGifById } from "./service";
 import { AxiosError } from "axios";
 
 export function useGetGifById(id: string) {
-  const { data, isLoading } = useQuery(
+  const { data: gif, isLoading } = useQuery(
     ["gifById"],
     async () => getGifById(id),
     {
@@ -13,5 +13,5 @@ export function useGetGifById(id: string) {
       },
     }
   );
-  return { data: data, isLoading };
+  return { data: gif?.data, isLoading };
 }
