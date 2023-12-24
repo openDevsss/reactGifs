@@ -42,6 +42,7 @@ import {
 } from "./style";
 import { useAppSelector } from "../../redux-toolkit";
 import { selectCurrentUser } from "../../features/users/users-selectors";
+import { useNavigate } from "react-router-dom";
 
 interface GifItemsProps extends Gif {}
 
@@ -54,6 +55,7 @@ export function GifItem({
   id: gifId,
   likes,
 }: GifItemsProps) {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const currentUser = useAppSelector(selectCurrentUser);
@@ -104,7 +106,11 @@ export function GifItem({
   return (
     <GifForm onSubmit={handleSubmit(onSubmit)}>
       <Box width="60%">
-        <GifAnimation src={url} alt={title} />
+        <GifAnimation
+          src={url}
+          alt={title}
+          onClick={() => navigate(`/gif/${gifId}`)}
+        />
         <Box
           display="flex"
           alignItems="center"

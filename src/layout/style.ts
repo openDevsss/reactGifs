@@ -16,5 +16,5 @@ export const SettingsLayoutWrapper = styled(Container)`
 export const LayoutDetailsGif = styled(Container)`
   width: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 30px 0;
 `;
