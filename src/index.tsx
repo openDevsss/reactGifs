@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
@@ -15,17 +14,15 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <QueryClientProvider client={client}>
-      <BrowserRouter>
-        <Provider store={store}>
-          <AlertProvider>
-            <App />
-          </AlertProvider>
-        </Provider>
-      </BrowserRouter>
-    </QueryClientProvider>
-  </React.StrictMode>
+  <QueryClientProvider client={client}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <AlertProvider>
+          <App />
+        </AlertProvider>
+      </Provider>
+    </BrowserRouter>
+  </QueryClientProvider>
 );
 
 reportWebVitals();

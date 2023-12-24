@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import { ShareFat } from "@phosphor-icons/react";
 import {
   Chat,
@@ -29,6 +29,7 @@ import {
   GifUserNickname,
   StyledWrapperIconGif,
 } from "./style";
+import { useNavigate } from "react-router-dom";
 
 interface GifItemsProps extends Gif {}
 
@@ -37,8 +38,9 @@ export function GifItem({
   description,
   url,
   user,
-  comment,
+  comments,
   id: gifId,
+  viewers,
   likes,
 }: GifItemsProps) {
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
@@ -47,7 +49,7 @@ export function GifItem({
   const currentUser = useAppSelector(selectCurrentUser);
   const gifIsLiked = likes?.some((like) => like.user.id === currentUser?.id);
   const queryClient = useQueryClient();
-
+  const navigate = useNavigate();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
@@ -77,13 +79,12 @@ export function GifItem({
       <Box maxWidth="600px" width="100%">
         {!isCommentsOpen && (
           <Box
-            gap="15px"
             justifyContent="space-between"
             mb="10px"
             display="flex"
             alignItems="center"
           >
-            <Box display="flex">
+            <Box display="flex" gap="15px">
               <GifUserAvatar src={user.avatar} />
               <GifItemTitle>{title}</GifItemTitle>
             </Box>
@@ -104,7 +105,11 @@ export function GifItem({
             />
           </Box>
         )}
-        <GifAnimation src={url} alt={title} />
+        <GifAnimation
+          src={url}
+          alt={title}
+          onClick={() => navigate(`/gif/${gifId}`)}
+        />
         <Box
           display="flex"
           alignItems="center"
@@ -112,25 +117,54 @@ export function GifItem({
           padding="10px"
         >
           <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
-            <StyledWrapperIconGif>
-              {gifIsLiked ? (
-                <HeartStraight
-                  size="24"
-                  color="#e05151"
-                  weight="fill"
-                  cursor="pointer"
-                  onClick={() => handleToggleLike(gifId)}
-                />
-              ) : (
-                <HeartStraight
-                  size="24"
-                  weight="thin"
-                  cursor="pointer"
-                  onClick={() => handleToggleLike(gifId)}
-                />
-              )}
-              <Typography>{likes?.length}</Typography>
-            </StyledWrapperIconGif>
+            <Tooltip
+              placement="top"
+              title={
+                <Box display="flex" gap="10px" maxWidth="250px">
+                  {Boolean(likes?.length)
+                    ? likes.map(({ user }) => (
+                        <GifUserAvatar
+                          key={user.id}
+                          src={user.avatar}
+                          alt={user.nickname}
+                        />
+                      ))
+                    : "Лайки пользователей"}
+                </Box>
+              }
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    color: "white",
+                    bgcolor: "rgba(0, 0, 0, 0.8)",
+                    padding: "10px",
+                    borderRadius: "10px",
+                    opacity: 0.3,
+                    display: "flex",
+                  },
+                },
+              }}
+            >
+              <StyledWrapperIconGif>
+                {gifIsLiked ? (
+                  <HeartStraight
+                    size="24"
+                    color="#e05151"
+                    weight="fill"
+                    cursor="pointer"
+                    onClick={() => handleToggleLike(gifId)}
+                  />
+                ) : (
+                  <HeartStraight
+                    size="24"
+                    weight="thin"
+                    cursor="pointer"
+                    onClick={() => handleToggleLike(gifId)}
+                  />
+                )}
+                <Typography>{likes?.length}</Typography>
+              </StyledWrapperIconGif>
+            </Tooltip>
             <StyledWrapperIconGif>
               <ShareFat size="24" weight="thin" cursor="pointer" />
             </StyledWrapperIconGif>
@@ -142,7 +176,7 @@ export function GifItem({
           </Box>
           <Box display="flex" alignItems="center" gap="10px">
             <Eye size={20} weight="thin" />
-            <Typography>{likes?.length}</Typography>
+            <Typography>{viewers}</Typography>
           </Box>
         </Box>
       </Box>
@@ -193,7 +227,7 @@ export function GifItem({
             </div>
             <Comments
               isCommentsOpen={isCommentsOpen}
-              comment={comment}
+              comments={comments}
               gifId={gifId}
             />
           </>

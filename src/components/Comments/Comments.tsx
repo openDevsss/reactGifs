@@ -16,11 +16,15 @@ import {
   ListStyle,
 } from "./style";
 type CommentsPropType = {
-  comment: Comment[];
+  comments: Comment[];
   gifId: string;
   isCommentsOpen: boolean;
 };
-export function Comments({ comment, gifId, isCommentsOpen }: CommentsPropType) {
+export function Comments({
+  comments,
+  gifId,
+  isCommentsOpen,
+}: CommentsPropType) {
   const queryClient = useQueryClient();
   const mutation = useMutation(
     (newComment: CreateCommentT) => createComment(newComment),
@@ -49,8 +53,8 @@ export function Comments({ comment, gifId, isCommentsOpen }: CommentsPropType) {
       <CommentsContainer>
         <CommentsTitle>Comments</CommentsTitle>
         <List sx={ListStyle}>
-          {comment.length > 0 ? (
-            comment.map((message, index) => {
+          {comments?.length > 0 ? (
+            comments.map((message, index) => {
               return (
                 <React.Fragment key={index}>
                   <GifComment
@@ -58,7 +62,9 @@ export function Comments({ comment, gifId, isCommentsOpen }: CommentsPropType) {
                     comment_text={message.comment_text}
                     user={message.user}
                   />
-                  {index !== comment.length - 1 && <Divider variant="middle" />}
+                  {index !== comments.length - 1 && (
+                    <Divider variant="middle" />
+                  )}
                 </React.Fragment>
               );
             })
