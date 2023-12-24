@@ -8,6 +8,7 @@ import { CreateCommentT, createComment } from "../GifItem/service";
 import { GifComment } from "./GifComment";
 import {
   CommentsContainer,
+  CommentsForm,
   CommentsTitle,
   EmptyCommentsMessage,
   ErrorMessageComments,
@@ -41,8 +42,8 @@ export function Comments({ comment, gifId, isCommentsOpen }: CommentsPropType) {
   };
 
   return (
-    <form
-      style={{ display: isCommentsOpen ? "block" : "none" }}
+    <CommentsForm
+      isCommentsOpen={isCommentsOpen}
       onSubmit={handleSubmit(onSubmit)}
     >
       <CommentsContainer>
@@ -99,6 +100,6 @@ export function Comments({ comment, gifId, isCommentsOpen }: CommentsPropType) {
           </ErrorMessageComments>
         )}
       </CommentsContainer>
-    </form>
+    </CommentsForm>
   );
 }

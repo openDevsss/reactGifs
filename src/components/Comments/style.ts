@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import { Box, TextField, Typography } from "@mui/material";
 
+export const CommentsForm = styled.form<{ isCommentsOpen: boolean }>`
+  display: ${(props) => (props.isCommentsOpen ? "block" : "none")};
+`;
 export const ListStyle = {
   width: "100%",
   marginTop: "10px",

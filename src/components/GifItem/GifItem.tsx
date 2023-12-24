@@ -77,6 +77,7 @@ export function GifItem({
       <Box maxWidth="600px" width="100%">
         {!isCommentsOpen && (
           <Box
+            gap="15px"
             justifyContent="space-between"
             mb="10px"
             display="flex"
@@ -145,7 +146,7 @@ export function GifItem({
           </Box>
         </Box>
       </Box>
-      {isCommentsOpen ? (
+      {isCommentsOpen && (
         <ContainerGif>
           <>
             <div>
@@ -197,7 +198,7 @@ export function GifItem({
             />
           </>
         </ContainerGif>
-      ) : null}
+      )}
     </GifItemWrapper>
   );
 }
