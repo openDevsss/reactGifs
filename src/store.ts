@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import axios from "axios";
 
 import * as api from "./config";
 import { userReducer } from "./features/users/users-slice";
+import { axiosInstance } from "./utils/axiosInstance";
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ export const store = configureStore({
     getDefaultMiddleware({
       thunk: {
         extraArgument: {
-          client: axios,
+          client: axiosInstance,
           api,
         },
       },
