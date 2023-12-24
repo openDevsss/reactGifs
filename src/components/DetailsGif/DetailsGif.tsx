@@ -1,9 +1,8 @@
-import { useGetGifById } from "./hook/useGetGifById";
-import { Link, useParams } from "react-router-dom";
-import { GifItem } from "../GifsItem/GifItem";
 import { ArrowLeft } from "phosphor-react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { GifItem } from "../GifItem/GifItem";
+import { useGetGifById } from "./hook/useGetGifById";
 import { ButtonBack } from "./style";
-import { useNavigate } from "react-router-dom";
 
 export function DetailsGif() {
   const { id } = useParams();

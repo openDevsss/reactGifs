@@ -1,10 +1,9 @@
-import axios from "axios";
-import { baseUrl } from "../../../constant";
 import type { Gif } from "../../../types/Gif";
+import { axiosInstance } from "../../../utils/axiosInstance";
 
 type GetGifData = {
   data: Gif[];
 };
 
 export const getGifs = (): Promise<GetGifData> =>
-  axios.get(`${baseUrl}/gifs`).then((res) => res.data);
+  axiosInstance.get(`/gifs`).then((res) => res.data);

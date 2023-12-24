@@ -1,4 +1,4 @@
-import { GifItem } from "../GifsItem/GifItem";
+import { GifItem } from "../GifItem/GifItem";
 import { useGetGifs } from "./hooks/useGetGifs";
 
 export function GifsList() {

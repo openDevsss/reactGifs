@@ -1,16 +1,7 @@
 import styled from "@emotion/styled";
-import { Box, MenuItem, TextField, Typography } from "@mui/material";
+import { Box, MenuItem, Typography } from "@mui/material";
 
-export const ListStyle = {
-  width: "100%",
-  marginTop: "10px",
-  bgcolor: "background.paper",
-  position: "relative",
-  overflow: "auto",
-  maxHeight: 280,
-};
-
-export const GifForm = styled.form`
+export const GifItemWrapper = styled.div`
   height: fit-content;
   margin: 20px auto;
   border-radius: 20px;
@@ -22,8 +13,9 @@ export const GifForm = styled.form`
 `;
 export const GifAnimation = styled.img`
   border-radius: 32px;
-  width: 60%;
+  width: 100%;
   min-width: 600px;
+  max-width: 600px;
   height: 500px;
   object-fit: cover;
   cursor: pointer;
@@ -68,51 +60,9 @@ export const GifMenuItem = styled(Box)`
   align-items: center;
 `;
 
-export const CommentsContainer = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
 export const GifDescription = styled(Typography)`
   font-size: 16px;
   margin-top: 10px;
-`;
-
-export const GifCommentsList = styled(Typography)`
-  font-size: 16px;
-`;
-
-export const CommentsTitle = styled(Typography)`
-  font-size: 15px;
-  font-weight: 700;
-`;
-
-export const GifInput = styled(TextField)`
-  padding: 0;
-  margin-top: 20px;
-  width: 100%;
-  box-sizing: border-box;
-  input::placeholder {
-    font-family: "Inter", serif;
-  }
-  & label.Mui-focused {
-    color: #5f3db5;
-  }
-  & .MuiOutlinedInput-root {
-    &.Mui-focused fieldset {
-      border-color: #5f3db5;
-    }
-    border-radius: 8px;
-    background-color: #f1f1f2;
-  }
-  @media (max-width: 1024px) {
-    width: 400px;
-  }
-  @media (max-width: 768px) {
-    width: 70%;
-    margin-right: 10px;
-  }
 `;
 
 export const StyledMenuItem = styled(MenuItem)`
@@ -132,4 +82,9 @@ export const StyledWrapperIconGif = styled.div`
   padding: 4px 12px;
   border-radius: 32px;
   gap: 10px;
+`;
+export const GifItemTitle = styled.h2`
+  margin: 0;
+  align-self: center;
+  font-size: 18px;
 `;
