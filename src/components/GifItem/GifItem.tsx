@@ -10,6 +10,7 @@ import {
 } from "phosphor-react";
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
 import type { Gif } from "../../types/Gif";
@@ -29,7 +30,6 @@ import {
   GifUserNickname,
   StyledWrapperIconGif,
 } from "./style";
-import { useNavigate } from "react-router-dom";
 import { UserList } from "../UserList/UserList";
 
 interface GifItemsProps extends Gif {}
@@ -39,11 +39,12 @@ export function GifItem({
   description,
   url,
   user,
-  comments,
+  comment,
   id: gifId,
   viewers,
   likes,
 }: GifItemsProps) {
+  console.log(comment);
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenUserList, setIsOpenUserList] = useState(false);
@@ -123,7 +124,12 @@ export function GifItem({
             <Tooltip
               placement="top"
               title={
-                <Box display="flex" gap="10px" maxWidth="250px">
+                <Box
+                  overflow="hidden"
+                  display="flex"
+                  gap="10px"
+                  maxWidth="170px"
+                >
                   {Boolean(likes?.length)
                     ? likes.map(({ user }) => (
                         <GifUserAvatar
@@ -238,7 +244,7 @@ export function GifItem({
             </div>
             <Comments
               isCommentsOpen={isCommentsOpen}
-              comments={comments}
+              comments={comment}
               gifId={gifId}
             />
           </>
