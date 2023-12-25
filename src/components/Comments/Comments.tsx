@@ -40,7 +40,6 @@ export function Comments({
   } = useForm<CreateCommentT>();
   const onSubmit: SubmitHandler<CreateCommentT> = (data, event) => {
     data.gifId = gifId;
-    console.log(data);
     mutation.mutate(data);
     event?.target.reset();
   };

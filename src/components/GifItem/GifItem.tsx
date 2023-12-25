@@ -30,6 +30,7 @@ import {
   GifUserNickname,
   StyledWrapperIconGif,
 } from "./style";
+import { UserList } from "../UserList/UserList";
 
 interface GifItemsProps extends Gif {}
 
@@ -46,6 +47,7 @@ export function GifItem({
   console.log(comment);
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenUserList, setIsOpenUserList] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const currentUser = useAppSelector(selectCurrentUser);
   const gifIsLiked = likes?.some((like) => like.user.id === currentUser?.id);
@@ -58,6 +60,7 @@ export function GifItem({
   const handleClose = () => {
     setAnchorEl(null);
     setIsOpen(false);
+    setIsOpenUserList(false);
   };
   // TODO: TYPE
   // @ts-ignore
@@ -130,6 +133,7 @@ export function GifItem({
                   {Boolean(likes?.length)
                     ? likes.map(({ user }) => (
                         <GifUserAvatar
+                          onClick={() => setIsOpenUserList(true)}
                           key={user.id}
                           src={user.avatar}
                           alt={user.nickname}
@@ -171,6 +175,13 @@ export function GifItem({
                 <Typography>{likes?.length}</Typography>
               </StyledWrapperIconGif>
             </Tooltip>
+            {isOpenUserList && (
+              <UserList
+                open={isOpenUserList}
+                onClose={handleClose}
+                users={likes.map(({ user }) => user)}
+              />
+            )}
             <StyledWrapperIconGif>
               <ShareFat size="24" weight="thin" cursor="pointer" />
             </StyledWrapperIconGif>
