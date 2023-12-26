@@ -14,9 +14,10 @@ import { useAppDispatch } from "./redux-toolkit";
 
 import { AddGif } from "./components/AddGif/AddGif";
 import AlertPopup from "./components/AlertPopup/AlertPopup";
+import { UserProfile } from "./components/UserProfile/UserProfile";
+import { DetailsGifPage } from "./pages/DetailsGifPage";
 import { HomePage } from "./pages/HomePage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
-import { DetailsGifPage } from "./pages/DetailsGifPage";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -50,6 +51,7 @@ export function App() {
               path="/settings"
             />
             <Route element={<AddGif />} path="gif-add" />
+            <Route element={<UserProfile />} path="profile/:id" />
           </Route>
           <Route element={<Registration />} path="/sign-up" />
           <Route element={<Login />} path="/sign-in" />
