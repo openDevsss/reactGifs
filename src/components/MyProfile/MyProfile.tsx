@@ -22,18 +22,25 @@ import {
 } from "./style";
 import AddedGifs from "./AddedGifs/AddedGifs";
 import { Box } from "@mui/system";
+import { CustomModal } from "../Custom/CustomModal";
+import { FollowersAndFollowing } from "./FollowersAndFollowingList";
 
 export function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
-  const [isOpenModalWithFollowers, setIsOpenModalWithFollowers] =
-    useState(false);
-  const [isOpenModalWithFollowing, setIsOpenModalWithFollowing] =
-    useState(false);
+  const [
+    isOpenModalWithFollowersAndFollowers,
+    setIsOpenModalWithFollowersAndFollowers,
+  ] = useState(false);
+  const [selectedList, setSelectedList] = useState<null | string>(null);
   const currentUser = useAppSelector(selectCurrentUser);
 
   const handleCloseAllModal = () => {
-    setIsOpenModalWithFollowers(false);
-    setIsOpenModalWithFollowing(false);
+    setIsOpenModalWithFollowersAndFollowers(false);
+  };
+
+  const handleOpenList = (listType: string) => {
+    setSelectedList(listType);
+    setIsOpenModalWithFollowersAndFollowers(true);
   };
   return (
     <ProfileWrapper>
@@ -51,18 +58,30 @@ export function MyProfile() {
         </Link>
       </ProfileMailWrapper>
       <Box display="flex" gap="15px">
-        <ProfileSubscriptions onClick={() => setIsOpenModalWithFollowing(true)}>
+        <ProfileSubscriptions onClick={() => handleOpenList("following")}>
           <span style={{ fontWeight: "bold" }}>
             {currentUser?.following.length}
           </span>{" "}
           following
         </ProfileSubscriptions>
-        <ProfileSubscriptions onClick={() => setIsOpenModalWithFollowers(true)}>
+        <ProfileSubscriptions onClick={() => handleOpenList("followers")}>
           <span style={{ fontWeight: "bold" }}>
             {currentUser?.followers.length}
           </span>{" "}
           followers
         </ProfileSubscriptions>
+        <CustomModal
+          open={isOpenModalWithFollowersAndFollowers}
+          onClose={handleCloseAllModal}
+        >
+          <div>
+            <FollowersAndFollowing
+              followers={currentUser?.followers || []}
+              following={currentUser?.following || []}
+              type={selectedList || ""}
+            />
+          </div>
+        </CustomModal>
       </Box>
 
       <ButtonsContainer>
