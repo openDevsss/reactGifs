@@ -21,10 +21,20 @@ import {
   ProfileWrapper,
 } from "./style";
 import AddedGifs from "./AddedGifs/AddedGifs";
+import { Box } from "@mui/system";
 
 export function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
+  const [isOpenModalWithFollowers, setIsOpenModalWithFollowers] =
+    useState(false);
+  const [isOpenModalWithFollowing, setIsOpenModalWithFollowing] =
+    useState(false);
   const currentUser = useAppSelector(selectCurrentUser);
+
+  const handleCloseAllModal = () => {
+    setIsOpenModalWithFollowers(false);
+    setIsOpenModalWithFollowing(false);
+  };
   return (
     <ProfileWrapper>
       <ProfileAvatar src={currentUser?.avatar} />
@@ -40,8 +50,21 @@ export function MyProfile() {
           />
         </Link>
       </ProfileMailWrapper>
+      <Box display="flex" gap="15px">
+        <ProfileSubscriptions onClick={() => setIsOpenModalWithFollowing(true)}>
+          <span style={{ fontWeight: "bold" }}>
+            {currentUser?.following.length}
+          </span>{" "}
+          following
+        </ProfileSubscriptions>
+        <ProfileSubscriptions onClick={() => setIsOpenModalWithFollowers(true)}>
+          <span style={{ fontWeight: "bold" }}>
+            {currentUser?.followers.length}
+          </span>{" "}
+          followers
+        </ProfileSubscriptions>
+      </Box>
 
-      <ProfileSubscriptions>0 follows</ProfileSubscriptions>
       <ButtonsContainer>
         <ProfileButton>Share</ProfileButton>
         <ProfileButton>Edit profile</ProfileButton>

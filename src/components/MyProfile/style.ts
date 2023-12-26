@@ -59,6 +59,7 @@ export const ProfileMailWrapper = styled(Box)`
 
 export const ProfileSubscriptions = styled.p`
   margin: 0;
+  cursor: pointer;
   margin-top: 10px;
   font-size: 16px;
   @media (max-width: 768px) {
