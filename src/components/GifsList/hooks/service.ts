@@ -6,4 +6,4 @@ type GetGifData = {
 };
 
 export const getGifs = (): Promise<GetGifData> =>
-  axiosInstance.get(`/gifs`).then((res) => res.data);
+  axiosInstance.get("/gifs").then((res) => res.data);

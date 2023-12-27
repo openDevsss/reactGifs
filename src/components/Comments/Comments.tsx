@@ -30,7 +30,7 @@ export function Comments({
     (newComment: CreateCommentT) => createComment(newComment),
     {
       onSuccess: () => queryClient.invalidateQueries(["gifs"]),
-    }
+    },
   );
   const {
     register,

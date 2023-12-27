@@ -1,22 +1,20 @@
-import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { Login } from "./components/Auth/Login/Login";
-import { Registration } from "./components/Auth/Registration/Registration";
-import { PageLayout } from "./components/PageLayout/PageLayout";
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { SettingsGif } from "./components/SettingsGif/SettingsGif";
-import { checkAuth } from "./features/users/users-slice";
-import { NotFoundPage } from "./pages/NotFoundPage";
-
-import { MyProfilePage } from "./pages/MyProfilePage";
-import { useAppDispatch } from "./redux-toolkit";
-
+import { useEffect } from "react";
 import { AddGif } from "./components/AddGif/AddGif";
 import AlertPopup from "./components/AlertPopup/AlertPopup";
-import { HomePage } from "./pages/HomePage";
-import { RecommendationsPage } from "./pages/RecommendationsPage";
 import { DetailsGifPage } from "./pages/DetailsGifPage";
+import { HomePage } from "./pages/HomePage";
+import { Login } from "./components/Auth/Login/Login";
+import { MyProfilePage } from "./pages/MyProfilePage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { PageLayout } from "./components/PageLayout/PageLayout";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { RecommendationsPage } from "./pages/RecommendationsPage";
+import { Registration } from "./components/Auth/Registration/Registration";
+import { SettingsGif } from "./components/SettingsGif/SettingsGif";
+import { checkAuth } from "./features/users/users-slice";
+import { useAppDispatch } from "./redux-toolkit";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -24,7 +22,6 @@ export function App() {
   useEffect(() => {
     if (jwt) dispatch(checkAuth(jwt));
   }, [jwt, dispatch]);
-
   return (
     <>
       <div className="page">

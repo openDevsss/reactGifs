@@ -25,7 +25,7 @@ export function GifMenuAction({
     (gifid: string) => deleteGif(gifid),
     {
       onSuccess: () => queryClient.invalidateQueries(["gifs"]),
-    }
+    },
   );
   const currentUser = useAppSelector(selectCurrentUser);
   const isMyGif = currentUser?.id === authorId;
@@ -46,7 +46,7 @@ export function GifMenuAction({
           mt: 1.5,
           "&:before": {
             backgroundColor: "#fff",
-            content: '""',
+            content: "``",
             display: "block",
             position: "absolute",
             top: 0,

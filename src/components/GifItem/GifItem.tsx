@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
 import { ShareFat } from "@phosphor-icons/react";
 import {
@@ -15,6 +16,7 @@ import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
 import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
+import { UserList } from "../UserList/UserList";
 import { GifMenuAction } from "./GifMenuAction";
 import { toogleLikeState } from "./service";
 import {
@@ -30,9 +32,8 @@ import {
   GifUserNickname,
   StyledWrapperIconGif,
 } from "./style";
-import { UserList } from "../UserList/UserList";
 
-interface GifItemsProps extends Gif {}
+type GifItemsProps = Gif;
 
 export function GifItem({
   title,
@@ -73,7 +74,7 @@ export function GifItem({
         queryClient.invalidateQueries(["gifs"]);
       },
       refetchOnWindowFocus: false,
-    }
+    },
   );
 
   return (
@@ -130,7 +131,7 @@ export function GifItem({
                   gap="10px"
                   maxWidth="170px"
                 >
-                  {Boolean(likes?.length)
+                  {likes?.length
                     ? likes.map(({ user }) => (
                         <GifUserAvatar
                           onClick={() => setIsOpenUserList(true)}

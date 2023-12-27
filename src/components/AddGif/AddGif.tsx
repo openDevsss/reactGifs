@@ -62,7 +62,7 @@ export function AddGif() {
       <TitleAddGif>Add GIF</TitleAddGif>
       <FormAdded onSubmit={handleSubmit(onSubmit)}>
         <CreatedWrapper>
-          {Boolean(image) ? (
+          {image ? (
             <AddGifItemWrapper>
               <AddGifItem src={image} />
             </AddGifItemWrapper>

@@ -16,7 +16,8 @@ const AlertPopup = () => {
           top: 15,
           left: type === "error" || type === "warning" ? "15px" : null,
           right: type === "success" || type === "info" ? "15px" : null,
-        }}>
+        }}
+      >
         {text}
       </Alert>
     );

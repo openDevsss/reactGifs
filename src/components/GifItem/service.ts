@@ -10,10 +10,10 @@ type ToggleLikeStateT = {
 };
 
 export const createComment = ({ comment_text, gifId }: CreateCommentT) =>
-  axiosInstance.post(`/comments`, JSON.stringify({ comment_text, gifId }));
+  axiosInstance.post("/comments", JSON.stringify({ comment_text, gifId }));
 
 export const toogleLikeState = ({ gifId }: ToggleLikeStateT) => {
-  return axiosInstance.put(`/likes`, JSON.stringify({ gifId }));
+  return axiosInstance.put("/likes", JSON.stringify({ gifId }));
 };
 
 export const deleteGif = (id: string) => axiosInstance.delete(`/gifs/${id}`);

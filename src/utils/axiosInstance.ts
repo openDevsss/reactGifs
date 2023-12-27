@@ -1,7 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../constant";
 
-// Создайте инстанс axios
 export const axiosInstance = axios.create({
   baseURL: baseUrl,
   headers: {
@@ -9,7 +8,6 @@ export const axiosInstance = axios.create({
   },
 });
 
-// Добавьте Interceptor для добавления токена к каждому запросу
 axiosInstance.interceptors.request.use(
   (config) => {
     const jwt = localStorage.getItem("jwt");
@@ -20,5 +18,5 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );

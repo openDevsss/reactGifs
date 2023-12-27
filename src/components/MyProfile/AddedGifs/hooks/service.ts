@@ -5,4 +5,4 @@ type GetMyGifsData = {
   data: Gif[];
 };
 export const getMyGifs = () =>
-  axiosInstance.get<GetMyGifsData>(`/gifs/me`).then((res) => res.data);
+  axiosInstance.get<GetMyGifsData>("/gifs/me").then((res) => res.data);

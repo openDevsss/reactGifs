@@ -33,7 +33,7 @@ export function HeaderMenu({
           mt: 1.5,
           "&:before": {
             backgroundColor: "#fff",
-            content: '""',
+            content: "``",
             display: "block",
             position: "absolute",
             top: 0,

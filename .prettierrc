@@ -1,0 +1,35 @@
+{
+    "sortImports": true,
+    "singleQuote": false,
+    "jsxSingleQuote": false,
+    "arrowParens": "avoid",
+    "object-curly-spacing": [
+        "error",
+        "always"
+    ],
+    "semi": true,
+    "trailingComma": "all",
+    "printWidth": 80,
+    "tabWidth": 2,
+    "overrides": [
+        {
+            "files": [
+                "**/*.ts",
+                "**/*.tsx"
+            ],
+            "options": {
+                "parser": "typescript",
+                "singleQuote": false,
+                "semi": true,
+                "trailingComma": "all",
+                "printWidth": 80,
+                "tabWidth": 2,
+                "arrowParens": "always",
+                "object-curly-spacing": [
+                    "error",
+                    "always"
+                ]
+            }
+        }
+    ]
+}

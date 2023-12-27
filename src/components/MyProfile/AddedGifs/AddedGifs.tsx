@@ -8,7 +8,7 @@ const AddedGifs = () => {
 
   return (
     <React.Fragment>
-      {Boolean(myGifs?.length) ? (
+      {myGifs?.length ? (
         <WrapperInformation>
           {myGifs?.map((gif) => (
             <GifProfile key={gif.id} url={gif.url} title={gif.title} />

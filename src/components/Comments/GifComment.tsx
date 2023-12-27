@@ -7,7 +7,6 @@ type CommentGif = {
 };
 
 export function GifComment({ comment_text, user }: CommentGif) {
-  console.log(comment_text);
   return (
     <ListItem
       sx={{

@@ -1,6 +1,6 @@
 import { User } from "../../types/User";
-import { UserListItem } from "./UserListItem";
 import { CustomModal } from "../Custom/CustomModal";
+import { UserListItem } from "./UserListItem";
 
 interface UserListProps {
   users: User[];
@@ -13,7 +13,7 @@ export const UserList = ({ users, open, onClose }: UserListProps) => {
     <CustomModal open={open} onClose={onClose}>
       <div>
         {users.map((user) => (
-          <UserListItem user={user} />
+          <UserListItem key={user.id} user={user} />
         ))}
       </div>
     </CustomModal>

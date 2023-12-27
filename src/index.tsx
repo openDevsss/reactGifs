@@ -11,7 +11,7 @@ import { store } from "./store";
 const client = new QueryClient();
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 root.render(
   <QueryClientProvider client={client}>
@@ -22,7 +22,7 @@ root.render(
         </AlertProvider>
       </Provider>
     </BrowserRouter>
-  </QueryClientProvider>
+  </QueryClientProvider>,
 );
 
 reportWebVitals();

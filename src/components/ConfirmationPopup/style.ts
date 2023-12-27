@@ -51,4 +51,3 @@ export const PopupButton = styled(Button)`
     background-color: #3e267c;
   }
 `;
-
