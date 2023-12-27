@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { useEffect } from "react";
 import { AddGif } from "./components/AddGif/AddGif";
+import AlertPopup from "./components/AlertPopup/AlertPopup";
 import { DetailsGifPage } from "./pages/DetailsGifPage";
 import { HomePage } from "./pages/HomePage";
 import { Login } from "./components/Auth/Login/Login";
@@ -14,7 +15,6 @@ import { Registration } from "./components/Auth/Registration/Registration";
 import { SettingsGif } from "./components/SettingsGif/SettingsGif";
 import { checkAuth } from "./features/users/users-slice";
 import { useAppDispatch } from "./redux-toolkit";
-import AlertPopup from "@components/AlertPopup/AlertPopup";
 
 export function App() {
   const dispatch = useAppDispatch();
