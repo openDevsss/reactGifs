@@ -30,10 +30,16 @@ interface CustomTabProps {
   [key: string]: any;
 }
 
+const getTabProps = (index) => ({
+  id: `tab-${index}`,
+  "aria-controls": `tabpanel-${index}`,
+  value: `${index}`,
+});
+
 export function CustomTab({ label, value, ...rest }: CustomTabProps) {
   return (
     <ThemeProvider theme={theme}>
-      <ProfileTab {...rest.getTabProps(value)} {...rest} label={label} />
+      <ProfileTab {...getTabProps(value)} {...rest} label={label} />
     </ThemeProvider>
   );
 }
