@@ -1,17 +1,13 @@
-const config = {
+module.exports = {
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "react", "import", "prettier"],
   extends: [
-    "eslint:recommended",
+    "react-app",
+    "react-app/jest",
+    "prettier",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "prettier",
   ],
-  settings: {
-    react: {
-      version: "detect",
-    },
-  },
+  plugins: ["prettier", "@typescript-eslint", "react", "import"],
   rules: {
     indent: ["error", 2],
     quotes: ["error", "double"],
@@ -64,5 +60,3 @@ const config = {
     node: true,
   },
 };
-
-module.exports = config;
