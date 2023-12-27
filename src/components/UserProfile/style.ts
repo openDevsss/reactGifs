@@ -2,11 +2,15 @@ import styled from "@emotion/styled";
 import { Box, Chip, Typography } from "@mui/material";
 
 export const UserProfileWrapper = styled.div`
-  display: flex;
-  gap: 20px;
-  justify-content: space-around;
+  display: grid;
+  /* gap: 20px; */
+  grid-template-areas:
+    "mainInfo followers"
+    "userGifs followers"
+    "userGifs  followers";
+  grid-template-columns: 3fr 1fr;
+
   width: 90%;
-  /* margin-top: 20px; */
   margin: 20px auto 0;
 `;
 
@@ -46,10 +50,11 @@ export const HashtagItem = styled(Chip)`
 export const MainInfoWrapper = styled.div`
   border-radius: 12px;
   color: #000;
-  width: 100%;
+  width: 78%;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   height: 200px;
+  grid-area: mainInfo;
 `;
 export const MainInfoAvatar = styled.img`
   object-fit: cover;
@@ -88,6 +93,7 @@ export const FollowersWrapper = styled.div`
   align-items: center;
   height: 70vh;
   width: 300px;
+  grid-area: followers;
 `;
 export const FollowersTitle = styled.p`
   font-size: 16px;
@@ -101,4 +107,26 @@ export const UsersGifsWrapper = styled.div`
 `;
 export const UsersGifsTitle = styled.p`
   margin: 0;
+`;
+export const GifListWrapper = styled.div`
+  grid-area: userGifs;
+`;
+export const UserGifItemWrapper = styled.div`
+  height: fit-content;
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
+  border-radius: 32px;
+  display: flex;
+  width: 600px;
+  padding: 20px;
+`;
+export const UserGif = styled.img`
+  border-radius: 32px;
+  width: 100%;
+  min-width: 600px;
+  max-width: 600px;
+  height: 500px;
+  object-fit: cover;
+  cursor: pointer;
 `;
