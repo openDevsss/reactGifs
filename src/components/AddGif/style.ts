@@ -124,6 +124,7 @@ export const AddGifItem = styled.img`
   width: 300px;
   border-radius: 20px;
 `;
+
 export const ErrorMessageAddGif = styled.p`
   margin: 0;
   font-size: 12px;

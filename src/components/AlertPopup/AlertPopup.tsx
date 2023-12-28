@@ -9,7 +9,7 @@ const AlertPopup = () => {
         // @ts-ignore
         severity={type}
         sx={{
-          position: "absolute",
+          position: "fixed",
           zIndex: 1000,
           padding: "20px",
           borderRadius: "8px",

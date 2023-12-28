@@ -1,6 +1,6 @@
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
-import { GearSix, Moon, SignOut, UserCircle } from "phosphor-react";
+import { GearSix, Moon, SignOut, UserCircle } from "@phosphor-icons/react";
 
 import { MenuItemLink, StyledMenuItem } from "./style";
 
@@ -33,7 +33,8 @@ export function HeaderMenu({
           mt: 1.5,
           "&:before": {
             backgroundColor: "#fff",
-            content: "``",
+            // eslint-disable-next-line quotes
+            content: '""',
             display: "block",
             position: "absolute",
             top: 0,
