@@ -1,6 +1,6 @@
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
-import { GearSix, Moon, SignOut, UserCircle } from "phosphor-react";
+import { GearSix, Moon, SignOut, UserCircle } from "@phosphor-icons/react";
 
 import { MenuItemLink, StyledMenuItem } from "./style";
 

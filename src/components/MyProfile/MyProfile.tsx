@@ -1,4 +1,4 @@
-import { Gear } from "phosphor-react";
+import { Gear } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";

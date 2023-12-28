@@ -1,6 +1,6 @@
 import { IconButton, InputAdornment, Tooltip } from "@mui/material";
 
-import { List, MagnifyingGlass, SignOut } from "phosphor-react";
+import { List, MagnifyingGlass, SignOut } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import { HeaderBellIcon } from "./HeaderBellIcon";

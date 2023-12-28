@@ -1,5 +1,5 @@
 import Menu from "@mui/material/Menu";
-import { ArrowFatLineDown, Megaphone, Trash } from "phosphor-react";
+import { ArrowFatLineDown, Megaphone, Trash } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "react-query";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import type { User } from "../../types/User";
