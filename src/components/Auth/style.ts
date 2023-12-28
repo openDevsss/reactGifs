@@ -125,6 +125,7 @@ export const WrapperImage = styled(Box)`
     display: none;
   }
 `;
+
 export const ErrorMessageRegistration = styled.p`
   margin: 0;
   font-size: 12px;

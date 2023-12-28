@@ -1,11 +1,11 @@
 import Menu from "@mui/material/Menu";
 import { ArrowFatLineDown, Megaphone, Trash } from "phosphor-react";
 import { useMutation, useQueryClient } from "react-query";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import type { User } from "../../types/User";
 import { deleteGif } from "./service";
 import { StyledMenuItem } from "./style";
+
 interface GifMenuProps {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
@@ -27,7 +27,7 @@ export function GifMenuAction({
       onSuccess: () => queryClient.invalidateQueries(["gifs"]),
     },
   );
-  const currentUser = useAppSelector(selectCurrentUser);
+  const currentUser = useCurrentUser();
   const isMyGif = currentUser?.id === authorId;
   return (
     <Menu
@@ -46,7 +46,8 @@ export function GifMenuAction({
           mt: 1.5,
           "&:before": {
             backgroundColor: "#fff",
-            content: "``",
+            // eslint-disable-next-line quotes
+            content: '""',
             display: "block",
             position: "absolute",
             top: 0,

@@ -1,14 +1,15 @@
 import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 
 interface ProtectRouteProps {
   children: ReactNode;
 }
 
 export function ProtectedRoute({ children }: ProtectRouteProps) {
-  const jwt = localStorage.getItem("jwt");
+  const currentUser = useCurrentUser();
 
-  if (!jwt) {
+  if (!currentUser?.token) {
     return <Navigate to="/sign-in" />;
   }
   return <>{children}</>;

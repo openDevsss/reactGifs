@@ -1,5 +1,5 @@
+import styled from "@emotion/styled";
 import { Button, Paper, Typography } from "@mui/material";
-import styled from "styled-components";
 
 export const StyledWtapperIntoModal = styled(Paper)`
   padding: 35px 50px;

@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 import { CustomTabs } from "../Custom/CustomTabs";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { CustomTab } from "../Custom/CustomTab";
 import AddedGifs from "./AddedGifs/AddedGifs";
 import {
@@ -22,7 +21,7 @@ import {
 
 export function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
-  const currentUser = useAppSelector(selectCurrentUser);
+  const currentUser = useCurrentUser();
   return (
     <ProfileWrapper>
       <ProfileAvatar src={currentUser?.avatar} />

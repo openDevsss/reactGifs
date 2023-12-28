@@ -12,11 +12,10 @@ import {
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
 import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
 import { UserList } from "../UserList/UserList";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { GifMenuAction } from "./GifMenuAction";
 import { toogleLikeState } from "./service";
 import {
@@ -45,12 +44,11 @@ export function GifItem({
   viewers,
   likes,
 }: GifItemsProps) {
-  console.log(comment);
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenUserList, setIsOpenUserList] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const currentUser = useAppSelector(selectCurrentUser);
+  const currentUser = useCurrentUser();
   const gifIsLiked = likes?.some((like) => like.user.id === currentUser?.id);
   const queryClient = useQueryClient();
   const navigate = useNavigate();

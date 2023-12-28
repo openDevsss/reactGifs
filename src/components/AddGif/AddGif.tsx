@@ -1,11 +1,5 @@
 import { Button, Divider } from "@mui/material";
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import useAlert from "../../hooks/useAlert";
-import type { Tag } from "../../types/Tag";
 import { Hashtag } from "../Hashtag/Hashtag";
-import { DataForCreateGif, createGif } from "./hooks/service";
-import { useGetTags } from "./hooks/useGetTags";
 import {
   AddGifItem,
   AddGifItemWrapper,
@@ -22,41 +16,20 @@ import {
   WrapperAddGif,
   buttonStyle,
 } from "./style";
+import { useAddGif } from "./hooks/useAddGif";
 export function AddGif() {
-  const [image, setImage] = useState("");
-  const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
-  const { setAlert } = useAlert();
-  const { data: tags } = useGetTags();
   const {
+    image,
+    tags,
     register,
     handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<DataForCreateGif>({
-    mode: "onSubmit",
-  });
-  const handleRemoveTag = (tagId: Tag["id"]) =>
-    setSeletedTags(selectedTags?.filter((tag) => tag.id !== tagId));
-  const handleAddTagToSelected = (tag: Tag) => {
-    setSeletedTags((prev) => [...prev, tag]);
-  };
-  const onSubmit: SubmitHandler<DataForCreateGif> = (data) => {
-    [data.tags] = selectedTags.map(({ id }) => id);
-    createGif(data)
-      .then(() => {
-        setAlert("Вы успешно добавили гифку", "success");
-        reset();
-      })
-      .catch((err) => {
-        setAlert(err, "error");
-      });
-  };
-  const displayGif = (e: any) => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(URL.createObjectURL(e.target.files[0]));
-    }
-  };
-  // test
+    errors,
+    selectedTags,
+    handleRemoveTag,
+    handleAddTagToSelected,
+    onSubmit,
+    displayGif,
+  } = useAddGif();
   return (
     <WrapperAddGif>
       <TitleAddGif>Add GIF</TitleAddGif>
@@ -152,8 +125,8 @@ export function AddGif() {
             {Boolean(tags?.length) && (
               <GifsTag>
                 {tags
-                  ?.filter((x) => !selectedTags?.includes(x))
-                  ?.map((tag) => (
+                  .filter((tag) => !selectedTags?.includes(tag))
+                  .map((tag) => (
                     <Hashtag
                       key={tag.id}
                       tag={tag.name}

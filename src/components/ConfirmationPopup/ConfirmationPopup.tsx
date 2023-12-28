@@ -1,8 +1,6 @@
 import { Modal } from "@mui/material";
 import { EnvelopeOpen, X as CloseIcon } from "phosphor-react";
 import VerificationInput from "react-verification-input";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
 import {
   PopupButton,
   PopupDescription,
@@ -13,12 +11,14 @@ import {
 } from "./style";
 
 import "./index.css";
+import { useCurrentUser } from "./../../hooks/useCurrentUser";
+
 interface ConfirmationProps {
   isOpen: boolean;
   onClose: () => void;
 }
 export function ConfirmationPopup({ isOpen, onClose }: ConfirmationProps) {
-  const currentUser = useAppSelector(selectCurrentUser);
+  const currentUser = useCurrentUser();
   return (
     <Modal open={isOpen}>
       <VerifyPopupWrapper sx={style}>
