@@ -7,9 +7,8 @@ export const UserProfileWrapper = styled.div`
   grid-template-areas:
     "mainInfo followers"
     "userGifs followers"
-    "userGifs  followers";
+    "userGifs _";
   grid-template-columns: 3fr 1fr;
-
   width: 90%;
   margin: 20px auto 0;
 `;
@@ -20,7 +19,6 @@ export const HashtagWrapper = styled(Box)`
   align-items: center;
   cursor: pointer;
 `;
-
 //TODO: Если не писать !important стили берутся у Chip'a
 export const ColorizedHashtag = styled(Typography)`
   background-color: #5f3db5 !important;
@@ -50,7 +48,9 @@ export const HashtagItem = styled(Chip)`
 export const MainInfoWrapper = styled.div`
   border-radius: 12px;
   color: #000;
-  width: 78%;
+  margin: 0 auto;
+  width: 640px;
+  align-self: center;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   height: 200px;
@@ -94,6 +94,9 @@ export const FollowersWrapper = styled.div`
   height: 70vh;
   width: 300px;
   grid-area: followers;
+  position: fixed;
+  right: 200px;
+  top: 110px;
 `;
 export const FollowersTitle = styled.p`
   font-size: 16px;
@@ -108,9 +111,6 @@ export const UsersGifsWrapper = styled.div`
 export const UsersGifsTitle = styled.p`
   margin: 0;
 `;
-export const GifListWrapper = styled.div`
-  grid-area: userGifs;
-`;
 export const UserGifItemWrapper = styled.div`
   height: fit-content;
   margin: 20px auto;
@@ -118,8 +118,10 @@ export const UserGifItemWrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   border-radius: 32px;
   display: flex;
+  flex-direction: column;
   width: 600px;
   padding: 20px;
+  /* grid-area: userGifs; */
 `;
 export const UserGif = styled.img`
   border-radius: 32px;
@@ -129,4 +131,19 @@ export const UserGif = styled.img`
   height: 500px;
   object-fit: cover;
   cursor: pointer;
+`;
+export const UserGifTitle = styled.h2`
+  margin: 0;
+  align-self: center;
+  font-size: 18px;
+`;
+export const MainInfoFollow = styled.p`
+  font-size: 14px;
+  margin: 0;
+`;
+export const UserGifDescription = styled.p`
+  word-wrap: break-word;
+`;
+export const StyledNumber = styled.span`
+  font-weight: 600;
 `;

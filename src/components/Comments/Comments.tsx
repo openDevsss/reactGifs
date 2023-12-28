@@ -19,17 +19,20 @@ type CommentsPropType = {
   comments: Comment[];
   gifId: string;
   isCommentsOpen: boolean;
+  userId?: string;
 };
 export function Comments({
   comments,
   gifId,
   isCommentsOpen,
+  userId,
 }: CommentsPropType) {
   const queryClient = useQueryClient();
   const mutation = useMutation(
     (newComment: CreateCommentT) => createComment(newComment),
     {
-      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+      onSuccess: () =>
+        queryClient.invalidateQueries(["gifs", `user/${userId}`]),
     }
   );
   const {

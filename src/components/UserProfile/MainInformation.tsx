@@ -1,34 +1,53 @@
-import { HashtagProfile } from "./HashtagProfile";
+import { Box } from "@mui/material";
+import { User } from "../../types/User";
+import { Hashtag } from "../Hashtag/Hashtag";
 import {
   MainInfoAvatar,
+  MainInfoFollow,
   MainInfoMail,
   MainInfoName,
   MainInfoTagsWrapper,
   MainInfoWrapper,
   PersonalInfoWrapper,
+  StyledNumber,
 } from "./style";
-
-export function MainInformation() {
+type MainInfoProps = Pick<
+  User,
+  "avatar" | "email" | "followers" | "following" | "nickname"
+>;
+export function MainInformation({
+  nickname,
+  avatar,
+  email,
+  followers,
+  following,
+}: MainInfoProps) {
   return (
     <MainInfoWrapper>
-      <MainInfoAvatar src="https://i.pinimg.com/736x/66/47/e9/6647e94ebc652c4505b493cd6c27f791.jpg" />
+      <MainInfoAvatar src={avatar} />
       <PersonalInfoWrapper>
-        <MainInfoName>Andrey</MainInfoName>
-        <MainInfoMail>andrey@,sald.com</MainInfoMail>
+        <MainInfoName>{nickname}</MainInfoName>
+        <MainInfoMail>{email}</MainInfoMail>
         <MainInfoTagsWrapper>
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
-          <HashtagProfile tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
+          <Hashtag tag="asasa" />
         </MainInfoTagsWrapper>
+        <Box display="flex" alignItems="center" gap="20px" marginTop="10px">
+          <MainInfoFollow>
+            followers: <StyledNumber>{followers?.length}</StyledNumber>
+          </MainInfoFollow>
+          <MainInfoFollow>
+            following: <StyledNumber>{following?.length}</StyledNumber>
+          </MainInfoFollow>
+        </Box>
       </PersonalInfoWrapper>
     </MainInfoWrapper>
   );

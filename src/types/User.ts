@@ -1,3 +1,5 @@
+import { Gif } from "./Gif";
+
 export type User = {
   avatar: string;
   isSuccess: boolean;
@@ -6,4 +8,7 @@ export type User = {
   email: string;
   token: string;
   createdAt: string;
+  gifs: Gif[];
+  following: User[];
+  followers: User[];
 };

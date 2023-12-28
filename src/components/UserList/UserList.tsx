@@ -1,6 +1,6 @@
 import { User } from "../../types/User";
-import { UserListItem } from "./UserListItem";
 import { CustomModal } from "../Custom/CustomModal";
+import { UserListItem } from "./UserListItem";
 
 interface UserListProps {
   users: User[];

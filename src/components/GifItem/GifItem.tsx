@@ -1,22 +1,18 @@
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { ShareFat } from "@phosphor-icons/react";
 import {
   Chat,
   DotsThreeOutlineVertical,
   Eye,
-  HeartStraight,
   LinkSimple,
   ShareNetwork,
 } from "phosphor-react";
-import React, { useState } from "react";
-import { useMutation, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
+import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
+import LikeTooltip from "../LikeTooltip/LikeTooltip";
+import { UserList } from "../UserList/UserList";
 import { GifMenuAction } from "./GifMenuAction";
-import { toogleLikeState } from "./service";
 import {
   ContainerGif,
   GifAnimation,
@@ -30,7 +26,6 @@ import {
   GifUserNickname,
   StyledWrapperIconGif,
 } from "./style";
-import { UserList } from "../UserList/UserList";
 
 interface GifItemsProps extends Gif {}
 
@@ -44,37 +39,17 @@ export function GifItem({
   viewers,
   likes,
 }: GifItemsProps) {
-  console.log(comment);
-  const [isCommentsOpen, setIsCommentsOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenUserList, setIsOpenUserList] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const currentUser = useAppSelector(selectCurrentUser);
-  const gifIsLiked = likes?.some((like) => like.user.id === currentUser?.id);
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-    setIsOpen(true);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-    setIsOpen(false);
-    setIsOpenUserList(false);
-  };
-  // TODO: TYPE
-  // @ts-ignore
-  const { mutate: handleToggleLike } = useMutation(
-    // @ts-ignore
-    (gifId: string) => toogleLikeState({ gifId }),
-    {
-      onSuccess: () => {
-        // TODO: ДОБАВИТЬ ОБНОВЛЕНИЕ ТОЛЬКО ОДНОЙ ГИФКИ
-        queryClient.invalidateQueries(["gifs"]);
-      },
-      refetchOnWindowFocus: false,
-    }
-  );
+  const {
+    isCommentsOpen,
+    setIsCommentsOpen,
+    isOpen,
+    anchorEl,
+    setIsOpenUserList,
+    isOpenUserList,
+    handleClick,
+    handleClose,
+    navigate,
+  } = useActionWithGifs();
 
   return (
     <GifItemWrapper
@@ -121,60 +96,11 @@ export function GifItem({
           padding="10px"
         >
           <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
-            <Tooltip
-              placement="top"
-              title={
-                <Box
-                  overflow="hidden"
-                  display="flex"
-                  gap="10px"
-                  maxWidth="170px"
-                >
-                  {Boolean(likes?.length)
-                    ? likes.map(({ user }) => (
-                        <GifUserAvatar
-                          onClick={() => setIsOpenUserList(true)}
-                          key={user.id}
-                          src={user.avatar}
-                          alt={user.nickname}
-                        />
-                      ))
-                    : "Лайки пользователей"}
-                </Box>
-              }
-              componentsProps={{
-                tooltip: {
-                  sx: {
-                    color: "white",
-                    bgcolor: "rgba(0, 0, 0, 0.8)",
-                    padding: "10px",
-                    borderRadius: "10px",
-                    opacity: 0.3,
-                    display: "flex",
-                  },
-                },
-              }}
-            >
-              <StyledWrapperIconGif>
-                {gifIsLiked ? (
-                  <HeartStraight
-                    size="24"
-                    color="#e05151"
-                    weight="fill"
-                    cursor="pointer"
-                    onClick={() => handleToggleLike(gifId)}
-                  />
-                ) : (
-                  <HeartStraight
-                    size="24"
-                    weight="thin"
-                    cursor="pointer"
-                    onClick={() => handleToggleLike(gifId)}
-                  />
-                )}
-                <Typography>{likes?.length}</Typography>
-              </StyledWrapperIconGif>
-            </Tooltip>
+            <LikeTooltip
+              gifId={gifId}
+              setIsOpenUserList={setIsOpenUserList}
+              likes={likes}
+            />
             {isOpenUserList && (
               <UserList
                 open={isOpenUserList}

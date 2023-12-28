@@ -8,6 +8,7 @@ import { useAppSelector } from "../../redux-toolkit";
 import { CustomTab } from "../Custom/CustomTab";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 import { CustomTabs } from "../Custom/CustomTabs";
+import AddedGifs from "./AddedGifs/AddedGifs";
 import {
   AddedButton,
   AddedWrapper,
@@ -20,11 +21,11 @@ import {
   ProfileSubscriptions,
   ProfileWrapper,
 } from "./style";
-import AddedGifs from "./AddedGifs/AddedGifs";
 
 export function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
   const currentUser = useAppSelector(selectCurrentUser);
+  console.log(currentUser);
   return (
     <ProfileWrapper>
       <ProfileAvatar src={currentUser?.avatar} />

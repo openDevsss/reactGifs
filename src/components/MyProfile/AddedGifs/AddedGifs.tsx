@@ -1,16 +1,15 @@
 import React from "react";
+import { useGetUserGifs } from "../../UserProfile/hooks/useGetUserGifs";
 import { AddedTitle, WrapperInformation } from "../style";
 import { GifProfile } from "./GifProfile";
-import { useGetMyGifs } from "./hooks/useGetMyGifs";
 
 const AddedGifs = () => {
-  const { data: myGifs } = useGetMyGifs();
-
+  const { data: gifs } = useGetUserGifs("1");
   return (
     <React.Fragment>
-      {Boolean(myGifs?.length) ? (
+      {Boolean(gifs?.gifs?.length) ? (
         <WrapperInformation>
-          {myGifs?.map((gif) => (
+          {gifs?.gifs?.map((gif) => (
             <GifProfile key={gif.id} url={gif.url} title={gif.title} />
           ))}
         </WrapperInformation>
