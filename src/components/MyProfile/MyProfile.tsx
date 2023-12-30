@@ -1,14 +1,12 @@
-import { Gear } from "phosphor-react";
+import { Gear } from "@phosphor-icons/react";
 import { useState } from "react";
-
 import { Link } from "react-router-dom";
-
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { CustomTab } from "../Custom/CustomTab";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 import { CustomTabs } from "../Custom/CustomTabs";
 import { AddedGifs } from "./AddedGifs/AddedGifs";
+
 import {
   AddedButton,
   AddedWrapper,
@@ -24,8 +22,7 @@ import {
 
 export function MyProfile() {
   const [selectTab, setSelectTab] = useState("added");
-  const currentUser = useAppSelector(selectCurrentUser);
-  console.log(currentUser?.id);
+  const currentUser = useCurrentUser();
   return (
     <ProfileWrapper>
       <ProfileAvatar src={currentUser?.avatar} />
@@ -49,6 +46,7 @@ export function MyProfile() {
       </ButtonsContainer>
       <CustomTabs
         value={selectTab}
+        // @ts-ignore
         onChange={(_: any, tab: any) => {
           setSelectTab(tab);
         }}

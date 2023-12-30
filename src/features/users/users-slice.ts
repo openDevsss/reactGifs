@@ -37,7 +37,7 @@ export const registerUser = createAsyncThunk<
     } catch (error) {
       return rejectWithValue("У вас случилась ошибка");
     }
-  }
+  },
 );
 
 export const loginUser = createAsyncThunk<
@@ -60,7 +60,7 @@ export const loginUser = createAsyncThunk<
     } catch (err) {
       return rejectWithValue("Ошибка");
     }
-  }
+  },
 );
 
 export const updateCurrentUser = createAsyncThunk<
@@ -82,7 +82,7 @@ export const updateCurrentUser = createAsyncThunk<
     } catch (err) {
       return rejectWithValue("Ошибка");
     }
-  }
+  },
 );
 
 export const checkAuth = createAsyncThunk<

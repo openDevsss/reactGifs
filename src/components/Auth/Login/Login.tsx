@@ -60,7 +60,7 @@ export function Login() {
           />
           <ButtonSubmit type="submit">sign in</ButtonSubmit>
           <RedirectText>
-            Don't have an account?
+            Don&apos;t have an account?
             <LinkSign to="/sign-up">
               <TextSign> Sign up</TextSign>
             </LinkSign>

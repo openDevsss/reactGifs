@@ -13,7 +13,7 @@ export const UserList = ({ users, open, onClose }: UserListProps) => {
     <CustomModal open={open} onClose={onClose}>
       <div>
         {users.map((user) => (
-          <UserListItem user={user} />
+          <UserListItem key={user.id} user={user} />
         ))}
       </div>
     </CustomModal>

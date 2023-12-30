@@ -1,10 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { selectCurrentUser } from "../../features/users/users-selectors";
 import { updateCurrentUser } from "../../features/users/users-slice";
 
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
+import { useAppDispatch } from "../../redux-toolkit";
 import type { User } from "../../types/User";
-
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import useAlert from "../../hooks/useAlert";
 import {
   EditProfileWrapper,
@@ -33,10 +32,10 @@ export default function ProfileEdit() {
         reset();
       })
       .catch(() => {
-        setAlert("Вы успешно изменили данные", "error");
+        setAlert("Данные не изменены", "error");
       });
   };
-  const currentUser = useAppSelector(selectCurrentUser);
+  const currentUser = useCurrentUser();
 
   return (
     <EditProfileWrapper>
@@ -90,6 +89,7 @@ export default function ProfileEdit() {
             },
             pattern: {
               value:
+                // eslint-disable-next-line no-useless-escape
                 /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
               message: "Please enter correct email",
             },

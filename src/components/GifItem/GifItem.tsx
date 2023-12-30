@@ -1,16 +1,16 @@
+/* eslint-disable indent */
 import { Box, IconButton, Typography } from "@mui/material";
-import { ShareFat } from "@phosphor-icons/react";
 import {
   Chat,
   DotsThreeOutlineVertical,
   Eye,
-  LinkSimple,
-  ShareNetwork,
-} from "phosphor-react";
+  LinkSimple, ShareFat, ShareNetwork
+} from "@phosphor-icons/react";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
+import LikeTooltip from "../LikeTooltip/LikeTooltip";
+
 import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
-import LikeTooltip from "../LikeTooltip/LikeTooltip";
 import { UserList } from "../UserList/UserList";
 import { GifMenuAction } from "./GifMenuAction";
 import {
@@ -27,7 +27,7 @@ import {
   StyledWrapperIconGif,
 } from "./style";
 
-interface GifItemsProps extends Gif {}
+type GifItemsProps = Gif;
 
 export function GifItem({
   title,
@@ -96,7 +96,7 @@ export function GifItem({
           padding="10px"
         >
           <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
-            <LikeTooltip
+           <LikeTooltip
               gifId={gifId}
               setIsOpenUserList={setIsOpenUserList}
               likes={likes}

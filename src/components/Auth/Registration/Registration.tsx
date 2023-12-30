@@ -93,6 +93,7 @@ export function Registration() {
               },
               pattern: {
                 value:
+                  // eslint-disable-next-line no-useless-escape
                   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
                 message: "Please enter correct email",
               },

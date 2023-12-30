@@ -9,14 +9,15 @@ const AlertPopup = () => {
         // @ts-ignore
         severity={type}
         sx={{
-          position: "absolute",
+          position: "fixed",
           zIndex: 1000,
           padding: "20px",
           borderRadius: "8px",
           top: 15,
           left: type === "error" || type === "warning" ? "15px" : null,
           right: type === "success" || type === "info" ? "15px" : null,
-        }}>
+        }}
+      >
         {text}
       </Alert>
     );

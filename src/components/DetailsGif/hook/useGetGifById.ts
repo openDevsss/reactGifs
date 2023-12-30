@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import { getGifById } from "./service";
 import { AxiosError } from "axios";
+import { getGifById } from "./service";
 
 export function useGetGifById(id: string) {
   const { data: gif, isLoading } = useQuery(
@@ -11,7 +11,7 @@ export function useGetGifById(id: string) {
       onError: (err: AxiosError<{ message?: string }>) => {
         console.log(err);
       },
-    }
+    },
   );
   return { data: gif?.data, isLoading };
 }

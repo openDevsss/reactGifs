@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { createContext, useState } from "react";
 import { MessageType } from "../types/Message";
 
@@ -10,6 +11,7 @@ const AlertContext = createContext<{
 }>({
   text: "",
   type: "",
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setAlert: () => {},
 });
 
@@ -37,7 +39,8 @@ export const AlertProvider = ({ children }: AlertProviderProps) => {
         // @ts-ignore
         type,
         setAlert,
-      }}>
+      }}
+    >
       {children}
     </AlertContext.Provider>
   );
