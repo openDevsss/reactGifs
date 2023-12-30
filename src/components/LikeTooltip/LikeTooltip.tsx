@@ -8,13 +8,13 @@ import { toogleLikeState } from "../GifItem/service";
 import { GifUserAvatar, StyledWrapperIconGif } from "../GifItem/style";
 interface LikeTooltipProp {
   likes: Like[];
-  setIsOpenUserList: (isOpen: boolean) => void;
   gifId: string;
+  setIsOpenUserList: (isOpen: boolean) => void;
 }
 export default function LikeTooltip({
   likes,
-  setIsOpenUserList,
   gifId,
+  setIsOpenUserList,
 }: LikeTooltipProp) {
   const queryClient = useQueryClient();
   const currentUser = useAppSelector(selectCurrentUser);

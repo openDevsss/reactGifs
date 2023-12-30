@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Chip, Typography } from "@mui/material";
+import { Avatar, Box, Chip, Typography } from "@mui/material";
 
 export const UserProfileWrapper = styled.div`
   display: grid;
@@ -146,4 +146,34 @@ export const UserGifDescription = styled.p`
 `;
 export const StyledNumber = styled.span`
   font-weight: 600;
+`;
+export const FollowersList = styled.ul`
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+`;
+export const FollowersItem = styled.li`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+`;
+export const FollowersAvatar = styled(Avatar)`
+  width: 50px;
+  height: 50px;
+`;
+export const FollowersNickname = styled.p`
+  font-size: 14px;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 70px;
+`;
+export const FollowersEmptyMessage = styled.p`
+  text-align: center;
+  padding: 20px;
 `;

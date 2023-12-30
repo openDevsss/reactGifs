@@ -12,7 +12,6 @@ export function UserProfile() {
   if (!user) {
     return null;
   }
-  console.log(user);
   return (
     <UserProfileWrapper>
       <MainInformation
@@ -27,7 +26,7 @@ export function UserProfile() {
           <UserProfileGifs key={gif.id} {...gif} />
         ))}
       </Box>
-      <Followers />
+      <Followers followers={user?.followers} />
     </UserProfileWrapper>
   );
 }

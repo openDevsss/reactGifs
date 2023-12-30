@@ -2,14 +2,16 @@ import React from "react";
 import { useGetUserGifs } from "../../UserProfile/hooks/useGetUserGifs";
 import { AddedTitle, WrapperInformation } from "../style";
 import { GifProfile } from "./GifProfile";
-
-const AddedGifs = () => {
-  const { data: gifs } = useGetUserGifs("1");
+type AddedGifsProps = {
+  id: string;
+};
+export const AddedGifs = ({ id }: AddedGifsProps) => {
+  const { data } = useGetUserGifs(id);
   return (
     <React.Fragment>
-      {Boolean(gifs?.gifs?.length) ? (
+      {Boolean(data?.gifs?.length) ? (
         <WrapperInformation>
-          {gifs?.gifs?.map((gif) => (
+          {data?.gifs?.map((gif) => (
             <GifProfile key={gif.id} url={gif.url} title={gif.title} />
           ))}
         </WrapperInformation>
@@ -19,5 +21,3 @@ const AddedGifs = () => {
     </React.Fragment>
   );
 };
-
-export default AddedGifs;

@@ -1,3 +1,4 @@
+import { Followers } from "./Followers";
 import { Gif } from "./Gif";
 
 export type User = {
@@ -10,5 +11,5 @@ export type User = {
   createdAt: string;
   gifs: Gif[];
   following: User[];
-  followers: User[];
+  followers: Followers[];
 };
