@@ -1,10 +1,8 @@
 import { Box, Tooltip, Typography } from "@mui/material";
-import { HeartStraight } from "phosphor-react";
-import { useMutation, useQueryClient } from "react-query";
-import { selectCurrentUser } from "../../features/users/users-selectors";
-import { useAppSelector } from "../../redux-toolkit";
+import { HeartStraight } from "@phosphor-icons/react";
+import { useActionWithGifs } from "../../hooks/useActionWithGifs";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { Like } from "../../types/Like";
-import { toogleLikeState } from "../GifItem/service";
 import { GifUserAvatar, StyledWrapperIconGif } from "../GifItem/style";
 interface LikeTooltipProp {
   likes: Like[];
@@ -16,23 +14,11 @@ export default function LikeTooltip({
   gifId,
   setIsOpenUserList,
 }: LikeTooltipProp) {
-  const queryClient = useQueryClient();
-  const currentUser = useAppSelector(selectCurrentUser);
+  const { handleToggleLike } = useActionWithGifs();
+  // const currentUser = useAppSelector(selectCurrentUser);
+  const currentUser = useCurrentUser();
   const gifIsLiked = likes?.some((like) => like?.user.id === currentUser?.id);
 
-  // TODO: TYPE
-  // @ts-ignore
-  const { mutate: handleToggleLike } = useMutation(
-    // @ts-ignore
-    (gifId: string) => toogleLikeState({ gifId }),
-    {
-      onSuccess: () => {
-        // TODO: ДОБАВИТЬ ОБНОВЛЕНИЕ ТОЛЬКО ОДНОЙ ГИФКИ
-        queryClient.invalidateQueries(["gifs"]);
-      },
-      refetchOnWindowFocus: false,
-    }
-  );
   return (
     <Tooltip
       placement="top"

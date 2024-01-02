@@ -4,7 +4,9 @@ import {
   Chat,
   DotsThreeOutlineVertical,
   Eye,
-  LinkSimple, ShareFat, ShareNetwork
+  LinkSimple,
+  ShareFat,
+  ShareNetwork,
 } from "@phosphor-icons/react";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import LikeTooltip from "../LikeTooltip/LikeTooltip";
@@ -96,7 +98,7 @@ export function GifItem({
           padding="10px"
         >
           <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
-           <LikeTooltip
+            <LikeTooltip
               gifId={gifId}
               setIsOpenUserList={setIsOpenUserList}
               likes={likes}

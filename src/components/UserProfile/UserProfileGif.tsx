@@ -1,7 +1,11 @@
 import { IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { ShareFat } from "@phosphor-icons/react";
-import { Chat, DotsThreeOutlineVertical, Eye } from "phosphor-react";
+import {
+  Chat,
+  DotsThreeOutlineVertical,
+  Eye,
+  ShareFat,
+} from "@phosphor-icons/react";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
@@ -15,7 +19,7 @@ import {
   UserGifItemWrapper,
   UserGifTitle,
 } from "./style";
-interface UserProfileGifs extends Gif {}
+
 export function UserProfileGifs({
   title,
   description,
@@ -25,17 +29,17 @@ export function UserProfileGifs({
   id: gifId,
   viewers,
   likes,
-}: UserProfileGifs) {
+}: Gif) {
   const {
-    isCommentsOpen,
-    setIsCommentsOpen,
-    isOpen,
     anchorEl,
     setIsOpenUserList,
     isOpenUserList,
     handleClick,
     handleClose,
+    setIsCommentsOpen,
+    isCommentsOpen,
   } = useActionWithGifs();
+
   return (
     <UserGifItemWrapper>
       <Box
@@ -48,7 +52,6 @@ export function UserProfileGifs({
         <IconButton onClick={handleClick}>
           <DotsThreeOutlineVertical
             size={17}
-            weight="fill"
             color="#6F4FF2"
             cursor="pointer"
           />
@@ -58,7 +61,7 @@ export function UserProfileGifs({
           authorId={user?.id}
           anchorEl={anchorEl}
           handleClose={handleClose}
-          isOpen={isOpen}
+          isOpen={isOpenUserList}
         />
       </Box>
       <UserGif src={url} alt={title} />
