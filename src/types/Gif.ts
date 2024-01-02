@@ -1,4 +1,5 @@
 import { Comment } from "./Comment";
+import { Like } from "./Like";
 import { Tag } from "./Tag";
 import { User } from "./User";
 
@@ -13,8 +14,5 @@ export type Gif = {
   tags: Tag[];
   comment: Comment[];
   viewers: number;
-  likes: Array<{
-    id: number;
-    user: User;
-  }>;
+  likes: Like[];
 };

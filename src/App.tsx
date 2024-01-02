@@ -3,17 +3,19 @@ import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { AddGif } from "./components/AddGif/AddGif";
 import AlertPopup from "./components/AlertPopup/AlertPopup";
+import { UserProfile } from "./components/UserProfile/UserProfile";
 import { DetailsGifPage } from "./pages/DetailsGifPage";
-import { HomePage } from "./pages/HomePage";
+
 import { Login } from "./components/Auth/Login/Login";
-import { MyProfilePage } from "./pages/MyProfilePage";
-import { NotFoundPage } from "./pages/NotFoundPage";
+import { Registration } from "./components/Auth/Registration/Registration";
 import { PageLayout } from "./components/PageLayout/PageLayout";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import { RecommendationsPage } from "./pages/RecommendationsPage";
-import { Registration } from "./components/Auth/Registration/Registration";
 import { SettingsGif } from "./components/SettingsGif/SettingsGif";
 import { checkAuth } from "./features/users/users-slice";
+import { HomePage } from "./pages/HomePage";
+import { MyProfilePage } from "./pages/MyProfilePage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { RecommendationsPage } from "./pages/RecommendationsPage";
 import { useAppDispatch } from "./redux-toolkit";
 
 export function App() {
@@ -47,6 +49,7 @@ export function App() {
               path="/settings"
             />
             <Route element={<AddGif />} path="gif-add" />
+            <Route element={<UserProfile />} path="profile/:id" />
           </Route>
           <Route element={<Registration />} path="/sign-up" />
           <Route element={<Login />} path="/sign-in" />

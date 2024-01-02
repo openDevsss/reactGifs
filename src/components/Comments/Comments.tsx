@@ -1,8 +1,9 @@
 import { Divider, IconButton, InputAdornment, List } from "@mui/material";
 import { PaperPlaneRight } from "@phosphor-icons/react";
 import React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
+import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import type { Comment } from "../../types/Comment";
 import { CreateCommentT, createComment } from "../GifItem/service";
 import { GifComment } from "./GifComment";
@@ -19,25 +20,23 @@ type CommentsPropType = {
   comments: Comment[];
   gifId: string;
   isCommentsOpen: boolean;
+  userId?: string;
 };
 export function Comments({
   comments,
   gifId,
   isCommentsOpen,
+  userId,
 }: CommentsPropType) {
   const queryClient = useQueryClient();
   const mutation = useMutation(
     (newComment: CreateCommentT) => createComment(newComment),
     {
-      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+      onSuccess: () =>
+        queryClient.invalidateQueries(["gifs", `user/${userId}`]),
     },
   );
-  const {
-    register,
-    handleSubmit,
-
-    formState: { errors },
-  } = useForm<CreateCommentT>();
+  const { register, handleSubmit, errors } = useActionWithGifs();
   const onSubmit: SubmitHandler<CreateCommentT> = (data, event) => {
     data.gifId = gifId;
     mutation.mutate(data);

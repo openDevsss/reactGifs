@@ -1,11 +1,12 @@
 import { Gear } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { CustomTabPanel } from "../Custom/CustomTabPanel";
-import { CustomTabs } from "../Custom/CustomTabs";
+import { Link } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { CustomTab } from "../Custom/CustomTab";
-import AddedGifs from "./AddedGifs/AddedGifs";
+import { CustomTabPanel } from "../Custom/CustomTabPanel";
+import { CustomTabs } from "../Custom/CustomTabs";
+import { AddedGifs } from "./AddedGifs/AddedGifs";
+
 import {
   AddedButton,
   AddedWrapper,
@@ -56,7 +57,7 @@ export function MyProfile() {
       <CustomTabPanel value={selectTab} index="saved"></CustomTabPanel>
       <CustomTabPanel value={selectTab} index="added">
         <AddedWrapper>
-          <AddedGifs />
+          <AddedGifs id={currentUser?.id ?? ""} />
           <Link to="/gif-add">
             <AddedButton>Add GIF</AddedButton>
           </Link>

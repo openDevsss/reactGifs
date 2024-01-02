@@ -74,7 +74,6 @@ export const StyledMenuItem = styled(MenuItem)`
     margin-bottom: 0;
   }
 `;
-
 export const StyledWrapperIconGif = styled.div`
   display: flex;
   align-items: center;

@@ -1,13 +1,13 @@
 import { AxiosError } from "axios";
 import { useQuery } from "react-query";
-import { getMyGifs } from "./service";
+import { GetUserGifs } from "./service";
 
-export function useGetMyGifs() {
-  const { data } = useQuery(["my-gifs"], async () => getMyGifs(), {
+export function useGetUserGifs(id: string) {
+  const { data } = useQuery([`user/${id}`], async () => GetUserGifs(id), {
     retry: false,
     onError: (err: AxiosError<{ message?: string }>) => {
       console.log(err);
     },
   });
-  return { data: data?.data };
+  return { data: data?.user };
 }
