@@ -1,5 +1,5 @@
 import { Modal } from "@mui/material";
-import { EnvelopeOpen, X as CloseIcon } from "phosphor-react";
+import { EnvelopeOpen, X as CloseIcon } from "@phosphor-icons/react";
 import VerificationInput from "react-verification-input";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";

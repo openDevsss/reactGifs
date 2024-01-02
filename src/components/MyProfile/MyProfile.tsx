@@ -1,5 +1,6 @@
-import { Gear } from "phosphor-react";
+import { Gear } from "@phosphor-icons/react";
 import { useState } from "react";
+import { Box } from "@mui/system";
 
 import { Link } from "react-router-dom";
 
@@ -7,6 +8,7 @@ import { selectCurrentUser } from "../../features/users/users-selectors";
 import { useAppSelector } from "../../redux-toolkit";
 import { CustomTab } from "../Custom/CustomTab";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
+import { CustomModal } from "../Custom/CustomModal";
 import { CustomTabs } from "../Custom/CustomTabs";
 import {
   AddedButton,
@@ -21,8 +23,6 @@ import {
   ProfileWrapper,
 } from "./style";
 import AddedGifs from "./AddedGifs/AddedGifs";
-import { Box } from "@mui/system";
-import { CustomModal } from "../Custom/CustomModal";
 import { FollowersAndFollowing } from "./FollowersAndFollowingList";
 
 export function MyProfile() {
@@ -60,13 +60,13 @@ export function MyProfile() {
       <Box display="flex" gap="15px">
         <ProfileSubscriptions onClick={() => handleOpenList("following")}>
           <span style={{ fontWeight: "bold" }}>
-            {currentUser?.following.length}
+            {currentUser?.following?.length}
           </span>{" "}
           following
         </ProfileSubscriptions>
         <ProfileSubscriptions onClick={() => handleOpenList("followers")}>
           <span style={{ fontWeight: "bold" }}>
-            {currentUser?.followers.length}
+            {currentUser?.followers?.length}
           </span>{" "}
           followers
         </ProfileSubscriptions>

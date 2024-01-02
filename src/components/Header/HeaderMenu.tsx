@@ -1,6 +1,6 @@
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
-import { GearSix, Moon, SignOut, UserCircle } from "phosphor-react";
+import { GearSix, Moon, SignOut, UserCircle } from "@phosphor-icons/react";
 
 import { MenuItemLink, StyledMenuItem } from "./style";
 
@@ -31,6 +31,7 @@ export function HeaderMenu({
           overflow: "visible",
           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
           mt: 1.5,
+          /* eslint-disable quotes */
           "&:before": {
             backgroundColor: "#fff",
             content: '""',

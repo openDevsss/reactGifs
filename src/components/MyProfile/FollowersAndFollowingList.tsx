@@ -12,7 +12,6 @@ export const FollowersAndFollowing = ({
   following,
   type,
 }: FollowersAndFollowingProps) => {
-  console.log(following);
   return (
     <div>
       {type === "followers" ? (
@@ -20,7 +19,9 @@ export const FollowersAndFollowing = ({
           <h2>Followers</h2>
           <ul>
             {Boolean(followers?.length > 0) &&
-              followers.map((follower) => <UserListItem user={follower} />)}
+              followers.map((follower) => (
+                <UserListItem key={follower.id} user={follower} />
+              ))}
           </ul>
         </div>
       ) : (
@@ -28,7 +29,9 @@ export const FollowersAndFollowing = ({
           <h2>Following</h2>
           <ul>
             {Boolean(following?.length > 0) &&
-              following.map((follower) => <UserListItem user={follower} />)}
+              following.map((followee) => (
+                <UserListItem key={followee.id} user={followee} />
+              ))}
           </ul>
         </div>
       )}

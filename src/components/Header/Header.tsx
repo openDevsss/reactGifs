@@ -11,7 +11,7 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 
-import { List, MagnifyingGlass, SignOut } from "phosphor-react";
+import { List, MagnifyingGlass, SignOut } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { selectCurrentUser } from "../../features/users/users-selectors";
 import { checkAuth, logOut } from "../../features/users/users-slice";

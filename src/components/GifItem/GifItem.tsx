@@ -7,7 +7,7 @@ import {
   HeartStraight,
   LinkSimple,
   ShareNetwork,
-} from "phosphor-react";
+} from "@phosphor-icons/react";
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
