@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { CreateCommentT, toogleLikeState } from "../components/GifItem/service";
+import {
+  CreateCommentT,
+  createComment,
+  toogleLikeState,
+} from "../components/GifItem/service";
 
 export function useActionWithGifs() {
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
@@ -12,13 +16,6 @@ export function useActionWithGifs() {
 
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const {
-    register,
-    handleSubmit,
-
-    formState: { errors },
-  } = useForm<CreateCommentT>();
-
   // TODO: TYPE
   // @ts-ignore
   const { mutate: handleToggleLike } = useMutation(
@@ -32,6 +29,18 @@ export function useActionWithGifs() {
       refetchOnWindowFocus: false,
     },
   );
+  const mutation = useMutation(
+    (newComment: CreateCommentT) => createComment(newComment),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+    },
+  );
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreateCommentT>();
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
@@ -44,6 +53,7 @@ export function useActionWithGifs() {
 
   return {
     handleToggleLike,
+    mutation,
     register,
     handleSubmit,
     errors,

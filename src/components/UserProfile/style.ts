@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Avatar, Box, Chip, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const UserProfileWrapper = styled.div`
   display: grid;
@@ -83,23 +84,26 @@ export const MainInfoTagsWrapper = styled.div`
   flex-wrap: wrap;
 `;
 export const FollowersWrapper = styled.div`
-  padding: 10px;
+  padding: 20px;
   width: 20%;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70vh;
-  width: 300px;
+  height: 65vh;
   grid-area: followers;
   position: fixed;
   right: 200px;
   top: 110px;
+  box-sizing: border-box;
+  overflow: hidden;
 `;
 export const FollowersTitle = styled.p`
   font-size: 16px;
   font-weight: 600;
+  margin: 0;
+  margin-bottom: 20px;
 `;
 export const UserGifItemWrapper = styled.div`
   height: fit-content;
@@ -141,14 +145,15 @@ export const FollowersList = styled.ul`
   padding: 0;
   margin: 0;
   list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-`;
-export const FollowersItem = styled.li`
-  align-items: center;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+`;
+export const FollowersItem = styled.li`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 20px;
 `;
 export const FollowersAvatar = styled(Avatar)`
   width: 50px;
@@ -157,12 +162,12 @@ export const FollowersAvatar = styled(Avatar)`
 export const FollowersNickname = styled.p`
   font-size: 14px;
   margin: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 70px;
 `;
 export const FollowersEmptyMessage = styled.p`
   text-align: center;
   padding: 20px;
+`;
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `;

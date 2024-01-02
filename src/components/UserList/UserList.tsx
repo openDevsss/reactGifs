@@ -1,9 +1,13 @@
-import { User } from "../../types/User";
 import { CustomModal } from "../Custom/CustomModal";
 import { UserListItem } from "./UserListItem";
 
+export interface TypeForUsers {
+  id: string;
+  nickname: string;
+  avatar: string;
+}
 interface UserListProps {
-  users: User[];
+  users: TypeForUsers[];
   open: boolean;
   onClose: () => void;
 }

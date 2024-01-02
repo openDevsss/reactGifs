@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import { User } from "../../types/User";
+import { TypeForUsers } from "./UserList";
 import { StyledButtonSubscribe, UserAvatar, UserNicknameText } from "./style";
 
 interface UserListItemProps {
-  user: User;
+  user: TypeForUsers;
 }
 
 export const UserListItem = ({ user }: UserListItemProps) => {

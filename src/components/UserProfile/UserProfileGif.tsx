@@ -11,7 +11,7 @@ import { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
 import { GifMenuAction } from "../GifItem/GifMenuAction";
 import { StyledWrapperIconGif } from "../GifItem/style";
-import LikeTooltip from "../LikeTooltip/LikeTooltip";
+import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
 import { UserList } from "../UserList/UserList";
 import {
   UserGif,
@@ -38,6 +38,7 @@ export function UserProfileGifs({
     handleClose,
     setIsCommentsOpen,
     isCommentsOpen,
+    isOpen,
   } = useActionWithGifs();
 
   return (
@@ -53,6 +54,7 @@ export function UserProfileGifs({
           <DotsThreeOutlineVertical
             size={17}
             color="#6F4FF2"
+            weight="fill"
             cursor="pointer"
           />
         </IconButton>
@@ -61,7 +63,7 @@ export function UserProfileGifs({
           authorId={user?.id}
           anchorEl={anchorEl}
           handleClose={handleClose}
-          isOpen={isOpenUserList}
+          isOpen={isOpen}
         />
       </Box>
       <UserGif src={url} alt={title} />
@@ -79,18 +81,19 @@ export function UserProfileGifs({
           />
           {isOpenUserList && (
             <UserList
-              open={true}
+              open={isOpenUserList}
               onClose={handleClose}
               users={likes?.map(({ user }) => user)}
             />
           )}
-          <StyledWrapperIconGif>
-            <ShareFat size="24" weight="thin" cursor="pointer" />
-          </StyledWrapperIconGif>
+
           <StyledWrapperIconGif
             onClick={() => setIsCommentsOpen(!isCommentsOpen)}
           >
             <Chat size="24" weight="thin" cursor="pointer" />
+          </StyledWrapperIconGif>
+          <StyledWrapperIconGif>
+            <ShareFat size="24" weight="thin" cursor="pointer" />
           </StyledWrapperIconGif>
         </Box>
         <Box display="flex" alignItems="center" gap="10px">
@@ -100,7 +103,6 @@ export function UserProfileGifs({
       </Box>
       {isCommentsOpen && <UserGifDescription>{description}</UserGifDescription>}
       <Comments
-        userId={user?.id}
         comments={comment}
         gifId={gifId}
         isCommentsOpen={isCommentsOpen}
