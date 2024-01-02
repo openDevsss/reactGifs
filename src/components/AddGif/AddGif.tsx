@@ -122,7 +122,7 @@ export function AddGif() {
                 })}
               </TagList>
             )}
-            {Boolean(tags?.length) && (
+            {Boolean(tags && tags?.length) && (
               <GifsTag>
                 {tags
                   .filter((tag) => !selectedTags?.includes(tag))
