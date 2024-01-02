@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { Box, Tooltip, Typography } from "@mui/material";
 import { HeartStraight } from "@phosphor-icons/react";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
@@ -15,7 +16,6 @@ export default function LikeTooltip({
   setIsOpenUserList,
 }: LikeTooltipProp) {
   const { handleToggleLike } = useActionWithGifs();
-  // const currentUser = useAppSelector(selectCurrentUser);
   const currentUser = useCurrentUser();
   const gifIsLiked = likes?.some((like) => like?.user.id === currentUser?.id);
 

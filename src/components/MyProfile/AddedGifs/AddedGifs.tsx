@@ -11,7 +11,7 @@ export const AddedGifs = ({ id }: AddedGifsProps) => {
     <React.Fragment>
       {Boolean(data?.gifs?.length) ? (
         <WrapperInformation>
-          {data?.gifs?.map((gif) => (
+          {data.gifs.map((gif) => (
             <GifProfile key={gif.id} url={gif.url} title={gif.title} />
           ))}
         </WrapperInformation>

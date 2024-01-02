@@ -81,7 +81,7 @@ export function UserProfileGifs({
             <UserList
               open={true}
               onClose={handleClose}
-              users={likes.map(({ user }) => user)}
+              users={likes?.map(({ user }) => user)}
             />
           )}
           <StyledWrapperIconGif>

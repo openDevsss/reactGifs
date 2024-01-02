@@ -3,7 +3,6 @@ import { Avatar, Box, Chip, Typography } from "@mui/material";
 
 export const UserProfileWrapper = styled.div`
   display: grid;
-  /* gap: 20px; */
   grid-template-areas:
     "mainInfo followers"
     "userGifs followers"
@@ -102,15 +101,6 @@ export const FollowersTitle = styled.p`
   font-size: 16px;
   font-weight: 600;
 `;
-export const UserInfoWrapper = styled.div`
-  width: 60%;
-`;
-export const UsersGifsWrapper = styled.div`
-  display: grid;
-`;
-export const UsersGifsTitle = styled.p`
-  margin: 0;
-`;
 export const UserGifItemWrapper = styled.div`
   height: fit-content;
   margin: 20px auto;
@@ -121,7 +111,6 @@ export const UserGifItemWrapper = styled.div`
   flex-direction: column;
   width: 600px;
   padding: 20px;
-  /* grid-area: userGifs; */
 `;
 export const UserGif = styled.img`
   border-radius: 32px;

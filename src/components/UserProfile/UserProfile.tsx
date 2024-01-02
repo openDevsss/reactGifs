@@ -15,18 +15,18 @@ export function UserProfile() {
   return (
     <UserProfileWrapper>
       <MainInformation
-        nickname={user?.nickname}
-        avatar={user?.avatar}
-        email={user?.email}
-        followers={user?.followers}
-        following={user?.following}
+        nickname={user.nickname}
+        avatar={user.avatar}
+        email={user.email}
+        followers={user.followers}
+        following={user.following}
       />
       <Box gridArea="userGifs">
-        {user?.gifs.map((gif) => (
+        {user.gifs.map((gif) => (
           <UserProfileGifs key={gif.id} {...gif} />
         ))}
       </Box>
-      <Followers followers={user?.followers} />
+      <Followers followers={user.followers} />
     </UserProfileWrapper>
   );
 }
