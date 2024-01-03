@@ -60,13 +60,13 @@ export function MyProfile() {
       <Box display="flex" gap="15px">
         <ProfileSubscriptions onClick={() => handleOpenList("following")}>
           <span style={{ fontWeight: "bold" }}>
-            {currentUser?.following?.length}
+            {currentUser?.following?.length || 0}
           </span>{" "}
           following
         </ProfileSubscriptions>
         <ProfileSubscriptions onClick={() => handleOpenList("followers")}>
           <span style={{ fontWeight: "bold" }}>
-            {currentUser?.followers?.length}
+            {currentUser?.followers?.length || 0}
           </span>{" "}
           followers
         </ProfileSubscriptions>

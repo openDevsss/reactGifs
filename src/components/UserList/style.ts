@@ -28,6 +28,7 @@ export const StyledButtonSubscribe = styled(Button)`
   color: white;
   background-color: #5f3db5;
   font-weight: 600;
+  transition: background-color 0.6s, color 0.6s;
 
   &:hover {
     background-color: #ffffff;
