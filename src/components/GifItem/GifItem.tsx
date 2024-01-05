@@ -9,7 +9,7 @@ import {
   ShareNetwork,
 } from "@phosphor-icons/react";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
-import LikeTooltip from "../LikeTooltip/LikeTooltip";
+import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
 
 import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
@@ -66,7 +66,7 @@ export function GifItem({
             alignItems="center"
           >
             <Box display="flex" gap="15px">
-              <GifUserAvatar src={user.avatar} />
+              <GifUserAvatar src={user?.avatar} />
               <GifItemTitle>{title}</GifItemTitle>
             </Box>
             <IconButton onClick={handleClick}>
@@ -110,13 +110,14 @@ export function GifItem({
                 users={likes.map(({ user }) => user)}
               />
             )}
-            <StyledWrapperIconGif>
-              <ShareFat size="24" weight="thin" cursor="pointer" />
-            </StyledWrapperIconGif>
+
             <StyledWrapperIconGif
               onClick={() => setIsCommentsOpen(!isCommentsOpen)}
             >
               <Chat size="24" weight="thin" cursor="pointer" />
+            </StyledWrapperIconGif>
+            <StyledWrapperIconGif>
+              <ShareFat size="24" weight="thin" cursor="pointer" />
             </StyledWrapperIconGif>
           </Box>
           <Box display="flex" alignItems="center" gap="10px">

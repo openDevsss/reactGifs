@@ -1,4 +1,6 @@
+import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import type { Followers } from "../../types/Followers";
+import { UserList } from "../UserList/UserList";
 import {
   FollowersAvatar,
   FollowersEmptyMessage,
@@ -12,17 +14,29 @@ interface FollowersProps {
   followers: Followers[];
 }
 export default function Followers({ followers }: FollowersProps) {
+  const { isOpenUserList, handleClose, setIsOpenUserList } =
+    useActionWithGifs();
   return (
     <FollowersWrapper>
       <FollowersTitle>Followers</FollowersTitle>
-      {Boolean(followers) ? (
+      {Boolean(followers.length) ? (
         <FollowersList>
           {followers.map((follow) => (
-            <FollowersItem key={follow.follower.id}>
+            <FollowersItem
+              onClick={() => setIsOpenUserList(true)}
+              key={follow.follower.id}
+            >
               <FollowersAvatar src={follow?.follower.avatar} />
               <FollowersNickname>{follow?.follower.nickname}</FollowersNickname>
             </FollowersItem>
           ))}
+          {isOpenUserList && (
+            <UserList
+              open={isOpenUserList}
+              onClose={handleClose}
+              users={followers.map((follow) => follow.follower)}
+            />
+          )}
         </FollowersList>
       ) : (
         <FollowersEmptyMessage>

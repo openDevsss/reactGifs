@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Followers from "./Followers";
 import { MainInformation } from "./MainInformation";
@@ -8,10 +9,16 @@ import { UserProfileWrapper } from "./style";
 
 export function UserProfile() {
   const { id } = useParams();
-  const { data: user } = useGetUserGifs(id || "");
+  const { data: user, refetch } = useGetUserGifs(id);
+
+  useEffect(() => {
+    refetch();
+  }, [id, refetch]);
+
   if (!user) {
     return null;
   }
+  console.log(user);
   return (
     <UserProfileWrapper>
       <MainInformation
@@ -23,7 +30,7 @@ export function UserProfile() {
       />
       <Box gridArea="userGifs">
         {user.gifs.map((gif) => (
-          <UserProfileGifs key={gif.id} {...gif} />
+          <UserProfileGifs key={gif.id} {...gif} userId={user.id} />
         ))}
       </Box>
       <Followers followers={user.followers} />

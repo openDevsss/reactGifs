@@ -1,9 +1,14 @@
 import { Box } from "@mui/material";
-import { User } from "../../types/User";
-import { StyledButtonSubscribe, UserAvatar, UserNicknameText } from "./style";
+import { TypeForUsers } from "./UserList";
+import {
+  StyledButtonSubscribe,
+  StyledLink,
+  UserAvatar,
+  UserNicknameText,
+} from "./style";
 
 interface UserListItemProps {
-  user: User;
+  user: TypeForUsers;
 }
 
 export const UserListItem = ({ user }: UserListItemProps) => {
@@ -16,7 +21,9 @@ export const UserListItem = ({ user }: UserListItemProps) => {
     >
       <Box display="flex" alignItems="center" gap="20px">
         <UserAvatar src={user.avatar} alt={user.nickname} />
-        <UserNicknameText>{user.nickname}</UserNicknameText>
+        <StyledLink to={`/profile/${user.id}`}>
+          <UserNicknameText>{user.nickname}</UserNicknameText>
+        </StyledLink>
       </Box>
       <StyledButtonSubscribe>Follow</StyledButtonSubscribe>
     </Box>

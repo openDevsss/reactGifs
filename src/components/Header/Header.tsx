@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import { HeaderBellIcon } from "./HeaderBellIcon";
 import { HeaderMenu } from "./HeaderMenu";
+import { useHeader } from "./hooks/useHeader";
 import {
   HomeHeader,
   InformationHeader,
@@ -19,7 +20,6 @@ import {
   WrapperIcon,
   WrapperSearch,
 } from "./style";
-import { useHeader } from "./hooks/useHeader";
 
 export function Header() {
   const {
@@ -75,7 +75,7 @@ export function Header() {
                 },
               }}
             >
-              <MyProfileWrapper to="/my-profile">
+              <MyProfileWrapper to={`/profile/${currentUser?.id}`}>
                 <ProfileName>Account</ProfileName>
                 <ProfileIcon src={currentUser?.avatar} />
               </MyProfileWrapper>

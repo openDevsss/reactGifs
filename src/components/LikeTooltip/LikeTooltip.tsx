@@ -10,13 +10,13 @@ interface LikeTooltipProp {
   gifId: string;
   setIsOpenUserList: (isOpen: boolean) => void;
 }
-export default function LikeTooltip({
+export function LikeTooltip({
   likes,
   gifId,
   setIsOpenUserList,
 }: LikeTooltipProp) {
-  const { handleToggleLike } = useActionWithGifs();
   const currentUser = useCurrentUser();
+  const { handleToggleLike } = useActionWithGifs();
   const gifIsLiked = likes?.some((like) => like?.user.id === currentUser?.id);
 
   return (

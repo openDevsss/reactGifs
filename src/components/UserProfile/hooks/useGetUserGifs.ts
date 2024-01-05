@@ -3,11 +3,11 @@ import { useQuery } from "react-query";
 import { GetUserGifs } from "./service";
 
 export function useGetUserGifs(id: string) {
-  const { data } = useQuery([`user/${id}`], async () => GetUserGifs(id), {
+  const { data, refetch } = useQuery(["gifs"], async () => GetUserGifs(id), {
     retry: false,
     onError: (err: AxiosError<{ message?: string }>) => {
       console.log(err);
     },
   });
-  return { data: data?.user };
+  return { data: data?.user, refetch };
 }
