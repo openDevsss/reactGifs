@@ -19,17 +19,19 @@ import {
   UserGifItemWrapper,
   UserGifTitle,
 } from "./style";
-
+interface userProfileGifsProps extends Gif {
+  userId: string;
+}
 export function UserProfileGifs({
   title,
   description,
   url,
-  user,
   comment,
   id: gifId,
   viewers,
   likes,
-}: Gif) {
+  userId,
+}: userProfileGifsProps) {
   const {
     anchorEl,
     setIsOpenUserList,
@@ -40,7 +42,6 @@ export function UserProfileGifs({
     isCommentsOpen,
     isOpen,
   } = useActionWithGifs();
-
   return (
     <UserGifItemWrapper>
       <Box
@@ -60,7 +61,7 @@ export function UserProfileGifs({
         </IconButton>
         <GifMenuAction
           gifId={gifId}
-          authorId={user?.id}
+          authorId={userId}
           anchorEl={anchorEl}
           handleClose={handleClose}
           isOpen={isOpen}

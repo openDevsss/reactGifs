@@ -13,7 +13,6 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { SettingsGif } from "./components/SettingsGif/SettingsGif";
 import { checkAuth } from "./features/users/users-slice";
 import { HomePage } from "./pages/HomePage";
-import { MyProfilePage } from "./pages/MyProfilePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
 import { useAppDispatch } from "./redux-toolkit";
@@ -32,14 +31,7 @@ export function App() {
             <Route element={<HomePage />} path="/" />
             <Route element={<RecommendationsPage />} path="/recommendations" />
             <Route element={<DetailsGifPage />} path="/gif/:id" />
-            <Route
-              element={
-                <ProtectedRoute>
-                  <MyProfilePage />
-                </ProtectedRoute>
-              }
-              path="/my-profile"
-            />
+            <Route element={<UserProfile />} path={"/profile/:id"} />
             <Route
               element={
                 <ProtectedRoute>
@@ -49,7 +41,6 @@ export function App() {
               path="/settings"
             />
             <Route element={<AddGif />} path="gif-add" />
-            <Route element={<UserProfile />} path="profile/:id" />
           </Route>
           <Route element={<Registration />} path="/sign-up" />
           <Route element={<Login />} path="/sign-in" />

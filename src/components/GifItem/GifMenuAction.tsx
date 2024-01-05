@@ -28,6 +28,7 @@ export function GifMenuAction({
     },
   );
   const currentUser = useCurrentUser();
+  // console.log(currentUser?.id, authorId);
   const isMyGif = currentUser?.id === authorId;
   return (
     <Menu

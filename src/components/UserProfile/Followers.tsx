@@ -19,7 +19,7 @@ export default function Followers({ followers }: FollowersProps) {
   return (
     <FollowersWrapper>
       <FollowersTitle>Followers</FollowersTitle>
-      {Boolean(followers) ? (
+      {Boolean(followers.length) ? (
         <FollowersList>
           {followers.map((follow) => (
             <FollowersItem

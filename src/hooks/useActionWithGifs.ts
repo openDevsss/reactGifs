@@ -46,6 +46,7 @@ export function useActionWithGifs() {
     setIsOpen(true);
   };
   const handleClose = () => {
+    console.log("Closing modal...");
     setAnchorEl(null);
     setIsOpen(false);
     setIsOpenUserList(false);

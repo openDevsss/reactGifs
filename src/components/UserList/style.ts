@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Button, Paper, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const StyledWtapperIntoModal = styled(Paper)`
   padding: 35px 50px;
@@ -33,4 +34,8 @@ export const StyledButtonSubscribe = styled(Button)`
     background-color: #ffffff;
     color: #5f3db5;
   }
+`;
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `;

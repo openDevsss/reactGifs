@@ -66,7 +66,7 @@ export function GifItem({
             alignItems="center"
           >
             <Box display="flex" gap="15px">
-              <GifUserAvatar src={user.avatar} />
+              <GifUserAvatar src={user?.avatar} />
               <GifItemTitle>{title}</GifItemTitle>
             </Box>
             <IconButton onClick={handleClick}>
