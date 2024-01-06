@@ -9,7 +9,7 @@ export interface TypeForUsers {
 interface UserListProps {
   users: TypeForUsers[];
   open: boolean;
-  onClose: () => void;
+  onClose: (modalKey: string) => void;
 }
 
 export const UserList = ({ users, open, onClose }: UserListProps) => {

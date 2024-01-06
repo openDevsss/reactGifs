@@ -6,7 +6,10 @@ import {
   Eye,
   ShareFat,
 } from "@phosphor-icons/react";
+import { useState } from "react";
+import { modalName } from "../../constant/modal";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
+import { useModal } from "../../hooks/useModal";
 import { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
 import { GifMenuAction } from "../GifItem/GifMenuAction";
@@ -32,16 +35,19 @@ export function UserProfileGifs({
   likes,
   userId,
 }: userProfileGifsProps) {
-  const {
-    anchorEl,
-    setIsOpenUserList,
-    isOpenUserList,
-    handleClick,
-    handleClose,
-    setIsCommentsOpen,
-    isCommentsOpen,
-    isOpen,
-  } = useActionWithGifs();
+  const [isOpen, setIsOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { setIsCommentsOpen, isCommentsOpen } = useActionWithGifs();
+  const { modals, toggleModal } = useModal();
+  const handleClose = () => {
+    setAnchorEl(null);
+    setIsOpen(false);
+  };
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    setIsOpen(true);
+  };
+  console.log(modals[modalName.likes]);
   return (
     <UserGifItemWrapper>
       <Box
@@ -77,13 +83,13 @@ export function UserProfileGifs({
         <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
           <LikeTooltip
             gifId={gifId}
-            setIsOpenUserList={setIsOpenUserList}
+            setIsOpenUserList={toggleModal}
             likes={likes}
           />
-          {isOpenUserList && (
+          {Boolean(modals[modalName.likes]) && (
             <UserList
-              open={isOpenUserList}
-              onClose={handleClose}
+              open={modals[modalName.likes]}
+              onClose={() => toggleModal(modalName.likes)}
               users={likes?.map(({ user }) => user)}
             />
           )}

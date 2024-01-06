@@ -1,5 +1,10 @@
 import Menu from "@mui/material/Menu";
-import { ArrowFatLineDown, Megaphone, Trash } from "@phosphor-icons/react";
+import {
+  ArrowFatLineDown,
+  Megaphone,
+  PencilSimpleLine,
+  Trash,
+} from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "react-query";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import type { User } from "../../types/User";
@@ -28,7 +33,6 @@ export function GifMenuAction({
     },
   );
   const currentUser = useCurrentUser();
-  // console.log(currentUser?.id, authorId);
   const isMyGif = currentUser?.id === authorId;
   return (
     <Menu
@@ -41,7 +45,7 @@ export function GifMenuAction({
         elevation: 0,
         sx: {
           width: "150px",
-          padding: "8px",
+          padding: "0px",
           overflow: "visible",
           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
           mt: 1.5,
@@ -58,6 +62,10 @@ export function GifMenuAction({
             transform: "translateY(-50%) rotate(45deg)",
             zIndex: 0,
           },
+          "& .MuiMenu-list": {
+            pt: "5px",
+            pb: "5px",
+          },
         },
       }}
       transformOrigin={{ horizontal: "right", vertical: "top" }}
@@ -72,13 +80,19 @@ export function GifMenuAction({
         Report
       </StyledMenuItem>
       {isMyGif && (
-        <StyledMenuItem
-          style={{ color: "#ff0000" }}
-          onClick={() => handleDelete(gifId)}
-        >
-          <Trash size={20} color="#ff0000" />
-          Delete
-        </StyledMenuItem>
+        <>
+          <StyledMenuItem>
+            <PencilSimpleLine size={20} />
+            Edit
+          </StyledMenuItem>
+          <StyledMenuItem
+            style={{ color: "#ff0000" }}
+            onClick={() => handleDelete(gifId)}
+          >
+            <Trash size={20} color="#ff0000" />
+            Delete
+          </StyledMenuItem>
+        </>
       )}
     </Menu>
   );

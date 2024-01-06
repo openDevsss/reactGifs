@@ -1,4 +1,7 @@
 import { Box } from "@mui/material";
+import { Gear } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { User } from "../../types/User";
 import { Hashtag } from "../Hashtag/Hashtag";
 import {
@@ -13,7 +16,7 @@ import {
 } from "./style";
 type MainInfoProps = Pick<
   User,
-  "avatar" | "email" | "followers" | "following" | "nickname"
+  "avatar" | "email" | "followers" | "following" | "nickname" | "id"
 >;
 export function MainInformation({
   nickname,
@@ -21,13 +24,33 @@ export function MainInformation({
   email,
   followers,
   following,
+  id: userId,
 }: MainInfoProps) {
+  const { id } = useCurrentUser();
   return (
     <MainInfoWrapper>
       <MainInfoAvatar src={avatar} />
       <PersonalInfoWrapper>
         <MainInfoName>{nickname}</MainInfoName>
-        <MainInfoMail>{email}</MainInfoMail>
+        <MainInfoMail>
+          {email}
+          {userId === id && (
+            <Link
+              style={{
+                width: "20px",
+                height: "20px",
+              }}
+              to="/settings"
+            >
+              <Gear
+                style={{ cursor: "pointer" }}
+                size={20}
+                color="#000"
+                weight="light"
+              />
+            </Link>
+          )}
+        </MainInfoMail>
         <MainInfoTagsWrapper>
           <Hashtag tag="asasa" />
           <Hashtag tag="asasa" />

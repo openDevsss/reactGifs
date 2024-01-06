@@ -1,14 +1,15 @@
 /* eslint-disable indent */
 import { Box, Tooltip, Typography } from "@mui/material";
 import { HeartStraight } from "@phosphor-icons/react";
+import { modalName } from "../../constant/modal";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { Like } from "../../types/Like";
-import { GifUserAvatar, StyledWrapperIconGif } from "../GifItem/style";
+import { GifUserAvatar, StyledWrapperIconHeart } from "../GifItem/style";
 interface LikeTooltipProp {
   likes: Like[];
   gifId: string;
-  setIsOpenUserList: (isOpen: boolean) => void;
+  setIsOpenUserList: (modalKey: string) => void;
 }
 export function LikeTooltip({
   likes,
@@ -27,7 +28,7 @@ export function LikeTooltip({
           {likes?.length
             ? likes.map(({ user }) => (
                 <GifUserAvatar
-                  onClick={() => setIsOpenUserList(true)}
+                  onClick={() => setIsOpenUserList(modalName.likes)}
                   key={user.id}
                   src={user.avatar}
                   alt={user.nickname}
@@ -49,7 +50,7 @@ export function LikeTooltip({
         },
       }}
     >
-      <StyledWrapperIconGif>
+      <StyledWrapperIconHeart isLiked={Boolean(likes?.length)}>
         {gifIsLiked ? (
           <HeartStraight
             size="24"
@@ -66,8 +67,8 @@ export function LikeTooltip({
             onClick={() => handleToggleLike(gifId)}
           />
         )}
-        <Typography>{likes?.length}</Typography>
-      </StyledWrapperIconGif>
+        {Boolean(likes?.length) && <Typography>{likes?.length}</Typography>}
+      </StyledWrapperIconHeart>
     </Tooltip>
   );
 }
