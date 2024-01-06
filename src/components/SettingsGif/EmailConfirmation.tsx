@@ -1,4 +1,4 @@
-import { modalName } from "../../constant/modal";
+import { configModalName } from "../../constant/modal";
 import { useModal } from "../../hooks/useModal";
 import { ConfirmationPopup } from "../ConfirmationPopup/ConfirmationPopup";
 import {
@@ -14,12 +14,14 @@ export function EmailConfirmation() {
       <ConfirmEmailDescription>
         If you want to upload and save GIF's, you need to confirm your Email
       </ConfirmEmailDescription>
-      <ConfirmEmailPanelButton onClick={() => toggleModal(modalName.email)}>
+      <ConfirmEmailPanelButton
+        onClick={() => toggleModal(configModalName.email)}
+      >
         Submit
       </ConfirmEmailPanelButton>
       <ConfirmationPopup
-        onClose={() => toggleModal(modalName.email)}
-        isOpen={modals[modalName.email]}
+        onClose={() => toggleModal(configModalName.email)}
+        isOpen={modals[configModalName.email]}
       />
     </EmailConfirmWrapper>
   );

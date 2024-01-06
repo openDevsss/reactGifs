@@ -7,7 +7,7 @@ import {
   ShareFat,
 } from "@phosphor-icons/react";
 import { useState } from "react";
-import { modalName } from "../../constant/modal";
+import { configModalName } from "../../constant/modal";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { useModal } from "../../hooks/useModal";
 import { Gif } from "../../types/Gif";
@@ -47,7 +47,7 @@ export function UserProfileGifs({
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
   };
-  console.log(modals[modalName.likes]);
+  console.log(modals[configModalName.likes]);
   return (
     <UserGifItemWrapper>
       <Box
@@ -86,10 +86,10 @@ export function UserProfileGifs({
             setIsOpenUserList={toggleModal}
             likes={likes}
           />
-          {Boolean(modals[modalName.likes]) && (
+          {Boolean(modals[configModalName.likes]) && (
             <UserList
-              open={modals[modalName.likes]}
-              onClose={() => toggleModal(modalName.likes)}
+              open={modals[configModalName.likes]}
+              onClose={() => toggleModal(configModalName.likes)}
               users={likes?.map(({ user }) => user)}
             />
           )}

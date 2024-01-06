@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import { Box, Tooltip, Typography } from "@mui/material";
 import { HeartStraight } from "@phosphor-icons/react";
-import { modalName } from "../../constant/modal";
+import { configModalName } from "../../constant/modal";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { Like } from "../../types/Like";
@@ -28,7 +28,7 @@ export function LikeTooltip({
           {likes?.length
             ? likes.map(({ user }) => (
                 <GifUserAvatar
-                  onClick={() => setIsOpenUserList(modalName.likes)}
+                  onClick={() => setIsOpenUserList(configModalName.likes)}
                   key={user.id}
                   src={user.avatar}
                   alt={user.nickname}

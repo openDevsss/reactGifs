@@ -13,7 +13,7 @@ import {
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
 
-import { modalName } from "../../constant/modal";
+import { configModalName } from "../../constant/modal";
 import { useModal } from "../../hooks/useModal";
 import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
@@ -107,10 +107,10 @@ export function GifItem({
               setIsOpenUserList={toggleModal}
               likes={likes}
             />
-            {Boolean(modals[modalName.likes]) && (
+            {Boolean(modals[configModalName.likes]) && (
               <UserList
-                open={Boolean(modals[modalName.likes])}
-                onClose={() => toggleModal(modalName.likes)}
+                open={Boolean(modals[configModalName.likes])}
+                onClose={() => toggleModal(configModalName.likes)}
                 users={likes?.map(({ user }) => user)}
               />
             )}

@@ -1,4 +1,4 @@
-import { modalName } from "../../constant/modal";
+import { configModalName } from "../../constant/modal";
 import { useModal } from "../../hooks/useModal";
 import type { Followers } from "../../types/Followers";
 import { UserList } from "../UserList/UserList";
@@ -19,22 +19,22 @@ export default function Followers({ followers }: FollowersProps) {
   return (
     <FollowersWrapper>
       <FollowersTitle>Followers</FollowersTitle>
-      {Boolean(followers.length) ? (
+      {Boolean(followers?.length) ? (
         <FollowersList>
           {followers.map((follow) => (
             <FollowersItem
-              onClick={() => toggleModal(modalName.followers)}
+              onClick={() => toggleModal(configModalName.followers)}
               key={follow.follower.id}
             >
               <FollowersAvatar src={follow?.follower.avatar} />
               <FollowersNickname>{follow?.follower.nickname}</FollowersNickname>
             </FollowersItem>
           ))}
-          {Boolean(modals[modalName.followers]) && (
+          {Boolean(modals[configModalName.followers]) && (
             <UserList
-              open={modals[modalName.followers]}
-              onClose={() => toggleModal(modalName.followers)}
-              users={followers.map((follow) => follow.follower)}
+              open={modals[configModalName.followers]}
+              onClose={() => toggleModal(configModalName.followers)}
+              users={followers.map((follow) => follow?.follower)}
             />
           )}
         </FollowersList>

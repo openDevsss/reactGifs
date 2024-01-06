@@ -18,6 +18,20 @@ type MainInfoProps = Pick<
   User,
   "avatar" | "email" | "followers" | "following" | "nickname" | "id"
 >;
+
+function MainInformationSettings() {
+  return (
+    <Link
+      style={{
+        width: "20px",
+        height: "20px",
+      }}
+      to="/settings"
+    >
+      <Gear cursor="pointer" size={20} color="#000" weight="light" />
+    </Link>
+  );
+}
 export function MainInformation({
   nickname,
   avatar,
@@ -34,22 +48,7 @@ export function MainInformation({
         <MainInfoName>{nickname}</MainInfoName>
         <MainInfoMail>
           {email}
-          {userId === id && (
-            <Link
-              style={{
-                width: "20px",
-                height: "20px",
-              }}
-              to="/settings"
-            >
-              <Gear
-                style={{ cursor: "pointer" }}
-                size={20}
-                color="#000"
-                weight="light"
-              />
-            </Link>
-          )}
+          {userId === id && <MainInformationSettings />}
         </MainInfoMail>
         <MainInfoTagsWrapper>
           <Hashtag tag="asasa" />
