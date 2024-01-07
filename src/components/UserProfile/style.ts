@@ -10,17 +10,6 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export const UserProfileWrapper = styled.div`
-  display: grid;
-  grid-template-areas:
-    "mainInfo followers"
-    "userGifs followers"
-    "userGifs _";
-  grid-template-columns: 2.5fr 1fr;
-  width: 80%;
-  margin: 20px auto 0;
-`;
-
 export const HashtagWrapper = styled(Box)`
   margin-right: 10px;
   display: flex;
@@ -57,28 +46,45 @@ export const MainInfoWrapper = styled.div`
   border-radius: 20px;
   color: #000;
   margin: 0 auto;
-  width: 640px;
   align-self: center;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   height: 200px;
   grid-area: mainInfo;
+  width: 100%;
+  @media (max-width: 488px) {
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+  }
 `;
 export const MainInfoAvatar = styled.img`
   object-fit: cover;
   height: 200px;
   width: 200px;
   border-radius: 20px 0 0 20px;
+  @media (max-width: 488px) {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
 `;
 export const PersonalInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  @media (max-width: 488px) {
+    padding: 0;
+    width: 70%;
+  }
 `;
 export const MainInfoName = styled.p`
   margin: 0;
   font-size: 24px;
   font-weight: 700;
+  @media (max-width: 1280px) {
+    font-size: 18px;
+  }
 `;
 export const MainInfoMail = styled.p`
   margin: 0;
@@ -93,6 +99,10 @@ export const MainInfoTagsWrapper = styled.div`
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
+  @media (max-width: 488px) {
+    display: none;
+  }
 `;
 export const FollowersWrapper = styled.div`
   padding: 20px;
@@ -102,12 +112,15 @@ export const FollowersWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 65vh;
+  height: 80vh;
   grid-area: followers;
-  width: 300px;
-  margin-right: 50%;
+  max-width: 300px;
+  width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 export const FollowersTitle = styled.p`
   font-size: 16px;
@@ -116,19 +129,20 @@ export const FollowersTitle = styled.p`
   margin-bottom: 20px;
 `;
 export const UserGifItemWrapper = styled.div`
+  box-sizing: border-box;
   height: fit-content;
   margin: 20px auto;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   display: flex;
   flex-direction: column;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   padding: 10px 20px;
 `;
 export const UserGif = styled.img`
   border-radius: 32px;
   width: 100%;
-  min-width: 600px;
   max-width: 600px;
   height: 500px;
   object-fit: cover;
@@ -218,11 +232,11 @@ export const ProfileTab = styled(Tab)`
   background-color: transparent;
 `;
 export const StyledButton = styled(Button)`
-  width: 640px;
+  margin: 0 auto;
+  width: 100%;
   font-size: 25px;
   color: #ffffff;
   padding: 0;
-  margin-top: 40px;
   border-radius: 12px;
   background-color: #5f3db5;
   color: #fff;

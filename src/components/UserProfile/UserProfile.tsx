@@ -6,7 +6,7 @@ import Followers from "./Followers";
 import { MainInformation } from "./MainInformation";
 import { UserProfileGifs } from "./UserProfileGif";
 import { useGetUserGifs } from "./hooks/useGetUserGifs";
-import { StyledButton, UserProfileWrapper } from "./style";
+import { StyledButton } from "./style";
 
 export function UserProfile() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ export function UserProfile() {
     return null;
   }
   return (
-    <UserProfileWrapper>
+    <>
       <MainInformation
         nickname={user.nickname}
         avatar={user.avatar}
@@ -29,13 +29,11 @@ export function UserProfile() {
         following={user.following}
         id={user.id}
       />
-      <Box gridArea="userGifs">
+      <Box gridArea="userGifs" width="100%" m="0 auto">
         {currentUser?.id === user.id && (
-          <Box width="640px" margin="0 auto">
-            <Link to="/gif-add">
-              <StyledButton>+</StyledButton>
-            </Link>
-          </Box>
+          <Link to="/gif-add">
+            <StyledButton>+</StyledButton>
+          </Link>
         )}
 
         {user.gifs.map((gif) => (
@@ -43,6 +41,6 @@ export function UserProfile() {
         ))}
       </Box>
       <Followers followers={user.followers} />
-    </UserProfileWrapper>
+    </>
   );
 }

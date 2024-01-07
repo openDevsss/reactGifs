@@ -21,11 +21,8 @@ code {
   margin: 0 auto;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
-  max-width: 1560px;
+  max-width: 1920px;
   color: black;
-}
-main {
-  min-height: 100vh;
 }
 
 ::-webkit-scrollbar {
