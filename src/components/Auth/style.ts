@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Button, FormLabel, TextField, Typography } from "@mui/material";
+import { Button, FormLabel, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const Section = styled.section`
@@ -8,33 +8,32 @@ export const Section = styled.section`
   margin: 0;
   padding: 0;
   display: flex;
-`;
-
-export const Wrapper = styled(Box)`
-  display: flex;
-  width: 50%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #e6e6ff,
+    #ffffff
+  ); /* градиент в нужных направлениях */
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 400px;
   margin: 0 auto;
   @media (max-width: 768px) {
     width: 250px;
   }
+  justify-content: center;
 `;
 
 export const FormLegend = styled(Typography)`
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 50px;
   @media (max-width: 768px) {
     font-size: 20px;
   }
@@ -107,27 +106,20 @@ export const RedirectText = styled(Typography)`
   }
 `;
 
-export const Title = styled(Typography)`
-  font-weight: 700;
-  color: white;
-  font-size: 60px;
-  text-align: center;
-`;
-
-export const WrapperImage = styled(Box)`
-  background-color: #5f3db5;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
 export const ErrorMessageRegistration = styled.p`
   margin: 0;
   font-size: 12px;
   color: #ff0000;
+`;
+
+export const StyledLogoImage = styled.img`
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 0;
+`;
+
+export const StyledTitleCompany = styled.h1`
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 60px;
 `;

@@ -1,25 +1,23 @@
-import { Box } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { loginUser } from "../../../features/users/users-slice";
-import ghost from "../../../images/stickerGhost.webp";
 import { useAppDispatch } from "../../../redux-toolkit";
 import {
   ButtonSubmit,
   Description,
   Form,
   FormLegend,
-  InstructionText,
   LinkSign,
   RedirectText,
   Section,
+  StyledLogoImage,
+  StyledTitleCompany,
   TextSign,
-  Title,
   WhiteBorderTextField,
-  Wrapper,
-  WrapperImage,
 } from "../style";
+
+import logo from "../../../images/kub.svg";
 
 export function Login() {
   type LoginUser = {
@@ -41,36 +39,31 @@ export function Login() {
 
   return (
     <Section>
-      <Wrapper>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <FormLegend>sign in</FormLegend>
-          <InstructionText>Welcome! Please enter your details.</InstructionText>
-          <Description>Email</Description>
-          <WhiteBorderTextField
-            {...register("email")}
-            size="small"
-            placeholder="Enter your email"
-          />
-          <Description>Password</Description>
-          <WhiteBorderTextField
-            size="small"
-            placeholder="Enter your password"
-            {...register("password")}
-            type="password"
-          />
-          <ButtonSubmit type="submit">sign in</ButtonSubmit>
-          <RedirectText>
-            Don&apos;t have an account?
-            <LinkSign to="/sign-up">
-              <TextSign> Sign up</TextSign>
-            </LinkSign>
-          </RedirectText>
-        </Form>
-      </Wrapper>
-      <WrapperImage>
-        <Title>React Gifs</Title>
-        <Box component="img" src={ghost} width={200} height={250} />
-      </WrapperImage>
+      <StyledLogoImage src={logo} alt="logo" />
+      <StyledTitleCompany>openDevsss</StyledTitleCompany>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <FormLegend>Login</FormLegend>
+        <Description>Email</Description>
+        <WhiteBorderTextField
+          {...register("email")}
+          size="small"
+          placeholder="Enter your email"
+        />
+        <Description>Password</Description>
+        <WhiteBorderTextField
+          size="small"
+          placeholder="Enter your password"
+          {...register("password")}
+          type="password"
+        />
+        <ButtonSubmit type="submit">sign in</ButtonSubmit>
+        <RedirectText>
+          Don&apos;t have an account?
+          <LinkSign to="/sign-up">
+            <TextSign> Sign up</TextSign>
+          </LinkSign>
+        </RedirectText>
+      </Form>
     </Section>
   );
 }
