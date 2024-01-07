@@ -57,10 +57,6 @@ export function MainInformation({
           <Hashtag tag="asasa" />
           <Hashtag tag="asasa" />
           <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
         </MainInfoTagsWrapper>
         <Box display="flex" alignItems="center" gap="20px" marginTop="10px">
           <MainInfoFollow>

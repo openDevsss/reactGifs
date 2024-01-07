@@ -2,8 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { useEffect } from "react";
 import { AddGif } from "./components/AddGif/AddGif";
-import { AlertPopup } from "./components/AlertPopup/AlertPopup";
-import { UserProfile } from "./components/UserProfile/UserProfile";
+import AlertPopup from "./components/AlertPopup/AlertPopup";
 import { DetailsGifPage } from "./pages/DetailsGifPage";
 
 import { Login } from "./components/Auth/Login/Login";
@@ -16,6 +15,7 @@ import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
 import { useAppDispatch } from "./redux-toolkit";
+import { ProfilePage } from "./pages/ProfilePage";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ export function App() {
             <Route element={<HomePage />} path="/" />
             <Route element={<RecommendationsPage />} path="/recommendations" />
             <Route element={<DetailsGifPage />} path="/gif/:id" />
-            <Route element={<UserProfile />} path={"/profile/:id"} />
+            <Route element={<ProfilePage />} path={"/profile/:id"} />
             <Route
               element={
                 <ProtectedRoute>

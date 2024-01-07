@@ -8,13 +8,13 @@ export const GifItemWrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
   border-radius: 32px;
   display: flex;
-  width: 1100px;
   padding: 20px 20px 15px;
+  width: 100%;
+  box-sizing: border-box;
 `;
 export const GifAnimation = styled.img`
   border-radius: 20px;
   width: 100%;
-  min-width: 600px;
   max-width: 600px;
   height: 500px;
   object-fit: cover;
