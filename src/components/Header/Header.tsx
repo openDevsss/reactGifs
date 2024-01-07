@@ -60,7 +60,24 @@ export function Header() {
         </WrapperSearch>
         {!isMatches1024 ? (
           <NavigationHeader>
-            <HeaderBellIcon />
+            <Tooltip
+              title="Notification"
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    bgcolor: "black",
+                    color: "white",
+                    fontWeight: 700,
+                    padding: "15px",
+                    borderRadius: "10px",
+                  },
+                },
+              }}
+            >
+              <div>
+                <HeaderBellIcon />
+              </div>
+            </Tooltip>
             <Tooltip
               title="Your profile"
               componentsProps={{
@@ -96,7 +113,22 @@ export function Header() {
         ) : (
           <>
             <NavigationHeader>
-              <HeaderBellIcon />
+              <Tooltip
+                title="Notification"
+                componentsProps={{
+                  tooltip: {
+                    sx: {
+                      bgcolor: "black",
+                      color: "white",
+                      fontWeight: 700,
+                      padding: "15px",
+                      borderRadius: "10px",
+                    },
+                  },
+                }}
+              >
+                <HeaderBellIcon />
+              </Tooltip>
               <IconButton onClick={handleClick}>
                 <List size={20} color="#5f3db5" weight="regular" />
               </IconButton>
