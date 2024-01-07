@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import useAlert from "../../../hooks/useAlert";
+import { useAlert } from "../../../hooks/useAlert";
 import { Tag } from "../../../types/Tag";
-import { useGetTags } from "./useGetTags";
 import { DataForCreateGif, createGif } from "./service";
+import { useGetTags } from "./useGetTags";
 
 export const useAddGif = () => {
   const [image, setImage] = useState("");
@@ -35,8 +35,8 @@ export const useAddGif = () => {
         setSeletedTags([]);
         reset();
       })
-      .catch((err) => {
-        setAlert(err, "error");
+      .catch((error) => {
+        setAlert(error.message, "error");
       });
   };
   const displayGif = (e: any) => {
