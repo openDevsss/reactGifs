@@ -1,4 +1,6 @@
 /* eslint-disable indent */
+import { useState } from "react";
+
 import { Box, IconButton, Typography } from "@mui/material";
 import {
   Chat,
@@ -11,6 +13,8 @@ import {
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
 
+import { configModalName } from "../../constant/modal";
+import { useModal } from "../../hooks/useModal";
 import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
 import { UserList } from "../UserList/UserList";
@@ -41,18 +45,18 @@ export function GifItem({
   viewers,
   likes,
 }: GifItemsProps) {
-  const {
-    isCommentsOpen,
-    setIsCommentsOpen,
-    isOpen,
-    anchorEl,
-    setIsOpenUserList,
-    isOpenUserList,
-    handleClick,
-    handleClose,
-    navigate,
-  } = useActionWithGifs();
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { setIsCommentsOpen, navigate, isCommentsOpen } = useActionWithGifs();
+  const { modals, toggleModal } = useModal();
+  const handleClose = () => {
+    setAnchorEl(null);
+    setIsOpen(false);
+  };
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    setIsOpen(true);
+  };
   return (
     <GifItemWrapper
       style={{ width: isCommentsOpen ? "1100px" : "fit-content" }}
@@ -100,17 +104,16 @@ export function GifItem({
           <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
             <LikeTooltip
               gifId={gifId}
-              setIsOpenUserList={setIsOpenUserList}
+              setIsOpenUserList={toggleModal}
               likes={likes}
             />
-            {isOpenUserList && (
+            {Boolean(modals[configModalName.likes]) && (
               <UserList
-                open={isOpenUserList}
-                onClose={handleClose}
-                users={likes.map(({ user }) => user)}
+                open={Boolean(modals[configModalName.likes])}
+                onClose={() => toggleModal(configModalName.likes)}
+                users={likes?.map(({ user }) => user)}
               />
             )}
-
             <StyledWrapperIconGif
               onClick={() => setIsCommentsOpen(!isCommentsOpen)}
             >

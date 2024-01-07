@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { updateCurrentUser } from "../../features/users/users-slice";
 
+import { useAlert } from "../../hooks/useAlert";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { useAppDispatch } from "../../redux-toolkit";
 import type { User } from "../../types/User";
-import { useCurrentUser } from "../../hooks/useCurrentUser";
-import useAlert from "../../hooks/useAlert";
 import {
   EditProfileWrapper,
   ErrorMessage,
@@ -31,8 +31,8 @@ export default function ProfileEdit() {
         setAlert("Вы успешно изменили данные", "success");
         reset();
       })
-      .catch(() => {
-        setAlert("Данные не изменены", "error");
+      .catch((error) => {
+        setAlert(error.message, "error");
       });
   };
   const currentUser = useCurrentUser();

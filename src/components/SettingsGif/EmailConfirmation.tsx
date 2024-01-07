@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import { configModalName } from "../../constant/modal";
+import { useModal } from "../../hooks/useModal";
 import { ConfirmationPopup } from "../ConfirmationPopup/ConfirmationPopup";
 import {
   ConfirmEmailDescription,
@@ -8,21 +8,20 @@ import {
 } from "./style";
 
 export function EmailConfirmation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleCloseEmailConfirmationPopup = () => {
-    setIsOpen(!isOpen);
-  };
+  const { modals, toggleModal } = useModal();
   return (
     <EmailConfirmWrapper>
       <ConfirmEmailDescription>
         If you want to upload and save GIF's, you need to confirm your Email
       </ConfirmEmailDescription>
-      <ConfirmEmailPanelButton onClick={() => setIsOpen(true)}>
+      <ConfirmEmailPanelButton
+        onClick={() => toggleModal(configModalName.email)}
+      >
         Submit
       </ConfirmEmailPanelButton>
       <ConfirmationPopup
-        onClose={handleCloseEmailConfirmationPopup}
-        isOpen={isOpen}
+        onClose={() => toggleModal(configModalName.email)}
+        isOpen={modals[configModalName.email]}
       />
     </EmailConfirmWrapper>
   );

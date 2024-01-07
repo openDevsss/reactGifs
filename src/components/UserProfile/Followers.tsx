@@ -1,4 +1,5 @@
-import { useActionWithGifs } from "../../hooks/useActionWithGifs";
+import { configModalName } from "../../constant/modal";
+import { useModal } from "../../hooks/useModal";
 import type { Followers } from "../../types/Followers";
 import { UserList } from "../UserList/UserList";
 import {
@@ -14,27 +15,26 @@ interface FollowersProps {
   followers: Followers[];
 }
 export default function Followers({ followers }: FollowersProps) {
-  const { isOpenUserList, handleClose, setIsOpenUserList } =
-    useActionWithGifs();
+  const { modals, toggleModal } = useModal();
   return (
     <FollowersWrapper>
       <FollowersTitle>Followers</FollowersTitle>
-      {Boolean(followers.length) ? (
+      {Boolean(followers?.length) ? (
         <FollowersList>
           {followers.map((follow) => (
             <FollowersItem
-              onClick={() => setIsOpenUserList(true)}
+              onClick={() => toggleModal(configModalName.followers)}
               key={follow.follower.id}
             >
               <FollowersAvatar src={follow?.follower.avatar} />
               <FollowersNickname>{follow?.follower.nickname}</FollowersNickname>
             </FollowersItem>
           ))}
-          {isOpenUserList && (
+          {Boolean(modals[configModalName.followers]) && (
             <UserList
-              open={isOpenUserList}
-              onClose={handleClose}
-              users={followers.map((follow) => follow.follower)}
+              open={modals[configModalName.followers]}
+              onClose={() => toggleModal(configModalName.followers)}
+              users={followers.map((follow) => follow?.follower)}
             />
           )}
         </FollowersList>

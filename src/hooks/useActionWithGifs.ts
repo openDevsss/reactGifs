@@ -10,9 +10,6 @@ import {
 
 export function useActionWithGifs() {
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenUserList, setIsOpenUserList] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -41,17 +38,6 @@ export function useActionWithGifs() {
     formState: { errors },
   } = useForm<CreateCommentT>();
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-    setIsOpen(true);
-  };
-  const handleClose = () => {
-    console.log("Closing modal...");
-    setAnchorEl(null);
-    setIsOpen(false);
-    setIsOpenUserList(false);
-  };
-
   return {
     handleToggleLike,
     mutation,
@@ -60,12 +46,6 @@ export function useActionWithGifs() {
     errors,
     isCommentsOpen,
     setIsCommentsOpen,
-    isOpen,
-    isOpenUserList,
-    setIsOpenUserList,
-    anchorEl,
-    handleClick,
-    handleClose,
     navigate,
   };
 }

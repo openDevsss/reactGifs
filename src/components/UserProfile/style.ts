@@ -1,5 +1,13 @@
 import styled from "@emotion/styled";
-import { Avatar, Box, Chip, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Chip,
+  Tab,
+  Tabs,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const UserProfileWrapper = styled.div`
@@ -8,8 +16,8 @@ export const UserProfileWrapper = styled.div`
     "mainInfo followers"
     "userGifs followers"
     "userGifs _";
-  grid-template-columns: 3fr 1fr;
-  width: 90%;
+  grid-template-columns: 2.5fr 1fr;
+  width: 80%;
   margin: 20px auto 0;
 `;
 
@@ -46,7 +54,7 @@ export const HashtagItem = styled(Chip)`
 `;
 
 export const MainInfoWrapper = styled.div`
-  border-radius: 12px;
+  border-radius: 20px;
   color: #000;
   margin: 0 auto;
   width: 640px;
@@ -60,7 +68,7 @@ export const MainInfoAvatar = styled.img`
   object-fit: cover;
   height: 200px;
   width: 200px;
-  border-radius: 12px 0 0 12px;
+  border-radius: 20px 0 0 20px;
 `;
 export const PersonalInfoWrapper = styled.div`
   display: flex;
@@ -77,6 +85,9 @@ export const MainInfoMail = styled.p`
   font-size: 14px;
   margin-top: 5px;
   color: #5f5f5f;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 export const MainInfoTagsWrapper = styled.div`
   margin-top: 20px;
@@ -93,9 +104,8 @@ export const FollowersWrapper = styled.div`
   align-items: center;
   height: 65vh;
   grid-area: followers;
-  position: fixed;
-  right: 200px;
-  top: 110px;
+  width: 300px;
+  margin-right: 50%;
   box-sizing: border-box;
   overflow: hidden;
 `;
@@ -110,11 +120,10 @@ export const UserGifItemWrapper = styled.div`
   margin: 20px auto;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
-  border-radius: 32px;
   display: flex;
   flex-direction: column;
   width: 600px;
-  padding: 20px;
+  padding: 10px 20px;
 `;
 export const UserGif = styled.img`
   border-radius: 32px;
@@ -170,4 +179,57 @@ export const FollowersEmptyMessage = styled.p`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: #000;
+`;
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+`;
+export const ProfileButton = styled.button`
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  padding: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
+export const TabsContainer = styled(Tabs)({
+  display: "flex",
+  marginTop: "40px",
+  "& .MuiTabs-indicator": {
+    backgroundColor: "#000",
+  },
+  "& .MuiTabs-flexContainer": {
+    gap: "40px",
+    justifyContent: "center",
+  },
+  "& .MuiButtonBase-root": {
+    padding: 0,
+    justifyContent: "end",
+    paddingBottom: "5px",
+  },
+});
+export const ProfileTab = styled(Tab)`
+  border-radius: 10px;
+  color: #000 !important;
+  background-color: transparent;
+`;
+export const StyledButton = styled(Button)`
+  width: 640px;
+  font-size: 25px;
+  color: #ffffff;
+  padding: 0;
+  margin-top: 40px;
+  border-radius: 12px;
+  background-color: #5f3db5;
+  color: #fff;
+  &:hover {
+    background-color: #fff;
+    color: #5f3db5;
+    box-shadow: rgba(95, 61, 181, 0.3) 0px 1px 20px 0px;
+    transition: color 0.6s, background-color 0.6s, box-shadow 0.6s;
+  }
 `;
