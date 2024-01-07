@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
 import { AlertProvider } from "./contexts/alertContext";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
 import { store } from "./store";
 
 const client = new QueryClient();
@@ -24,5 +23,3 @@ root.render(
     </BrowserRouter>
   </QueryClientProvider>,
 );
-
-reportWebVitals();

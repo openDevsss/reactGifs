@@ -4,7 +4,7 @@ import { MessageType } from "../types/Message";
 
 const ALERT_TIME = 5000;
 
-const AlertContext = createContext<{
+export const AlertContext = createContext<{
   text: string;
   type: MessageType;
   setAlert: (text: string, type: MessageType) => void;
@@ -45,5 +45,3 @@ export const AlertProvider = ({ children }: AlertProviderProps) => {
     </AlertContext.Provider>
   );
 };
-
-export default AlertContext;

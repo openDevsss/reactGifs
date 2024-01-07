@@ -6,7 +6,7 @@ import {
   FollowersAvatar,
   FollowersEmptyMessage,
   FollowersItem,
-  FollowersList,
+  StyledFollowersList,
   FollowersNickname,
   FollowersTitle,
   FollowersWrapper,
@@ -14,13 +14,13 @@ import {
 interface FollowersProps {
   followers: Followers[];
 }
-export default function Followers({ followers }: FollowersProps) {
+export function FollowersList({ followers }: FollowersProps) {
   const { modals, toggleModal } = useModal();
   return (
     <FollowersWrapper>
       <FollowersTitle>Followers</FollowersTitle>
       {Boolean(followers?.length) ? (
-        <FollowersList>
+        <StyledFollowersList>
           {followers.map((follow) => (
             <FollowersItem
               onClick={() => toggleModal(configModalName.followers)}
@@ -37,7 +37,7 @@ export default function Followers({ followers }: FollowersProps) {
               users={followers.map((follow) => follow?.follower)}
             />
           )}
-        </FollowersList>
+        </StyledFollowersList>
       ) : (
         <FollowersEmptyMessage>
           No followers yet. Start connecting with others!

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
-import Followers from "./Followers";
+import { FollowersList } from "./FollowersList";
 import { MainInformation } from "./MainInformation";
 import { UserProfileGifs } from "./UserProfileGif";
 import { useGetUserGifs } from "./hooks/useGetUserGifs";
@@ -42,7 +42,7 @@ export function UserProfile() {
           <UserProfileGifs key={gif.id} {...gif} userId={user.id} />
         ))}
       </Box>
-      <Followers followers={user.followers} />
+      <FollowersList followers={user.followers} />
     </UserProfileWrapper>
   );
 }
