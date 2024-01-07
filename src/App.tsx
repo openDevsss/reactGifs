@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { useEffect } from "react";
 import { AddGif } from "./components/AddGif/AddGif";
-import AlertPopup from "./components/AlertPopup/AlertPopup";
+import { AlertPopup } from "./components/AlertPopup/AlertPopup";
 import { DetailsGifPage } from "./pages/DetailsGifPage";
 
 import { Login } from "./components/Auth/Login/Login";

@@ -41,6 +41,6 @@ export function UserProfile() {
         ))}
       </Box>
       <FollowersList followers={user.followers} />
-    </UserProfileWrapper>
+    </>
   );
 }
