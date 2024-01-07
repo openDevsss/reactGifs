@@ -47,7 +47,7 @@ export function UserProfileGifs({
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
   };
-  console.log(modals[configModalName.likes]);
+
   return (
     <UserGifItemWrapper>
       <Box
