@@ -39,14 +39,6 @@ export const FormLegend = styled(Typography)`
   }
 `;
 
-export const InstructionText = styled(Typography)`
-  font-size: 15px;
-  color: #808080;
-  @media (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-
 export const LinkSign = styled(Link)`
   text-decoration: none;
   color: #5f3db5;
