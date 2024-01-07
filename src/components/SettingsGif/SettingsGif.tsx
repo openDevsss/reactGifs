@@ -3,7 +3,7 @@ import { SettingsLayout } from "../../layout/SettingsLayout";
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 
 import { EmailConfirmation } from "./EmailConfirmation";
-import ProfileEdit from "./ProfileEdit";
+import { ProfileEdit } from "./ProfileEdit";
 import {
   EditProfileTabPanel,
   SettingsTab,

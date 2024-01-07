@@ -1,6 +1,6 @@
 /* eslint-disable indent */
-import { useState } from "react";
-
+import { useCallback, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Box, IconButton, Typography } from "@mui/material";
 import {
   Chat,
@@ -49,13 +49,17 @@ export function GifItem({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { setIsCommentsOpen, navigate, isCommentsOpen } = useActionWithGifs();
   const { modals, toggleModal } = useModal();
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setAnchorEl(null);
     setIsOpen(false);
-  };
+  }, []);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     setIsOpen(true);
+  };
+  const location = useLocation();
+  const handleNavigateToDetails = (gifId: string) => {
+    if (location.pathname !== `/gif/${gifId}`) navigate(`/gif/${gifId}`);
   };
   return (
     <GifItemWrapper
@@ -93,7 +97,7 @@ export function GifItem({
         <GifAnimation
           src={url}
           alt={title}
-          onClick={() => navigate(`/gif/${gifId}`)}
+          onClick={() => handleNavigateToDetails(gifId)}
         />
         <Box
           display="flex"

@@ -1,4 +1,5 @@
 /* eslint-disable indent */
+import { memo } from "react";
 import { Box, Tooltip, Typography } from "@mui/material";
 import { HeartStraight } from "@phosphor-icons/react";
 import { configModalName } from "../../constant/modal";
@@ -6,12 +7,14 @@ import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { Like } from "../../types/Like";
 import { GifUserAvatar, StyledWrapperIconHeart } from "../GifItem/style";
+
 interface LikeTooltipProp {
   likes: Like[];
   gifId: string;
   setIsOpenUserList: (modalKey: string) => void;
 }
-export function LikeTooltip({
+
+export const LikeTooltip = memo(function LikeTooltip({
   likes,
   gifId,
   setIsOpenUserList,
@@ -71,4 +74,4 @@ export function LikeTooltip({
       </StyledWrapperIconHeart>
     </Tooltip>
   );
-}
+});

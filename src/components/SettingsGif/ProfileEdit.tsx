@@ -14,7 +14,7 @@ import {
   ProfileEditSubmitButton,
 } from "./style";
 
-export default function ProfileEdit() {
+export function ProfileEdit() {
   const dispatch = useAppDispatch();
   const { setAlert } = useAlert();
   type ChangedUserData = Pick<User, "email" | "avatar" | "nickname">;

@@ -1,7 +1,7 @@
 import { Alert } from "@mui/material";
 import { useAlert } from "../../hooks/useAlert";
 
-const AlertPopup = () => {
+export const AlertPopup = () => {
   const { text, type } = useAlert();
   if (text && type) {
     return (
@@ -25,5 +25,3 @@ const AlertPopup = () => {
     return null;
   }
 };
-
-export default AlertPopup;

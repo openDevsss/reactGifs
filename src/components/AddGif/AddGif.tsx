@@ -30,6 +30,7 @@ export function AddGif() {
     onSubmit,
     displayGif,
   } = useAddGif();
+
   return (
     <WrapperAddGif>
       <TitleAddGif>Add GIF</TitleAddGif>

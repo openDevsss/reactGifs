@@ -163,7 +163,7 @@ export const UserGifDescription = styled.p`
 export const StyledNumber = styled.span`
   font-weight: 600;
 `;
-export const FollowersList = styled.ul`
+export const StyledFollowersList = styled.ul`
   width: 100%;
   padding: 0;
   margin: 0;
