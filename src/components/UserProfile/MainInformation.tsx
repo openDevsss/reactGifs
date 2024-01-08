@@ -40,7 +40,7 @@ export function MainInformation({
   following,
   id: userId,
 }: MainInfoProps) {
-  const { id } = useCurrentUser();
+  const currentUser = useCurrentUser();
   return (
     <MainInfoWrapper>
       <MainInfoAvatar src={avatar} />
@@ -48,7 +48,7 @@ export function MainInformation({
         <MainInfoName>{nickname}</MainInfoName>
         <MainInfoMail>
           {email}
-          {userId === id && <MainInformationSettings />}
+          {userId === currentUser?.id && <MainInformationSettings />}
         </MainInfoMail>
         <MainInfoTagsWrapper>
           <Hashtag tag="asasa" />

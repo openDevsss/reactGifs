@@ -13,9 +13,9 @@ import { SettingsGif } from "./components/SettingsGif/SettingsGif";
 import { checkAuth } from "./features/users/users-slice";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
 import { useAppDispatch } from "./redux-toolkit";
-import { ProfilePage } from "./pages/ProfilePage";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -31,7 +31,14 @@ export function App() {
             <Route element={<HomePage />} path="/" />
             <Route element={<RecommendationsPage />} path="/recommendations" />
             <Route element={<DetailsGifPage />} path="/gif/:id" />
-            <Route element={<ProfilePage />} path={"/profile/:id"} />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+              path="/profile/:id"
+            />
             <Route
               element={
                 <ProtectedRoute>

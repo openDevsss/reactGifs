@@ -1,3 +1,4 @@
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { CustomModal } from "../Custom/CustomModal";
 import { UserListItem } from "./UserListItem";
 
@@ -13,11 +14,13 @@ interface UserListProps {
 }
 
 export const UserList = ({ users, open, onClose }: UserListProps) => {
+  const { following } = useCurrentUser();
+
   return (
     <CustomModal open={open} onClose={onClose}>
       <div>
         {users.map((user) => (
-          <UserListItem key={user.id} user={user} />
+          <UserListItem key={user.id} user={user} following={following} />
         ))}
       </div>
     </CustomModal>
