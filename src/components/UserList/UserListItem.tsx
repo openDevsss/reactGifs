@@ -1,4 +1,10 @@
 import { Box } from "@mui/material";
+import {
+  subscribToUser,
+  unSubscribToUser,
+} from "../../features/users/users-slice";
+import { useAppDispatch } from "../../redux-toolkit";
+import type { Followers } from "../../types/Followers";
 import { TypeForUsers } from "./UserList";
 import {
   StyledButtonSubscribe,
@@ -9,9 +15,21 @@ import {
 
 interface UserListItemProps {
   user: TypeForUsers;
+  following: Followers[];
 }
 
-export const UserListItem = ({ user }: UserListItemProps) => {
+export const UserListItem = ({ user, following }: UserListItemProps) => {
+  const isFollowing = following?.some(
+    ({ followeeId }) => followeeId === user?.id,
+  );
+  const dispatch = useAppDispatch();
+  const handleSubscribe = () => {
+    dispatch(subscribToUser(user?.id));
+  };
+
+  const handleUnSubscribe = () => {
+    dispatch(unSubscribToUser(user?.id));
+  };
   return (
     <Box
       display="flex"
@@ -25,7 +43,15 @@ export const UserListItem = ({ user }: UserListItemProps) => {
           <UserNicknameText>{user.nickname}</UserNicknameText>
         </StyledLink>
       </Box>
-      <StyledButtonSubscribe>Follow</StyledButtonSubscribe>
+      {!isFollowing ? (
+        <StyledButtonSubscribe onClick={handleSubscribe}>
+          Follow
+        </StyledButtonSubscribe>
+      ) : (
+        <StyledButtonSubscribe onClick={handleUnSubscribe}>
+          unFollow
+        </StyledButtonSubscribe>
+      )}
     </Box>
   );
 };
