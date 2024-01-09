@@ -102,7 +102,36 @@ export const checkAuth = createAsyncThunk<
     return rejectWithValue("Ошибка");
   }
 });
-
+export const subscribToUser = createAsyncThunk<
+  any,
+  string,
+  { extra: Extra; rejectWithValue: string }
+>(
+  "@@user/subscribe",
+  async (followeeId, { extra: { client, api }, rejectWithValue }) => {
+    try {
+      const { data } = await client.put(api.SUBSCRIBE_USER, { followeeId });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
+export const unSubscribToUser = createAsyncThunk<
+  any,
+  string,
+  { extra: Extra; rejectWithValue: string }
+>(
+  "@@user/unSubscribe",
+  async (followeeId, { extra: { client, api }, rejectWithValue }) => {
+    try {
+      const { data } = await client.put(api.UNSUBSCRIBE_USER, { followeeId });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 const UserSlice = createSlice({
   name: "@@user",
   initialState,
@@ -126,18 +155,32 @@ const UserSlice = createSlice({
       .addCase(registerUser.fulfilled, (state) => {
         state.status = "received";
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
         state.status = "received";
       })
-      .addCase(checkAuth.fulfilled, (state, action) => {
+      .addCase(checkAuth.fulfilled, (state, { payload }) => {
         state.isAuth = true;
-        state.user = action.payload;
+        state.user = payload;
       })
-      .addCase(updateCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+      .addCase(updateCurrentUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
         state.error = null;
         state.status = "received";
+      })
+      .addCase(subscribToUser.fulfilled, (state, { payload }) => {
+        state.error = null;
+        state.status = "received";
+        state.user.following = [...state.user.following, payload.subscription];
+      })
+      .addCase(unSubscribToUser.fulfilled, (state, { payload }) => {
+        state.error = null;
+        state.status = "received";
+
+        state.user.following = state.user.following.filter(
+          ({ followeeId }) =>
+            followeeId !== payload.existingSubscription.followeeId,
+        );
       });
   },
 });

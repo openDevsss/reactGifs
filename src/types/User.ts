@@ -10,6 +10,6 @@ export type User = {
   token: string;
   createdAt: string;
   gifs: Gif[];
-  following: User[];
+  following: Followers[];
   followers: Followers[];
 };
