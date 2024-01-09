@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { useEffect } from "react";
 import { AddGif } from "./components/AddGif/AddGif";
@@ -20,9 +20,14 @@ import { ProfilePage } from "./pages/ProfilePage";
 export function App() {
   const dispatch = useAppDispatch();
   const jwt = localStorage.getItem("jwt");
+  const navigate = useNavigate();
   useEffect(() => {
-    if (jwt) dispatch(checkAuth(jwt));
-  }, [jwt, dispatch]);
+    if (jwt) {
+      dispatch(checkAuth(jwt));
+    } else {
+      navigate("/sign-in");
+    }
+  }, [jwt, dispatch, navigate]);
   return (
     <>
       <div className="page">
