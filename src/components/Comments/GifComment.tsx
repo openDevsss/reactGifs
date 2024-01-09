@@ -11,7 +11,8 @@ export function GifComment({ comment_text, user }: CommentGif) {
     <ListItem
       sx={{
         overflowX: "hidden",
-        fontSize: "14px",
+        paddingLeft: 0,
+        paddingRight: 0,
       }}
     >
       <ListItemAvatar>
@@ -20,6 +21,7 @@ export function GifComment({ comment_text, user }: CommentGif) {
       <ListItemText
         sx={{
           wordBreak: "break-word",
+          fontSize: "20px",
         }}
       >
         {comment_text}

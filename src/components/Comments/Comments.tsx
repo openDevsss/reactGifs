@@ -49,9 +49,7 @@ export function Comments({
                     comment_text={message.comment_text}
                     user={message.user}
                   />
-                  {index !== comments.length - 1 && (
-                    <Divider variant="middle" />
-                  )}
+                  {index !== comments.length - 1 && <Divider component="li" />}
                 </React.Fragment>
               );
             })

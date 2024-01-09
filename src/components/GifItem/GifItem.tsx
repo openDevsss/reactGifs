@@ -1,7 +1,5 @@
 /* eslint-disable indent */
-import { useCallback, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
 import {
   Chat,
   DotsThreeOutlineVertical,
@@ -10,6 +8,8 @@ import {
   ShareFat,
   ShareNetwork,
 } from "@phosphor-icons/react";
+import { useCallback, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
 
@@ -61,10 +61,9 @@ export function GifItem({
   const handleNavigateToDetails = (gifId: string) => {
     if (location.pathname !== `/gif/${gifId}`) navigate(`/gif/${gifId}`);
   };
+  const isWideScreen = useMediaQuery("(min-width:1200px)");
   return (
-    <GifItemWrapper
-      style={{ width: isCommentsOpen ? "1100px" : "fit-content" }}
-    >
+    <GifItemWrapper isCommentsOpen={isCommentsOpen}>
       <Box maxWidth="600px" width="100%">
         {!isCommentsOpen && (
           <Box
@@ -103,7 +102,7 @@ export function GifItem({
           display="flex"
           alignItems="center"
           justifyContent="space-between"
-          padding="10px"
+          padding="10px 0"
         >
           <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
             <LikeTooltip
@@ -137,45 +136,48 @@ export function GifItem({
         <ContainerGif>
           <>
             <div>
-              <GifHeadInformation>
-                <GifUserInformation>
-                  <GifUserAvatar src={user.avatar} />
-                  <GifUserNickname>{user.nickname}</GifUserNickname>
-                </GifUserInformation>
-                <GifMenuItem>
-                  <IconButton>
-                    <ShareNetwork
-                      size={17}
-                      weight="fill"
-                      color="#6F4FF2"
-                      cursor="pointer"
+              {Boolean(isWideScreen) && (
+                <GifHeadInformation>
+                  <GifUserInformation>
+                    <GifUserAvatar src={user.avatar} />
+                    <GifUserNickname>{user.nickname}</GifUserNickname>
+                  </GifUserInformation>
+                  <GifMenuItem>
+                    <IconButton>
+                      <ShareNetwork
+                        size={17}
+                        weight="fill"
+                        color="#6F4FF2"
+                        cursor="pointer"
+                      />
+                    </IconButton>
+                    <IconButton>
+                      <LinkSimple
+                        size={17}
+                        weight="bold"
+                        color="#6F4FF2"
+                        cursor="pointer"
+                      />
+                    </IconButton>
+                    <IconButton onClick={handleClick}>
+                      <DotsThreeOutlineVertical
+                        size={17}
+                        weight="fill"
+                        color="#6F4FF2"
+                        cursor="pointer"
+                      />
+                    </IconButton>
+                    <GifMenuAction
+                      gifId={gifId}
+                      authorId={user?.id}
+                      anchorEl={anchorEl}
+                      handleClose={handleClose}
+                      isOpen={isOpen}
                     />
-                  </IconButton>
-                  <IconButton>
-                    <LinkSimple
-                      size={17}
-                      weight="bold"
-                      color="#6F4FF2"
-                      cursor="pointer"
-                    />
-                  </IconButton>
-                  <IconButton onClick={handleClick}>
-                    <DotsThreeOutlineVertical
-                      size={17}
-                      weight="fill"
-                      color="#6F4FF2"
-                      cursor="pointer"
-                    />
-                  </IconButton>
-                  <GifMenuAction
-                    gifId={gifId}
-                    authorId={user?.id}
-                    anchorEl={anchorEl}
-                    handleClose={handleClose}
-                    isOpen={isOpen}
-                  />
-                </GifMenuItem>
-              </GifHeadInformation>
+                  </GifMenuItem>
+                </GifHeadInformation>
+              )}
+
               <GifDescription>{description}</GifDescription>
             </div>
             <Comments
