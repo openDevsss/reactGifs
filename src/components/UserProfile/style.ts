@@ -147,6 +147,15 @@ export const UserGif = styled.img`
   height: 500px;
   object-fit: cover;
   cursor: pointer;
+  @media screen and (max-width: 1200px) {
+    height: 400px;
+  }
+  @media screen and (max-width: 768px) {
+    height: 250px;
+  }
+  @media screen and (max-width: 425px) {
+    height: 200px;
+  }
 `;
 export const UserGifTitle = styled.h2`
   margin: 0;

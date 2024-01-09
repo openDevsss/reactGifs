@@ -3,11 +3,11 @@ import { Box, TextField, Typography } from "@mui/material";
 
 export const CommentsForm = styled.form<{ isCommentsOpen: boolean }>`
   display: ${(props) => (props.isCommentsOpen ? "block" : "none")};
+  width: 100%;
 `;
 export const ListStyle = {
   width: "100%",
-  marginTop: "10px",
-  bgcolor: "background.paper",
+  bgcolor: "background. paper",
   position: "relative",
   overflow: "auto",
   maxHeight: 280,
@@ -23,8 +23,6 @@ export const CommentsTitle = styled(Typography)`
   font-weight: 700;
 `;
 export const GifInput = styled(TextField)`
-  padding: 0;
-  margin-top: 20px;
   width: 100%;
   box-sizing: border-box;
   input::placeholder {
@@ -39,13 +37,6 @@ export const GifInput = styled(TextField)`
     }
     border-radius: 8px;
     background-color: #f1f1f2;
-  }
-  @media (max-width: 1024px) {
-    width: 400px;
-  }
-  @media (max-width: 768px) {
-    width: 70%;
-    margin-right: 10px;
   }
 `;
 export const ErrorMessageComments = styled.p`

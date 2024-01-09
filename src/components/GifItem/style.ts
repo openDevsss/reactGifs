@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, MenuItem, Typography } from "@mui/material";
 
-export const GifItemWrapper = styled.div`
+export const GifItemWrapper = styled.div<{ isCommentsOpen: boolean }>`
   height: fit-content;
   margin: 20px auto;
   border-radius: 20px;
@@ -9,8 +9,12 @@ export const GifItemWrapper = styled.div`
   border-radius: 32px;
   display: flex;
   padding: 20px 20px 15px;
-  width: 100%;
+  width: ${({ isCommentsOpen }) => (isCommentsOpen ? "1100px" : "fit-content")};
   box-sizing: border-box;
+  @media screen and (max-width: 1200px) {
+    width: fit-content;
+    flex-direction: column;
+  }
 `;
 export const GifAnimation = styled.img`
   border-radius: 20px;
@@ -19,6 +23,15 @@ export const GifAnimation = styled.img`
   height: 500px;
   object-fit: cover;
   cursor: pointer;
+  @media screen and (max-width: 1200px) {
+    height: 400px;
+  }
+  @media screen and (max-width: 768px) {
+    height: 250px;
+  }
+  @media screen and (max-width: 425px) {
+    height: 200px;
+  }
 `;
 
 export const ContainerGif = styled.div`
@@ -27,6 +40,14 @@ export const ContainerGif = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    padding: 0 20px 20px;
+  }
+  @media screen and (max-width: 425px) {
+    padding: 0;
+  }
 `;
 
 export const GifHeadInformation = styled(Box)`

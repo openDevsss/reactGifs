@@ -78,7 +78,7 @@ export function UserProfileGifs({
         display="flex"
         alignItems="center"
         justifyContent="space-between"
-        padding="10px"
+        padding="10px 0"
       >
         <Box maxWidth="600px" display="flex" alignItems="center" gap="25px">
           <LikeTooltip
