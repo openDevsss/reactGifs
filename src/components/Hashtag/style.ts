@@ -25,6 +25,9 @@ export const HashtagItem = styled(Chip)`
   & .MuiChip-label {
     padding: 0;
     text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   & .MuiChip-icon {
     padding: 0;

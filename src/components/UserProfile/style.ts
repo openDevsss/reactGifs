@@ -61,7 +61,8 @@ export const MainInfoWrapper = styled.div`
 export const MainInfoAvatar = styled.img`
   object-fit: cover;
   height: 200px;
-  width: 200px;
+  max-width: 200px;
+  width: 100%;
   border-radius: 20px 0 0 20px;
   @media (max-width: 488px) {
     height: 100px;
@@ -72,7 +73,11 @@ export const MainInfoAvatar = styled.img`
 export const PersonalInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 20px;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
   @media (max-width: 488px) {
     padding: 0;
     width: 70%;
@@ -82,6 +87,10 @@ export const MainInfoName = styled.p`
   margin: 0;
   font-size: 24px;
   font-weight: 700;
+  overflow: hidden;
+  max-width: 90%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   @media (max-width: 1280px) {
     font-size: 18px;
   }

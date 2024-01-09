@@ -3,13 +3,11 @@ import { Gear } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { User } from "../../types/User";
-import { Hashtag } from "../Hashtag/Hashtag";
 import {
   MainInfoAvatar,
   MainInfoFollow,
   MainInfoMail,
   MainInfoName,
-  MainInfoTagsWrapper,
   MainInfoWrapper,
   PersonalInfoWrapper,
   StyledNumber,
@@ -45,19 +43,14 @@ export function MainInformation({
     <MainInfoWrapper>
       <MainInfoAvatar src={avatar} />
       <PersonalInfoWrapper>
-        <MainInfoName>{nickname}</MainInfoName>
-        <MainInfoMail>
-          {email}
-          {userId === currentUser?.id && <MainInformationSettings />}
-        </MainInfoMail>
-        <MainInfoTagsWrapper>
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-          <Hashtag tag="asasa" />
-        </MainInfoTagsWrapper>
+        <div>
+          <MainInfoName>{nickname}</MainInfoName>
+          <MainInfoMail>
+            {email}
+            {userId === currentUser?.id && <MainInformationSettings />}
+          </MainInfoMail>
+        </div>
+
         <Box display="flex" alignItems="center" gap="20px" marginTop="10px">
           <MainInfoFollow>
             followers: <StyledNumber>{followers?.length}</StyledNumber>
