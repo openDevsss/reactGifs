@@ -92,7 +92,13 @@ export function Header() {
                 },
               }}
             >
-              <MyProfileWrapper to={`/profile/${currentUser?.id}`}>
+              <MyProfileWrapper
+                to={
+                  currentUser?.token
+                    ? `/profile/${currentUser?.id}`
+                    : "/sign-in"
+                }
+              >
                 <ProfileName>Account</ProfileName>
                 <ProfileIcon src={currentUser?.avatar} />
               </MyProfileWrapper>

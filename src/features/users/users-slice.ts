@@ -35,7 +35,7 @@ export const registerUser = createAsyncThunk<
       const res = await client.post(api.REGISTER_USER, data);
       return res.data;
     } catch (error) {
-      return rejectWithValue("У вас случилась ошибка");
+      return rejectWithValue(error);
     }
   },
 );
@@ -57,8 +57,12 @@ export const loginUser = createAsyncThunk<
       const { token } = data;
       localStorage.setItem("jwt", token);
       return data;
-    } catch (err) {
-      return rejectWithValue("Ошибка");
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   },
 );
@@ -79,8 +83,8 @@ export const updateCurrentUser = createAsyncThunk<
         },
       });
       return res.data;
-    } catch (err) {
-      return rejectWithValue("Ошибка");
+    } catch (error) {
+      return rejectWithValue(error);
     }
   },
 );
@@ -98,8 +102,8 @@ export const checkAuth = createAsyncThunk<
       },
     });
     return data;
-  } catch (err) {
-    return rejectWithValue("Ошибка");
+  } catch (error) {
+    return rejectWithValue(error);
   }
 });
 export const subscribToUser = createAsyncThunk<
