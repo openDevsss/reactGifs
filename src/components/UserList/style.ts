@@ -26,13 +26,23 @@ export const UserNicknameText = styled(Typography)`
 `;
 
 export const StyledButtonSubscribe = styled(Button)`
-  color: white;
+  color: #ffffff;
   background-color: #5f3db5;
   font-weight: 600;
 
   &:hover {
     background-color: #ffffff;
     color: #5f3db5;
+  }
+`;
+export const StyledButtonUnSubscribe = styled(Button)`
+  color: #5f3db5;
+  background-color: #ffffff;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #ff0000;
   }
 `;
 export const StyledLink = styled(Link)`

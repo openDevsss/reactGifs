@@ -8,6 +8,7 @@ import type { Followers } from "../../types/Followers";
 import { TypeForUsers } from "./UserList";
 import {
   StyledButtonSubscribe,
+  StyledButtonUnSubscribe,
   StyledLink,
   UserAvatar,
   UserNicknameText,
@@ -48,9 +49,9 @@ export const UserListItem = ({ user, following }: UserListItemProps) => {
           Follow
         </StyledButtonSubscribe>
       ) : (
-        <StyledButtonSubscribe onClick={handleUnSubscribe}>
+        <StyledButtonUnSubscribe onClick={handleUnSubscribe}>
           unFollow
-        </StyledButtonSubscribe>
+        </StyledButtonUnSubscribe>
       )}
     </Box>
   );

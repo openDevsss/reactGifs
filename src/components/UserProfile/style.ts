@@ -247,3 +247,9 @@ export const StyledButton = styled(Button)`
     transition: color 0.6s, background-color 0.6s, box-shadow 0.6s;
   }
 `;
+export const EmptyGifsMessage = styled.p`
+  margin: 0;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+`;
