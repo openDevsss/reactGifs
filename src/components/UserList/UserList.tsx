@@ -14,13 +14,17 @@ interface UserListProps {
 }
 
 export const UserList = ({ users, open, onClose }: UserListProps) => {
-  const { following } = useCurrentUser();
+  const currentUser = useCurrentUser();
 
   return (
     <CustomModal open={open} onClose={onClose}>
       <div>
-        {users.map((user) => (
-          <UserListItem key={user.id} user={user} following={following} />
+        {users?.map((user) => (
+          <UserListItem
+            key={user.id}
+            user={user}
+            following={currentUser?.following}
+          />
         ))}
       </div>
     </CustomModal>
