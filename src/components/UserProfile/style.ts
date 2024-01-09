@@ -88,11 +88,15 @@ export const MainInfoName = styled.p`
   font-size: 24px;
   font-weight: 700;
   overflow: hidden;
-  max-width: 90%;
+  width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
-  @media (max-width: 1280px) {
+  @media (max-width: 1440px) {
     font-size: 18px;
+    width: 300px;
+  }
+  @media (max-width: 1240px) {
+    width: 90%;
   }
 `;
 export const MainInfoMail = styled.p`
@@ -103,6 +107,9 @@ export const MainInfoMail = styled.p`
   display: flex;
   align-items: center;
   gap: 5px;
+  @media (max-width: 1440px) {
+    max-width: 90%;
+  }
 `;
 export const MainInfoTagsWrapper = styled.div`
   margin-top: 20px;
