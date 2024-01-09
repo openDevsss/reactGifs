@@ -58,8 +58,8 @@ export function Registration() {
               message: "This field cannot be empty",
             },
             maxLength: {
-              value: 20,
-              message: "Max length 20 symbols",
+              value: 30,
+              message: "Max length 30 symbols",
             },
             minLength: {
               value: 3,
