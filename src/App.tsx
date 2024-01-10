@@ -16,6 +16,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { RecommendationsPage } from "./pages/RecommendationsPage";
 import { useAppDispatch } from "./redux-toolkit";
 import { ProfilePage } from "./pages/ProfilePage";
+import { SettingsInterestsUser } from "./components/SettingsInterestsUser/SettingsInterestsUser";
 
 export function App() {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ export function App() {
   return (
     <>
       <div className="page">
+        <SettingsInterestsUser />
         <Routes>
           <Route element={<PageLayout />}>
             <Route element={<HomePage />} path="/" />
