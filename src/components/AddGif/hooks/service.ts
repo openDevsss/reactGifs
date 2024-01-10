@@ -9,10 +9,5 @@ export type DataForCreateGif = {
   url: string;
 };
 
-export type getTagsData = {
-  data: Tag[];
-};
-export const getTags = (): Promise<getTagsData> => axiosInstance.get("/tags");
-
 export const createGif = (data: DataForCreateGif): Promise<Gif> =>
   axiosInstance.post("/gifs", JSON.stringify(data));

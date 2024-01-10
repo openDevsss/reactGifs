@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Modal, Paper } from "@mui/material";
+import { Box, Chip, Modal, Paper } from "@mui/material";
 
 export const StyledModal = styled(Modal)`
   display: flex;
@@ -19,4 +19,27 @@ export const StyledWrapper = styled(Paper)`
 export const StyledSelectedStepWrapper = styled(Box)`
   width: 100%;
   height: 80vh;
+  overflow: hidden;
+`;
+
+export const StyledTitleStep = styled.h2`
+  font-size: 24px;
+  margin: 0;
+  color: black;
+`;
+
+export const StyledWrapperGif = styled(Box)`
+  width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  gap: 27px;
+  padding: 15px;
+  overflow: auto;
+  max-height: 700px;
+`;
+
+export const StyledChipTitle = styled(Chip)`
+  padding: 20px;
+  cursor: pointer;
 `;

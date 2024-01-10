@@ -2,14 +2,15 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAlert } from "../../../hooks/useAlert";
 import { Tag } from "../../../types/Tag";
+import { selectorTags } from "../../../features/tags/tags-selectors";
+import { useAppSelector } from "../../../redux-toolkit";
 import { DataForCreateGif, createGif } from "./service";
-import { useGetTags } from "./useGetTags";
 
 export const useAddGif = () => {
   const [image, setImage] = useState("");
   const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
   const { setAlert } = useAlert();
-  const { data: tags } = useGetTags();
+  const tags = useAppSelector(selectorTags);
   const {
     register,
     handleSubmit,

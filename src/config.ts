@@ -5,3 +5,4 @@ export const CHECK_JWT = `${BASE_URL}/users/me`;
 export const UPDATE_CURRENT_USER = `${BASE_URL}/users/me`;
 export const SUBSCRIBE_USER = `${BASE_URL}/subs/subscribe`;
 export const UNSUBSCRIBE_USER = `${BASE_URL}/subs/unsubscribe`;
+export const GET_ALL_TAGS = `${BASE_URL}/tags`;
