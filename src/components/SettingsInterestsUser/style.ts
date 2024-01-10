@@ -33,7 +33,7 @@ export const StyledWrapperGif = styled(Box)`
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
-  gap: 27px;
+  gap: 20px;
   padding: 15px;
   overflow: auto;
   max-height: 700px;

@@ -16,8 +16,6 @@ export const StepWithSettingsTag = () => {
     dispatch(getTags());
   }, [dispatch]);
 
-  console.log(tags);
-
   return (
     <StyledSelectedStepWrapper>
       <StyledTitleStep>Choose liked Tags</StyledTitleStep>
