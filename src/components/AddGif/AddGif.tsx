@@ -30,6 +30,10 @@ export function AddGif() {
     onSubmit,
     displayGif,
   } = useAddGif();
+  let imageUrl;
+  if (Boolean(image)) {
+    imageUrl = URL.createObjectURL(image);
+  }
 
   return (
     <WrapperAddGif>
@@ -38,7 +42,7 @@ export function AddGif() {
         <CreatedWrapper>
           {image ? (
             <AddGifItemWrapper>
-              <AddGifItem src={image} />
+              <AddGifItem src={imageUrl} />
             </AddGifItemWrapper>
           ) : (
             <DragAndDropWrapper>
