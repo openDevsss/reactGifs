@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { Extra } from "types/Extra";
-import type { Status } from "types/Status";
-import { User } from "types/User";
 
+import type { Extra } from "../../types/Extra";
+import type { Status } from "../../types/Status";
+import type { User } from "../../types/User";
 type AuthInitialState = {
   user: User | null;
   status: Status;

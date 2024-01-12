@@ -1,5 +1,4 @@
 import React from "react";
-
 import { LayoutHomePage } from "./style";
 
 interface RecomendationLayotProps {

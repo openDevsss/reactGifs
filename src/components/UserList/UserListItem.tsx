@@ -1,8 +1,10 @@
 import { Box } from "@mui/material";
-import { subscribToUser, unSubscribToUser } from "features/users/users-slice";
-import { useAppDispatch } from "redux-toolkit";
-import type { Followers } from "types/Followers";
-
+import {
+  subscribToUser,
+  unSubscribToUser,
+} from "../../features/users/users-slice";
+import { useAppDispatch } from "../../redux-toolkit";
+import type { Followers } from "../../types/Followers";
 import { TypeForUsers } from "./UserList";
 import {
   StyledButtonSubscribe,

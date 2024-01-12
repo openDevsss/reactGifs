@@ -1,5 +1,4 @@
-import { useCurrentUser } from "hooks/useCurrentUser";
-
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { CustomModal } from "../Custom/CustomModal";
 import { UserListItem } from "./UserListItem";
 

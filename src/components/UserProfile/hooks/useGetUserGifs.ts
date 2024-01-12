@@ -1,6 +1,5 @@
 import { AxiosError } from "axios";
 import { useQuery } from "react-query";
-
 import { GetUserGifs } from "./service";
 
 export function useGetUserGifs(id: string) {

@@ -10,12 +10,12 @@ import {
 } from "@phosphor-icons/react";
 import { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useActionWithGifs } from "hooks/useActionWithGifs";
-import { configModalName } from "constant/modal";
-import { useModal } from "hooks/useModal";
-import type { Gif } from "types/Gif";
-
+import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
+
+import { configModalName } from "../../constant/modal";
+import { useModal } from "../../hooks/useModal";
+import type { Gif } from "../../types/Gif";
 import { Comments } from "../Comments/Comments";
 import { UserList } from "../UserList/UserList";
 import { GifMenuAction } from "./GifMenuAction";

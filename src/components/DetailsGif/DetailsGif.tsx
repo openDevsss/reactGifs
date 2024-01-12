@@ -1,6 +1,5 @@
 import { ArrowLeft } from "@phosphor-icons/react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
 import { GifItem } from "../GifItem/GifItem";
 import { useGetGifById } from "./hook/useGetGifById";
 import { ButtonBack } from "./style";

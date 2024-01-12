@@ -1,5 +1,5 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
-import type { User } from "types/User";
+import { User } from "../../types/User";
 
 type CommentGif = {
   comment_text: string;

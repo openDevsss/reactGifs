@@ -1,5 +1,4 @@
 import React from "react";
-
 import { LayoutDetailsGif } from "./style";
 
 interface DetailsGifLayoutProps {

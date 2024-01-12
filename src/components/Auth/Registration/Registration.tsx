@@ -1,9 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "features/users/users-slice";
-import { useAppDispatch } from "redux-toolkit";
-import logo from "images/kub.svg";
 
+import { registerUser } from "../../../features/users/users-slice";
+import { useAppDispatch } from "../../../redux-toolkit";
 import {
   ButtonSubmit,
   Description,
@@ -18,6 +17,8 @@ import {
   TextSign,
   WhiteBorderTextField,
 } from "../style";
+
+import logo from "../../../images/kub.svg";
 
 export function Registration() {
   type RegisterUser = {
