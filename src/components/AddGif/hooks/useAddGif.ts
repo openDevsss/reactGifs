@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAlert } from "../../../hooks/useAlert";
-import { Tag } from "../../../types/Tag";
+import { useAlert } from "hooks/useAlert";
+import { Tag } from "types/Tag";
+
 import { DataForCreateGif, createGif } from "./service";
 import { useGetTags } from "./useGetTags";
 
