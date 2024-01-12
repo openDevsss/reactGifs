@@ -34,7 +34,7 @@ export const ErrorBoundaryMessage = ({ onReset }: { onReset: () => void }) => {
         style={{ width: "600px", margin: "0 auto", display: "block" }}
       />
       <StyledTitle>Opps! Page Not Found</StyledTitle>
-      <Link to="/home" style={{ textDecoration: "none" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <StyledButton onClick={onReset}>Back to home</StyledButton>
       </Link>
     </Container>
