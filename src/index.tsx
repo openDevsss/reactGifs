@@ -6,6 +6,7 @@ import { App } from "./App";
 import { AlertProvider } from "./contexts/alertContext";
 import "./index.css";
 import { store } from "./store";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 const client = new QueryClient();
 
@@ -17,7 +18,9 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <AlertProvider>
-          <App />
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
         </AlertProvider>
       </Provider>
     </BrowserRouter>
