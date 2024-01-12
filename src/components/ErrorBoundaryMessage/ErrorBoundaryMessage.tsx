@@ -1,12 +1,12 @@
 import { Container } from "@mui/material";
-import 
-interface ErrorBoundaryMessage {
-  errorMeassge: string;
+import error404 from "";
+interface ErrorBoundaryMessageProps {
+  errorMeassge?: string;
 }
 
 export const ErrorBoundaryMessage = ({
   errorMeassge,
-}: ErrorBoundaryMessage) => {
+}: ErrorBoundaryMessageProps) => {
   return (
     <Container>
       <h2>У вас случилась ошибка</h2>
