@@ -1,0 +1,9 @@
+export type { User } from "types/User";
+export type { Comment } from "types/Comment";
+export type { Extra } from "types/Extra";
+export type { Followers } from "types/Followers";
+export type { Gif } from "types/Gif";
+export type { Like } from "types/Like";
+export type { Message } from "types/Message";
+export type { Status } from "types/Status";
+export type { Tag } from "types/Tag";

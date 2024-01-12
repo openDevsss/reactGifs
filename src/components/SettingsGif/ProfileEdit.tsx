@@ -3,7 +3,7 @@ import { updateCurrentUser } from "features/users/users-slice";
 import { useAlert } from "hooks/useAlert";
 import { useCurrentUser } from "hooks/useCurrentUser";
 import { useAppDispatch } from "redux-toolkit";
-import type { User } from "types/User";
+import type { User } from "types";
 
 import {
   EditProfileWrapper,

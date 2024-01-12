@@ -6,10 +6,10 @@ import {
   ShareFat,
 } from "@phosphor-icons/react";
 import { useState } from "react";
-import { configModalName } from "constant/modal";
+import { configModalName } from "constant";
 import { useActionWithGifs } from "hooks/useActionWithGifs";
 import { useModal } from "hooks/useModal";
-import { Gif } from "types/Gif";
+import { Gif } from "types";
 
 import { Comments } from "../Comments/Comments";
 import { GifMenuAction } from "../GifItem/GifMenuAction";

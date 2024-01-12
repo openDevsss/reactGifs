@@ -1,6 +1,6 @@
-import { configModalName } from "constant/modal";
+import { configModalName } from "constant";
 import { useModal } from "hooks/useModal";
-import type { Followers } from "types/Followers";
+import type { Followers } from "types";
 
 import { UserList } from "../UserList/UserList";
 import {
