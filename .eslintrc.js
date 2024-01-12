@@ -30,6 +30,7 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    //
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/require-ts-comment-description": "off",
     "@typescript-eslint/ban-ts-comment": "off",
