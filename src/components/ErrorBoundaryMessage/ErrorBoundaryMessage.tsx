@@ -1,5 +1,4 @@
 import { Container } from "@mui/material";
-import error404 from "";
 interface ErrorBoundaryMessageProps {
   errorMeassge?: string;
 }
