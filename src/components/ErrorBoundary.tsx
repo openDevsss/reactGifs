@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from "react";
+
 import { ErrorBoundaryMessage } from "./ErrorBoundaryMessage/ErrorBoundaryMessage";
 
 interface ErrorBoundaryProps {
@@ -26,9 +27,14 @@ export class ErrorBoundary extends Component<
     console.error("Error caught by error boundary:", error, errorInfo);
   }
 
+  resetError = () => {
+    console.log("Resetting error...");
+    this.setState({ hasError: false });
+  };
+
   render(): ReactNode {
     if (this.state.hasError) {
-      return <ErrorBoundaryMessage />;
+      return <ErrorBoundaryMessage onReset={this.resetError} />;
     }
 
     return this.props.children;
