@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 import axios from "axios";
 import { baseUrl } from "../../../constant/baseUrl";
 import type { Gif } from "../../../types/Gif";
 import type { Tag } from "../../../types/Tag";
 import { axiosInstance } from "../../../utils/axiosInstance";
-=======
-import { Gif } from "types/Gif";
-import { Tag } from "types/Tag";
-import { axiosInstance } from "utils/axiosInstance";
->>>>>>> parent of 778ea42 (Revert "KAN-73 Импорты eslint")
 
 export type DataForCreateGif = {
   title: string;
