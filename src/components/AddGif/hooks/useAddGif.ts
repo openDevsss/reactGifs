@@ -1,9 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+<<<<<<< HEAD
 import { baseUrl } from "../../../constant/baseUrl";
 import { useAlert } from "../../../hooks/useAlert";
 import { Tag } from "../../../types/Tag";
+=======
+import { useAlert } from "hooks/useAlert";
+import { Tag } from "types/Tag";
+
+>>>>>>> parent of 778ea42 (Revert "KAN-73 Импорты eslint")
 import { DataForCreateGif, createGif } from "./service";
 import { useGetTags } from "./useGetTags";
 
