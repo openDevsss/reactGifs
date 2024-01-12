@@ -1,6 +1,6 @@
-import type { Gif } from "../../../types/Gif";
-import type { Tag } from "../../../types/Tag";
-import { axiosInstance } from "../../../utils/axiosInstance";
+import { Gif } from "types/Gif";
+import { Tag } from "types/Tag";
+import { axiosInstance } from "utils/axiosInstance";
 
 export type DataForCreateGif = {
   title: string;

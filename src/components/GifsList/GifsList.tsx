@@ -1,4 +1,4 @@
-import EmptyGifs from "../EmptyGifs/EmptyGifs";
+import { EmptyGifs } from "../EmptyGifs/EmptyGifs";
 import { GifItem } from "../GifItem/GifItem";
 import { useGetGifs } from "./hooks/useGetGifs";
 

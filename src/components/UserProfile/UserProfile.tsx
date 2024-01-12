@@ -1,13 +1,14 @@
 import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useCurrentUser } from "../../hooks/useCurrentUser";
-import EmptyGifs from "../EmptyGifs/EmptyGifs";
+import { useCurrentUser } from "hooks/useCurrentUser";
+
+import { EmptyGifs } from "../EmptyGifs/EmptyGifs";
 import { FollowersList } from "./FollowersList";
-import { MainInformation } from "./MainInformation";
-import { UserProfileGifs } from "./UserProfileGif";
 import { useGetUserGifs } from "./hooks/useGetUserGifs";
+import { MainInformation } from "./MainInformation";
 import { StyledButton } from "./style";
+import { UserProfileGifs } from "./UserProfileGif";
 
 export function UserProfile() {
   const { id } = useParams();

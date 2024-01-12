@@ -1,4 +1,4 @@
-import { axiosInstance } from "../../utils/axiosInstance";
+import { axiosInstance } from "utils/axiosInstance";
 
 export type CreateCommentT = {
   comment_text: string;

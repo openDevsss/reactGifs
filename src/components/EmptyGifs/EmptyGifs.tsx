@@ -8,7 +8,7 @@ interface EmptyGifsProps {
   message: string;
   needLink?: boolean;
 }
-export default function EmptyGifs({ message, needLink }: EmptyGifsProps) {
+export const EmptyGifs = ({ message, needLink }: EmptyGifsProps) => {
   return (
     <EmptyGifsWrapper>
       <EmptyGifsMessage>{message}</EmptyGifsMessage>
@@ -22,4 +22,4 @@ export default function EmptyGifs({ message, needLink }: EmptyGifsProps) {
       )}
     </EmptyGifsWrapper>
   );
-}
+};

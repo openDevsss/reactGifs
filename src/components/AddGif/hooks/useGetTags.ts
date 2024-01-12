@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+
 import { getTags } from "./service";
 
 export function useGetTags() {
