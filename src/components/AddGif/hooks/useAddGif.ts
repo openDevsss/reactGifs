@@ -12,6 +12,7 @@ export const useAddGif = () => {
   const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
   const { setAlert } = useAlert();
   const { data: tags } = useGetTags();
+
   const {
     register,
     handleSubmit,

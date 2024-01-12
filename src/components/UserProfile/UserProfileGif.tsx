@@ -11,7 +11,9 @@ import { configModalName } from "../../constant/modal";
 import { useActionWithGifs } from "../../hooks/useActionWithGifs";
 import { useModal } from "../../hooks/useModal";
 import { Gif } from "../../types/Gif";
+import { useGetTags } from "../AddGif/hooks/useGetTags";
 import { Comments } from "../Comments/Comments";
+import { EditModal } from "../EditModal/EditModal";
 import { GifMenuAction } from "../GifItem/GifMenuAction";
 import { StyledWrapperIconGif } from "../GifItem/style";
 import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
@@ -37,6 +39,7 @@ export function UserProfileGifs({
 }: userProfileGifsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { data: tags } = useGetTags();
   const { setIsCommentsOpen, isCommentsOpen } = useActionWithGifs();
   const { modals, toggleModal } = useModal();
   const handleClose = () => {
@@ -65,14 +68,24 @@ export function UserProfileGifs({
             cursor="pointer"
           />
         </IconButton>
-        <GifMenuAction
-          gifId={gifId}
-          authorId={userId}
-          anchorEl={anchorEl}
-          handleClose={handleClose}
-          isOpen={isOpen}
-        />
       </Box>
+      <GifMenuAction
+        gifId={gifId}
+        authorId={userId}
+        anchorEl={anchorEl}
+        handleClose={handleClose}
+        isOpen={isOpen}
+        setIsOpenEditModal={toggleModal}
+      />
+      {Boolean(modals[configModalName.edit]) && (
+        <EditModal
+          open={Boolean(modals[configModalName.edit])}
+          handleClose={() => toggleModal(configModalName.edit)}
+          title={title}
+          description={description}
+          tags={tags}
+        />
+      )}
       <UserGif src={url} alt={title} />
       <Box
         display="flex"

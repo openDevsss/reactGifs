@@ -16,7 +16,9 @@ import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
 import { configModalName } from "../../constant/modal";
 import { useModal } from "../../hooks/useModal";
 import type { Gif } from "../../types/Gif";
+import { useGetTags } from "../AddGif/hooks/useGetTags";
 import { Comments } from "../Comments/Comments";
+import { EditModal } from "../EditModal/EditModal";
 import { UserList } from "../UserList/UserList";
 import { GifMenuAction } from "./GifMenuAction";
 import {
@@ -45,6 +47,7 @@ export function GifItem({
   viewers,
   likes,
 }: GifItemsProps) {
+  const { data: tags } = useGetTags();
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { setIsCommentsOpen, navigate, isCommentsOpen } = useActionWithGifs();
@@ -62,6 +65,7 @@ export function GifItem({
     if (location.pathname !== `/gif/${gifId}`) navigate(`/gif/${gifId}`);
   };
   const isWideScreen = useMediaQuery("(min-width:1200px)");
+
   return (
     <GifItemWrapper isCommentsOpen={isCommentsOpen}>
       <Box maxWidth="600px" width="100%">
@@ -84,14 +88,24 @@ export function GifItem({
                 cursor="pointer"
               />
             </IconButton>
-            <GifMenuAction
-              gifId={gifId}
-              authorId={user?.id}
-              anchorEl={anchorEl}
-              handleClose={handleClose}
-              isOpen={isOpen}
-            />
           </Box>
+        )}
+        <GifMenuAction
+          gifId={gifId}
+          authorId={user?.id}
+          anchorEl={anchorEl}
+          handleClose={handleClose}
+          isOpen={isOpen}
+          setIsOpenEditModal={toggleModal}
+        />
+        {Boolean(modals[configModalName.edit]) && (
+          <EditModal
+            open={Boolean(modals[configModalName.edit])}
+            handleClose={() => toggleModal(configModalName.edit)}
+            title={title}
+            description={description}
+            tags={tags}
+          />
         )}
         <GifAnimation
           src={url}
@@ -173,6 +187,7 @@ export function GifItem({
                       anchorEl={anchorEl}
                       handleClose={handleClose}
                       isOpen={isOpen}
+                      setIsOpenEditModal={toggleModal}
                     />
                   </GifMenuItem>
                 </GifHeadInformation>

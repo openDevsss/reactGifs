@@ -6,6 +6,7 @@ import {
   Trash,
 } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "react-query";
+import { configModalName } from "../../constant/modal";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 import type { User } from "../../types/User";
 import { deleteGif } from "./service";
@@ -13,10 +14,11 @@ import { StyledMenuItem } from "./style";
 
 interface GifMenuProps {
   anchorEl: null | HTMLElement;
-  handleClose: () => void;
   isOpen: boolean;
   authorId: User["id"];
   gifId: string;
+  handleClose: () => void;
+  setIsOpenEditModal: (modalKey: string) => void;
 }
 export function GifMenuAction({
   gifId,
@@ -24,6 +26,7 @@ export function GifMenuAction({
   handleClose,
   isOpen,
   authorId,
+  setIsOpenEditModal,
 }: GifMenuProps) {
   const queryClient = useQueryClient();
   const { mutate: handleDelete } = useMutation(
@@ -33,7 +36,9 @@ export function GifMenuAction({
     },
   );
   const currentUser = useCurrentUser();
+
   const isMyGif = currentUser?.id === authorId;
+
   return (
     <Menu
       anchorEl={anchorEl}
@@ -81,7 +86,9 @@ export function GifMenuAction({
       </StyledMenuItem>
       {isMyGif && (
         <>
-          <StyledMenuItem>
+          <StyledMenuItem
+            onClick={() => setIsOpenEditModal(configModalName.edit)}
+          >
             <PencilSimpleLine size={20} />
             Edit
           </StyledMenuItem>
