@@ -9,11 +9,13 @@ import { PageLayout } from "./components/PageLayout/PageLayout";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { SettingsGif } from "./components/SettingsGif/SettingsGif";
 import { checkAuth } from "./features/users/users-slice";
-import { DetailsGifPage } from "./pages/DetailsGifPage";
-import { HomePage } from "./pages/HomePage";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { ProfilePage } from "./pages/ProfilePage";
-import { RecommendationsPage } from "./pages/RecommendationsPage";
+import {
+  DetailsGifPage,
+  HomePage,
+  NotFoundPage,
+  ProfilePage,
+  RecommendationsPage,
+} from "./pages";
 import { useAppDispatch } from "./redux-toolkit";
 
 export function App() {

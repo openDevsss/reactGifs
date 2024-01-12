@@ -1,4 +1,4 @@
-import { Gif } from "types/Gif";
+import { Gif } from "types";
 import { axiosInstance } from "utils/axiosInstance";
 
 export const getGifById = (id: Gif["id"]): Promise<{ data: Gif }> =>

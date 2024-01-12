@@ -7,7 +7,7 @@ import {
 } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "react-query";
 import { useCurrentUser } from "hooks/useCurrentUser";
-import type { User } from "types/User";
+import type { User } from "types";
 
 import { deleteGif } from "./service";
 import { StyledMenuItem } from "./style";

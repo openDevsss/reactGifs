@@ -11,9 +11,9 @@ import {
 import { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useActionWithGifs } from "hooks/useActionWithGifs";
-import { configModalName } from "constant/modal";
 import { useModal } from "hooks/useModal";
-import type { Gif } from "types/Gif";
+import type { Gif } from "types";
+import { configModalName } from "constant";
 
 import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
 import { Comments } from "../Comments/Comments";
