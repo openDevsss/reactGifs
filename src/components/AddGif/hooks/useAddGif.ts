@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { baseUrl } from "constant/baseUrl";
+import { baseUrl } from "constant";
 import { useAlert } from "hooks/useAlert";
-import { Tag } from "types/Tag";
+import { Tag } from "types";
 
 import { DataForCreateGif, createGif } from "./service";
 import { useGetTags } from "./useGetTags";

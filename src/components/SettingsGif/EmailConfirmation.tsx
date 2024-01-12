@@ -1,4 +1,4 @@
-import { configModalName } from "constant/modal";
+import { configModalName } from "constant";
 import { useModal } from "hooks/useModal";
 
 import { ConfirmationPopup } from "../ConfirmationPopup/ConfirmationPopup";
