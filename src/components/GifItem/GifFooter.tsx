@@ -4,7 +4,6 @@ import { LikeTooltip } from "components/LikeTooltip/LikeTooltip";
 import { configModalName } from "constant";
 import { useModal } from "hooks/useModal";
 import { Gif, Like } from "types";
-import { useActionWithGifs } from "hooks/useActionWithGifs";
 import { UserList } from "components/UserList/UserList";
 
 import { StyledWrapperIconGif } from "./style";
@@ -13,11 +12,18 @@ interface GifFooterProps {
   gifId: string;
   likes: Like[];
   viewers: Gif["viewers"];
+  isCommentsOpen: boolean;
+  setIsCommentsOpen: (flag: boolean) => void;
 }
 
-export const GifFooter = ({ gifId, likes, viewers }: GifFooterProps) => {
+export const GifFooter = ({
+  gifId,
+  likes,
+  viewers,
+  setIsCommentsOpen,
+  isCommentsOpen,
+}: GifFooterProps) => {
   const { modals, toggleModal } = useModal();
-  const { isCommentsOpen, setIsCommentsOpen } = useActionWithGifs();
   return (
     <Box
       display="flex"

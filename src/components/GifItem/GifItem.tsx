@@ -22,7 +22,7 @@ export function GifItem({
 }: Gif) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { navigate, isCommentsOpen } = useActionWithGifs();
+  const { navigate, isCommentsOpen, setIsCommentsOpen } = useActionWithGifs();
   const handleClose = useCallback(() => {
     setAnchorEl(null);
     setIsOpen(false);
@@ -36,6 +36,7 @@ export function GifItem({
     if (location.pathname !== `/gif/${gifId}`) navigate(`/gif/${gifId}`);
   };
   const isWideScreen = useMediaQuery("(min-width:1200px)");
+
   return (
     <GifItemWrapper isCommentsOpen={isCommentsOpen}>
       <Box maxWidth="600px" width="100%">
@@ -55,7 +56,13 @@ export function GifItem({
           alt={title}
           onClick={() => handleNavigateToDetails(gifId)}
         />
-        <GifFooter gifId={gifId} likes={likes} viewers={viewers} />
+        <GifFooter
+          gifId={gifId}
+          likes={likes}
+          viewers={viewers}
+          setIsCommentsOpen={setIsCommentsOpen}
+          isCommentsOpen={isCommentsOpen}
+        />
       </Box>
       {isCommentsOpen && (
         <GifComment
