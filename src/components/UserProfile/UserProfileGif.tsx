@@ -29,7 +29,7 @@ export function UserProfileGifs({
   title,
   description,
   url,
-  comment,
+  comments,
   id: gifId,
   viewers,
   likes,
@@ -110,7 +110,7 @@ export function UserProfileGifs({
       </Box>
       {isCommentsOpen && <UserGifDescription>{description}</UserGifDescription>}
       <Comments
-        comments={comment}
+        comments={comments}
         gifId={gifId}
         isCommentsOpen={isCommentsOpen}
       />
