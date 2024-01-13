@@ -85,7 +85,7 @@ export function GifMenuAction({
         Report
       </StyledMenuItem>
       {isMyGif && (
-        <>
+        <div>
           <StyledMenuItem
             onClick={() => setIsOpenEditModal(configModalName.edit)}
           >
@@ -99,7 +99,7 @@ export function GifMenuAction({
             <Trash size={20} color="#ff0000" />
             Delete
           </StyledMenuItem>
-        </>
+        </div>
       )}
     </Menu>
   );

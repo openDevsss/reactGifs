@@ -36,10 +36,11 @@ export function UserProfileGifs({
   viewers,
   likes,
   userId,
+  tags,
 }: userProfileGifsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { data: tags } = useGetTags();
+  const { data: allTags } = useGetTags();
   const { setIsCommentsOpen, isCommentsOpen } = useActionWithGifs();
   const { modals, toggleModal } = useModal();
   const handleClose = () => {
@@ -83,7 +84,9 @@ export function UserProfileGifs({
           handleClose={() => toggleModal(configModalName.edit)}
           title={title}
           description={description}
-          tags={tags}
+          tags={allTags}
+          gifTags={tags}
+          id={gifId}
         />
       )}
       <UserGif src={url} alt={title} />

@@ -1,6 +1,6 @@
 import ListItemIcon from "@mui/material/ListItemIcon";
-import { GearSix, Moon, SignOut, UserCircle } from "@phosphor-icons/react";
 import Menu from "@mui/material/Menu";
+import { GearSix, Moon, SignOut, UserCircle } from "@phosphor-icons/react";
 import { useCurrentUser } from "../../hooks/useCurrentUser";
 
 import { MenuItemLink, StyledMenuItem } from "./style";
@@ -51,36 +51,38 @@ export function HeaderMenu({
       transformOrigin={{ horizontal: "right", vertical: "top" }}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
-      <MenuItemLink to={`/profile/${currentUser?.id}`}>
-        <StyledMenuItem>
+      <>
+        <MenuItemLink to={`/profile/${currentUser?.id}`}>
+          <StyledMenuItem>
+            <ListItemIcon>
+              <UserCircle size={24} color="#5f3db5" />
+            </ListItemIcon>
+            My profile
+          </StyledMenuItem>
+        </MenuItemLink>
+        <MenuItemLink to="settings">
+          <StyledMenuItem onClick={handleClose}>
+            <ListItemIcon>
+              <GearSix size={24} color="#5f3db5" />
+            </ListItemIcon>
+            Settings
+          </StyledMenuItem>
+        </MenuItemLink>
+        <StyledMenuItem onClick={handleClose} style={{ color: "#5f3db5" }}>
           <ListItemIcon>
-            <UserCircle size={24} color="#5f3db5" />
+            <Moon size={24} color="#5f3db5" />
           </ListItemIcon>
-          My profile
+          Night mode
         </StyledMenuItem>
-      </MenuItemLink>
-      <MenuItemLink to="settings">
-        <StyledMenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <GearSix size={24} color="#5f3db5" />
-          </ListItemIcon>
-          Settings
-        </StyledMenuItem>
-      </MenuItemLink>
-      <StyledMenuItem onClick={handleClose} style={{ color: "#5f3db5" }}>
-        <ListItemIcon>
-          <Moon size={24} color="#5f3db5" />
-        </ListItemIcon>
-        Night mode
-      </StyledMenuItem>
-      <MenuItemLink to="/sign-in">
-        <StyledMenuItem onClick={handleLogout}>
-          <ListItemIcon>
-            <SignOut size={24} color="#5f3db5" />
-          </ListItemIcon>
-          Logout
-        </StyledMenuItem>
-      </MenuItemLink>
+        <MenuItemLink to="/sign-in">
+          <StyledMenuItem onClick={handleLogout}>
+            <ListItemIcon>
+              <SignOut size={24} color="#5f3db5" />
+            </ListItemIcon>
+            Logout
+          </StyledMenuItem>
+        </MenuItemLink>
+      </>
     </Menu>
   );
 }

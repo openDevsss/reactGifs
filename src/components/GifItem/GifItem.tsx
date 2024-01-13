@@ -35,8 +35,6 @@ import {
   StyledWrapperIconGif,
 } from "./style";
 
-type GifItemsProps = Gif;
-
 export function GifItem({
   title,
   description,
@@ -46,8 +44,9 @@ export function GifItem({
   id: gifId,
   viewers,
   likes,
-}: GifItemsProps) {
-  const { data: tags } = useGetTags();
+  tags,
+}: Gif) {
+  const { data: allTags } = useGetTags();
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { setIsCommentsOpen, navigate, isCommentsOpen } = useActionWithGifs();
@@ -104,7 +103,9 @@ export function GifItem({
             handleClose={() => toggleModal(configModalName.edit)}
             title={title}
             description={description}
-            tags={tags}
+            tags={allTags}
+            gifTags={tags}
+            id={gifId}
           />
         )}
         <GifAnimation

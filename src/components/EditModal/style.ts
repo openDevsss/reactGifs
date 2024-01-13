@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import { Button, TextField } from "@mui/material";
+import { Button, List, ListItemButton, TextField } from "@mui/material";
 export const EditPopupWrapper = styled.form`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30%;
-  height: 450px;
+  height: 460px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -14,16 +14,22 @@ export const EditPopupWrapper = styled.form`
   justify-content: space-between;
   border-radius: 20px;
   padding: 20px;
-
   outline: none;
+
   @media (max-width: 1024px) {
     width: 35%;
   }
   @media (max-width: 768px) {
-    width: 45%;
+    width: 50%;
+  }
+  @media (max-width: 600px) {
+    width: 65%;
   }
   @media (max-width: 426px) {
-    width: 60%;
+    width: 75%;
+  }
+  @media (max-width: 376px) {
+    width: 80%;
   }
 `;
 export const EditPopupTitle = styled.h2`
@@ -53,9 +59,33 @@ export const EditPopupButton = styled(Button)`
   &:hover {
     background-color: #3e267c;
   }
+  @media (max-width: 1024px) {
+    width: 30%;
+  }
 `;
 export const ErrorMessageEditModal = styled.p`
   margin: 0;
   font-size: 12px;
   color: #ff0000;
+`;
+export const StyledList = styled(List)`
+  width: 100%;
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 130px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  & ul {
+    padding: 0;
+  }
+  gap: 10px;
+  @media (max-width: 1920px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+export const StyledListItemButton = styled(ListItemButton)`
+  padding-left: 0;
+  padding-right: 40px !important;
+  border: 1px solid #5f3db5;
 `;

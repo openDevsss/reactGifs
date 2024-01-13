@@ -1,21 +1,23 @@
 import {
   Box,
   Checkbox,
-  List,
   ListItem,
-  ListItemButton,
   ListItemText,
   Modal,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import type { Tag } from "../../types/Tag";
+import { EditGif } from "./service";
 import {
   EditPopupButton,
   EditPopupInput,
   EditPopupTitle,
   EditPopupWrapper,
   ErrorMessageEditModal,
+  StyledList,
+  StyledListItemButton,
 } from "./style";
 
 interface EditModalProps {
@@ -24,11 +26,14 @@ interface EditModalProps {
   handleClose: (modalKey: string) => void;
   description: string;
   tags: Tag[];
+  id: string;
+  gifTags: Tag[];
 }
 interface DataForChangingGif {
+  id: string;
   title: string;
   description: string;
-  tags: Tag["id"];
+  tags: Tag[];
 }
 
 export function EditModal({
@@ -37,20 +42,22 @@ export function EditModal({
   title,
   description,
   tags,
+  id,
 }: EditModalProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    //   reset,
   } = useForm<DataForChangingGif>({
     mode: "onSubmit",
   });
-
-  const onSubmit: SubmitHandler<DataForChangingGif> = () => {
-    return {};
+  const [selectedTags, setSelectedTags] = useState([]);
+  const onSubmit: SubmitHandler<DataForChangingGif> = (data) => {
+    [data.tags] = selectedTags;
+    data.id = id;
+    EditGif(data);
   };
-
+  console.log();
   return (
     <div>
       <Modal open={open} onClose={handleClose}>
@@ -113,29 +120,23 @@ export function EditModal({
               )}
             </Box>
           </Box>
-          <Box>
+          <Box width="100%">
             <Typography textAlign="center">Tags</Typography>
             <Box width="100%" display="flex" flexWrap="wrap">
-              <List
-                dense
-                sx={{
-                  width: "100%",
-
-                  position: "relative",
-                  overflow: "auto",
-                  maxHeight: 140,
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr 1fr",
-                  "& ul": { padding: 0 },
-                }}
-              >
-                {tags.map((value) => {
+              <StyledList dense>
+                {tags?.map((value) => {
                   return (
                     <ListItem
                       key={value.id}
                       secondaryAction={
                         <Checkbox
                           edge="end"
+                          onChange={() =>
+                            setSelectedTags([
+                              ...selectedTags,
+                              { name: value?.name, id: value?.id },
+                            ])
+                          }
                           sx={{
                             color: "#5f3db5",
                             "&.Mui-checked": {
@@ -146,16 +147,21 @@ export function EditModal({
                       }
                       disablePadding
                     >
-                      <ListItemButton>
-                        <ListItemText primary={value?.name} />
-                      </ListItemButton>
+                      <StyledListItemButton>
+                        <ListItemText
+                          sx={{ textAlign: "center" }}
+                          primary={value?.name}
+                        />
+                      </StyledListItemButton>
                     </ListItem>
                   );
                 })}
-              </List>
+              </StyledList>
             </Box>
           </Box>
-          <EditPopupButton type="submit">Confirm</EditPopupButton>
+          <EditPopupButton onClick={() => handleClose} type="submit">
+            Confirm
+          </EditPopupButton>
         </EditPopupWrapper>
       </Modal>
     </div>

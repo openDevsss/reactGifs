@@ -12,7 +12,6 @@ export function GifsList() {
       />
     );
   }
-
   return (
     <>
       {Boolean(data) && data?.map((gif) => <GifItem key={gif.id} {...gif} />)}
