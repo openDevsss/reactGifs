@@ -6,7 +6,6 @@ export const AlertPopup = () => {
   if (text && type) {
     return (
       <Alert
-        // @ts-ignore
         severity={type}
         sx={{
           position: "fixed",

@@ -8,14 +8,11 @@ type AuthInitialState = {
   error: string | null;
   isAuth: boolean;
 };
-type RegisterUserType = {
+type AuthDTO = {
   email: string;
   password: string;
 };
-type LoginUserType = {
-  email: string;
-  password: string;
-};
+
 const initialState: AuthInitialState = {
   user: null,
   status: "idle",
@@ -25,7 +22,7 @@ const initialState: AuthInitialState = {
 
 export const registerUser = createAsyncThunk<
   { token: string },
-  RegisterUserType,
+  AuthDTO,
   { extra: Extra; rejectWithValue: string }
 >(
   "@@auth/register",
@@ -41,7 +38,7 @@ export const registerUser = createAsyncThunk<
 
 export const loginUser = createAsyncThunk<
   User,
-  LoginUserType,
+  AuthDTO,
   { extra: Extra; rejectWithValue: string }
 >(
   "@@auth/login",

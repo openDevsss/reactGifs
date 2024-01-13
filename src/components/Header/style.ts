@@ -68,7 +68,7 @@ export const SearchHeader = styled(TextField)`
   }
 `;
 
-export const NavigationHeader = styled(Box)`
+export const NavigationHeaderWrapper = styled(Box)`
   display: flex;
   position: relative;
   align-items: center;
