@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useCurrentUser } from "hooks/useCurrentUser";
+import { SkeletonProfile } from "components/Skeleton/SkeletonProfile";
 
 import { EmptyGifs } from "../EmptyGifs/EmptyGifs";
 import { FollowersList } from "./FollowersList";
@@ -20,6 +21,10 @@ export function UserProfile() {
 
   if (!user) {
     return null;
+  }
+  const isLoading = false;
+  if (isLoading) {
+    return <SkeletonProfile />;
   }
   return (
     <>
