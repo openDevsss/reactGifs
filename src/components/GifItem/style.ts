@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, MenuItem, Typography } from "@mui/material";
 
-export const GifItemWrapper = styled.div<{ isCommentsOpen: boolean }>`
+export const GifItemWrapper = styled.div<{ isCommentsOpen?: boolean }>`
   height: fit-content;
   margin: 20px auto;
   border-radius: 20px;

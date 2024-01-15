@@ -1,8 +1,7 @@
 import axios from "axios";
-import { baseUrl } from "../../../constant/baseUrl";
-import type { Gif } from "../../../types/Gif";
-import type { Tag } from "../../../types/Tag";
-import { axiosInstance } from "../../../utils/axiosInstance";
+import { baseUrl } from "constant";
+import type { Gif, Tag } from "types";
+import { axiosInstance } from "utils/axiosInstance";
 
 export type DataForCreateGif = {
   title: string;

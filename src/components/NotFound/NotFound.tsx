@@ -1,4 +1,5 @@
-import logoNotFound from "../../images/grim-reaper.svg";
+import logoNotFound from "images/grimReaper.svg";
+
 import {
   BoxDescriptionNotFound,
   DescriptionNotFound,

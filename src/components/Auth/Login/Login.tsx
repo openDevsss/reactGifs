@@ -1,8 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "features/users/users-slice";
+import { useAppDispatch } from "redux-toolkit";
+import logo from "images/kub.svg";
 
-import { loginUser } from "../../../features/users/users-slice";
-import { useAppDispatch } from "../../../redux-toolkit";
 import {
   ButtonSubmit,
   Description,
@@ -16,8 +17,6 @@ import {
   TextSign,
   WhiteBorderTextField,
 } from "../style";
-
-import logo from "../../../images/kub.svg";
 
 export function Login() {
   type LoginUser = {

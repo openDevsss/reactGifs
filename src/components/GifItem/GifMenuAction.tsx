@@ -5,10 +5,11 @@ import {
   PencilSimpleLine,
   Trash,
 } from "@phosphor-icons/react";
+import { configModalName } from "constant";
+import { useCurrentUser } from "hooks/useCurrentUser";
 import { useMutation, useQueryClient } from "react-query";
-import { configModalName } from "../../constant/modal";
-import { useCurrentUser } from "../../hooks/useCurrentUser";
-import type { User } from "../../types/User";
+import type { User } from "types";
+
 import { deleteGif } from "./service";
 import { StyledMenuItem } from "./style";
 

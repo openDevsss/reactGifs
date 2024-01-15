@@ -1,4 +1,5 @@
 import { Button, Divider } from "@mui/material";
+
 import { Hashtag } from "../Hashtag/Hashtag";
 import { useAddGif } from "./hooks/useAddGif";
 import {
@@ -17,6 +18,7 @@ import {
   WrapperAddGif,
   buttonStyle,
 } from "./style";
+
 export function AddGif() {
   const {
     image,

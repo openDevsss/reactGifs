@@ -75,7 +75,7 @@ export const StyledList = styled(List)`
   overflow-x: hidden;
   max-height: 130px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   & ul {
     padding: 0;
   }
@@ -83,9 +83,13 @@ export const StyledList = styled(List)`
   @media (max-width: 1920px) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 export const StyledListItemButton = styled(ListItemButton)`
-  padding-left: 0;
-  padding-right: 40px !important;
+  padding-left: 5px;
+  padding-right: 38px !important;
   border: 1px solid #5f3db5;
+  border-radius: 12px;
 `;

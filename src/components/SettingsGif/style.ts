@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button, Tab, Tabs, TextField, Typography } from "@mui/material";
+
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 
 export const WrapperSettingsGif = styled(Box)`

@@ -1,9 +1,13 @@
 import { Box, Modal, Typography } from "@mui/material";
+import { useGetTags } from "components/AddGif/hooks/useGetTags";
+import { configModalName } from "constant";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "react-query";
+
 import type { Tag } from "../../types/Tag";
 import { TagsList } from "./TagsList";
-import { EditGif } from "./service";
+import { editGif } from "./service";
 import {
   EditPopupButton,
   EditPopupInput,
@@ -17,7 +21,6 @@ interface EditModalProps {
   title: string;
   handleClose: (modalKey: string) => void;
   description: string;
-  tags: Tag[];
   id: string;
   gifTags: Tag[];
 }
@@ -25,17 +28,18 @@ export interface DataForChangingGif {
   id: string;
   title: string;
   description: string;
-  tags: Tag[];
+  tags: string[];
 }
 
-export function EditModal({
+export const EditModal = ({
   open,
   handleClose,
   title,
   description,
-  tags,
   id,
-}: EditModalProps) {
+  gifTags,
+}: EditModalProps) => {
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
@@ -43,15 +47,27 @@ export function EditModal({
   } = useForm<DataForChangingGif>({
     mode: "onSubmit",
   });
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState(
+    gifTags.map((tag) => tag.id),
+  );
+  const { data: tags } = useGetTags();
+
+  const { mutate: handleChanging } = useMutation(
+    (data: DataForChangingGif) => editGif(data),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+    },
+  );
   const onSubmit: SubmitHandler<DataForChangingGif> = (data) => {
-    [data.tags] = selectedTags;
+    data.tags = selectedTags;
+    handleChanging(data);
     data.id = id;
-    EditGif(data);
+    handleClose(configModalName.edit);
   };
-  const handleCheckbox = (value) => {
-    return setSelectedTags([...selectedTags, value.id]);
+  const handleCheckbox = (value: Tag) => {
+    setSelectedTags([...selectedTags, value.id]);
   };
+
   return (
     <div>
       <Modal open={open} onClose={handleClose}>
@@ -120,6 +136,7 @@ export function EditModal({
               register={register}
               handleCheckbox={handleCheckbox}
               tags={tags}
+              gifTags={gifTags}
             />
             {Boolean(errors.tags) && (
               <ErrorMessageEditModal>
@@ -127,11 +144,9 @@ export function EditModal({
               </ErrorMessageEditModal>
             )}
           </Box>
-          <EditPopupButton onClick={() => handleClose} type="submit">
-            Confirm
-          </EditPopupButton>
+          <EditPopupButton type="submit">Confirm</EditPopupButton>
         </EditPopupWrapper>
       </Modal>
     </div>
   );
-}
+};

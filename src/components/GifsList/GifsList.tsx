@@ -1,10 +1,13 @@
-import EmptyGifs from "../EmptyGifs/EmptyGifs";
-import { GifItem } from "../GifItem/GifItem";
+import { GifItem } from "components/GifItem/GifItem";
+import { SkeletonGif } from "components/Skeleton/SkeletonGif";
+
+import { EmptyGifs } from "../EmptyGifs/EmptyGifs";
 import { useGetGifs } from "./hooks/useGetGifs";
 
 export function GifsList() {
-  const { data } = useGetGifs();
-  if (!data?.length) {
+  const { data, isLoading } = useGetGifs();
+  const skeletonArray = Array.from({ length: 10 });
+  if (!data?.length && !isLoading) {
     return (
       <EmptyGifs
         needLink={true}
@@ -13,8 +16,10 @@ export function GifsList() {
     );
   }
   return (
-    <>
-      {Boolean(data) && data?.map((gif) => <GifItem key={gif.id} {...gif} />)}
-    </>
+    <section>
+      {isLoading
+        ? skeletonArray.map((_, index) => <SkeletonGif key={index} />)
+        : Boolean(data) && data.map((gif) => <GifItem {...gif} key={gif.id} />)}
+    </section>
   );
 }

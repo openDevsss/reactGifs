@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import { useMediaQuery } from "@mui/material";
-import { useAppDispatch } from "../../../redux-toolkit";
-import { useCurrentUser } from "../../../hooks/useCurrentUser";
-import { logOut } from "../../../features/users/users-slice";
+import { useAppDispatch } from "redux-toolkit";
+import { useCurrentUser } from "hooks/useCurrentUser";
+import { logOut } from "features/users/users-slice";
 
 export const useHeader = () => {
   const [isOpen, setIsOpen] = useState(false);

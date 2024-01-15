@@ -1,21 +1,23 @@
-import { configModalName } from "../../constant/modal";
-import { useModal } from "../../hooks/useModal";
-import type { Followers } from "../../types/Followers";
+import { configModalName } from "constant";
+import { useModal } from "hooks/useModal";
+import type { Followers } from "types";
+
 import { UserList } from "../UserList/UserList";
 import {
   FollowersAvatar,
   FollowersEmptyMessage,
   FollowersItem,
-  StyledFollowersList,
   FollowersNickname,
   FollowersTitle,
   FollowersWrapper,
+  StyledFollowersList,
 } from "./style";
 interface FollowersProps {
   followers: Followers[];
 }
 export function FollowersList({ followers }: FollowersProps) {
   const { modals, toggleModal } = useModal();
+
   return (
     <FollowersWrapper>
       <FollowersTitle>Followers</FollowersTitle>
@@ -32,7 +34,7 @@ export function FollowersList({ followers }: FollowersProps) {
           ))}
           {Boolean(modals[configModalName.followers]) && (
             <UserList
-              open={modals[configModalName.followers]}
+              open={Boolean(modals[configModalName.followers])}
               onClose={() => toggleModal(configModalName.followers)}
               users={followers.map((follow) => follow?.follower)}
             />

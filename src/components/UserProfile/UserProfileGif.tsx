@@ -1,17 +1,16 @@
-import { IconButton, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, IconButton, Typography } from "@mui/material";
 import {
   Chat,
   DotsThreeOutlineVertical,
   Eye,
   ShareFat,
 } from "@phosphor-icons/react";
+import { configModalName } from "constant";
+import { useActionWithGifs } from "hooks/useActionWithGifs";
+import { useModal } from "hooks/useModal";
 import { useState } from "react";
-import { configModalName } from "../../constant/modal";
-import { useActionWithGifs } from "../../hooks/useActionWithGifs";
-import { useModal } from "../../hooks/useModal";
-import { Gif } from "../../types/Gif";
-import { useGetTags } from "../AddGif/hooks/useGetTags";
+import { Gif } from "types";
+
 import { Comments } from "../Comments/Comments";
 import { EditModal } from "../EditModal/EditModal";
 import { GifMenuAction } from "../GifItem/GifMenuAction";
@@ -31,7 +30,7 @@ export function UserProfileGifs({
   title,
   description,
   url,
-  comment,
+  comments,
   id: gifId,
   viewers,
   likes,
@@ -40,7 +39,6 @@ export function UserProfileGifs({
 }: userProfileGifsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { data: allTags } = useGetTags();
   const { setIsCommentsOpen, isCommentsOpen } = useActionWithGifs();
   const { modals, toggleModal } = useModal();
   const handleClose = () => {
@@ -81,10 +79,9 @@ export function UserProfileGifs({
       {Boolean(modals[configModalName.edit]) && (
         <EditModal
           open={Boolean(modals[configModalName.edit])}
-          handleClose={() => toggleModal(configModalName.edit)}
+          handleClose={toggleModal}
           title={title}
           description={description}
-          tags={allTags}
           gifTags={tags}
           id={gifId}
         />
@@ -126,7 +123,7 @@ export function UserProfileGifs({
       </Box>
       {isCommentsOpen && <UserGifDescription>{description}</UserGifDescription>}
       <Comments
-        comments={comment}
+        comments={comments}
         gifId={gifId}
         isCommentsOpen={isCommentsOpen}
       />
