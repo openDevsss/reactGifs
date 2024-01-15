@@ -16,7 +16,7 @@ import {
   ProfilePage,
   RecommendationsPage,
 } from "./pages";
-import { useAppDispatch } from "./redux-toolkit";
+import { useAppDispatch } from "./redux-hooks";
 import { SettingsInterestsUser } from "./components/SettingsInterestsUser/SettingsInterestsUser";
 
 export function App() {

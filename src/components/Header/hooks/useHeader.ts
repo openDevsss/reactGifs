@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useMediaQuery } from "@mui/material";
-import { useAppDispatch } from "redux-toolkit";
+import { useAppDispatch } from "redux-hooks";
 import { useCurrentUser } from "hooks/useCurrentUser";
 import { logOut } from "features/users/users-slice";
 

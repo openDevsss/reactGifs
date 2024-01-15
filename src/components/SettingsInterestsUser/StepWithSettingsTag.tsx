@@ -1,13 +1,9 @@
 import { useEffect } from "react";
+
 import { getTags } from "../../features/tags/tags-slice";
 import { selectorTags } from "../../features/tags/tags-selectors";
-import { useAppDispatch, useAppSelector } from "../../redux-toolkit";
-import {
-  StyledChipTitle,
-  StyledSelectedStepWrapper,
-  StyledTitleStep,
-  StyledWrapperGif,
-} from "./style";
+import { useAppDispatch, useAppSelector } from "../../redux-hooks";
+import { StyledChipTitle, StyledTitleStep, StyledWrapperGif } from "./style";
 
 export const StepWithSettingsTag = () => {
   const dispatch = useAppDispatch();
@@ -17,13 +13,13 @@ export const StepWithSettingsTag = () => {
   }, [dispatch]);
 
   return (
-    <StyledSelectedStepWrapper>
+    <>
       <StyledTitleStep>Choose liked Tags</StyledTitleStep>
       <StyledWrapperGif>
         {tags?.map(({ name, id }) => (
           <StyledChipTitle key={id} label={name} />
         ))}
       </StyledWrapperGif>
-    </StyledSelectedStepWrapper>
+    </>
   );
 };

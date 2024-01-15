@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { baseUrl } from "constant";
 import { useAlert } from "hooks/useAlert";
 import { Tag } from "types";
-import { useAppSelector } from "redux-toolkit";
+import { useAppSelector } from "redux-hooks";
 import { selectorTags } from "features/tags/tags-selectors";
 
 import { DataForCreateGif, createGif } from "./service";

@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { updateCurrentUser } from "features/users/users-slice";
 import { useAlert } from "hooks/useAlert";
 import { useCurrentUser } from "hooks/useCurrentUser";
-import { useAppDispatch } from "redux-toolkit";
+import { useAppDispatch } from "redux-hooks";
 import type { User } from "types";
 
 import {
