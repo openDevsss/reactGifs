@@ -1,14 +1,8 @@
-import {
-  Box,
-  Checkbox,
-  ListItem,
-  ListItemText,
-  Modal,
-  Typography,
-} from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import type { Tag } from "../../types/Tag";
+import { TagsList } from "./TagsList";
 import { EditGif } from "./service";
 import {
   EditPopupButton,
@@ -16,8 +10,6 @@ import {
   EditPopupTitle,
   EditPopupWrapper,
   ErrorMessageEditModal,
-  StyledList,
-  StyledListItemButton,
 } from "./style";
 
 interface EditModalProps {
@@ -29,7 +21,7 @@ interface EditModalProps {
   id: string;
   gifTags: Tag[];
 }
-interface DataForChangingGif {
+export interface DataForChangingGif {
   id: string;
   title: string;
   description: string;
@@ -57,7 +49,9 @@ export function EditModal({
     data.id = id;
     EditGif(data);
   };
-  console.log();
+  const handleCheckbox = (value) => {
+    return setSelectedTags([...selectedTags, value.id]);
+  };
   return (
     <div>
       <Modal open={open} onClose={handleClose}>
@@ -90,7 +84,7 @@ export function EditModal({
                 size="small"
                 label="Title"
               />
-              {errors.title && (
+              {Boolean(errors.title) && (
                 <ErrorMessageEditModal>
                   {errors.title.message}
                 </ErrorMessageEditModal>
@@ -113,7 +107,7 @@ export function EditModal({
                 label="Description"
                 multiline
               />
-              {errors.description && (
+              {Boolean(errors.description) && (
                 <ErrorMessageEditModal>
                   {errors.description.message}
                 </ErrorMessageEditModal>
@@ -122,42 +116,16 @@ export function EditModal({
           </Box>
           <Box width="100%">
             <Typography textAlign="center">Tags</Typography>
-            <Box width="100%" display="flex" flexWrap="wrap">
-              <StyledList dense>
-                {tags?.map((value) => {
-                  return (
-                    <ListItem
-                      key={value.id}
-                      secondaryAction={
-                        <Checkbox
-                          edge="end"
-                          onChange={() =>
-                            setSelectedTags([
-                              ...selectedTags,
-                              { name: value?.name, id: value?.id },
-                            ])
-                          }
-                          sx={{
-                            color: "#5f3db5",
-                            "&.Mui-checked": {
-                              color: "#5f3db5",
-                            },
-                          }}
-                        />
-                      }
-                      disablePadding
-                    >
-                      <StyledListItemButton>
-                        <ListItemText
-                          sx={{ textAlign: "center" }}
-                          primary={value?.name}
-                        />
-                      </StyledListItemButton>
-                    </ListItem>
-                  );
-                })}
-              </StyledList>
-            </Box>
+            <TagsList
+              register={register}
+              handleCheckbox={handleCheckbox}
+              tags={tags}
+            />
+            {Boolean(errors.tags) && (
+              <ErrorMessageEditModal>
+                Select at least 1 tag
+              </ErrorMessageEditModal>
+            )}
           </Box>
           <EditPopupButton onClick={() => handleClose} type="submit">
             Confirm
