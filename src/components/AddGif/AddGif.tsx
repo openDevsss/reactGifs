@@ -1,4 +1,5 @@
 import { Button, Divider } from "@mui/material";
+
 import { Hashtag } from "../Hashtag/Hashtag";
 import { useAddGif } from "./hooks/useAddGif";
 import {
@@ -17,6 +18,7 @@ import {
   WrapperAddGif,
   buttonStyle,
 } from "./style";
+
 export function AddGif() {
   const {
     image,
@@ -30,6 +32,10 @@ export function AddGif() {
     onSubmit,
     displayGif,
   } = useAddGif();
+  let imageUrl;
+  if (Boolean(image)) {
+    imageUrl = URL.createObjectURL(image);
+  }
 
   return (
     <WrapperAddGif>
@@ -38,7 +44,7 @@ export function AddGif() {
         <CreatedWrapper>
           {image ? (
             <AddGifItemWrapper>
-              <AddGifItem src={image} />
+              <AddGifItem src={imageUrl} />
             </AddGifItemWrapper>
           ) : (
             <DragAndDropWrapper>

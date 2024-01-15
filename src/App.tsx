@@ -1,21 +1,22 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { useEffect } from "react";
 import { AddGif } from "./components/AddGif/AddGif";
 import { AlertPopup } from "./components/AlertPopup/AlertPopup";
-import { DetailsGifPage } from "./pages/DetailsGifPage";
-
 import { Login } from "./components/Auth/Login/Login";
 import { Registration } from "./components/Auth/Registration/Registration";
 import { PageLayout } from "./components/PageLayout/PageLayout";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { SettingsGif } from "./components/SettingsGif/SettingsGif";
 import { checkAuth } from "./features/users/users-slice";
-import { HomePage } from "./pages/HomePage";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { RecommendationsPage } from "./pages/RecommendationsPage";
+import {
+  DetailsGifPage,
+  HomePage,
+  NotFoundPage,
+  ProfilePage,
+  RecommendationsPage,
+} from "./pages";
 import { useAppDispatch } from "./redux-toolkit";
-import { ProfilePage } from "./pages/ProfilePage";
 import { SettingsInterestsUser } from "./components/SettingsInterestsUser/SettingsInterestsUser";
 
 export function App() {

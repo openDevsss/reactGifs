@@ -1,6 +1,7 @@
-import { configModalName } from "../../constant/modal";
-import { useModal } from "../../hooks/useModal";
-import type { Followers } from "../../types/Followers";
+import { configModalName } from "constant";
+import { useModal } from "hooks/useModal";
+import type { Followers } from "types";
+
 import { UserList } from "../UserList/UserList";
 import {
   FollowersAvatar,

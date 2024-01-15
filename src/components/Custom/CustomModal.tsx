@@ -1,5 +1,6 @@
-import React from "react";
 import { Modal, ModalProps } from "@mui/material";
+import React from "react";
+
 import { StyledWtapperIntoModal } from "../UserList/style";
 
 interface CustomModalProps extends ModalProps {

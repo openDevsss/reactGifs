@@ -1,4 +1,5 @@
 import React from "react";
+
 import { LayoutUserProfile } from "./style";
 
 interface ProfileLayoutProps {

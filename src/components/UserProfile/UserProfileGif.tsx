@@ -1,5 +1,4 @@
-import { IconButton, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { IconButton, Typography, Box } from "@mui/material";
 import {
   Chat,
   DotsThreeOutlineVertical,
@@ -7,10 +6,11 @@ import {
   ShareFat,
 } from "@phosphor-icons/react";
 import { useState } from "react";
-import { configModalName } from "../../constant/modal";
-import { useActionWithGifs } from "../../hooks/useActionWithGifs";
-import { useModal } from "../../hooks/useModal";
-import { Gif } from "../../types/Gif";
+import { configModalName } from "constant";
+import { useActionWithGifs } from "hooks/useActionWithGifs";
+import { useModal } from "hooks/useModal";
+import { Gif } from "types";
+
 import { Comments } from "../Comments/Comments";
 import { GifMenuAction } from "../GifItem/GifMenuAction";
 import { StyledWrapperIconGif } from "../GifItem/style";
@@ -29,7 +29,7 @@ export function UserProfileGifs({
   title,
   description,
   url,
-  comment,
+  comments,
   id: gifId,
   viewers,
   likes,
@@ -110,7 +110,7 @@ export function UserProfileGifs({
       </Box>
       {isCommentsOpen && <UserGifDescription>{description}</UserGifDescription>}
       <Comments
-        comments={comment}
+        comments={comments}
         gifId={gifId}
         isCommentsOpen={isCommentsOpen}
       />

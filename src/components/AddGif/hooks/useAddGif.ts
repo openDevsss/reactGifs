@@ -1,13 +1,16 @@
+import axios from "axios";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAlert } from "../../../hooks/useAlert";
-import { Tag } from "../../../types/Tag";
-import { selectorTags } from "../../../features/tags/tags-selectors";
-import { useAppSelector } from "../../../redux-toolkit";
+import { baseUrl } from "constant";
+import { useAlert } from "hooks/useAlert";
+import { Tag } from "types";
+import { useAppSelector } from "redux-toolkit";
+import { selectorTags } from "features/tags/tags-selectors";
+
 import { DataForCreateGif, createGif } from "./service";
 
 export const useAddGif = () => {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [selectedTags, setSeletedTags] = useState<Tag[]>([]);
   const { setAlert } = useAlert();
   const tags = useAppSelector(selectorTags);
@@ -19,6 +22,7 @@ export const useAddGif = () => {
   } = useForm<DataForCreateGif>({
     mode: "onSubmit",
   });
+  const formData = new FormData();
   const handleRemoveTag = (tagId: Tag["id"]) =>
     setSeletedTags(selectedTags?.filter((tag) => tag.id !== tagId));
   const handleAddTagToSelected = (tag: Tag) => {
@@ -29,11 +33,18 @@ export const useAddGif = () => {
       setAlert("Выберите хотя бы один тег", "error");
       return;
     }
+
+    if (Boolean(image)) {
+      formData.append("gif", image);
+      axios.post(`${baseUrl}/upload`, formData);
+    }
+
     [data.tags] = selectedTags.map(({ id }) => id);
     createGif(data)
       .then(() => {
         setAlert("Вы успешно добавили гифку", "success");
         setSeletedTags([]);
+        setImage(null);
         reset();
       })
       .catch((error) => {
@@ -42,7 +53,7 @@ export const useAddGif = () => {
   };
   const displayGif = (e: any) => {
     if (e.target.files && e.target.files[0]) {
-      setImage(URL.createObjectURL(e.target.files[0]));
+      setImage(e.target.files[0]);
     }
   };
 

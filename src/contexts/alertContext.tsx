@@ -1,13 +1,14 @@
 /* eslint-disable indent */
 import { createContext, useState } from "react";
-import { MessageType } from "../types/Message";
+
+import { Message } from "../types";
 
 const ALERT_TIME = 5000;
 
 export const AlertContext = createContext<{
   text: string;
-  type: MessageType;
-  setAlert: (text: string, type: MessageType) => void;
+  type: Message;
+  setAlert: (text: string, type: Message) => void;
 }>({
   text: "",
   type: "",
@@ -23,7 +24,7 @@ export const AlertProvider = ({ children }: AlertProviderProps) => {
   const [text, setText] = useState("");
   const [type, setType] = useState("");
 
-  const setAlert = (text: string, type: MessageType) => {
+  const setAlert = (text: string, type: Message) => {
     setText(text);
     setType(type);
     setTimeout(() => {

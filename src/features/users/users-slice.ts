@@ -1,22 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type { Extra, Status } from "types";
+import { User } from "types";
 
-import type { Extra } from "../../types/Extra";
-import type { Status } from "../../types/Status";
-import type { User } from "../../types/User";
 type AuthInitialState = {
   user: User | null;
   status: Status;
   error: string | null;
   isAuth: boolean;
 };
-type RegisterUserType = {
+type AuthDTO = {
   email: string;
   password: string;
 };
-type LoginUserType = {
-  email: string;
-  password: string;
-};
+
 const initialState: AuthInitialState = {
   user: null,
   status: "idle",
@@ -26,7 +22,7 @@ const initialState: AuthInitialState = {
 
 export const registerUser = createAsyncThunk<
   { token: string },
-  RegisterUserType,
+  AuthDTO,
   { extra: Extra; rejectWithValue: string }
 >(
   "@@auth/register",
@@ -42,7 +38,7 @@ export const registerUser = createAsyncThunk<
 
 export const loginUser = createAsyncThunk<
   User,
-  LoginUserType,
+  AuthDTO,
   { extra: Extra; rejectWithValue: string }
 >(
   "@@auth/login",

@@ -1,4 +1,5 @@
 import { createTheme, ThemeProvider } from "@mui/material";
+
 import { ProfileTab } from "../UserProfile/style";
 
 const theme = createTheme({
