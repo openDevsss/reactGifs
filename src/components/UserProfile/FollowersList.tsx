@@ -1,5 +1,6 @@
 import { configModalName } from "constant";
 import { useModal } from "hooks/useModal";
+import { useMemo } from "react";
 import type { Followers } from "types";
 
 import { UserList } from "../UserList/UserList";
@@ -17,7 +18,10 @@ interface FollowersProps {
 }
 export function FollowersList({ followers }: FollowersProps) {
   const { modals, toggleModal } = useModal();
-
+  const handleFollowers = useMemo(
+    () => followers.map((follow) => follow?.follower),
+    [followers],
+  );
   return (
     <FollowersWrapper>
       <FollowersTitle>Followers</FollowersTitle>
@@ -36,7 +40,7 @@ export function FollowersList({ followers }: FollowersProps) {
             <UserList
               open={Boolean(modals[configModalName.followers])}
               onClose={() => toggleModal(configModalName.followers)}
-              users={followers.map((follow) => follow?.follower)}
+              users={handleFollowers}
             />
           )}
         </StyledFollowersList>

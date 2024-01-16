@@ -1,15 +1,26 @@
-import { Checkbox, ListItem, ListItemText } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 import { Tag } from "../../types/Tag";
-import { DataForChangingGif } from "./EditModal";
-import { StyledList, StyledListItemButton } from "./style";
+import {
+  ErrorMessageEditModal,
+  StyledList,
+  StyledListItemButton,
+} from "./style";
+import { DtoEditModal } from "./types";
 interface TagsListProps {
   tags: Tag[];
-  handleCheckbox: (value: Tag) => void;
-  register: UseFormRegister<DataForChangingGif>;
+  register: UseFormRegister<DtoEditModal>;
   gifTags: Tag[];
+  errors: FieldErrors;
+  handleCheckbox: (value: Tag) => void;
 }
 
 export function TagsList({
@@ -17,8 +28,10 @@ export function TagsList({
   handleCheckbox,
   register,
   gifTags,
+  errors,
 }: TagsListProps) {
-  const [checked, setChecked] = useState(gifTags.map((tag) => tag.id));
+  const selectedGifs = gifTags.map((tag) => tag.id);
+  const [checked, setChecked] = useState(selectedGifs);
 
   const handleToggle = (value: string) => {
     const currentIndex = checked.indexOf(value);
@@ -34,9 +47,10 @@ export function TagsList({
   };
 
   return (
-    <StyledList dense>
-      {tags?.map((value) => {
-        return (
+    <Box width="100%">
+      <Typography textAlign="center">Tags</Typography>
+      <StyledList dense>
+        {tags?.map((value) => (
           <ListItem
             key={value.id}
             secondaryAction={
@@ -70,8 +84,11 @@ export function TagsList({
               />
             </StyledListItemButton>
           </ListItem>
-        );
-      })}
-    </StyledList>
+        ))}
+      </StyledList>
+      {Boolean(errors.tags) && (
+        <ErrorMessageEditModal>Select at least 1 tag</ErrorMessageEditModal>
+      )}
+    </Box>
   );
 }

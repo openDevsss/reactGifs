@@ -1,13 +1,8 @@
-import { Box, Modal, Typography } from "@mui/material";
-import { useGetTags } from "components/AddGif/hooks/useGetTags";
+import { Box, Modal } from "@mui/material";
 import { configModalName } from "constant";
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
 
 import type { Tag } from "../../types/Tag";
 import { TagsList } from "./TagsList";
-import { editGif } from "./service";
 import {
   EditPopupButton,
   EditPopupInput,
@@ -15,62 +10,30 @@ import {
   EditPopupWrapper,
   ErrorMessageEditModal,
 } from "./style";
+import { useEditModal } from "./useEditModal";
 
 interface EditModalProps {
   open: boolean;
   title: string;
-  handleClose: (modalKey: string) => void;
   description: string;
   id: string;
   gifTags: Tag[];
-}
-export interface DataForChangingGif {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
+  handleClose: (modalKey: string) => void;
 }
 
 export const EditModal = ({
   open,
-  handleClose,
   title,
   description,
-  id,
   gifTags,
+  id,
+  handleClose,
 }: EditModalProps) => {
-  const queryClient = useQueryClient();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<DataForChangingGif>({
-    mode: "onSubmit",
-  });
-  const [selectedTags, setSelectedTags] = useState(
-    gifTags.map((tag) => tag.id),
-  );
-  const { data: tags } = useGetTags();
-
-  const { mutate: handleChanging } = useMutation(
-    (data: DataForChangingGif) => editGif(data),
-    {
-      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
-    },
-  );
-  const onSubmit: SubmitHandler<DataForChangingGif> = (data) => {
-    data.tags = selectedTags;
-    handleChanging(data);
-    data.id = id;
-    handleClose(configModalName.edit);
-  };
-  const handleCheckbox = (value: Tag) => {
-    setSelectedTags([...selectedTags, value.id]);
-  };
-
+  const { register, handleSubmit, errors, tags, onSubmit, handleCheckbox } =
+    useEditModal(gifTags, id, handleClose);
   return (
     <div>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={() => handleClose(configModalName.edit)}>
         <EditPopupWrapper onSubmit={handleSubmit(onSubmit)}>
           <EditPopupTitle>Edit</EditPopupTitle>
           <Box
@@ -130,20 +93,15 @@ export const EditModal = ({
               )}
             </Box>
           </Box>
-          <Box width="100%">
-            <Typography textAlign="center">Tags</Typography>
-            <TagsList
-              register={register}
-              handleCheckbox={handleCheckbox}
-              tags={tags}
-              gifTags={gifTags}
-            />
-            {Boolean(errors.tags) && (
-              <ErrorMessageEditModal>
-                Select at least 1 tag
-              </ErrorMessageEditModal>
-            )}
-          </Box>
+
+          <TagsList
+            register={register}
+            handleCheckbox={handleCheckbox}
+            tags={tags}
+            gifTags={gifTags}
+            errors={errors}
+          />
+
           <EditPopupButton type="submit">Confirm</EditPopupButton>
         </EditPopupWrapper>
       </Modal>

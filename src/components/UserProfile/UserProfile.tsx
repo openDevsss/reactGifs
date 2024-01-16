@@ -25,7 +25,7 @@ export const UserProfile = () => {
       {isLoading && !user ? (
         <SkeletonProfile />
       ) : (
-        user && (
+        Boolean(user) && (
           <>
             <MainInformation
               nickname={user.nickname}

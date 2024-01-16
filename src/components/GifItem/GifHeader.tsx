@@ -13,9 +13,9 @@ import { GifMenuActionProps } from "./type";
 interface GifHeaderProps {
   title: string;
   user: User;
-  handleClick: (e: React.MouseEvent<HTMLElement>) => void;
   tags: Tag[];
   description: string;
+  handleClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
 type CombinedProps = GifHeaderProps & GifMenuActionProps;
 
@@ -62,11 +62,11 @@ export const GifHeader = ({
       {Boolean(modals[configModalName.edit]) && (
         <EditModal
           open={Boolean(modals[configModalName.edit])}
-          handleClose={toggleModal}
           title={title}
           description={description}
           gifTags={tags}
           id={gifId}
+          handleClose={toggleModal}
         />
       )}
     </Box>
