@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { Gear } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
 import { useCurrentUser } from "hooks/useCurrentUser";
+import { Link } from "react-router-dom";
 import type { User } from "types";
 
 import {

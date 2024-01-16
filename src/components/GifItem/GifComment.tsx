@@ -4,9 +4,11 @@ import {
   LinkSimple,
   ShareNetwork,
 } from "@phosphor-icons/react";
-import { User, Comment } from "types";
 import { Comments } from "components/Comments/Comments";
+import { useModal } from "hooks/useModal";
+import { Comment, User } from "types";
 
+import { GifMenuAction } from "./GifMenuAction";
 import {
   ContainerGif,
   GifDescription,
@@ -16,7 +18,6 @@ import {
   GifUserInformation,
   GifUserNickname,
 } from "./style";
-import { GifMenuAction } from "./GifMenuAction";
 import { GifMenuActionProps } from "./type";
 
 interface GifCommentProps {
@@ -42,6 +43,7 @@ export const GifComment = ({
   handleClose,
   isOpen,
 }: CombinedProps) => {
+  const { toggleModal } = useModal();
   return (
     <ContainerGif>
       <>
@@ -83,6 +85,7 @@ export const GifComment = ({
                   anchorEl={anchorEl}
                   handleClose={handleClose}
                   isOpen={isOpen}
+                  setIsOpenEditModal={toggleModal}
                 />
               </GifMenuItem>
             </GifHeadInformation>

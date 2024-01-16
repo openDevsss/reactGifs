@@ -15,7 +15,6 @@ export function GifsList() {
       />
     );
   }
-
   return (
     <section>
       {isLoading

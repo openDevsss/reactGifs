@@ -1,14 +1,14 @@
 /* eslint-disable indent */
 import { Box, useMediaQuery } from "@mui/material";
+import { useActionWithGifs } from "hooks/useActionWithGifs";
 import { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useActionWithGifs } from "hooks/useActionWithGifs";
 import type { Gif } from "types";
 
-import { GifAnimation, GifItemWrapper } from "./style";
 import { GifComment } from "./GifComment";
 import { GifFooter } from "./GifFooter";
 import { GifHeader } from "./GifHeader";
+import { GifAnimation, GifItemWrapper } from "./style";
 
 export function GifItem({
   title,
@@ -19,6 +19,7 @@ export function GifItem({
   id: gifId,
   viewers,
   likes,
+  tags,
 }: Gif) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -36,7 +37,6 @@ export function GifItem({
     if (location.pathname !== `/gif/${gifId}`) navigate(`/gif/${gifId}`);
   };
   const isWideScreen = useMediaQuery("(min-width:1200px)");
-
   return (
     <GifItemWrapper isCommentsOpen={isCommentsOpen}>
       <Box maxWidth="600px" width="100%">
@@ -49,8 +49,11 @@ export function GifItem({
             isOpen={isOpen}
             title={title}
             user={user}
+            tags={tags}
+            description={description}
           />
         )}
+
         <GifAnimation
           src={url}
           alt={title}

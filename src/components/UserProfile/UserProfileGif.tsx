@@ -1,17 +1,18 @@
-import { IconButton, Typography, Box } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import {
   Chat,
   DotsThreeOutlineVertical,
   Eye,
   ShareFat,
 } from "@phosphor-icons/react";
-import { useState } from "react";
 import { configModalName } from "constant";
 import { useActionWithGifs } from "hooks/useActionWithGifs";
 import { useModal } from "hooks/useModal";
+import { useState } from "react";
 import { Gif } from "types";
 
 import { Comments } from "../Comments/Comments";
+import { EditModal } from "../EditModal/EditModal";
 import { GifMenuAction } from "../GifItem/GifMenuAction";
 import { StyledWrapperIconGif } from "../GifItem/style";
 import { LikeTooltip } from "../LikeTooltip/LikeTooltip";
@@ -34,6 +35,7 @@ export function UserProfileGifs({
   viewers,
   likes,
   userId,
+  tags,
 }: userProfileGifsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -65,14 +67,25 @@ export function UserProfileGifs({
             cursor="pointer"
           />
         </IconButton>
-        <GifMenuAction
-          gifId={gifId}
-          authorId={userId}
-          anchorEl={anchorEl}
-          handleClose={handleClose}
-          isOpen={isOpen}
-        />
       </Box>
+      <GifMenuAction
+        gifId={gifId}
+        authorId={userId}
+        anchorEl={anchorEl}
+        handleClose={handleClose}
+        isOpen={isOpen}
+        setIsOpenEditModal={toggleModal}
+      />
+      {Boolean(modals[configModalName.edit]) && (
+        <EditModal
+          open={Boolean(modals[configModalName.edit])}
+          handleClose={toggleModal}
+          title={title}
+          description={description}
+          gifTags={tags}
+          id={gifId}
+        />
+      )}
       <UserGif src={url} alt={title} />
       <Box
         display="flex"

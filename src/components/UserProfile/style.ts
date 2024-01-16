@@ -56,6 +56,7 @@ export const MainInfoWrapper = styled.div`
     justify-content: space-between;
     height: 100px;
     align-items: center;
+    border-radius: 48px;
   }
 `;
 export const MainInfoAvatar = styled.img`
@@ -67,7 +68,7 @@ export const MainInfoAvatar = styled.img`
   @media (max-width: 488px) {
     height: 100px;
     width: 100px;
-    border-radius: 50%;
+    border-radius: 48px;
   }
 `;
 export const PersonalInfoWrapper = styled.div`
