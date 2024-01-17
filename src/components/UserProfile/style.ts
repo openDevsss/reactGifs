@@ -168,9 +168,9 @@ export const UserGif = styled.img`
     height: 400px;
   }
   @media screen and (max-width: 768px) {
-    height: 250px;
+    height: 350px;
   }
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     height: 200px;
   }
 `;
