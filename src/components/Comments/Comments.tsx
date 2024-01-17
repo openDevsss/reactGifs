@@ -1,8 +1,8 @@
 import { Divider, IconButton, InputAdornment, List } from "@mui/material";
 import { PaperPlaneRight } from "@phosphor-icons/react";
+import { useActionWithGifs } from "hooks/useActionWithGifs";
 import React from "react";
 import { SubmitHandler } from "react-hook-form";
-import { useActionWithGifs } from "hooks/useActionWithGifs";
 import { Comment } from "types";
 
 import { CreateCommentT } from "../GifItem/service";
@@ -61,8 +61,8 @@ export function Comments({
         <GifInput
           {...register("comment_text", {
             maxLength: {
-              value: 100,
-              message: "Max length 100 symbols",
+              value: 120,
+              message: "Max length 120 symbols",
             },
             required: {
               value: true,

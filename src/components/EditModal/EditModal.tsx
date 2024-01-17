@@ -56,8 +56,8 @@ export const EditModal = ({
                     message: "Min length 3 symbols",
                   },
                   maxLength: {
-                    value: 25,
-                    message: "Max length 25 symbols",
+                    value: 40,
+                    message: "Max length 40 symbols",
                   },
                 })}
                 size="small"
@@ -80,6 +80,10 @@ export const EditModal = ({
                   minLength: {
                     value: 3,
                     message: "Min length 3 symbols",
+                  },
+                  maxLength: {
+                    value: 80,
+                    message: "Max length 40 symbols",
                   },
                 })}
                 size="small"

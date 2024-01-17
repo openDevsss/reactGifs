@@ -1,8 +1,8 @@
+import { registerUser } from "features/users/users-slice";
+import logo from "images/kub.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "features/users/users-slice";
 import { useAppDispatch } from "redux-toolkit";
-import logo from "images/kub.svg";
 
 import {
   ButtonSubmit,
@@ -57,8 +57,8 @@ export function Registration() {
               message: "This field cannot be empty",
             },
             maxLength: {
-              value: 30,
-              message: "Max length 30 symbols",
+              value: 20,
+              message: "Max length 20 symbols",
             },
             minLength: {
               value: 3,
@@ -81,8 +81,8 @@ export function Registration() {
               message: "This field cannot be empty",
             },
             maxLength: {
-              value: 25,
-              message: "Max length 25 symbols",
+              value: 256,
+              message: "Max length 256 symbols",
             },
             minLength: {
               value: 6,
@@ -111,8 +111,12 @@ export function Registration() {
               message: "This field cannot be empty",
             },
             minLength: {
-              value: 8,
-              message: "Min length 8 symbols",
+              value: 6,
+              message: "Password must be at least 6 characters long",
+            },
+            maxLength: {
+              value: 30,
+              message: "Password must be less than 30 characters.",
             },
           })}
           size="small"

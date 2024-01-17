@@ -1,7 +1,7 @@
-import { SubmitHandler, useForm } from "react-hook-form";
 import { updateCurrentUser } from "features/users/users-slice";
 import { useAlert } from "hooks/useAlert";
 import { useCurrentUser } from "hooks/useCurrentUser";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "redux-toolkit";
 import type { User } from "types";
 
@@ -95,11 +95,11 @@ export function ProfileEdit() {
             },
             minLength: {
               value: 6,
-              message: "Min length 3 symbols",
+              message: "Min length 6 symbols",
             },
             maxLength: {
-              value: 25,
-              message: "Max length 20 symbols",
+              value: 256,
+              message: "Max length 256 symbols",
             },
           })}
           label="email"
