@@ -46,59 +46,57 @@ export const GifComment = ({
   const { toggleModal } = useModal();
   return (
     <ContainerGif>
-      <>
-        <div>
-          {Boolean(isWideScreen) && (
-            <GifHeadInformation>
-              <GifUserInformation>
-                <GifUserAvatar src={user.avatar} />
-                <GifUserNickname>{user.nickname}</GifUserNickname>
-              </GifUserInformation>
-              <GifMenuItem>
-                <IconButton>
-                  <ShareNetwork
-                    size={17}
-                    weight="fill"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
-                </IconButton>
-                <IconButton>
-                  <LinkSimple
-                    size={17}
-                    weight="bold"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
-                </IconButton>
-                <IconButton onClick={handleClick}>
-                  <DotsThreeOutlineVertical
-                    size={17}
-                    weight="fill"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
-                </IconButton>
-                <GifMenuAction
-                  gifId={gifId}
-                  authorId={user?.id}
-                  anchorEl={anchorEl}
-                  handleClose={handleClose}
-                  isOpen={isOpen}
-                  setIsOpenEditModal={toggleModal}
+      <div>
+        {Boolean(isWideScreen) && (
+          <GifHeadInformation>
+            <GifUserInformation>
+              <GifUserAvatar src={user.avatar} />
+              <GifUserNickname>{user.nickname}</GifUserNickname>
+            </GifUserInformation>
+            <GifMenuItem>
+              <IconButton>
+                <ShareNetwork
+                  size={17}
+                  weight="fill"
+                  color="#6F4FF2"
+                  cursor="pointer"
                 />
-              </GifMenuItem>
-            </GifHeadInformation>
-          )}
+              </IconButton>
+              <IconButton>
+                <LinkSimple
+                  size={17}
+                  weight="bold"
+                  color="#6F4FF2"
+                  cursor="pointer"
+                />
+              </IconButton>
+              <IconButton onClick={handleClick}>
+                <DotsThreeOutlineVertical
+                  size={17}
+                  weight="fill"
+                  color="#6F4FF2"
+                  cursor="pointer"
+                />
+              </IconButton>
+              <GifMenuAction
+                gifId={gifId}
+                authorId={user?.id}
+                anchorEl={anchorEl}
+                handleClose={handleClose}
+                isOpen={isOpen}
+                setIsOpenEditModal={toggleModal}
+              />
+            </GifMenuItem>
+          </GifHeadInformation>
+        )}
 
-          <GifDescription>{description}</GifDescription>
-        </div>
-        <Comments
-          isCommentsOpen={isCommentsOpen}
-          comments={comments}
-          gifId={gifId}
-        />
-      </>
+        <GifDescription>{description}</GifDescription>
+      </div>
+      <Comments
+        isCommentsOpen={isCommentsOpen}
+        comments={comments}
+        gifId={gifId}
+      />
     </ContainerGif>
   );
 };
