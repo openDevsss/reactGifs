@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import { subscribToUser, unSubscribToUser } from "features/users/users-slice";
+import { useCurrentUser } from "hooks/useCurrentUser";
 import { useAppDispatch } from "redux-toolkit";
 import type { Followers } from "types";
 
@@ -21,6 +22,7 @@ export const UserListItem = ({ user, following }: UserListItemProps) => {
   const isFollowing = following?.some(
     ({ followeeId }) => followeeId === user?.id,
   );
+  const currentUser = useCurrentUser();
   const dispatch = useAppDispatch();
   const handleSubscribe = () => {
     dispatch(subscribToUser(user?.id));
@@ -42,14 +44,18 @@ export const UserListItem = ({ user, following }: UserListItemProps) => {
           <UserNicknameText>{user.nickname}</UserNicknameText>
         </StyledLink>
       </Box>
-      {!isFollowing ? (
-        <StyledButtonSubscribe onClick={handleSubscribe}>
-          Follow
-        </StyledButtonSubscribe>
-      ) : (
-        <StyledButtonUnSubscribe onClick={handleUnSubscribe}>
-          unFollow
-        </StyledButtonUnSubscribe>
+      {currentUser.id !== user?.id && (
+        <>
+          {!isFollowing ? (
+            <StyledButtonSubscribe onClick={handleSubscribe}>
+              Follow
+            </StyledButtonSubscribe>
+          ) : (
+            <StyledButtonUnSubscribe onClick={handleUnSubscribe}>
+              unFollow
+            </StyledButtonUnSubscribe>
+          )}
+        </>
       )}
     </Box>
   );
