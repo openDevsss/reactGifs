@@ -65,6 +65,7 @@ export function GifItem({
           viewers={viewers}
           setIsCommentsOpen={setIsCommentsOpen}
           isCommentsOpen={isCommentsOpen}
+          comments={comments}
         />
       </Box>
       {isCommentsOpen && (

@@ -111,6 +111,9 @@ export function UserProfileGifs({
             onClick={() => setIsCommentsOpen(!isCommentsOpen)}
           >
             <Chat size="24" weight="thin" cursor="pointer" />
+            {Boolean(comments?.length) && (
+              <Typography>{comments?.length}</Typography>
+            )}
           </StyledWrapperIconGif>
           <StyledWrapperIconGif>
             <ShareFat size="24" weight="thin" cursor="pointer" />

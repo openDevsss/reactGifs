@@ -4,7 +4,7 @@ import { LikeTooltip } from "components/LikeTooltip/LikeTooltip";
 import { UserList } from "components/UserList/UserList";
 import { configModalName } from "constant";
 import { useModal } from "hooks/useModal";
-import { Gif, Like } from "types";
+import { Comment, Gif, Like } from "types";
 
 import { StyledWrapperIconGif } from "./style";
 
@@ -13,6 +13,7 @@ interface GifFooterProps {
   likes: Like[];
   viewers: Gif["viewers"];
   isCommentsOpen: boolean;
+  comments: Comment[];
   setIsCommentsOpen: (flag: boolean) => void;
 }
 
@@ -22,6 +23,7 @@ export const GifFooter = ({
   viewers,
   setIsCommentsOpen,
   isCommentsOpen,
+  comments,
 }: GifFooterProps) => {
   const { modals, toggleModal } = useModal();
 
@@ -49,6 +51,9 @@ export const GifFooter = ({
           onClick={() => setIsCommentsOpen(!isCommentsOpen)}
         >
           <Chat size="24" weight="thin" cursor="pointer" />
+          {Boolean(comments?.length) && (
+            <Typography>{comments?.length}</Typography>
+          )}
         </StyledWrapperIconGif>
         <StyledWrapperIconGif>
           <ShareFat size="24" weight="thin" cursor="pointer" />

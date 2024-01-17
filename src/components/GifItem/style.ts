@@ -102,7 +102,7 @@ export const StyledWrapperIconGif = styled.div`
   background: #f1f1f2;
   padding: 4px 12px;
   border-radius: 32px;
-  gap: 10px;
+  gap: 8px;
 `;
 export const StyledWrapperIconHeart = styled.div<{ isLiked: boolean }>`
   display: flex;
