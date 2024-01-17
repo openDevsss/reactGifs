@@ -112,7 +112,7 @@ export function UserProfileGifs({
           >
             <Chat size="24" weight="thin" cursor="pointer" />
             {Boolean(comments?.length) && (
-              <Typography>{comments?.length}</Typography>
+              <Typography>{comments.length}</Typography>
             )}
           </StyledWrapperIconGif>
           <StyledWrapperIconGif>
