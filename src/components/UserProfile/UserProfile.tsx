@@ -18,12 +18,12 @@ export const UserProfile = () => {
   const navigate = useNavigate();
   useEffect(() => {
     refetch();
-  }, [id, refetch, navigate]);
+  }, [id, refetch]);
 
   return (
     <>
-      {!user?.id ? (
-        navigate("/not-found")
+      {!user ? (
+        navigate(-1)
       ) : (
         <>
           {isLoading && !user ? (
