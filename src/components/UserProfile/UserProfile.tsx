@@ -13,7 +13,7 @@ import { UserProfileGifs } from "./UserProfileGif";
 
 export const UserProfile = () => {
   const { id } = useParams();
-  const { data: user, refetch, isLoading } = useGetUserInformation(id);
+  const { data: user, refetch, isFetching } = useGetUserInformation(id);
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,7 +26,7 @@ export const UserProfile = () => {
         navigate(-1)
       ) : (
         <>
-          {isLoading && !user ? (
+          {isFetching ? (
             <SkeletonProfile />
           ) : (
             Boolean(user) && (
