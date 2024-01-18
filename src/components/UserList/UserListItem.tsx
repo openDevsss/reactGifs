@@ -44,7 +44,7 @@ export const UserListItem = ({ user, following }: UserListItemProps) => {
           <UserNicknameText>{user.nickname}</UserNicknameText>
         </StyledLink>
       </Box>
-      {currentUser.id !== user?.id && (
+      {currentUser?.id !== user?.id && (
         <>
           {!isFollowing ? (
             <StyledButtonSubscribe onClick={handleSubscribe}>
