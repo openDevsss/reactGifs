@@ -1,7 +1,7 @@
 import { Box, Modal } from "@mui/material";
 import { configModalName } from "constant";
 
-import type { Tag } from "../../types/Tag";
+import type { Tag } from "@types/Tag";
 import { TagsList } from "./TagsList";
 import {
   EditPopupButton,

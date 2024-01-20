@@ -1,6 +1,6 @@
 import { Box, Skeleton } from "@mui/material";
-import { FollowersWrapper } from "components/UserProfile/style";
-import { LayoutUserProfile } from "layout/style";
+import { FollowersWrapper } from "@components/UserProfile/style";
+import { LayoutUserProfile } from "@layout/style";
 
 import { SkeletonGif } from "./SkeletonGif";
 

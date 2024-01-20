@@ -1,7 +1,7 @@
 import { SettingsLayout } from "layout/SettingsLayout";
 import { useState } from "react";
 
-import { CustomTabPanel } from "../Custom/CustomTabPanel";
+import { CustomTabPanel } from "@components/Custom/CustomTabPanel";
 import { EmailConfirmation } from "./EmailConfirmation";
 import { ProfileEdit } from "./ProfileEdit";
 import {

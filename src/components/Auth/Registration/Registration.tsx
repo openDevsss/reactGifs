@@ -1,5 +1,5 @@
 import { registerUser } from "features/users/users-slice";
-import logo from "images/kub.svg";
+import logo from "@images/kub.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux-toolkit";

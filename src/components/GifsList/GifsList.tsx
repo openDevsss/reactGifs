@@ -1,6 +1,6 @@
-import { EmptyGifs } from "components/EmptyGifs/EmptyGifs";
-import { GifItem } from "components/GifItem/GifItem";
-import { SkeletonGif } from "components/Skeleton/SkeletonGif";
+import { EmptyGifs } from "@components/EmptyGifs/EmptyGifs";
+import { GifItem } from "@components/GifItem/GifItem";
+import { SkeletonGif } from "@components/Skeleton/SkeletonGif";
 
 import { useGetGifs } from "./hooks/useGetGifs";
 

@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { subscribToUser, unSubscribToUser } from "features/users/users-slice";
-import { useCurrentUser } from "hooks/useCurrentUser";
+import { useCurrentUser } from "@hooks/useCurrentUser";
 import { useAppDispatch } from "redux-toolkit";
-import type { Followers } from "types";
+import type { Followers } from "@types";
 
 import { TypeForUsers } from "./UserList";
 import {

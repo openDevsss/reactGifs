@@ -1,9 +1,6 @@
 import { updateCurrentUser } from "features/users/users-slice";
-import { useAlert } from "hooks/useAlert";
-import { useCurrentUser } from "hooks/useCurrentUser";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "redux-toolkit";
-import type { User } from "types";
 
 import {
   EditProfileWrapper,
@@ -13,6 +10,9 @@ import {
   ProfileEditInput,
   ProfileEditSubmitButton,
 } from "./style";
+import { User } from "@types/User";
+import { useAlert } from "@hooks/useAlert";
+import { useCurrentUser } from "@hooks/useCurrentUser";
 
 export function ProfileEdit() {
   const dispatch = useAppDispatch();
