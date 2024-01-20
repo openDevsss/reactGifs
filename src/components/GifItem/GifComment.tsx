@@ -6,7 +6,6 @@ import {
 } from "@phosphor-icons/react";
 import { Comments } from "@components/Comments/Comments";
 import { useModal } from "@hooks/useModal";
-import { Comment, User } from "@types";
 
 import { GifMenuAction } from "./GifMenuAction";
 import {
@@ -19,6 +18,7 @@ import {
   GifUserNickname,
 } from "./style";
 import { GifMenuActionProps } from "./type";
+import { User } from "types/User";
 
 interface GifCommentProps {
   isWideScreen: boolean;

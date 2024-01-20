@@ -1,7 +1,6 @@
 import { Box, Modal } from "@mui/material";
 import { configModalName } from "constant";
 
-import type { Tag } from "@types/Tag";
 import { TagsList } from "./TagsList";
 import {
   EditPopupButton,
@@ -11,6 +10,7 @@ import {
   ErrorMessageEditModal,
 } from "./style";
 import { useEditModal } from "./useEditModal";
+import { Tag } from "types/Tag";
 
 interface EditModalProps {
   open: boolean;

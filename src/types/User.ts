@@ -1,4 +1,5 @@
-import { Followers, Gif } from "types";
+import { Followers } from "./Followers";
+import { Gif } from "./Gif";
 
 export type User = {
   avatar: string;

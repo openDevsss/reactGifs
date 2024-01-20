@@ -10,7 +10,7 @@ import {
   ProfileEditInput,
   ProfileEditSubmitButton,
 } from "./style";
-import { User } from "@types/User";
+import { User } from "types/User";
 import { useAlert } from "@hooks/useAlert";
 import { useCurrentUser } from "@hooks/useCurrentUser";
 

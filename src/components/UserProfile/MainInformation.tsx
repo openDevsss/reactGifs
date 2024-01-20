@@ -3,7 +3,7 @@ import { Gear } from "@phosphor-icons/react";
 import { subscribToUser, unSubscribToUser } from "features/users/users-slice";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "redux-toolkit";
-import type { User } from "types";
+import type { User } from "types/User";
 
 import {
   MainInfoAvatar,

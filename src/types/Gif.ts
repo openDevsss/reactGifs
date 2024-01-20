@@ -1,4 +1,6 @@
-import { Comment, Like, Tag, User } from "types";
+import { Like } from "./Like";
+import { Tag } from "./Tag";
+import { User } from "./User";
 
 export type Gif = {
   id: string;

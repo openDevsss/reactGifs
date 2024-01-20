@@ -8,13 +8,13 @@ import {
 import { useState } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-import { Tag } from "@types/Tag";
 import {
   ErrorMessageEditModal,
   StyledList,
   StyledListItemButton,
 } from "./style";
 import { DtoEditModal } from "./types";
+import { Tag } from "types/Tag";
 interface TagsListProps {
   tags: Tag[];
   register: UseFormRegister<DtoEditModal>;

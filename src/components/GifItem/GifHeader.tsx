@@ -1,15 +1,16 @@
 import { Box, IconButton } from "@mui/material";
 import { DotsThreeOutlineVertical } from "@phosphor-icons/react";
 import { EditModal } from "@components/EditModal/EditModal";
-import { configModalName } from "@constant";
+import { configModalName } from "constant";
 import { useModal } from "@hooks/useModal";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Tag, User } from "@types";
 
 import { GifMenuAction } from "./GifMenuAction";
 import { GifItemTitle, GifUserAvatar } from "./style";
 import { GifMenuActionProps } from "./type";
+import { User } from "types/User";
+import { Tag } from "types/Tag";
 
 interface GifHeaderProps {
   title: string;

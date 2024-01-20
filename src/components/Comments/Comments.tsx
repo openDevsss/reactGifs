@@ -3,7 +3,6 @@ import { PaperPlaneRight } from "@phosphor-icons/react";
 import { useActionWithGifs } from "@hooks/useActionWithGifs";
 import React from "react";
 import { SubmitHandler } from "react-hook-form";
-import type { Comment } from "@types";
 
 import { CreateCommentT } from "../GifItem/service";
 import { GifComment } from "./GifComment";
@@ -16,6 +15,8 @@ import {
   GifInput,
   ListStyle,
 } from "./style";
+import { Comment } from "types/Comment";
+
 type CommentsPropType = {
   comments: Comment[];
   gifId: string;

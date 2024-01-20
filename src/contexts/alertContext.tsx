@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import { createContext, useState } from "react";
 
-import { Message } from "../types";
+import { Message } from "types/Message";
 
 const ALERT_TIME = 5000;
 

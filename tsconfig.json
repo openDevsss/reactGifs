@@ -22,8 +22,6 @@
     "paths": {
       "@components/*": ["components/*"],
       "@features/*": ["features/*"],
-      "@types/*": ["types/*"],
-      "@constant/*": ["constant/*"],
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
       "@layout/*": ["layout/*"],

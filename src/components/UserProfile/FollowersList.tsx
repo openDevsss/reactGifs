@@ -1,7 +1,7 @@
 import { configModalName } from "constant";
 import { useModal } from "@hooks/useModal";
 import { useMemo } from "react";
-import type { Followers } from "@types";
+import type { Followers } from "types/Followers";
 
 import { UserList } from "../UserList/UserList";
 import {

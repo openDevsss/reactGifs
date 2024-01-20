@@ -9,7 +9,7 @@ import { configModalName } from "constant";
 import { useActionWithGifs } from "hooks/useActionWithGifs";
 import { useModal } from "hooks/useModal";
 import { useState } from "react";
-import { Gif } from "types";
+import { Gif } from "types/Gif";
 
 import { Comments } from "../Comments/Comments";
 import { EditModal } from "../EditModal/EditModal";
