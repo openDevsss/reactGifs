@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { gifsKeys } from "utils/gifs-query-key";
 
 import {
   CreateCommentT,
@@ -20,9 +21,8 @@ export function useActionWithGifs() {
     // @ts-ignore
     (gifId: string) => toogleLikeState({ gifId }),
     {
-      onSuccess: () => {
-        // TODO: ДОБАВИТЬ ОБНОВЛЕНИЕ ТОЛЬКО ОДНОЙ ГИФКИ
-        queryClient.invalidateQueries(["gifs"]);
+      onSuccess: ({ data }) => {
+        queryClient.invalidateQueries(gifsKeys.detail(data.like?.gifId));
       },
       refetchOnWindowFocus: false,
     },
@@ -30,7 +30,9 @@ export function useActionWithGifs() {
   const mutation = useMutation(
     (newComment: CreateCommentT) => createComment(newComment),
     {
-      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+      onSuccess: (data) => {
+        queryClient.invalidateQueries(gifsKeys.detail(data.data.id));
+      },
     },
   );
   const {

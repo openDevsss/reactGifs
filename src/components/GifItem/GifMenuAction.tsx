@@ -9,6 +9,7 @@ import { configModalName } from "constant";
 import { useCurrentUser } from "hooks/useCurrentUser";
 import { useMutation, useQueryClient } from "react-query";
 import type { User } from "types";
+import { gifsKeys } from "utils/gifs-query-key";
 
 import { deleteGif } from "./service";
 import { StyledMenuItem } from "./style";
@@ -33,7 +34,7 @@ export function GifMenuAction({
   const { mutate: handleDelete } = useMutation(
     (gifid: string) => deleteGif(gifid),
     {
-      onSuccess: () => queryClient.invalidateQueries(["gifs"]),
+      onSuccess: () => queryClient.invalidateQueries(gifsKeys.all),
     },
   );
   const currentUser = useCurrentUser();

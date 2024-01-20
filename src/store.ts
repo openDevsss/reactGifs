@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import * as api from "./config";
 import { userReducer } from "./features/users/users-slice";
-import { axiosInstance } from "./utils/axiosInstance";
+import { axiosInstance } from "./utils/axios-instance";
 
 export const store = configureStore({
   reducer: {

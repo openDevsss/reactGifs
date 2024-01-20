@@ -1,5 +1,5 @@
 import { Gif } from "../../types/Gif";
-import { axiosInstance } from "../../utils/axiosInstance";
+import { axiosInstance } from "../../utils/axios-instance";
 
 type DtoEditGif = {
   id: string;
