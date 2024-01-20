@@ -4,6 +4,7 @@ import { EditModal } from "components/EditModal/EditModal";
 import { configModalName } from "constant";
 import { useModal } from "hooks/useModal";
 import React from "react";
+import { Link } from "react-router-dom";
 import { Tag, User } from "types";
 
 import { GifMenuAction } from "./GifMenuAction";
@@ -40,7 +41,9 @@ export const GifHeader = ({
       alignItems="center"
     >
       <Box display="flex" gap="15px">
-        <GifUserAvatar src={user?.avatar} />
+        <Link to={`/profile/${user?.id}`}>
+          <GifUserAvatar src={user?.avatar} />
+        </Link>
         <GifItemTitle>{title}</GifItemTitle>
       </Box>
       <IconButton onClick={handleClick}>

@@ -8,12 +8,17 @@ import { EmptyGifs } from "../EmptyGifs/EmptyGifs";
 import { FollowersList } from "./FollowersList";
 import { useGetUserInformation } from "./hooks/useGetUserInformation";
 import { MainInformation } from "./MainInformation";
-import { StyledButton } from "./style";
+import { StyledAddButton } from "./style";
 import { UserProfileGifs } from "./UserProfileGif";
 
 export const UserProfile = () => {
   const { id } = useParams();
-  const { data: user, refetch, isFetching } = useGetUserInformation(id);
+  const {
+    data: user,
+    refetch,
+    isFetching,
+    isLoading,
+  } = useGetUserInformation(id);
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
   useEffect(() => {
@@ -22,7 +27,7 @@ export const UserProfile = () => {
 
   return (
     <>
-      {!user ? (
+      {!user && !isLoading ? (
         navigate(-1)
       ) : (
         <>
@@ -38,12 +43,13 @@ export const UserProfile = () => {
                   followers={user.followers}
                   following={user.following}
                   id={user.id}
+                  currentUser={currentUser}
                 />
                 <Box gridArea="userGifs" width="100%" m="0 auto">
                   {currentUser?.id === user.id && (
                     <>
                       <Link to="/gif-add">
-                        <StyledButton>+</StyledButton>
+                        <StyledAddButton>+</StyledAddButton>
                       </Link>
                       {!user.gifs.length ? (
                         <EmptyGifs message="Looks like there are no GIFs to showcase. Time to add some!" />

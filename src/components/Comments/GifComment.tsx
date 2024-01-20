@@ -1,4 +1,5 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
+import { Link } from "react-router-dom";
 import type { User } from "types";
 
 type CommentGif = {
@@ -15,8 +16,10 @@ export function GifComment({ comment_text, user }: CommentGif) {
         paddingRight: 0,
       }}
     >
-      <ListItemAvatar>
-        <Avatar alt="avatar" src={user?.avatar} />
+      <ListItemAvatar sx={{ minWidth: "40px", mr: "16px" }}>
+        <Link to={`/profile/${user?.id}`}>
+          <Avatar alt="avatar" src={user?.avatar} />
+        </Link>
       </ListItemAvatar>
       <ListItemText
         sx={{
