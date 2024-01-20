@@ -1,10 +1,10 @@
-import { useGetTags } from "components/AddGif/hooks/useGetTags";
-import { configModalName } from "constant";
-import { useModal } from "hooks/useModal";
+import { useGetTags } from "@components/AddGif/hooks/useGetTags";
+import { configModalName } from "@constant";
+import { useModal } from "@hooks/useModal";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import { Tag } from "types";
+import { Tag } from "@types";
 
 import { editGif } from "./service";
 import { DtoEditModal } from "./types";

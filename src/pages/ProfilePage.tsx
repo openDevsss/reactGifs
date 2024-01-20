@@ -1,5 +1,5 @@
-import { UserProfile } from "../components/UserProfile/UserProfile";
-import { ProfileLayout } from "../layout/ProfileLayout";
+import { UserProfile } from "@components/UserProfile/UserProfile";
+import { ProfileLayout } from "@layout/ProfileLayout";
 
 export function ProfilePage() {
   return (

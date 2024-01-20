@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-import { Tag } from "../../types/Tag";
+import { Tag } from "@types/Tag";
 import {
   ErrorMessageEditModal,
   StyledList,

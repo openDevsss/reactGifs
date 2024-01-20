@@ -1,9 +1,9 @@
 import { Divider, IconButton, InputAdornment, List } from "@mui/material";
 import { PaperPlaneRight } from "@phosphor-icons/react";
-import { useActionWithGifs } from "hooks/useActionWithGifs";
+import { useActionWithGifs } from "@hooks/useActionWithGifs";
 import React from "react";
 import { SubmitHandler } from "react-hook-form";
-import { Comment } from "types";
+import type { Comment } from "@types";
 
 import { CreateCommentT } from "../GifItem/service";
 import { GifComment } from "./GifComment";

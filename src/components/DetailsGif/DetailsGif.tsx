@@ -2,7 +2,7 @@ import { ArrowLeft } from "@phosphor-icons/react";
 import { SkeletonGif } from "components/Skeleton/SkeletonGif";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import { GifItem } from "../GifItem/GifItem";
+import { GifItem } from "@components/GifItem/GifItem";
 import { useGetGifById } from "./hook/useGetGifById";
 import { ButtonBack } from "./style";
 

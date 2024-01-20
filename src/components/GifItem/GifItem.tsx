@@ -1,9 +1,9 @@
 /* eslint-disable indent */
 import { Box, useMediaQuery } from "@mui/material";
-import { useActionWithGifs } from "hooks/useActionWithGifs";
+import { useActionWithGifs } from "@hooks/useActionWithGifs";
 import { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
-import type { Gif } from "types";
+import type { Gif } from "@types";
 
 import { GifComment } from "./GifComment";
 import { GifFooter } from "./GifFooter";

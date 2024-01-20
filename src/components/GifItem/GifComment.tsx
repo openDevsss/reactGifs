@@ -4,9 +4,9 @@ import {
   LinkSimple,
   ShareNetwork,
 } from "@phosphor-icons/react";
-import { Comments } from "components/Comments/Comments";
-import { useModal } from "hooks/useModal";
-import { Comment, User } from "types";
+import { Comments } from "@components/Comments/Comments";
+import { useModal } from "@hooks/useModal";
+import { Comment, User } from "@types";
 
 import { GifMenuAction } from "./GifMenuAction";
 import {

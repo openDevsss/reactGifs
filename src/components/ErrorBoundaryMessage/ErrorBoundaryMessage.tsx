@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Container, Typography } from "@mui/material";
-import { ReactComponent as ErrorImage } from "images/ErrorImage.svg";
+import ErrorImage from "@images/ErrorImage.svg";
 import { Link } from "react-router-dom";
 
 const StyledTitle = styled(Typography)`

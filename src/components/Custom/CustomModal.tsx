@@ -1,7 +1,7 @@
 import { Modal, ModalProps } from "@mui/material";
 import React from "react";
 
-import { StyledWtapperIntoModal } from "../UserList/style";
+import { StyledWtapperIntoModal } from "@components/UserList/style";
 
 interface CustomModalProps extends ModalProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;

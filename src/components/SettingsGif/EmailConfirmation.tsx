@@ -1,7 +1,7 @@
 import { configModalName } from "constant";
-import { useModal } from "hooks/useModal";
+import { useModal } from "@hooks/useModal";
 
-import { ConfirmationPopup } from "../ConfirmationPopup/ConfirmationPopup";
+import { ConfirmationPopup } from "@components/ConfirmationPopup/ConfirmationPopup";
 import {
   ConfirmEmailDescription,
   ConfirmEmailPanelButton,

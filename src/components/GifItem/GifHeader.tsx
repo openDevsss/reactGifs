@@ -1,11 +1,11 @@
 import { Box, IconButton } from "@mui/material";
 import { DotsThreeOutlineVertical } from "@phosphor-icons/react";
-import { EditModal } from "components/EditModal/EditModal";
-import { configModalName } from "constant";
-import { useModal } from "hooks/useModal";
+import { EditModal } from "@components/EditModal/EditModal";
+import { configModalName } from "@constant";
+import { useModal } from "@hooks/useModal";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Tag, User } from "types";
+import { Tag, User } from "@types";
 
 import { GifMenuAction } from "./GifMenuAction";
 import { GifItemTitle, GifUserAvatar } from "./style";
