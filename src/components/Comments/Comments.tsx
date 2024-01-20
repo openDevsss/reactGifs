@@ -26,10 +26,11 @@ export function Comments({
   gifId,
   isCommentsOpen,
 }: CommentsPropType) {
-  const { register, handleSubmit, errors, mutation } = useActionWithGifs();
+  const { register, handleSubmit, errors, handleCreateComment } =
+    useActionWithGifs();
   const onSubmit: SubmitHandler<CreateCommentT> = (data, event) => {
     data.gifId = gifId;
-    mutation.mutate(data);
+    handleCreateComment(data);
     event?.target.reset();
   };
 

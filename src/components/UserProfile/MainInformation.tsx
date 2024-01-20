@@ -68,7 +68,6 @@ export function MainInformation({
             {userId === currentUser?.id && <MainInformationSettings />}
           </MainInfoMail>
         </div>
-
         <Box
           display="flex"
           flexDirection="column"

@@ -14,7 +14,7 @@ interface GifFooterProps {
   viewers: Gif["viewers"];
   isCommentsOpen: boolean;
   comments: Comment[];
-  setIsCommentsOpen: (flag: boolean) => void;
+  setIsCommentsOpen?: (flag: boolean) => void;
 }
 
 export const GifFooter = ({
@@ -48,7 +48,11 @@ export const GifFooter = ({
           />
         )}
         <StyledWrapperIconGif
-          onClick={() => setIsCommentsOpen(!isCommentsOpen)}
+          onClick={() => {
+            if (Boolean(setIsCommentsOpen)) {
+              setIsCommentsOpen(!isCommentsOpen);
+            }
+          }}
         >
           <Chat size="24" weight="thin" cursor="pointer" />
           {Boolean(comments?.length) && (

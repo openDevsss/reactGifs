@@ -15,23 +15,20 @@ export function useActionWithGifs() {
 
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  // TODO: TYPE
-  // @ts-ignore
-  const { mutate: handleToggleLike } = useMutation(
-    // @ts-ignore
+
+  const { mutate: handleToggleLikeGif } = useMutation(
     (gifId: string) => toogleLikeState({ gifId }),
     {
-      onSuccess: ({ data }) => {
-        queryClient.invalidateQueries(gifsKeys.detail(data.like?.gifId));
+      onSuccess: () => {
+        queryClient.invalidateQueries(gifsKeys.all);
       },
-      refetchOnWindowFocus: false,
     },
   );
-  const mutation = useMutation(
+  const { mutate: handleCreateComment } = useMutation(
     (newComment: CreateCommentT) => createComment(newComment),
     {
-      onSuccess: (data) => {
-        queryClient.invalidateQueries(gifsKeys.detail(data.data.id));
+      onSuccess: () => {
+        queryClient.invalidateQueries(gifsKeys.all);
       },
     },
   );
@@ -42,8 +39,8 @@ export function useActionWithGifs() {
   } = useForm<CreateCommentT>();
 
   return {
-    handleToggleLike,
-    mutation,
+    handleToggleLikeGif,
+    handleCreateComment,
     register,
     handleSubmit,
     errors,

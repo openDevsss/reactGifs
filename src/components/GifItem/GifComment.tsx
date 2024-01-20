@@ -89,7 +89,6 @@ export const GifComment = ({
             </GifMenuItem>
           </GifHeadInformation>
         )}
-
         <GifDescription>{description}</GifDescription>
       </div>
       <Comments

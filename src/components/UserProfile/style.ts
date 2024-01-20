@@ -285,7 +285,7 @@ export const StyledFollowButton = styled(Button)`
   color: #ffffff;
   background-color: #5f3db5;
   &:hover {
-    background-color: #fff;
+    background-color: #ffffff;
     color: #5f3db5;
     box-shadow: rgba(95, 61, 181, 0.3) 0px 1px 20px 0px;
     transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
@@ -297,8 +297,8 @@ export const StyledUnfollowButton = styled(Button)`
   color: #5f3db5;
   background-color: #ffffff;
   &:hover {
-    background-color: #ffffff;
-    color: #5f3db5;
+    background-color: #5f3db5;
+    color: #ffffff;
     box-shadow: rgba(95, 61, 181, 0.3) 0px 1px 20px 0px;
     transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
   }

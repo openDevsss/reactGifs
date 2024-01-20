@@ -1,10 +1,10 @@
 /* eslint-disable indent */
 import { Box, Tooltip, Typography } from "@mui/material";
 import { HeartStraight } from "@phosphor-icons/react";
-import { memo } from "react";
 import { configModalName } from "constant";
 import { useActionWithGifs } from "hooks/useActionWithGifs";
 import { useCurrentUser } from "hooks/useCurrentUser";
+import { memo } from "react";
 import { Like } from "types";
 
 import { GifUserAvatar, StyledWrapperIconHeart } from "../GifItem/style";
@@ -21,7 +21,7 @@ export const LikeTooltip = memo(function LikeTooltip({
   setIsOpenUserList,
 }: LikeTooltipProp) {
   const currentUser = useCurrentUser();
-  const { handleToggleLike } = useActionWithGifs();
+  const { handleToggleLikeGif } = useActionWithGifs();
   const gifIsLiked = likes?.some((like) => like?.user.id === currentUser?.id);
 
   return (
@@ -61,14 +61,14 @@ export const LikeTooltip = memo(function LikeTooltip({
             color="#e05151"
             weight="fill"
             cursor="pointer"
-            onClick={() => handleToggleLike(gifId)}
+            onClick={() => handleToggleLikeGif(gifId)}
           />
         ) : (
           <HeartStraight
             size="24"
             weight="thin"
             cursor="pointer"
-            onClick={() => handleToggleLike(gifId)}
+            onClick={() => handleToggleLikeGif(gifId)}
           />
         )}
         {Boolean(likes?.length) && <Typography>{likes?.length}</Typography>}
