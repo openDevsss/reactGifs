@@ -22,6 +22,7 @@ type CommentsPropType = {
   gifId: string;
   isCommentsOpen: boolean;
 };
+
 export function Comments({
   comments,
   gifId,

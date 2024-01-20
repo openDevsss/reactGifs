@@ -19,6 +19,7 @@ import {
 } from "./style";
 import { GifMenuActionProps } from "./type";
 import { User } from "types/User";
+import { Comment } from "types/Comment";
 
 interface GifCommentProps {
   isWideScreen: boolean;
