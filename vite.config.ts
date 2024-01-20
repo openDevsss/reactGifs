@@ -20,7 +20,7 @@ export default defineConfig({
   plugins: [react(), viteTsconfigPaths()],
   server: {
     open: true,
-    port: 3001,
+    port: 3000,
   },
   resolve: {
     alias: aliases.map((alias) => ({
