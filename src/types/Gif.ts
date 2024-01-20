@@ -1,3 +1,4 @@
+import { Comment } from "./Comment";
 import { Like } from "./Like";
 import { Tag } from "./Tag";
 import { User } from "./User";

@@ -3,12 +3,12 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useActionWithGifs } from "@hooks/useActionWithGifs";
 import { useCallback, useState } from "react";
 import { useLocation } from "react-router-dom";
-import type { Gif } from "@types";
 
 import { GifComment } from "./GifComment";
 import { GifFooter } from "./GifFooter";
 import { GifHeader } from "./GifHeader";
 import { GifAnimation, GifItemWrapper } from "./style";
+import { Gif } from "types/Gif";
 
 export function GifItem({
   title,
