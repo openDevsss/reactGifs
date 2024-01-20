@@ -37,6 +37,7 @@ export function GifItem({
     if (location.pathname !== `/gif/${gifId}`) navigate(`/gif/${gifId}`);
   };
   const isWideScreen = useMediaQuery("(min-width:1200px)");
+
   return (
     <GifItemWrapper isCommentsOpen={isCommentsOpen}>
       <Box maxWidth="600px" width="100%">

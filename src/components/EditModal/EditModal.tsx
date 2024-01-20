@@ -32,7 +32,7 @@ export const EditModal = ({
   const { register, handleSubmit, errors, tags, onSubmit, handleCheckbox } =
     useEditModal(gifTags, id, handleClose);
   return (
-    <div>
+    <>
       <Modal open={open} onClose={() => handleClose(configModalName.edit)}>
         <EditPopupWrapper onSubmit={handleSubmit(onSubmit)}>
           <EditPopupTitle>Edit</EditPopupTitle>
@@ -109,6 +109,6 @@ export const EditModal = ({
           <EditPopupButton type="submit">Confirm</EditPopupButton>
         </EditPopupWrapper>
       </Modal>
-    </div>
+    </>
   );
 };
