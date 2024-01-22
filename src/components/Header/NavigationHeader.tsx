@@ -1,8 +1,10 @@
 import { IconButton, Tooltip } from "@mui/material";
-import { Link } from "react-router-dom";
 import { List, SignOut } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
 import { HeaderBellIcon } from "./HeaderBellIcon";
+import { HeaderMenu } from "./HeaderMenu";
+import { useHeader } from "./hooks/useHeader";
 import {
   MyProfileWrapper,
   NavigationHeaderWrapper,
@@ -10,8 +12,6 @@ import {
   ProfileName,
   WrapperIcon,
 } from "./style";
-import { HeaderMenu } from "./HeaderMenu";
-import { useHeader } from "./hooks/useHeader";
 
 export const NavigationHeader = () => {
   const {
@@ -82,7 +82,7 @@ export const NavigationHeader = () => {
           )}
         </NavigationHeaderWrapper>
       ) : (
-        <>
+        <div>
           <NavigationHeaderWrapper>
             <Tooltip
               title="Notification"
@@ -110,7 +110,7 @@ export const NavigationHeader = () => {
             isOpen={isOpen}
             handleLogout={handleLogout}
           />
-        </>
+        </div>
       )}
     </div>
   );

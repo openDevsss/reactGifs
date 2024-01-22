@@ -1,7 +1,7 @@
+import { useCurrentUser } from "@hooks/useCurrentUser";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
 import { GearSix, Moon, SignOut, UserCircle } from "@phosphor-icons/react";
-import { useCurrentUser } from "@hooks/useCurrentUser";
 
 import { MenuItemLink, StyledMenuItem } from "./style";
 
@@ -51,7 +51,7 @@ export function HeaderMenu({
       transformOrigin={{ horizontal: "right", vertical: "top" }}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
-      <>
+      <div>
         <MenuItemLink to={`/profile/${currentUser?.id}`}>
           <StyledMenuItem>
             <ListItemIcon>
@@ -82,7 +82,7 @@ export function HeaderMenu({
             Logout
           </StyledMenuItem>
         </MenuItemLink>
-      </>
+      </div>
     </Menu>
   );
 }

@@ -1,13 +1,14 @@
-import { Box, Typography } from "@mui/material";
-import { Chat, Eye, ShareFat } from "@phosphor-icons/react";
 import { LikeTooltip } from "@components/LikeTooltip/LikeTooltip";
 import { UserList } from "@components/UserList/UserList";
-import { configModalName } from "constant";
 import { useModal } from "@hooks/useModal";
+import { Box, Typography } from "@mui/material";
+import { Chat, Eye, ShareFat } from "@phosphor-icons/react";
+import { configModalName } from "constant";
 
-import { StyledWrapperIconGif } from "./style";
-import { Like } from "types/Like";
+import { Comment } from "types/Comment";
 import { Gif } from "types/Gif";
+import { Like } from "types/Like";
+import { StyledWrapperIconGif } from "./style";
 
 interface GifFooterProps {
   gifId: string;

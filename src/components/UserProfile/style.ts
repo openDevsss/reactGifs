@@ -280,26 +280,26 @@ export const EmptyGifsMessage = styled.p`
   text-align: center;
 `;
 export const StyledFollowButton = styled(Button)`
-  border-radius: 20px;
-  padding: 5px 20px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 6px 20px;
   color: #ffffff;
   background-color: #5f3db5;
   &:hover {
-    background-color: #fff;
-    color: #5f3db5;
-    box-shadow: rgba(95, 61, 181, 0.3) 0px 1px 20px 0px;
-    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    background-color: hsl(250, 40%, 40%);
+    color: #ffffff;
+    transition: background-color 0.6s;
   }
 `;
 export const StyledUnfollowButton = styled(Button)`
-  border-radius: 20px;
+  width: 100%;
+  border-radius: 8px;
   padding: 5px 20px;
-  color: #5f3db5;
+  color: #f00000;
   background-color: #ffffff;
+  border: 1px solid #f00000;
   &:hover {
+    color: #f00000;
     background-color: #ffffff;
-    color: #5f3db5;
-    box-shadow: rgba(95, 61, 181, 0.3) 0px 1px 20px 0px;
-    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
   }
 `;
