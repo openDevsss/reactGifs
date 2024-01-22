@@ -3,7 +3,7 @@ import { Box, Button, Tab, Tabs, TextField, Typography } from "@mui/material";
 
 import { CustomTabPanel } from "../Custom/CustomTabPanel";
 
-export const WrapperSettingsGif = styled(Box)`
+export const WrapperProfileSettings = styled(Box)`
   padding: 50px 20px 20px 20px;
   display: flex;
 `;

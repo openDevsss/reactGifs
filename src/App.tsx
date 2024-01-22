@@ -6,7 +6,7 @@ import { AlertPopup } from "./components/AlertPopup/AlertPopup";
 import { Login } from "./components/Auth/Login/Login";
 import { Registration } from "./components/Auth/Registration/Registration";
 import { PageLayout } from "./components/PageLayout/PageLayout";
-import { SettingsGif } from "./components/SettingsGif/SettingsGif";
+import { ProfileSettings } from "./components/ProfileSettings/ProfileSettings";
 import { checkAuth } from "./features/users/users-slice";
 import {
   DetailsGifPage,
@@ -32,7 +32,7 @@ export function App() {
             <Route element={<RecommendationsPage />} path="/recommendations" />
             <Route element={<DetailsGifPage />} path="/gif/:id" />
             <Route element={<ProfilePage />} path={"/profile/:id"} />
-            <Route element={<SettingsGif />} path="/settings" />
+            <Route element={<ProfileSettings />} path="/settings" />
             <Route element={<AddGif />} path="gif-add" />
           </Route>
           <Route element={<Registration />} path="/sign-up" />
