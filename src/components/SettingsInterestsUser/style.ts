@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Chip, Modal, Paper } from "@mui/material";
+import { Box, Chip, Modal, Paper, StepLabel, TextField } from "@mui/material";
 
 export const StyledModal = styled(Modal)`
   display: flex;
@@ -42,4 +42,78 @@ export const StyledWrapperGif = styled(Box)`
 export const StyledChipTitle = styled(Chip)`
   padding: 20px;
   cursor: pointer;
+`;
+
+export const StyledWrapperTextField = styled(Box)`
+  width: 100%;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
+export const WrapperForTextFieldAndLabel = styled.div`
+  width: 40%;
+  flex-grow: 1;
+`;
+
+export const StyledTextField = styled(TextField)`
+  width: 100%;
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 7px;
+    border: #000000;
+    color: #000000;
+  }
+
+  & .MuiOutlinedInput-root {
+    & fieldset {
+      border-color: #808080;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #6765f2;
+      border-width: 2px;
+    }
+  }
+`;
+
+export const StyledTextArea = styled(TextField)`
+  width: 100%;
+  align-self: flex-start;
+  & .MuiOutlinedInput-root {
+    & fieldset {
+      border-color: #808080;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #808080;
+      border-width: 1px;
+    }
+    &.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
+      padding: 10px;
+      height: auto;
+      min-height: 160px;
+    }
+    & fieldset {
+      border-color: #808080;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: #6765f2;
+      border-width: 2px;
+    }
+  }
+`;
+
+export const StyledStepLabel = styled(StepLabel)`
+  .MuiStepLabel-label {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  &.Mui-focused fieldset {
+    border-color: #6765f2;
+    border-width: 2px;
+  }
 `;

@@ -1,7 +1,7 @@
 import { Modal } from "@mui/material";
 import { EnvelopeOpen, X as CloseIcon } from "@phosphor-icons/react";
 import VerificationInput from "react-verification-input";
-import { useCurrentUser } from "hooks/useCurrentUser";
+import { useCurrentUser } from "@hooks/useCurrentUser";
 
 import {
   PopupButton,

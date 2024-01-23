@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 
-import { ProfileTab } from "../UserProfile/style";
+import { ProfileTab } from "@components/UserProfile/style";
 
 const theme = createTheme({
   components: {

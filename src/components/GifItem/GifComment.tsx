@@ -4,9 +4,10 @@ import {
   LinkSimple,
   ShareNetwork,
 } from "@phosphor-icons/react";
-import { User, Comment } from "types";
-import { Comments } from "components/Comments/Comments";
+import { Comments } from "@components/Comments/Comments";
+import { useModal } from "@hooks/useModal";
 
+import { GifMenuAction } from "./GifMenuAction";
 import {
   ContainerGif,
   GifDescription,
@@ -16,8 +17,9 @@ import {
   GifUserInformation,
   GifUserNickname,
 } from "./style";
-import { GifMenuAction } from "./GifMenuAction";
 import { GifMenuActionProps } from "./type";
+import { User } from "types/User";
+import { Comment } from "types/Comment";
 
 interface GifCommentProps {
   isWideScreen: boolean;
@@ -42,60 +44,60 @@ export const GifComment = ({
   handleClose,
   isOpen,
 }: CombinedProps) => {
+  const { toggleModal } = useModal();
   return (
     <ContainerGif>
-      <>
-        <div>
-          {Boolean(isWideScreen) && (
-            <GifHeadInformation>
-              <GifUserInformation>
-                <GifUserAvatar src={user.avatar} />
-                <GifUserNickname>{user.nickname}</GifUserNickname>
-              </GifUserInformation>
-              <GifMenuItem>
-                <IconButton>
-                  <ShareNetwork
-                    size={17}
-                    weight="fill"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
-                </IconButton>
-                <IconButton>
-                  <LinkSimple
-                    size={17}
-                    weight="bold"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
-                </IconButton>
-                <IconButton onClick={handleClick}>
-                  <DotsThreeOutlineVertical
-                    size={17}
-                    weight="fill"
-                    color="#6F4FF2"
-                    cursor="pointer"
-                  />
-                </IconButton>
-                <GifMenuAction
-                  gifId={gifId}
-                  authorId={user?.id}
-                  anchorEl={anchorEl}
-                  handleClose={handleClose}
-                  isOpen={isOpen}
+      <div>
+        {Boolean(isWideScreen) && (
+          <GifHeadInformation>
+            <GifUserInformation>
+              <GifUserAvatar src={user.avatar} />
+              <GifUserNickname>{user.nickname}</GifUserNickname>
+            </GifUserInformation>
+            <GifMenuItem>
+              <IconButton>
+                <ShareNetwork
+                  size={17}
+                  weight="fill"
+                  color="#6F4FF2"
+                  cursor="pointer"
                 />
-              </GifMenuItem>
-            </GifHeadInformation>
-          )}
+              </IconButton>
+              <IconButton>
+                <LinkSimple
+                  size={17}
+                  weight="bold"
+                  color="#6F4FF2"
+                  cursor="pointer"
+                />
+              </IconButton>
+              <IconButton onClick={handleClick}>
+                <DotsThreeOutlineVertical
+                  size={17}
+                  weight="fill"
+                  color="#6F4FF2"
+                  cursor="pointer"
+                />
+              </IconButton>
+              <GifMenuAction
+                gifId={gifId}
+                authorId={user?.id}
+                anchorEl={anchorEl}
+                handleClose={handleClose}
+                isOpen={isOpen}
+                setIsOpenEditModal={toggleModal}
+              />
+            </GifMenuItem>
+          </GifHeadInformation>
+        )}
 
-          <GifDescription>{description}</GifDescription>
-        </div>
-        <Comments
-          isCommentsOpen={isCommentsOpen}
-          comments={comments}
-          gifId={gifId}
-        />
-      </>
+        <GifDescription>{description}</GifDescription>
+      </div>
+      <Comments
+        isCommentsOpen={isCommentsOpen}
+        comments={comments}
+        gifId={gifId}
+      />
     </ContainerGif>
   );
 };

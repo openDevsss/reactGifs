@@ -3,9 +3,9 @@ import { Box, Tooltip, Typography } from "@mui/material";
 import { HeartStraight } from "@phosphor-icons/react";
 import { memo } from "react";
 import { configModalName } from "constant";
-import { useActionWithGifs } from "hooks/useActionWithGifs";
-import { useCurrentUser } from "hooks/useCurrentUser";
-import { Like } from "types";
+import { useActionWithGifs } from "@hooks/useActionWithGifs";
+import { useCurrentUser } from "@hooks/useCurrentUser";
+import { Like } from "types/Like";
 
 import { GifUserAvatar, StyledWrapperIconHeart } from "../GifItem/style";
 

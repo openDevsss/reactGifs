@@ -1,3 +1,3 @@
 import { RootState } from "../../store";
 
-export const selectorTags = (state: RootState) => state.tags.tags;
+export const selectTags = (state: RootState) => state.tags.tags;

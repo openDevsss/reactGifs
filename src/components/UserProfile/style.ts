@@ -56,6 +56,7 @@ export const MainInfoWrapper = styled.div`
     justify-content: space-between;
     height: 100px;
     align-items: center;
+    border-radius: 48px;
   }
 `;
 export const MainInfoAvatar = styled.img`
@@ -67,7 +68,7 @@ export const MainInfoAvatar = styled.img`
   @media (max-width: 488px) {
     height: 100px;
     width: 100px;
-    border-radius: 50%;
+    border-radius: 48px;
   }
 `;
 export const PersonalInfoWrapper = styled.div`
@@ -167,9 +168,9 @@ export const UserGif = styled.img`
     height: 400px;
   }
   @media screen and (max-width: 768px) {
-    height: 250px;
+    height: 350px;
   }
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     height: 200px;
   }
 `;
@@ -256,7 +257,7 @@ export const ProfileTab = styled(Tab)`
   color: #000 !important;
   background-color: transparent;
 `;
-export const StyledButton = styled(Button)`
+export const StyledAddButton = styled(Button)`
   margin: 0 auto;
   width: 100%;
   font-size: 25px;
@@ -277,4 +278,28 @@ export const EmptyGifsMessage = styled.p`
   margin-top: 20px;
   font-size: 20px;
   text-align: center;
+`;
+export const StyledFollowButton = styled(Button)`
+  border-radius: 20px;
+  padding: 5px 20px;
+  color: #ffffff;
+  background-color: #5f3db5;
+  &:hover {
+    background-color: #fff;
+    color: #5f3db5;
+    box-shadow: rgba(95, 61, 181, 0.3) 0px 1px 20px 0px;
+    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+  }
+`;
+export const StyledUnfollowButton = styled(Button)`
+  border-radius: 20px;
+  padding: 5px 20px;
+  color: #5f3db5;
+  background-color: #ffffff;
+  &:hover {
+    background-color: #ffffff;
+    color: #5f3db5;
+    box-shadow: rgba(95, 61, 181, 0.3) 0px 1px 20px 0px;
+    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+  }
 `;

@@ -1,6 +1,6 @@
 import { Button, Divider } from "@mui/material";
 
-import { Hashtag } from "../Hashtag/Hashtag";
+import { Hashtag } from "@components/Hashtag/Hashtag";
 import { useAddGif } from "./hooks/useAddGif";
 import {
   AddGifItem,
@@ -86,8 +86,8 @@ export function AddGif() {
                   message: "Min length 3 symbols",
                 },
                 maxLength: {
-                  value: 25,
-                  message: "Max length 25 symbols",
+                  value: 40,
+                  message: "Max length 40 symbols",
                 },
               })}
               label="Title"
@@ -104,8 +104,12 @@ export function AddGif() {
                   message: "This field cannot be empty",
                 },
                 minLength: {
-                  value: 5,
-                  message: "Min length 5 symbols",
+                  value: 3,
+                  message: "Min length 3 symbols",
+                },
+                maxLength: {
+                  value: 80,
+                  message: "Max length 80 symbols",
                 },
               })}
               label="Description"

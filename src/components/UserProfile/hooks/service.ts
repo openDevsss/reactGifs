@@ -1,4 +1,4 @@
-import type { User } from "types";
+import { User } from "types/User";
 import { axiosInstance } from "utils/axiosInstance";
 
 export const GetUserGifs = (id: string): Promise<{ user: User }> =>

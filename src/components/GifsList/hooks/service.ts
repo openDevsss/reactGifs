@@ -1,4 +1,4 @@
-import type { Gif } from "types";
+import { Gif } from "types/Gif";
 import { axiosInstance } from "utils/axiosInstance";
 
 type GetGifData = {

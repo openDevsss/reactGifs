@@ -1,15 +1,22 @@
 import { Box, IconButton } from "@mui/material";
-import React from "react";
 import { DotsThreeOutlineVertical } from "@phosphor-icons/react";
-import { User } from "types";
+import { EditModal } from "@components/EditModal/EditModal";
+import { configModalName } from "constant";
+import { useModal } from "@hooks/useModal";
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { GifItemTitle, GifUserAvatar } from "./style";
 import { GifMenuAction } from "./GifMenuAction";
+import { GifItemTitle, GifUserAvatar } from "./style";
 import { GifMenuActionProps } from "./type";
+import { User } from "types/User";
+import { Tag } from "types/Tag";
 
 interface GifHeaderProps {
   title: string;
   user: User;
+  tags: Tag[];
+  description: string;
   handleClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
 type CombinedProps = GifHeaderProps & GifMenuActionProps;
@@ -22,7 +29,11 @@ export const GifHeader = ({
   isOpen,
   title,
   user,
+  tags,
+  description,
 }: CombinedProps) => {
+  const { modals, toggleModal } = useModal();
+
   return (
     <Box
       justifyContent="space-between"
@@ -31,7 +42,9 @@ export const GifHeader = ({
       alignItems="center"
     >
       <Box display="flex" gap="15px">
-        <GifUserAvatar src={user?.avatar} />
+        <Link to={`/profile/${user?.id}`}>
+          <GifUserAvatar src={user?.avatar} />
+        </Link>
         <GifItemTitle>{title}</GifItemTitle>
       </Box>
       <IconButton onClick={handleClick}>
@@ -48,7 +61,18 @@ export const GifHeader = ({
         anchorEl={anchorEl}
         handleClose={handleClose}
         isOpen={isOpen}
+        setIsOpenEditModal={toggleModal}
       />
+      {Boolean(modals[configModalName.edit]) && (
+        <EditModal
+          open={Boolean(modals[configModalName.edit])}
+          title={title}
+          description={description}
+          gifTags={tags}
+          id={gifId}
+          handleClose={toggleModal}
+        />
+      )}
     </Box>
   );
 };

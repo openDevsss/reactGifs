@@ -13,24 +13,22 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "jsxImportSource": "react",
     "noEmit": true,
     "jsx": "react-jsx",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@constant/*": ["src/constant/*"],
-      "@context/*": ["src/context/*"],
-      "@features/*": ["src/features/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@types/*": ["src/types/*"],
-      "@layout/*": ["src/layout/*"],
-      "@pages/*": ["src/pages/*"],
-      "@utils/*": ["src/utils/*"],
-      "@vendor/*": ["src/vendor/*"],
-      "@images/*": ["src/images/*"]
+      "@components/*": ["components/*"],
+      "@features/*": ["features/*"],
+      "@context/*": ["context/*"],
+      "@hooks/*": ["hooks/*"],
+      "@layout/*": ["layout/*"],
+      "@images/*": ["images/*"],
+      "@utlis/*": ["utlis/*"],
+      "@pages/*": ["pages/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "custom.d.ts"]
 }

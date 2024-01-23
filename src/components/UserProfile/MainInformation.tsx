@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
 import { Gear } from "@phosphor-icons/react";
+import { subscribToUser, unSubscribToUser } from "features/users/users-slice";
 import { Link } from "react-router-dom";
-import { useCurrentUser } from "hooks/useCurrentUser";
-import type { User } from "types";
+import { useAppDispatch } from "redux-toolkit";
+import type { User } from "types/User";
 
 import {
   MainInfoAvatar,
@@ -11,13 +12,15 @@ import {
   MainInfoName,
   MainInfoWrapper,
   PersonalInfoWrapper,
+  StyledFollowButton,
   StyledNumber,
+  StyledUnfollowButton,
 } from "./style";
 
 type MainInfoProps = Pick<
   User,
   "avatar" | "email" | "followers" | "following" | "nickname" | "id"
->;
+> & { currentUser: User };
 
 function MainInformationSettings() {
   return (
@@ -32,6 +35,7 @@ function MainInformationSettings() {
     </Link>
   );
 }
+
 export function MainInformation({
   nickname,
   avatar,
@@ -39,8 +43,20 @@ export function MainInformation({
   followers,
   following,
   id: userId,
+  currentUser,
 }: MainInfoProps) {
-  const currentUser = useCurrentUser();
+  const isFollowing = currentUser?.following.some(
+    ({ followeeId }) => followeeId === userId,
+  );
+
+  const dispatch = useAppDispatch();
+  const handleSubscribe = () => {
+    dispatch(subscribToUser(userId));
+  };
+  const handleUnSubscribe = () => {
+    dispatch(unSubscribToUser(userId));
+  };
+
   return (
     <MainInfoWrapper>
       <MainInfoAvatar src={avatar} />
@@ -53,13 +69,34 @@ export function MainInformation({
           </MainInfoMail>
         </div>
 
-        <Box display="flex" alignItems="center" gap="20px" marginTop="10px">
-          <MainInfoFollow>
-            followers: <StyledNumber>{followers?.length}</StyledNumber>
-          </MainInfoFollow>
-          <MainInfoFollow>
-            following: <StyledNumber>{following?.length}</StyledNumber>
-          </MainInfoFollow>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="10px"
+          marginTop="10px"
+          width="fit-content"
+        >
+          <Box display="flex" alignItems="center" gap="20px">
+            <MainInfoFollow>
+              followers: <StyledNumber>{followers?.length}</StyledNumber>
+            </MainInfoFollow>
+            <MainInfoFollow>
+              following: <StyledNumber>{following?.length}</StyledNumber>
+            </MainInfoFollow>
+          </Box>
+          {currentUser?.id !== userId && (
+            <Box display="flex" justifyContent="center">
+              {!isFollowing ? (
+                <StyledFollowButton onClick={handleSubscribe}>
+                  Follow
+                </StyledFollowButton>
+              ) : (
+                <StyledUnfollowButton onClick={handleUnSubscribe}>
+                  Unfollow
+                </StyledUnfollowButton>
+              )}
+            </Box>
+          )}
         </Box>
       </PersonalInfoWrapper>
     </MainInfoWrapper>

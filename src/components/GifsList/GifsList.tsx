@@ -1,21 +1,25 @@
-import { EmptyGifs } from "../EmptyGifs/EmptyGifs";
-import { GifItem } from "../GifItem/GifItem";
+import { EmptyGifs } from "@components/EmptyGifs/EmptyGifs";
+import { GifItem } from "@components/GifItem/GifItem";
+import { SkeletonGif } from "@components/Skeleton/SkeletonGif";
+
 import { useGetGifs } from "./hooks/useGetGifs";
 
 export function GifsList() {
-  const { data } = useGetGifs();
-  if (!data?.length) {
-    return (
-      <EmptyGifs
-        needLink={true}
-        message="Your feed is empty, be the first to fill it"
-      />
-    );
-  }
+  const { data, isFetching } = useGetGifs();
+  const skeletonArray = Array.from({ length: 10 });
 
   return (
-    <>
-      {Boolean(data) && data?.map((gif) => <GifItem key={gif.id} {...gif} />)}
-    </>
+    <section>
+      {isFetching ? (
+        skeletonArray.map((_, index) => <SkeletonGif key={index} />)
+      ) : Boolean(data) ? (
+        data.map((gif) => <GifItem {...gif} key={gif.id} />)
+      ) : (
+        <EmptyGifs
+          needLink={true}
+          message="Your feed is empty, be the first to fill it"
+        />
+      )}
+    </section>
   );
 }

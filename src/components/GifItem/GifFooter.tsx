@@ -1,18 +1,20 @@
 import { Box, Typography } from "@mui/material";
 import { Chat, Eye, ShareFat } from "@phosphor-icons/react";
-import { LikeTooltip } from "components/LikeTooltip/LikeTooltip";
+import { LikeTooltip } from "@components/LikeTooltip/LikeTooltip";
+import { UserList } from "@components/UserList/UserList";
 import { configModalName } from "constant";
-import { useModal } from "hooks/useModal";
-import { Gif, Like } from "types";
-import { UserList } from "components/UserList/UserList";
+import { useModal } from "@hooks/useModal";
 
 import { StyledWrapperIconGif } from "./style";
+import { Like } from "types/Like";
+import { Gif } from "types/Gif";
 
 interface GifFooterProps {
   gifId: string;
   likes: Like[];
   viewers: Gif["viewers"];
   isCommentsOpen: boolean;
+  comments: Comment[];
   setIsCommentsOpen: (flag: boolean) => void;
 }
 
@@ -22,8 +24,10 @@ export const GifFooter = ({
   viewers,
   setIsCommentsOpen,
   isCommentsOpen,
+  comments,
 }: GifFooterProps) => {
   const { modals, toggleModal } = useModal();
+
   return (
     <Box
       display="flex"
@@ -48,6 +52,9 @@ export const GifFooter = ({
           onClick={() => setIsCommentsOpen(!isCommentsOpen)}
         >
           <Chat size="24" weight="thin" cursor="pointer" />
+          {Boolean(comments?.length) && (
+            <Typography>{comments.length}</Typography>
+          )}
         </StyledWrapperIconGif>
         <StyledWrapperIconGif>
           <ShareFat size="24" weight="thin" cursor="pointer" />

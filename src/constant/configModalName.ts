@@ -3,4 +3,5 @@ export const configModalName = {
   followes: "followes",
   likes: "likes",
   email: "email",
+  edit: "edit",
 };
