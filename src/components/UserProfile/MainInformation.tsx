@@ -85,14 +85,14 @@ export function MainInformation({
             </MainInfoFollow>
           </Box>
           {currentUser?.id !== userId && (
-            <Box display="flex" justifyContent="center">
+            <Box>
               {!isFollowing ? (
                 <StyledFollowButton onClick={handleSubscribe}>
-                  Follow
+                  follow
                 </StyledFollowButton>
               ) : (
                 <StyledUnfollowButton onClick={handleUnSubscribe}>
-                  Unfollow
+                  unfollow
                 </StyledUnfollowButton>
               )}
             </Box>
